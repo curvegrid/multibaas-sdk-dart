@@ -1,0 +1,13 @@
+inputSpec: https://api.redocly.com/registry/bundle/curvegrid/multibaas/v0/openapi.yaml
+outputDir: .
+generatorName: dart-dio
+gitUserId: curvegrid
+gitRepoId: multibaas-sdk-dart
+additionalProperties:
+  pubName: multibaas
+  pubDescription: MultiBaas SDK for Dart
+  pubHomepage: https://curvegrid.com
+  pubVersion: 1.0.0-beta0
+  pubRepository: https://github.com/curvegrid/multibaas-sdk-dart
+  disallowAdditionalPropertiesIfNotPresent: true
+  legacyDiscriminatorBehavior: false

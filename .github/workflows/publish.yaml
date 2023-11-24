@@ -1,0 +1,24 @@
+name: Publish Package
+
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+*
+
+jobs:
+  publish:
+    name: "Publish to pub.dev"
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    permissions:
+      id-token: write # This is required for requesting the JWT
+    steps:
+      # Checkout repository
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Setup Dart SDK with JWT token
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+      # Publishing...
+      - name: Publish to pub.dev
+        run: dart pub publish -f
