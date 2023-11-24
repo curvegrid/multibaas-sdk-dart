@@ -7,7 +7,7 @@ additionalProperties:
   pubName: multibaas
   pubDescription: MultiBaas SDK for Dart
   pubHomepage: https://curvegrid.com
-  pubVersion: 1.0.0-beta0
+  pubVersion: 1.0.0-beta1
   pubRepository: https://github.com/curvegrid/multibaas-sdk-dart
   disallowAdditionalPropertiesIfNotPresent: true
   legacyDiscriminatorBehavior: false

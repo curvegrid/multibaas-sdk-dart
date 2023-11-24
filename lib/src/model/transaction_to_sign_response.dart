@@ -42,6 +42,11 @@ class _$TransactionToSignResponseSerializer implements PrimitiveSerializer<Trans
     TransactionToSignResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'submitted';
+    yield serializers.serialize(
+      object.submitted,
+      specifiedType: const FullType(bool),
+    );
     yield r'tx';
     yield serializers.serialize(
       object.tx,
@@ -51,11 +56,6 @@ class _$TransactionToSignResponseSerializer implements PrimitiveSerializer<Trans
     yield serializers.serialize(
       object.kind,
       specifiedType: const FullType(String),
-    );
-    yield r'submitted';
-    yield serializers.serialize(
-      object.submitted,
-      specifiedType: const FullType(bool),
     );
   }
 
@@ -80,6 +80,13 @@ class _$TransactionToSignResponseSerializer implements PrimitiveSerializer<Trans
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'submitted':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.submitted = valueDes;
+          break;
         case r'tx':
           final valueDes = serializers.deserialize(
             value,
@@ -93,13 +100,6 @@ class _$TransactionToSignResponseSerializer implements PrimitiveSerializer<Trans
             specifiedType: const FullType(String),
           ) as String;
           result.kind = valueDes;
-          break;
-        case r'submitted':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.submitted = valueDes;
           break;
         default:
           unhandled.add(key);
