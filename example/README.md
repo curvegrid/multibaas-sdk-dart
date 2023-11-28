@@ -14,4 +14,3 @@ To run the example:
 ```sh
 dart run
 ```
-w
