@@ -12,10 +12,9 @@ class _$AcceptInviteRequest extends AcceptInviteRequest {
 
   factory _$AcceptInviteRequest(
           [void Function(AcceptInviteRequestBuilder)? updates]) =>
-      (new AcceptInviteRequestBuilder()..update(updates))._build();
+      (AcceptInviteRequestBuilder()..update(updates))._build();
 
   _$AcceptInviteRequest._({this.idToken}) : super._();
-
   @override
   AcceptInviteRequest rebuild(
           void Function(AcceptInviteRequestBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$AcceptInviteRequest extends AcceptInviteRequest {
 
   @override
   AcceptInviteRequestBuilder toBuilder() =>
-      new AcceptInviteRequestBuilder()..replace(this);
+      AcceptInviteRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -70,7 +69,6 @@ class AcceptInviteRequestBuilder
 
   @override
   void replace(AcceptInviteRequest other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AcceptInviteRequest;
   }
 
@@ -83,7 +81,10 @@ class AcceptInviteRequestBuilder
   AcceptInviteRequest build() => _build();
 
   _$AcceptInviteRequest _build() {
-    final _$result = _$v ?? new _$AcceptInviteRequest._(idToken: idToken);
+    final _$result = _$v ??
+        _$AcceptInviteRequest._(
+          idToken: idToken,
+        );
     replace(_$result);
     return _$result;
   }

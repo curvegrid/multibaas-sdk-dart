@@ -15,11 +15,14 @@ import 'package:multibaas/src/model/base_response.dart';
 import 'package:multibaas/src/model/cors_origin.dart';
 import 'package:multibaas/src/model/create_api_key200_response.dart';
 import 'package:multibaas/src/model/create_api_key_request.dart';
-import 'package:multibaas/src/model/invite.dart';
+import 'package:multibaas/src/model/get_api_key200_response.dart';
+import 'package:multibaas/src/model/get_plan200_response.dart';
+import 'package:multibaas/src/model/invite_request.dart';
 import 'package:multibaas/src/model/list_api_keys200_response.dart';
 import 'package:multibaas/src/model/list_audit_logs200_response.dart';
 import 'package:multibaas/src/model/list_cors_origins200_response.dart';
 import 'package:multibaas/src/model/list_groups200_response.dart';
+import 'package:multibaas/src/model/list_invites200_response.dart';
 import 'package:multibaas/src/model/list_user_signers200_response.dart';
 import 'package:multibaas/src/model/list_users200_response.dart';
 import 'package:multibaas/src/model/signer_label.dart';
@@ -49,7 +52,7 @@ class AdminApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<AcceptInvite200Response>> acceptInvite({ 
     required String inviteID,
-    AcceptInviteRequest? acceptInviteRequest,
+    required AcceptInviteRequest acceptInviteRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -81,7 +84,7 @@ class AdminApi {
 
     try {
       const _type = FullType(AcceptInviteRequest);
-      _bodyData = acceptInviteRequest == null ? null : _serializers.serialize(acceptInviteRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(acceptInviteRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -150,7 +153,7 @@ class AdminApi {
   /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> addCorsOrigin({ 
-    CORSOrigin? cORSOrigin,
+    required CORSOrigin cORSOrigin,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -187,7 +190,7 @@ class AdminApi {
 
     try {
       const _type = FullType(CORSOrigin);
-      _bodyData = cORSOrigin == null ? null : _serializers.serialize(cORSOrigin, specifiedType: _type);
+      _bodyData = _serializers.serialize(cORSOrigin, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -595,7 +598,7 @@ class AdminApi {
   /// Returns a [Future] containing a [Response] with a [CreateApiKey200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateApiKey200Response>> createApiKey({ 
-    CreateApiKeyRequest? createApiKeyRequest,
+    required CreateApiKeyRequest createApiKeyRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -632,7 +635,7 @@ class AdminApi {
 
     try {
       const _type = FullType(CreateApiKeyRequest);
-      _bodyData = createApiKeyRequest == null ? null : _serializers.serialize(createApiKeyRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(createApiKeyRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -772,6 +775,59 @@ class AdminApi {
     );
   }
 
+  /// Delete invite
+  /// Deletes a user invite.
+  ///
+  /// Parameters:
+  /// * [email] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> deleteInvite({ 
+    required String email,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/invites/{email}/delete'.replaceAll('{' r'email' '}', encodeQueryParameter(_serializers, email, const FullType(String)).toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
   /// Delete user
   /// Deletes a user.
   ///
@@ -870,9 +926,9 @@ class AdminApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [CreateApiKey200Response] as data
+  /// Returns a [Future] containing a [Response] with a [GetApiKey200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CreateApiKey200Response>> getApiKey({ 
+  Future<Response<GetApiKey200Response>> getApiKey({ 
     required int apiKeyID,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -913,14 +969,14 @@ class AdminApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CreateApiKey200Response? _responseData;
+    GetApiKey200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(CreateApiKey200Response),
-      ) as CreateApiKey200Response;
+        specifiedType: const FullType(GetApiKey200Response),
+      ) as GetApiKey200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -932,7 +988,91 @@ class AdminApi {
       );
     }
 
-    return Response<CreateApiKey200Response>(
+    return Response<GetApiKey200Response>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get plan
+  /// Returns the current plan with limits and features.
+  ///
+  /// Parameters:
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [GetPlan200Response] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<GetPlan200Response>> getPlan({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/plan';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'cookie',
+            'keyName': 'token',
+            'where': '',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    GetPlan200Response? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(GetPlan200Response),
+      ) as GetPlan200Response;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<GetPlan200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -948,7 +1088,7 @@ class AdminApi {
   /// Invites a new user.
   ///
   /// Parameters:
-  /// * [invite] 
+  /// * [inviteRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -959,7 +1099,7 @@ class AdminApi {
   /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> inviteUser({ 
-    Invite? invite,
+    required InviteRequest inviteRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -995,8 +1135,8 @@ class AdminApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(Invite);
-      _bodyData = invite == null ? null : _serializers.serialize(invite, specifiedType: _type);
+      const _type = FullType(InviteRequest);
+      _bodyData = _serializers.serialize(inviteRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1395,6 +1535,90 @@ class AdminApi {
     }
 
     return Response<ListGroups200Response>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// List invites
+  /// Returns all the user invites.
+  ///
+  /// Parameters:
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ListInvites200Response] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ListInvites200Response>> listInvites({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/invites';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'cookie',
+            'keyName': 'token',
+            'where': '',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ListInvites200Response? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ListInvites200Response),
+      ) as ListInvites200Response;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ListInvites200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1938,7 +2162,7 @@ class AdminApi {
   ///
   /// Parameters:
   /// * [userID] 
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2021,12 +2245,100 @@ class AdminApi {
     );
   }
 
+  /// Remove user safe account signer
+  /// Removes a safe account signer from a user.
+  ///
+  /// Parameters:
+  /// * [userID] 
+  /// * [walletAddress] - An Ethereum address.
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<BaseResponse>> removeUserSignerSafeAccount({ 
+    required int userID,
+    required String walletAddress,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/users/{userID}/safeaccounts/{wallet_address}'.replaceAll('{' r'userID' '}', encodeQueryParameter(_serializers, userID, const FullType(int)).toString()).replaceAll('{' r'wallet_address' '}', encodeQueryParameter(_serializers, walletAddress, const FullType(String)).toString());
+    final _options = Options(
+      method: r'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'cookie',
+            'keyName': 'token',
+            'where': '',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BaseResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BaseResponse),
+      ) as BaseResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BaseResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Remove user web3 wallet signer
   /// Removes a web3 wallet signer from a user.
   ///
   /// Parameters:
   /// * [userID] 
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2114,7 +2426,7 @@ class AdminApi {
   ///
   /// Parameters:
   /// * [userID] 
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -2197,12 +2509,122 @@ class AdminApi {
     );
   }
 
+  /// Add or update user safe account signer
+  /// Adds or updates a user&#39;s safe account signer.
+  ///
+  /// Parameters:
+  /// * [userID] 
+  /// * [walletAddress] - An Ethereum address.
+  /// * [signerLabel] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<BaseResponse>> setUserSignerSafeAccount({ 
+    required int userID,
+    required String walletAddress,
+    required SignerLabel signerLabel,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/users/{userID}/safeaccounts/{wallet_address}'.replaceAll('{' r'userID' '}', encodeQueryParameter(_serializers, userID, const FullType(int)).toString()).replaceAll('{' r'wallet_address' '}', encodeQueryParameter(_serializers, walletAddress, const FullType(String)).toString());
+    final _options = Options(
+      method: r'PUT',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'cookie',
+            'keyName': 'token',
+            'where': '',
+          },{
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(SignerLabel);
+      _bodyData = _serializers.serialize(signerLabel, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BaseResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BaseResponse),
+      ) as BaseResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<BaseResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Add or update user web3 wallet signer
   /// Adds or updates a user&#39;s web3 wallet signer.
   ///
   /// Parameters:
   /// * [userID] 
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [signerLabel] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -2216,7 +2638,7 @@ class AdminApi {
   Future<Response<BaseResponse>> setUserSignerWeb3Wallet({ 
     required int userID,
     required String walletAddress,
-    SignerLabel? signerLabel,
+    required SignerLabel signerLabel,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2253,7 +2675,7 @@ class AdminApi {
 
     try {
       const _type = FullType(SignerLabel);
-      _bodyData = signerLabel == null ? null : _serializers.serialize(signerLabel, specifiedType: _type);
+      _bodyData = _serializers.serialize(signerLabel, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -2324,7 +2746,7 @@ class AdminApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> updateApiKey({ 
     required int apiKeyID,
-    BaseAPIKey? baseAPIKey,
+    required BaseAPIKey baseAPIKey,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -2361,7 +2783,7 @@ class AdminApi {
 
     try {
       const _type = FullType(BaseAPIKey);
-      _bodyData = baseAPIKey == null ? null : _serializers.serialize(baseAPIKey, specifiedType: _type);
+      _bodyData = _serializers.serialize(baseAPIKey, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

@@ -12,23 +12,17 @@ class _$DeployContractTransaction extends DeployContractTransaction {
   @override
   final String? label;
   @override
-  final bool submitted;
+  final TransactionToSignTx tx;
   @override
-  final BaseTransactionToSignTx tx;
+  final bool submitted;
 
   factory _$DeployContractTransaction(
           [void Function(DeployContractTransactionBuilder)? updates]) =>
-      (new DeployContractTransactionBuilder()..update(updates))._build();
+      (DeployContractTransactionBuilder()..update(updates))._build();
 
   _$DeployContractTransaction._(
-      {this.deployAt, this.label, required this.submitted, required this.tx})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        submitted, r'DeployContractTransaction', 'submitted');
-    BuiltValueNullFieldError.checkNotNull(
-        tx, r'DeployContractTransaction', 'tx');
-  }
-
+      {this.deployAt, this.label, required this.tx, required this.submitted})
+      : super._();
   @override
   DeployContractTransaction rebuild(
           void Function(DeployContractTransactionBuilder) updates) =>
@@ -36,7 +30,7 @@ class _$DeployContractTransaction extends DeployContractTransaction {
 
   @override
   DeployContractTransactionBuilder toBuilder() =>
-      new DeployContractTransactionBuilder()..replace(this);
+      DeployContractTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -44,8 +38,8 @@ class _$DeployContractTransaction extends DeployContractTransaction {
     return other is DeployContractTransaction &&
         deployAt == other.deployAt &&
         label == other.label &&
-        submitted == other.submitted &&
-        tx == other.tx;
+        tx == other.tx &&
+        submitted == other.submitted;
   }
 
   @override
@@ -53,8 +47,8 @@ class _$DeployContractTransaction extends DeployContractTransaction {
     var _$hash = 0;
     _$hash = $jc(_$hash, deployAt.hashCode);
     _$hash = $jc(_$hash, label.hashCode);
-    _$hash = $jc(_$hash, submitted.hashCode);
     _$hash = $jc(_$hash, tx.hashCode);
+    _$hash = $jc(_$hash, submitted.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -64,8 +58,8 @@ class _$DeployContractTransaction extends DeployContractTransaction {
     return (newBuiltValueToStringHelper(r'DeployContractTransaction')
           ..add('deployAt', deployAt)
           ..add('label', label)
-          ..add('submitted', submitted)
-          ..add('tx', tx))
+          ..add('tx', tx)
+          ..add('submitted', submitted))
         .toString();
   }
 }
@@ -84,14 +78,14 @@ class DeployContractTransactionBuilder
   String? get label => _$this._label;
   set label(covariant String? label) => _$this._label = label;
 
+  TransactionToSignTxBuilder? _tx;
+  TransactionToSignTxBuilder get tx =>
+      _$this._tx ??= TransactionToSignTxBuilder();
+  set tx(covariant TransactionToSignTxBuilder? tx) => _$this._tx = tx;
+
   bool? _submitted;
   bool? get submitted => _$this._submitted;
   set submitted(covariant bool? submitted) => _$this._submitted = submitted;
-
-  BaseTransactionToSignTxBuilder? _tx;
-  BaseTransactionToSignTxBuilder get tx =>
-      _$this._tx ??= new BaseTransactionToSignTxBuilder();
-  set tx(covariant BaseTransactionToSignTxBuilder? tx) => _$this._tx = tx;
 
   DeployContractTransactionBuilder() {
     DeployContractTransaction._defaults(this);
@@ -102,8 +96,8 @@ class DeployContractTransactionBuilder
     if ($v != null) {
       _deployAt = $v.deployAt;
       _label = $v.label;
-      _submitted = $v.submitted;
       _tx = $v.tx.toBuilder();
+      _submitted = $v.submitted;
       _$v = null;
     }
     return this;
@@ -111,7 +105,6 @@ class DeployContractTransactionBuilder
 
   @override
   void replace(covariant DeployContractTransaction other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeployContractTransaction;
   }
 
@@ -127,19 +120,20 @@ class DeployContractTransactionBuilder
     _$DeployContractTransaction _$result;
     try {
       _$result = _$v ??
-          new _$DeployContractTransaction._(
-              deployAt: deployAt,
-              label: label,
-              submitted: BuiltValueNullFieldError.checkNotNull(
-                  submitted, r'DeployContractTransaction', 'submitted'),
-              tx: tx.build());
+          _$DeployContractTransaction._(
+            deployAt: deployAt,
+            label: label,
+            tx: tx.build(),
+            submitted: BuiltValueNullFieldError.checkNotNull(
+                submitted, r'DeployContractTransaction', 'submitted'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'tx';
         tx.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'DeployContractTransaction', _$failedField, e.toString());
       }
       rethrow;

@@ -19,7 +19,7 @@ class _$Group extends Group {
   final BuiltList<Role> roles;
 
   factory _$Group([void Function(GroupBuilder)? updates]) =>
-      (new GroupBuilder()..update(updates))._build();
+      (GroupBuilder()..update(updates))._build();
 
   _$Group._(
       {required this.id,
@@ -27,20 +27,13 @@ class _$Group extends Group {
       required this.shortName,
       required this.description,
       required this.roles})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'Group', 'id');
-    BuiltValueNullFieldError.checkNotNull(name, r'Group', 'name');
-    BuiltValueNullFieldError.checkNotNull(shortName, r'Group', 'shortName');
-    BuiltValueNullFieldError.checkNotNull(description, r'Group', 'description');
-    BuiltValueNullFieldError.checkNotNull(roles, r'Group', 'roles');
-  }
-
+      : super._();
   @override
   Group rebuild(void Function(GroupBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GroupBuilder toBuilder() => new GroupBuilder()..replace(this);
+  GroupBuilder toBuilder() => GroupBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -97,7 +90,7 @@ class GroupBuilder implements Builder<Group, GroupBuilder> {
   set description(String? description) => _$this._description = description;
 
   ListBuilder<Role>? _roles;
-  ListBuilder<Role> get roles => _$this._roles ??= new ListBuilder<Role>();
+  ListBuilder<Role> get roles => _$this._roles ??= ListBuilder<Role>();
   set roles(ListBuilder<Role>? roles) => _$this._roles = roles;
 
   GroupBuilder() {
@@ -119,7 +112,6 @@ class GroupBuilder implements Builder<Group, GroupBuilder> {
 
   @override
   void replace(Group other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Group;
   }
 
@@ -135,23 +127,22 @@ class GroupBuilder implements Builder<Group, GroupBuilder> {
     _$Group _$result;
     try {
       _$result = _$v ??
-          new _$Group._(
-              id: BuiltValueNullFieldError.checkNotNull(id, r'Group', 'id'),
-              name:
-                  BuiltValueNullFieldError.checkNotNull(name, r'Group', 'name'),
-              shortName: BuiltValueNullFieldError.checkNotNull(
-                  shortName, r'Group', 'shortName'),
-              description: BuiltValueNullFieldError.checkNotNull(
-                  description, r'Group', 'description'),
-              roles: roles.build());
+          _$Group._(
+            id: BuiltValueNullFieldError.checkNotNull(id, r'Group', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name, r'Group', 'name'),
+            shortName: BuiltValueNullFieldError.checkNotNull(
+                shortName, r'Group', 'shortName'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'Group', 'description'),
+            roles: roles.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'roles';
         roles.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Group', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Group', _$failedField, e.toString());
       }
       rethrow;
     }

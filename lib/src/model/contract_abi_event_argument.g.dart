@@ -12,28 +12,26 @@ class _$ContractABIEventArgument extends ContractABIEventArgument {
   @override
   final ContractABIType type;
   @override
+  final String typeName;
+  @override
   final bool indexed;
   @override
   final ContractABITypeConversion? typeConversion;
+  @override
+  final String notes;
 
   factory _$ContractABIEventArgument(
           [void Function(ContractABIEventArgumentBuilder)? updates]) =>
-      (new ContractABIEventArgumentBuilder()..update(updates))._build();
+      (ContractABIEventArgumentBuilder()..update(updates))._build();
 
   _$ContractABIEventArgument._(
       {required this.name,
       required this.type,
+      required this.typeName,
       required this.indexed,
-      this.typeConversion})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ContractABIEventArgument', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        type, r'ContractABIEventArgument', 'type');
-    BuiltValueNullFieldError.checkNotNull(
-        indexed, r'ContractABIEventArgument', 'indexed');
-  }
-
+      this.typeConversion,
+      required this.notes})
+      : super._();
   @override
   ContractABIEventArgument rebuild(
           void Function(ContractABIEventArgumentBuilder) updates) =>
@@ -41,7 +39,7 @@ class _$ContractABIEventArgument extends ContractABIEventArgument {
 
   @override
   ContractABIEventArgumentBuilder toBuilder() =>
-      new ContractABIEventArgumentBuilder()..replace(this);
+      ContractABIEventArgumentBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -49,8 +47,10 @@ class _$ContractABIEventArgument extends ContractABIEventArgument {
     return other is ContractABIEventArgument &&
         name == other.name &&
         type == other.type &&
+        typeName == other.typeName &&
         indexed == other.indexed &&
-        typeConversion == other.typeConversion;
+        typeConversion == other.typeConversion &&
+        notes == other.notes;
   }
 
   @override
@@ -58,8 +58,10 @@ class _$ContractABIEventArgument extends ContractABIEventArgument {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, typeName.hashCode);
     _$hash = $jc(_$hash, indexed.hashCode);
     _$hash = $jc(_$hash, typeConversion.hashCode);
+    _$hash = $jc(_$hash, notes.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -69,8 +71,10 @@ class _$ContractABIEventArgument extends ContractABIEventArgument {
     return (newBuiltValueToStringHelper(r'ContractABIEventArgument')
           ..add('name', name)
           ..add('type', type)
+          ..add('typeName', typeName)
           ..add('indexed', indexed)
-          ..add('typeConversion', typeConversion))
+          ..add('typeConversion', typeConversion)
+          ..add('notes', notes))
         .toString();
   }
 }
@@ -85,9 +89,12 @@ class ContractABIEventArgumentBuilder
   set name(String? name) => _$this._name = name;
 
   ContractABITypeBuilder? _type;
-  ContractABITypeBuilder get type =>
-      _$this._type ??= new ContractABITypeBuilder();
+  ContractABITypeBuilder get type => _$this._type ??= ContractABITypeBuilder();
   set type(ContractABITypeBuilder? type) => _$this._type = type;
+
+  String? _typeName;
+  String? get typeName => _$this._typeName;
+  set typeName(String? typeName) => _$this._typeName = typeName;
 
   bool? _indexed;
   bool? get indexed => _$this._indexed;
@@ -95,9 +102,13 @@ class ContractABIEventArgumentBuilder
 
   ContractABITypeConversionBuilder? _typeConversion;
   ContractABITypeConversionBuilder get typeConversion =>
-      _$this._typeConversion ??= new ContractABITypeConversionBuilder();
+      _$this._typeConversion ??= ContractABITypeConversionBuilder();
   set typeConversion(ContractABITypeConversionBuilder? typeConversion) =>
       _$this._typeConversion = typeConversion;
+
+  String? _notes;
+  String? get notes => _$this._notes;
+  set notes(String? notes) => _$this._notes = notes;
 
   ContractABIEventArgumentBuilder() {
     ContractABIEventArgument._defaults(this);
@@ -108,8 +119,10 @@ class ContractABIEventArgumentBuilder
     if ($v != null) {
       _name = $v.name;
       _type = $v.type.toBuilder();
+      _typeName = $v.typeName;
       _indexed = $v.indexed;
       _typeConversion = $v.typeConversion?.toBuilder();
+      _notes = $v.notes;
       _$v = null;
     }
     return this;
@@ -117,7 +130,6 @@ class ContractABIEventArgumentBuilder
 
   @override
   void replace(ContractABIEventArgument other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractABIEventArgument;
   }
 
@@ -133,13 +145,18 @@ class ContractABIEventArgumentBuilder
     _$ContractABIEventArgument _$result;
     try {
       _$result = _$v ??
-          new _$ContractABIEventArgument._(
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'ContractABIEventArgument', 'name'),
-              type: type.build(),
-              indexed: BuiltValueNullFieldError.checkNotNull(
-                  indexed, r'ContractABIEventArgument', 'indexed'),
-              typeConversion: _typeConversion?.build());
+          _$ContractABIEventArgument._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'ContractABIEventArgument', 'name'),
+            type: type.build(),
+            typeName: BuiltValueNullFieldError.checkNotNull(
+                typeName, r'ContractABIEventArgument', 'typeName'),
+            indexed: BuiltValueNullFieldError.checkNotNull(
+                indexed, r'ContractABIEventArgument', 'indexed'),
+            typeConversion: _typeConversion?.build(),
+            notes: BuiltValueNullFieldError.checkNotNull(
+                notes, r'ContractABIEventArgument', 'notes'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -149,7 +166,7 @@ class ContractABIEventArgumentBuilder
         _$failedField = 'typeConversion';
         _typeConversion?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractABIEventArgument', _$failedField, e.toString());
       }
       rethrow;

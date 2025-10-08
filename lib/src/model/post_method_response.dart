@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/method_call_preview_response.dart';
 import 'package:multibaas/src/model/transaction_to_sign_response.dart';
 import 'package:multibaas/src/model/method_call_response.dart';
 import 'package:built_value/built_value.dart';
@@ -24,7 +23,6 @@ abstract class PostMethodResponse  {
   static const String discriminatorFieldName = r'kind';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'MethodCallPreviewResponse': MethodCallPreviewResponse,
     r'MethodCallResponse': MethodCallResponse,
     r'TransactionToSignResponse': TransactionToSignResponse,
   };
@@ -35,9 +33,6 @@ abstract class PostMethodResponse  {
 
 extension PostMethodResponseDiscriminatorExt on PostMethodResponse {
     String? get discriminatorValue {
-        if (this is MethodCallPreviewResponse) {
-            return r'MethodCallPreviewResponse';
-        }
         if (this is MethodCallResponse) {
             return r'MethodCallResponse';
         }
@@ -49,9 +44,6 @@ extension PostMethodResponseDiscriminatorExt on PostMethodResponse {
 }
 extension PostMethodResponseBuilderDiscriminatorExt on PostMethodResponseBuilder {
     String? get discriminatorValue {
-        if (this is MethodCallPreviewResponseBuilder) {
-            return r'MethodCallPreviewResponse';
-        }
         if (this is MethodCallResponseBuilder) {
             return r'MethodCallResponse';
         }
@@ -87,9 +79,6 @@ class _$PostMethodResponseSerializer implements PrimitiveSerializer<PostMethodRe
     PostMethodResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    if (object is MethodCallPreviewResponse) {
-      return serializers.serialize(object, specifiedType: FullType(MethodCallPreviewResponse))!;
-    }
     if (object is MethodCallResponse) {
       return serializers.serialize(object, specifiedType: FullType(MethodCallResponse))!;
     }
@@ -109,8 +98,6 @@ class _$PostMethodResponseSerializer implements PrimitiveSerializer<PostMethodRe
     final discIndex = serializedList.indexOf(PostMethodResponse.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     switch (discValue) {
-      case r'MethodCallPreviewResponse':
-        return serializers.deserialize(serialized, specifiedType: FullType(MethodCallPreviewResponse)) as MethodCallPreviewResponse;
       case r'MethodCallResponse':
         return serializers.deserialize(serialized, specifiedType: FullType(MethodCallResponse)) as MethodCallResponse;
       case r'TransactionToSignResponse':

@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/base_transaction_to_sign_tx.dart';
+import 'package:multibaas/src/model/transaction_to_sign_tx.dart';
 import 'package:multibaas/src/model/transaction_to_sign.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -16,13 +16,13 @@ part 'deploy_contract_transaction.g.dart';
 /// * [tx] 
 /// * [submitted] 
 /// * [deployAt] 
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 @BuiltValue()
 abstract class DeployContractTransaction implements TransactionToSign, Built<DeployContractTransaction, DeployContractTransactionBuilder> {
   @BuiltValueField(wireName: r'deployAt')
   String? get deployAt;
 
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String? get label;
 
@@ -64,7 +64,7 @@ class _$DeployContractTransactionSerializer implements PrimitiveSerializer<Deplo
     yield r'tx';
     yield serializers.serialize(
       object.tx,
-      specifiedType: const FullType(BaseTransactionToSignTx),
+      specifiedType: const FullType(TransactionToSignTx),
     );
     if (object.deployAt != null) {
       yield r'deployAt';
@@ -113,8 +113,8 @@ class _$DeployContractTransactionSerializer implements PrimitiveSerializer<Deplo
         case r'tx':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BaseTransactionToSignTx),
-          ) as BaseTransactionToSignTx;
+            specifiedType: const FullType(TransactionToSignTx),
+          ) as TransactionToSignTx;
           result.tx.replace(valueDes);
           break;
         case r'deployAt':

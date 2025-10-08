@@ -18,20 +18,12 @@ class _$GetFunctionTypeConversions200Response
   factory _$GetFunctionTypeConversions200Response(
           [void Function(GetFunctionTypeConversions200ResponseBuilder)?
               updates]) =>
-      (new GetFunctionTypeConversions200ResponseBuilder()..update(updates))
+      (GetFunctionTypeConversions200ResponseBuilder()..update(updates))
           ._build();
 
   _$GetFunctionTypeConversions200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'GetFunctionTypeConversions200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetFunctionTypeConversions200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GetFunctionTypeConversions200Response', 'message');
-  }
-
+      : super._();
   @override
   GetFunctionTypeConversions200Response rebuild(
           void Function(GetFunctionTypeConversions200ResponseBuilder)
@@ -40,7 +32,7 @@ class _$GetFunctionTypeConversions200Response
 
   @override
   GetFunctionTypeConversions200ResponseBuilder toBuilder() =>
-      new GetFunctionTypeConversions200ResponseBuilder()..replace(this);
+      GetFunctionTypeConversions200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +73,7 @@ class GetFunctionTypeConversions200ResponseBuilder
 
   MethodTypeConversionOptionsBuilder? _result;
   MethodTypeConversionOptionsBuilder get result =>
-      _$this._result ??= new MethodTypeConversionOptionsBuilder();
+      _$this._result ??= MethodTypeConversionOptionsBuilder();
   set result(covariant MethodTypeConversionOptionsBuilder? result) =>
       _$this._result = result;
 
@@ -110,7 +102,6 @@ class GetFunctionTypeConversions200ResponseBuilder
 
   @override
   void replace(covariant GetFunctionTypeConversions200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetFunctionTypeConversions200Response;
   }
 
@@ -127,19 +118,20 @@ class GetFunctionTypeConversions200ResponseBuilder
     _$GetFunctionTypeConversions200Response _$result;
     try {
       _$result = _$v ??
-          new _$GetFunctionTypeConversions200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'GetFunctionTypeConversions200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(message,
-                  r'GetFunctionTypeConversions200Response', 'message'));
+          _$GetFunctionTypeConversions200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'GetFunctionTypeConversions200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'GetFunctionTypeConversions200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GetFunctionTypeConversions200Response',
             _$failedField,
             e.toString());

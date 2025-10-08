@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **int** | The status code. | 
 **message** | **String** | The human-readable status message. | 
-**result** | [**BuiltList&lt;AddressLabel&gt;**](AddressLabel.md) |  | 
+**result** | [**BuiltList&lt;AddressAlias&gt;**](AddressAlias.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

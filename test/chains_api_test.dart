@@ -47,7 +47,7 @@ void main() {
     //
     // Receives a pre-signed raw transaction and submits it to the blockchain.
     //
-    //Future<BaseResponse> submitSignedTransaction(ChainName chain, { SignedTransactionSubmission signedTransactionSubmission }) async
+    //Future<SubmitSignedTransaction200Response> submitSignedTransaction(ChainName chain, SignedTransactionSubmission signedTransactionSubmission) async
     test('test submitSignedTransaction', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Returns a transaction for sending the native token between addresses.
     //
-    //Future<TransferEth200Response> transferEth(ChainName chain, { PostMethodArgs postMethodArgs }) async
+    //Future<TransferEth200Response> transferEth(ChainName chain, PostMethodArgs postMethodArgs) async
     test('test transferEth', () async {
       // TODO
     });

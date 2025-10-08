@@ -14,13 +14,9 @@ class _$ContractEventOptions extends ContractEventOptions {
 
   factory _$ContractEventOptions(
           [void Function(ContractEventOptionsBuilder)? updates]) =>
-      (new ContractEventOptionsBuilder()..update(updates))._build();
+      (ContractEventOptionsBuilder()..update(updates))._build();
 
-  _$ContractEventOptions._({this.signature, required this.inputs}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'ContractEventOptions', 'inputs');
-  }
-
+  _$ContractEventOptions._({this.signature, required this.inputs}) : super._();
   @override
   ContractEventOptions rebuild(
           void Function(ContractEventOptionsBuilder) updates) =>
@@ -28,7 +24,7 @@ class _$ContractEventOptions extends ContractEventOptions {
 
   @override
   ContractEventOptionsBuilder toBuilder() =>
-      new ContractEventOptionsBuilder()..replace(this);
+      ContractEventOptionsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -66,7 +62,7 @@ class ContractEventOptionsBuilder
 
   ListBuilder<ContractParameter>? _inputs;
   ListBuilder<ContractParameter> get inputs =>
-      _$this._inputs ??= new ListBuilder<ContractParameter>();
+      _$this._inputs ??= ListBuilder<ContractParameter>();
   set inputs(ListBuilder<ContractParameter>? inputs) => _$this._inputs = inputs;
 
   ContractEventOptionsBuilder() {
@@ -85,7 +81,6 @@ class ContractEventOptionsBuilder
 
   @override
   void replace(ContractEventOptions other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractEventOptions;
   }
 
@@ -101,15 +96,17 @@ class ContractEventOptionsBuilder
     _$ContractEventOptions _$result;
     try {
       _$result = _$v ??
-          new _$ContractEventOptions._(
-              signature: signature, inputs: inputs.build());
+          _$ContractEventOptions._(
+            signature: signature,
+            inputs: inputs.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'inputs';
         inputs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractEventOptions', _$failedField, e.toString());
       }
       rethrow;

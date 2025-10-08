@@ -28,7 +28,7 @@ class _$EventMonitorStatus extends EventMonitorStatus {
 
   factory _$EventMonitorStatus(
           [void Function(EventMonitorStatusBuilder)? updates]) =>
-      (new EventMonitorStatusBuilder()..update(updates))._build();
+      (EventMonitorStatusBuilder()..update(updates))._build();
 
   _$EventMonitorStatus._(
       {this.contractId,
@@ -40,21 +40,7 @@ class _$EventMonitorStatus extends EventMonitorStatus {
       required this.startBlockNumber,
       required this.startBlockHash,
       required this.updatedAt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        isProcessingPastLogs, r'EventMonitorStatus', 'isProcessingPastLogs');
-    BuiltValueNullFieldError.checkNotNull(
-        latestBlockNumber, r'EventMonitorStatus', 'latestBlockNumber');
-    BuiltValueNullFieldError.checkNotNull(
-        latestBlockHash, r'EventMonitorStatus', 'latestBlockHash');
-    BuiltValueNullFieldError.checkNotNull(
-        startBlockNumber, r'EventMonitorStatus', 'startBlockNumber');
-    BuiltValueNullFieldError.checkNotNull(
-        startBlockHash, r'EventMonitorStatus', 'startBlockHash');
-    BuiltValueNullFieldError.checkNotNull(
-        updatedAt, r'EventMonitorStatus', 'updatedAt');
-  }
-
+      : super._();
   @override
   EventMonitorStatus rebuild(
           void Function(EventMonitorStatusBuilder) updates) =>
@@ -62,7 +48,7 @@ class _$EventMonitorStatus extends EventMonitorStatus {
 
   @override
   EventMonitorStatusBuilder toBuilder() =>
-      new EventMonitorStatusBuilder()..replace(this);
+      EventMonitorStatusBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -180,7 +166,6 @@ class EventMonitorStatusBuilder
 
   @override
   void replace(EventMonitorStatus other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventMonitorStatus;
   }
 
@@ -194,24 +179,25 @@ class EventMonitorStatusBuilder
 
   _$EventMonitorStatus _build() {
     final _$result = _$v ??
-        new _$EventMonitorStatus._(
-            contractId: contractId,
-            addressId: addressId,
-            isProcessingPastLogs: BuiltValueNullFieldError.checkNotNull(
-                isProcessingPastLogs,
-                r'EventMonitorStatus',
-                'isProcessingPastLogs'),
-            idealBlockRange: idealBlockRange,
-            latestBlockNumber: BuiltValueNullFieldError.checkNotNull(
-                latestBlockNumber, r'EventMonitorStatus', 'latestBlockNumber'),
-            latestBlockHash: BuiltValueNullFieldError.checkNotNull(
-                latestBlockHash, r'EventMonitorStatus', 'latestBlockHash'),
-            startBlockNumber: BuiltValueNullFieldError.checkNotNull(
-                startBlockNumber, r'EventMonitorStatus', 'startBlockNumber'),
-            startBlockHash: BuiltValueNullFieldError.checkNotNull(
-                startBlockHash, r'EventMonitorStatus', 'startBlockHash'),
-            updatedAt: BuiltValueNullFieldError.checkNotNull(
-                updatedAt, r'EventMonitorStatus', 'updatedAt'));
+        _$EventMonitorStatus._(
+          contractId: contractId,
+          addressId: addressId,
+          isProcessingPastLogs: BuiltValueNullFieldError.checkNotNull(
+              isProcessingPastLogs,
+              r'EventMonitorStatus',
+              'isProcessingPastLogs'),
+          idealBlockRange: idealBlockRange,
+          latestBlockNumber: BuiltValueNullFieldError.checkNotNull(
+              latestBlockNumber, r'EventMonitorStatus', 'latestBlockNumber'),
+          latestBlockHash: BuiltValueNullFieldError.checkNotNull(
+              latestBlockHash, r'EventMonitorStatus', 'latestBlockHash'),
+          startBlockNumber: BuiltValueNullFieldError.checkNotNull(
+              startBlockNumber, r'EventMonitorStatus', 'startBlockNumber'),
+          startBlockHash: BuiltValueNullFieldError.checkNotNull(
+              startBlockHash, r'EventMonitorStatus', 'startBlockHash'),
+          updatedAt: BuiltValueNullFieldError.checkNotNull(
+              updatedAt, r'EventMonitorStatus', 'updatedAt'),
+        );
     replace(_$result);
     return _$result;
   }

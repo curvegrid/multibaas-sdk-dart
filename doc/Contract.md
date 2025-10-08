@@ -8,13 +8,13 @@ import 'package:multibaas/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**label** | **String** | A label. | 
+**label** | **String** | An alias to easily identify and reference the entity in subsequent requests. | 
 **contractName** | **String** | The name of the contract. | 
 **version** | **String** | The contract version. | 
 **bin** | **String** | The smart-contract bytecode. | [optional] 
 **rawAbi** | **String** | The contract raw ABI JSON string. | 
-**userDoc** | **String** | The user documentation JSON string. | 
-**developerDoc** | **String** | The developer documentation JSON string. | 
+**userDoc** | **String** | The user documentation JSON string. | [optional] 
+**developerDoc** | **String** | The developer documentation JSON string. | [optional] 
 **metadata** | **String** | The contract metadata JSON string. | [optional] 
 **isFavorite** | **bool** |  | [optional] 
 **abi** | [**ContractABI**](ContractABI.md) |  | 

@@ -16,19 +16,11 @@ class _$GetChainStatus200Response extends GetChainStatus200Response {
 
   factory _$GetChainStatus200Response(
           [void Function(GetChainStatus200ResponseBuilder)? updates]) =>
-      (new GetChainStatus200ResponseBuilder()..update(updates))._build();
+      (GetChainStatus200ResponseBuilder()..update(updates))._build();
 
   _$GetChainStatus200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'GetChainStatus200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetChainStatus200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GetChainStatus200Response', 'message');
-  }
-
+      : super._();
   @override
   GetChainStatus200Response rebuild(
           void Function(GetChainStatus200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$GetChainStatus200Response extends GetChainStatus200Response {
 
   @override
   GetChainStatus200ResponseBuilder toBuilder() =>
-      new GetChainStatus200ResponseBuilder()..replace(this);
+      GetChainStatus200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +66,7 @@ class GetChainStatus200ResponseBuilder
   _$GetChainStatus200Response? _$v;
 
   ChainStatusBuilder? _result;
-  ChainStatusBuilder get result => _$this._result ??= new ChainStatusBuilder();
+  ChainStatusBuilder get result => _$this._result ??= ChainStatusBuilder();
   set result(covariant ChainStatusBuilder? result) => _$this._result = result;
 
   int? _status;
@@ -102,7 +94,6 @@ class GetChainStatus200ResponseBuilder
 
   @override
   void replace(covariant GetChainStatus200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetChainStatus200Response;
   }
 
@@ -118,19 +109,20 @@ class GetChainStatus200ResponseBuilder
     _$GetChainStatus200Response _$result;
     try {
       _$result = _$v ??
-          new _$GetChainStatus200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'GetChainStatus200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'GetChainStatus200Response', 'message'));
+          _$GetChainStatus200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'GetChainStatus200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'GetChainStatus200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GetChainStatus200Response', _$failedField, e.toString());
       }
       rethrow;

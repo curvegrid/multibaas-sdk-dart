@@ -19,7 +19,7 @@ class _$WebhookEvent extends WebhookEvent {
   final DateTime? deliveredAt;
 
   factory _$WebhookEvent([void Function(WebhookEventBuilder)? updates]) =>
-      (new WebhookEventBuilder()..update(updates))._build();
+      (WebhookEventBuilder()..update(updates))._build();
 
   _$WebhookEvent._(
       {required this.id,
@@ -27,21 +27,13 @@ class _$WebhookEvent extends WebhookEvent {
       required this.data,
       required this.createdAt,
       this.deliveredAt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'WebhookEvent', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        eventType, r'WebhookEvent', 'eventType');
-    BuiltValueNullFieldError.checkNotNull(data, r'WebhookEvent', 'data');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'WebhookEvent', 'createdAt');
-  }
-
+      : super._();
   @override
   WebhookEvent rebuild(void Function(WebhookEventBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WebhookEventBuilder toBuilder() => new WebhookEventBuilder()..replace(this);
+  WebhookEventBuilder toBuilder() => WebhookEventBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -121,7 +113,6 @@ class WebhookEventBuilder
 
   @override
   void replace(WebhookEvent other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WebhookEvent;
   }
 
@@ -135,16 +126,16 @@ class WebhookEventBuilder
 
   _$WebhookEvent _build() {
     final _$result = _$v ??
-        new _$WebhookEvent._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'WebhookEvent', 'id'),
-            eventType: BuiltValueNullFieldError.checkNotNull(
-                eventType, r'WebhookEvent', 'eventType'),
-            data: BuiltValueNullFieldError.checkNotNull(
-                data, r'WebhookEvent', 'data'),
-            createdAt: BuiltValueNullFieldError.checkNotNull(
-                createdAt, r'WebhookEvent', 'createdAt'),
-            deliveredAt: deliveredAt);
+        _$WebhookEvent._(
+          id: BuiltValueNullFieldError.checkNotNull(id, r'WebhookEvent', 'id'),
+          eventType: BuiltValueNullFieldError.checkNotNull(
+              eventType, r'WebhookEvent', 'eventType'),
+          data: BuiltValueNullFieldError.checkNotNull(
+              data, r'WebhookEvent', 'data'),
+          createdAt: BuiltValueNullFieldError.checkNotNull(
+              createdAt, r'WebhookEvent', 'createdAt'),
+          deliveredAt: deliveredAt,
+        );
     replace(_$result);
     return _$result;
   }

@@ -199,9 +199,9 @@ class EventQueriesApi {
   /// Executes an arbitrary event query.
   ///
   /// Parameters:
+  /// * [eventQuery] 
   /// * [offset] 
   /// * [limit] 
-  /// * [eventQuery] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -212,9 +212,9 @@ class EventQueriesApi {
   /// Returns a [Future] containing a [Response] with a [ExecuteArbitraryEventQuery200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ExecuteArbitraryEventQuery200Response>> executeArbitraryEventQuery({ 
+    required EventQuery eventQuery,
     int? offset,
-    int? limit,
-    EventQuery? eventQuery,
+    int? limit = 10,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -256,7 +256,7 @@ class EventQueriesApi {
 
     try {
       const _type = FullType(EventQuery);
-      _bodyData = eventQuery == null ? null : _serializers.serialize(eventQuery, specifiedType: _type);
+      _bodyData = _serializers.serialize(eventQuery, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -331,7 +331,7 @@ class EventQueriesApi {
   Future<Response<ExecuteArbitraryEventQuery200Response>> executeEventQuery({ 
     required String eventQuery,
     int? offset,
-    int? limit,
+    int? limit = 10,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -595,7 +595,7 @@ class EventQueriesApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> setEventQuery({ 
     required String eventQuery,
-    EventQuery? eventQuery2,
+    required EventQuery eventQuery2,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -632,7 +632,7 @@ class EventQueriesApi {
 
     try {
       const _type = FullType(EventQuery);
-      _bodyData = eventQuery2 == null ? null : _serializers.serialize(eventQuery2, specifiedType: _type);
+      _bodyData = _serializers.serialize(eventQuery2, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

@@ -19,7 +19,7 @@ class _$ContractABIType extends ContractABIType {
   final ContractABIType? elem;
 
   factory _$ContractABIType([void Function(ContractABITypeBuilder)? updates]) =>
-      (new ContractABITypeBuilder()..update(updates))._build();
+      (ContractABITypeBuilder()..update(updates))._build();
 
   _$ContractABIType._(
       {required this.type,
@@ -27,17 +27,13 @@ class _$ContractABIType extends ContractABIType {
       this.tupleElems,
       this.tupleRawNames,
       this.elem})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, r'ContractABIType', 'type');
-  }
-
+      : super._();
   @override
   ContractABIType rebuild(void Function(ContractABITypeBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ContractABITypeBuilder toBuilder() =>
-      new ContractABITypeBuilder()..replace(this);
+  ContractABITypeBuilder toBuilder() => ContractABITypeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -88,19 +84,18 @@ class ContractABITypeBuilder
 
   ListBuilder<ContractABIType>? _tupleElems;
   ListBuilder<ContractABIType> get tupleElems =>
-      _$this._tupleElems ??= new ListBuilder<ContractABIType>();
+      _$this._tupleElems ??= ListBuilder<ContractABIType>();
   set tupleElems(ListBuilder<ContractABIType>? tupleElems) =>
       _$this._tupleElems = tupleElems;
 
   ListBuilder<String>? _tupleRawNames;
   ListBuilder<String> get tupleRawNames =>
-      _$this._tupleRawNames ??= new ListBuilder<String>();
+      _$this._tupleRawNames ??= ListBuilder<String>();
   set tupleRawNames(ListBuilder<String>? tupleRawNames) =>
       _$this._tupleRawNames = tupleRawNames;
 
   ContractABITypeBuilder? _elem;
-  ContractABITypeBuilder get elem =>
-      _$this._elem ??= new ContractABITypeBuilder();
+  ContractABITypeBuilder get elem => _$this._elem ??= ContractABITypeBuilder();
   set elem(ContractABITypeBuilder? elem) => _$this._elem = elem;
 
   ContractABITypeBuilder() {
@@ -122,7 +117,6 @@ class ContractABITypeBuilder
 
   @override
   void replace(ContractABIType other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractABIType;
   }
 
@@ -138,13 +132,14 @@ class ContractABITypeBuilder
     _$ContractABIType _$result;
     try {
       _$result = _$v ??
-          new _$ContractABIType._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, r'ContractABIType', 'type'),
-              size: size,
-              tupleElems: _tupleElems?.build(),
-              tupleRawNames: _tupleRawNames?.build(),
-              elem: _elem?.build());
+          _$ContractABIType._(
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, r'ContractABIType', 'type'),
+            size: size,
+            tupleElems: _tupleElems?.build(),
+            tupleRawNames: _tupleRawNames?.build(),
+            elem: _elem?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -155,7 +150,7 @@ class ContractABITypeBuilder
         _$failedField = 'elem';
         _elem?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractABIType', _$failedField, e.toString());
       }
       rethrow;

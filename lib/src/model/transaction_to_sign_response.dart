@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/base_transaction_to_sign_tx.dart';
+import 'package:multibaas/src/model/transaction_to_sign_tx.dart';
 import 'package:multibaas/src/model/post_method_response.dart';
 import 'package:multibaas/src/model/transaction_to_sign.dart';
 import 'package:built_value/built_value.dart';
@@ -50,7 +50,7 @@ class _$TransactionToSignResponseSerializer implements PrimitiveSerializer<Trans
     yield r'tx';
     yield serializers.serialize(
       object.tx,
-      specifiedType: const FullType(BaseTransactionToSignTx),
+      specifiedType: const FullType(TransactionToSignTx),
     );
     yield r'kind';
     yield serializers.serialize(
@@ -90,8 +90,8 @@ class _$TransactionToSignResponseSerializer implements PrimitiveSerializer<Trans
         case r'tx':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BaseTransactionToSignTx),
-          ) as BaseTransactionToSignTx;
+            specifiedType: const FullType(TransactionToSignTx),
+          ) as TransactionToSignTx;
           result.tx.replace(valueDes);
           break;
         case r'kind':

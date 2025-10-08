@@ -19,12 +19,9 @@ class _$$PostMethodResponse extends $PostMethodResponse {
 
   factory _$$PostMethodResponse(
           [void Function($PostMethodResponseBuilder)? updates]) =>
-      (new $PostMethodResponseBuilder()..update(updates))._build();
+      ($PostMethodResponseBuilder()..update(updates))._build();
 
-  _$$PostMethodResponse._({required this.kind}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(kind, r'$PostMethodResponse', 'kind');
-  }
-
+  _$$PostMethodResponse._({required this.kind}) : super._();
   @override
   $PostMethodResponse rebuild(
           void Function($PostMethodResponseBuilder) updates) =>
@@ -32,7 +29,7 @@ class _$$PostMethodResponse extends $PostMethodResponse {
 
   @override
   $PostMethodResponseBuilder toBuilder() =>
-      new $PostMethodResponseBuilder()..replace(this);
+      $PostMethodResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +78,6 @@ class $PostMethodResponseBuilder
 
   @override
   void replace(covariant $PostMethodResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$PostMethodResponse;
   }
 
@@ -95,9 +91,10 @@ class $PostMethodResponseBuilder
 
   _$$PostMethodResponse _build() {
     final _$result = _$v ??
-        new _$$PostMethodResponse._(
-            kind: BuiltValueNullFieldError.checkNotNull(
-                kind, r'$PostMethodResponse', 'kind'));
+        _$$PostMethodResponse._(
+          kind: BuiltValueNullFieldError.checkNotNull(
+              kind, r'$PostMethodResponse', 'kind'),
+        );
     replace(_$result);
     return _$result;
   }

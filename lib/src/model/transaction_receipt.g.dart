@@ -14,12 +14,9 @@ class _$TransactionReceipt extends TransactionReceipt {
 
   factory _$TransactionReceipt(
           [void Function(TransactionReceiptBuilder)? updates]) =>
-      (new TransactionReceiptBuilder()..update(updates))._build();
+      (TransactionReceiptBuilder()..update(updates))._build();
 
-  _$TransactionReceipt._({required this.data, this.events}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(data, r'TransactionReceipt', 'data');
-  }
-
+  _$TransactionReceipt._({required this.data, this.events}) : super._();
   @override
   TransactionReceipt rebuild(
           void Function(TransactionReceiptBuilder) updates) =>
@@ -27,7 +24,7 @@ class _$TransactionReceipt extends TransactionReceipt {
 
   @override
   TransactionReceiptBuilder toBuilder() =>
-      new TransactionReceiptBuilder()..replace(this);
+      TransactionReceiptBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -61,12 +58,12 @@ class TransactionReceiptBuilder
 
   TransactionReceiptDataBuilder? _data;
   TransactionReceiptDataBuilder get data =>
-      _$this._data ??= new TransactionReceiptDataBuilder();
+      _$this._data ??= TransactionReceiptDataBuilder();
   set data(TransactionReceiptDataBuilder? data) => _$this._data = data;
 
   ListBuilder<EventInformation>? _events;
   ListBuilder<EventInformation> get events =>
-      _$this._events ??= new ListBuilder<EventInformation>();
+      _$this._events ??= ListBuilder<EventInformation>();
   set events(ListBuilder<EventInformation>? events) => _$this._events = events;
 
   TransactionReceiptBuilder() {
@@ -85,7 +82,6 @@ class TransactionReceiptBuilder
 
   @override
   void replace(TransactionReceipt other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TransactionReceipt;
   }
 
@@ -101,8 +97,10 @@ class TransactionReceiptBuilder
     _$TransactionReceipt _$result;
     try {
       _$result = _$v ??
-          new _$TransactionReceipt._(
-              data: data.build(), events: _events?.build());
+          _$TransactionReceipt._(
+            data: data.build(),
+            events: _events?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -111,7 +109,7 @@ class TransactionReceiptBuilder
         _$failedField = 'events';
         _events?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TransactionReceipt', _$failedField, e.toString());
       }
       rethrow;

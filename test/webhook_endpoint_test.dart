@@ -13,7 +13,7 @@ void main() {
       // TODO
     });
 
-    // A label.
+    // An alias to easily identify and reference the entity in subsequent requests.
     // String label
     test('to test the property `label`', () async {
       // TODO

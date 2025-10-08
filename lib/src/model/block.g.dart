@@ -8,8 +8,6 @@ part of 'block.dart';
 
 class _$Block extends Block {
   @override
-  final String blockchain;
-  @override
   final String hash;
   @override
   final String difficulty;
@@ -44,14 +42,13 @@ class _$Block extends Block {
   @override
   final String extraData;
   @override
-  final String baseFeePerGas;
+  final String? baseFeePerGas;
 
   factory _$Block([void Function(BlockBuilder)? updates]) =>
-      (new BlockBuilder()..update(updates))._build();
+      (BlockBuilder()..update(updates))._build();
 
   _$Block._(
-      {required this.blockchain,
-      required this.hash,
+      {required this.hash,
       required this.difficulty,
       required this.gasLimit,
       required this.number,
@@ -68,45 +65,19 @@ class _$Block extends Block {
       required this.nonce,
       required this.mixHash,
       required this.extraData,
-      required this.baseFeePerGas})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(blockchain, r'Block', 'blockchain');
-    BuiltValueNullFieldError.checkNotNull(hash, r'Block', 'hash');
-    BuiltValueNullFieldError.checkNotNull(difficulty, r'Block', 'difficulty');
-    BuiltValueNullFieldError.checkNotNull(gasLimit, r'Block', 'gasLimit');
-    BuiltValueNullFieldError.checkNotNull(number, r'Block', 'number');
-    BuiltValueNullFieldError.checkNotNull(timestamp, r'Block', 'timestamp');
-    BuiltValueNullFieldError.checkNotNull(
-        transactions, r'Block', 'transactions');
-    BuiltValueNullFieldError.checkNotNull(
-        receiptsRoot, r'Block', 'receiptsRoot');
-    BuiltValueNullFieldError.checkNotNull(parentHash, r'Block', 'parentHash');
-    BuiltValueNullFieldError.checkNotNull(sha3Uncles, r'Block', 'sha3Uncles');
-    BuiltValueNullFieldError.checkNotNull(miner, r'Block', 'miner');
-    BuiltValueNullFieldError.checkNotNull(stateRoot, r'Block', 'stateRoot');
-    BuiltValueNullFieldError.checkNotNull(
-        transactionsRoot, r'Block', 'transactionsRoot');
-    BuiltValueNullFieldError.checkNotNull(logsBloom, r'Block', 'logsBloom');
-    BuiltValueNullFieldError.checkNotNull(gasUsed, r'Block', 'gasUsed');
-    BuiltValueNullFieldError.checkNotNull(nonce, r'Block', 'nonce');
-    BuiltValueNullFieldError.checkNotNull(mixHash, r'Block', 'mixHash');
-    BuiltValueNullFieldError.checkNotNull(extraData, r'Block', 'extraData');
-    BuiltValueNullFieldError.checkNotNull(
-        baseFeePerGas, r'Block', 'baseFeePerGas');
-  }
-
+      this.baseFeePerGas})
+      : super._();
   @override
   Block rebuild(void Function(BlockBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  BlockBuilder toBuilder() => new BlockBuilder()..replace(this);
+  BlockBuilder toBuilder() => BlockBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Block &&
-        blockchain == other.blockchain &&
         hash == other.hash &&
         difficulty == other.difficulty &&
         gasLimit == other.gasLimit &&
@@ -130,7 +101,6 @@ class _$Block extends Block {
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, blockchain.hashCode);
     _$hash = $jc(_$hash, hash.hashCode);
     _$hash = $jc(_$hash, difficulty.hashCode);
     _$hash = $jc(_$hash, gasLimit.hashCode);
@@ -156,7 +126,6 @@ class _$Block extends Block {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'Block')
-          ..add('blockchain', blockchain)
           ..add('hash', hash)
           ..add('difficulty', difficulty)
           ..add('gasLimit', gasLimit)
@@ -182,10 +151,6 @@ class _$Block extends Block {
 class BlockBuilder implements Builder<Block, BlockBuilder> {
   _$Block? _$v;
 
-  String? _blockchain;
-  String? get blockchain => _$this._blockchain;
-  set blockchain(String? blockchain) => _$this._blockchain = blockchain;
-
   String? _hash;
   String? get hash => _$this._hash;
   set hash(String? hash) => _$this._hash = hash;
@@ -208,7 +173,7 @@ class BlockBuilder implements Builder<Block, BlockBuilder> {
 
   ListBuilder<Transaction>? _transactions;
   ListBuilder<Transaction> get transactions =>
-      _$this._transactions ??= new ListBuilder<Transaction>();
+      _$this._transactions ??= ListBuilder<Transaction>();
   set transactions(ListBuilder<Transaction>? transactions) =>
       _$this._transactions = transactions;
 
@@ -269,7 +234,6 @@ class BlockBuilder implements Builder<Block, BlockBuilder> {
   BlockBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _blockchain = $v.blockchain;
       _hash = $v.hash;
       _difficulty = $v.difficulty;
       _gasLimit = $v.gasLimit;
@@ -295,7 +259,6 @@ class BlockBuilder implements Builder<Block, BlockBuilder> {
 
   @override
   void replace(Block other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Block;
   }
 
@@ -311,45 +274,48 @@ class BlockBuilder implements Builder<Block, BlockBuilder> {
     _$Block _$result;
     try {
       _$result = _$v ??
-          new _$Block._(
-              blockchain: BuiltValueNullFieldError.checkNotNull(
-                  blockchain, r'Block', 'blockchain'),
-              hash:
-                  BuiltValueNullFieldError.checkNotNull(hash, r'Block', 'hash'),
-              difficulty: BuiltValueNullFieldError.checkNotNull(
-                  difficulty, r'Block', 'difficulty'),
-              gasLimit: BuiltValueNullFieldError.checkNotNull(
-                  gasLimit, r'Block', 'gasLimit'),
-              number: BuiltValueNullFieldError.checkNotNull(
-                  number, r'Block', 'number'),
-              timestamp: BuiltValueNullFieldError.checkNotNull(
-                  timestamp, r'Block', 'timestamp'),
-              transactions: transactions.build(),
-              receiptsRoot: BuiltValueNullFieldError.checkNotNull(
-                  receiptsRoot, r'Block', 'receiptsRoot'),
-              parentHash: BuiltValueNullFieldError.checkNotNull(
-                  parentHash, r'Block', 'parentHash'),
-              sha3Uncles: BuiltValueNullFieldError.checkNotNull(
-                  sha3Uncles, r'Block', 'sha3Uncles'),
-              miner: BuiltValueNullFieldError.checkNotNull(
-                  miner, r'Block', 'miner'),
-              stateRoot: BuiltValueNullFieldError.checkNotNull(
-                  stateRoot, r'Block', 'stateRoot'),
-              transactionsRoot: BuiltValueNullFieldError.checkNotNull(transactionsRoot, r'Block', 'transactionsRoot'),
-              logsBloom: BuiltValueNullFieldError.checkNotNull(logsBloom, r'Block', 'logsBloom'),
-              gasUsed: BuiltValueNullFieldError.checkNotNull(gasUsed, r'Block', 'gasUsed'),
-              nonce: BuiltValueNullFieldError.checkNotNull(nonce, r'Block', 'nonce'),
-              mixHash: BuiltValueNullFieldError.checkNotNull(mixHash, r'Block', 'mixHash'),
-              extraData: BuiltValueNullFieldError.checkNotNull(extraData, r'Block', 'extraData'),
-              baseFeePerGas: BuiltValueNullFieldError.checkNotNull(baseFeePerGas, r'Block', 'baseFeePerGas'));
+          _$Block._(
+            hash: BuiltValueNullFieldError.checkNotNull(hash, r'Block', 'hash'),
+            difficulty: BuiltValueNullFieldError.checkNotNull(
+                difficulty, r'Block', 'difficulty'),
+            gasLimit: BuiltValueNullFieldError.checkNotNull(
+                gasLimit, r'Block', 'gasLimit'),
+            number: BuiltValueNullFieldError.checkNotNull(
+                number, r'Block', 'number'),
+            timestamp: BuiltValueNullFieldError.checkNotNull(
+                timestamp, r'Block', 'timestamp'),
+            transactions: transactions.build(),
+            receiptsRoot: BuiltValueNullFieldError.checkNotNull(
+                receiptsRoot, r'Block', 'receiptsRoot'),
+            parentHash: BuiltValueNullFieldError.checkNotNull(
+                parentHash, r'Block', 'parentHash'),
+            sha3Uncles: BuiltValueNullFieldError.checkNotNull(
+                sha3Uncles, r'Block', 'sha3Uncles'),
+            miner:
+                BuiltValueNullFieldError.checkNotNull(miner, r'Block', 'miner'),
+            stateRoot: BuiltValueNullFieldError.checkNotNull(
+                stateRoot, r'Block', 'stateRoot'),
+            transactionsRoot: BuiltValueNullFieldError.checkNotNull(
+                transactionsRoot, r'Block', 'transactionsRoot'),
+            logsBloom: BuiltValueNullFieldError.checkNotNull(
+                logsBloom, r'Block', 'logsBloom'),
+            gasUsed: BuiltValueNullFieldError.checkNotNull(
+                gasUsed, r'Block', 'gasUsed'),
+            nonce:
+                BuiltValueNullFieldError.checkNotNull(nonce, r'Block', 'nonce'),
+            mixHash: BuiltValueNullFieldError.checkNotNull(
+                mixHash, r'Block', 'mixHash'),
+            extraData: BuiltValueNullFieldError.checkNotNull(
+                extraData, r'Block', 'extraData'),
+            baseFeePerGas: baseFeePerGas,
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'transactions';
         transactions.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Block', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Block', _$failedField, e.toString());
       }
       rethrow;
     }

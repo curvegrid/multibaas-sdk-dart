@@ -30,7 +30,7 @@ class _$WalletTransaction extends WalletTransaction {
 
   factory _$WalletTransaction(
           [void Function(WalletTransactionBuilder)? updates]) =>
-      (new WalletTransactionBuilder()..update(updates))._build();
+      (WalletTransactionBuilder()..update(updates))._build();
 
   _$WalletTransaction._(
       {required this.tx,
@@ -43,28 +43,14 @@ class _$WalletTransaction extends WalletTransaction {
       this.failed,
       this.blockNumber,
       this.blockHash})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(tx, r'WalletTransaction', 'tx');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'WalletTransaction', 'status');
-    BuiltValueNullFieldError.checkNotNull(from, r'WalletTransaction', 'from');
-    BuiltValueNullFieldError.checkNotNull(
-        resubmissionAttempts, r'WalletTransaction', 'resubmissionAttempts');
-    BuiltValueNullFieldError.checkNotNull(successfulResubmissions,
-        r'WalletTransaction', 'successfulResubmissions');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'WalletTransaction', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        updatedAt, r'WalletTransaction', 'updatedAt');
-  }
-
+      : super._();
   @override
   WalletTransaction rebuild(void Function(WalletTransactionBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   WalletTransactionBuilder toBuilder() =>
-      new WalletTransactionBuilder()..replace(this);
+      WalletTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -121,7 +107,7 @@ class WalletTransactionBuilder
   _$WalletTransaction? _$v;
 
   TransactionBuilder? _tx;
-  TransactionBuilder get tx => _$this._tx ??= new TransactionBuilder();
+  TransactionBuilder get tx => _$this._tx ??= TransactionBuilder();
   set tx(TransactionBuilder? tx) => _$this._tx = tx;
 
   TransactionStatus? _status;
@@ -186,7 +172,6 @@ class WalletTransactionBuilder
 
   @override
   void replace(WalletTransaction other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WalletTransaction;
   }
 
@@ -202,34 +187,35 @@ class WalletTransactionBuilder
     _$WalletTransaction _$result;
     try {
       _$result = _$v ??
-          new _$WalletTransaction._(
-              tx: tx.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'WalletTransaction', 'status'),
-              from: BuiltValueNullFieldError.checkNotNull(
-                  from, r'WalletTransaction', 'from'),
-              resubmissionAttempts: BuiltValueNullFieldError.checkNotNull(
-                  resubmissionAttempts,
-                  r'WalletTransaction',
-                  'resubmissionAttempts'),
-              successfulResubmissions: BuiltValueNullFieldError.checkNotNull(
-                  successfulResubmissions,
-                  r'WalletTransaction',
-                  'successfulResubmissions'),
-              createdAt: BuiltValueNullFieldError.checkNotNull(
-                  createdAt, r'WalletTransaction', 'createdAt'),
-              updatedAt: BuiltValueNullFieldError.checkNotNull(
-                  updatedAt, r'WalletTransaction', 'updatedAt'),
-              failed: failed,
-              blockNumber: blockNumber,
-              blockHash: blockHash);
+          _$WalletTransaction._(
+            tx: tx.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'WalletTransaction', 'status'),
+            from: BuiltValueNullFieldError.checkNotNull(
+                from, r'WalletTransaction', 'from'),
+            resubmissionAttempts: BuiltValueNullFieldError.checkNotNull(
+                resubmissionAttempts,
+                r'WalletTransaction',
+                'resubmissionAttempts'),
+            successfulResubmissions: BuiltValueNullFieldError.checkNotNull(
+                successfulResubmissions,
+                r'WalletTransaction',
+                'successfulResubmissions'),
+            createdAt: BuiltValueNullFieldError.checkNotNull(
+                createdAt, r'WalletTransaction', 'createdAt'),
+            updatedAt: BuiltValueNullFieldError.checkNotNull(
+                updatedAt, r'WalletTransaction', 'updatedAt'),
+            failed: failed,
+            blockNumber: blockNumber,
+            blockHash: blockHash,
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'tx';
         tx.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'WalletTransaction', _$failedField, e.toString());
       }
       rethrow;

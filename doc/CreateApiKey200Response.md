@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **int** | The status code. | 
 **message** | **String** | The human-readable status message. | 
-**result** | [**APIKey**](APIKey.md) |  | 
+**result** | [**APIKeyWithSecret**](APIKeyWithSecret.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

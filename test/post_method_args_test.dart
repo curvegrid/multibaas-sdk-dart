@@ -18,7 +18,7 @@ void main() {
       // TODO
     });
 
-    // An ethereum address.
+    // An Ethereum address (0x prefixed hex) or an address alias.
     // String from
     test('to test the property `from`', () async {
       // TODO
@@ -54,13 +54,14 @@ void main() {
       // TODO
     });
 
-    // An ethereum address.
+    // An Ethereum address (0x prefixed hex) or an address alias.
     // String to
     test('to test the property `to`', () async {
       // TODO
     });
 
-    // int value
+    // Amount (in wei) to send with the transaction.
+    // String value
     test('to test the property `value`', () async {
       // TODO
     });
@@ -83,13 +84,13 @@ void main() {
       // TODO
     });
 
-    // An ethereum address.
+    // An Ethereum address (0x prefixed hex) or an address alias.
     // String signer
     test('to test the property `signer`', () async {
       // TODO
     });
 
-    // Mode to format integer outputs in the function call's responses. There are 3 possible modes:   - `auto` (the default option), where number format is decided by its type:     - If the type has size at most 32 bits, then the number is returned verbatim.     - If the type has size larger than 32 bits, then the number is returned as a string.   - `as-numbers`, where all numbers are returned as strings.   - `as-strings`, where all numbers are returned verbatim. 
+    // Mode to format integer outputs in the function call's responses. There are 3 possible modes:   - `auto` (the default option), where number format is decided by its type:     - If the type has size at most 32 bits, then the number is returned verbatim.     - If the type has size larger than 32 bits, then the number is returned as a string.   - `as_numbers`, where all numbers are returned verbatim.   - `as_strings`, where all numbers are returned as strings. 
     // String formatInts (default value: 'auto')
     test('to test the property `formatInts`', () async {
       // TODO
@@ -110,11 +111,6 @@ void main() {
     // If set to true the given address and contract don't need to be linked for the function to be called.
     // bool contractOverride
     test('to test the property `contractOverride`', () async {
-      // TODO
-    });
-
-    // PreviewArgs preview
-    test('to test the property `preview`', () async {
       // TODO
     });
 

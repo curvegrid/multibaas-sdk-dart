@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/method_call_preview_response.dart';
 import 'package:multibaas/src/model/transaction_to_sign_response.dart';
 import 'package:multibaas/src/model/method_call_response.dart';
 import 'package:built_value/built_value.dart';
@@ -19,16 +18,14 @@ part 'call_contract_function200_response_all_of_result.g.dart';
 /// * [tx] 
 /// * [submitted] 
 /// * [output] - The function call output.
-/// * [input] - The function call inputs.
 @BuiltValue()
 abstract class CallContractFunction200ResponseAllOfResult implements Built<CallContractFunction200ResponseAllOfResult, CallContractFunction200ResponseAllOfResultBuilder> {
-  /// One Of [MethodCallPreviewResponse], [MethodCallResponse], [TransactionToSignResponse]
+  /// One Of [MethodCallResponse], [TransactionToSignResponse]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'kind';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'MethodCallPreviewResponse': MethodCallPreviewResponse,
     r'MethodCallResponse': MethodCallResponse,
     r'TransactionToSignResponse': TransactionToSignResponse,
   };
@@ -46,9 +43,6 @@ abstract class CallContractFunction200ResponseAllOfResult implements Built<CallC
 
 extension CallContractFunction200ResponseAllOfResultDiscriminatorExt on CallContractFunction200ResponseAllOfResult {
     String? get discriminatorValue {
-        if (this is MethodCallPreviewResponse) {
-            return r'MethodCallPreviewResponse';
-        }
         if (this is MethodCallResponse) {
             return r'MethodCallResponse';
         }
@@ -60,9 +54,6 @@ extension CallContractFunction200ResponseAllOfResultDiscriminatorExt on CallCont
 }
 extension CallContractFunction200ResponseAllOfResultBuilderDiscriminatorExt on CallContractFunction200ResponseAllOfResultBuilder {
     String? get discriminatorValue {
-        if (this is MethodCallPreviewResponseBuilder) {
-            return r'MethodCallPreviewResponse';
-        }
         if (this is MethodCallResponseBuilder) {
             return r'MethodCallResponse';
         }
@@ -82,9 +73,7 @@ class _$CallContractFunction200ResponseAllOfResultSerializer implements Primitiv
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    CallContractFunction200ResponseAllOfResult object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
+    CallContractFunction200ResponseAllOfResult object) sync* {
   }
 
   @override
@@ -109,17 +98,10 @@ class _$CallContractFunction200ResponseAllOfResultSerializer implements Primitiv
     final discIndex = serializedList.indexOf(CallContractFunction200ResponseAllOfResult.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    final oneOfTypes = [MethodCallPreviewResponse, MethodCallResponse, TransactionToSignResponse, ];
+    final oneOfTypes = [MethodCallResponse, TransactionToSignResponse, ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case r'MethodCallPreviewResponse':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(MethodCallPreviewResponse),
-        ) as MethodCallPreviewResponse;
-        oneOfType = MethodCallPreviewResponse;
-        break;
       case r'MethodCallResponse':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,

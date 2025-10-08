@@ -15,23 +15,17 @@ class _$EventQueryEvent extends EventQueryEvent {
   final EventQueryFilter? filter;
 
   factory _$EventQueryEvent([void Function(EventQueryEventBuilder)? updates]) =>
-      (new EventQueryEventBuilder()..update(updates))._build();
+      (EventQueryEventBuilder()..update(updates))._build();
 
   _$EventQueryEvent._(
       {required this.eventName, required this.select, this.filter})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        eventName, r'EventQueryEvent', 'eventName');
-    BuiltValueNullFieldError.checkNotNull(select, r'EventQueryEvent', 'select');
-  }
-
+      : super._();
   @override
   EventQueryEvent rebuild(void Function(EventQueryEventBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EventQueryEventBuilder toBuilder() =>
-      new EventQueryEventBuilder()..replace(this);
+  EventQueryEventBuilder toBuilder() => EventQueryEventBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,12 +66,12 @@ class EventQueryEventBuilder
 
   ListBuilder<EventQueryField>? _select;
   ListBuilder<EventQueryField> get select =>
-      _$this._select ??= new ListBuilder<EventQueryField>();
+      _$this._select ??= ListBuilder<EventQueryField>();
   set select(ListBuilder<EventQueryField>? select) => _$this._select = select;
 
   EventQueryFilterBuilder? _filter;
   EventQueryFilterBuilder get filter =>
-      _$this._filter ??= new EventQueryFilterBuilder();
+      _$this._filter ??= EventQueryFilterBuilder();
   set filter(EventQueryFilterBuilder? filter) => _$this._filter = filter;
 
   EventQueryEventBuilder() {
@@ -97,7 +91,6 @@ class EventQueryEventBuilder
 
   @override
   void replace(EventQueryEvent other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventQueryEvent;
   }
 
@@ -113,11 +106,12 @@ class EventQueryEventBuilder
     _$EventQueryEvent _$result;
     try {
       _$result = _$v ??
-          new _$EventQueryEvent._(
-              eventName: BuiltValueNullFieldError.checkNotNull(
-                  eventName, r'EventQueryEvent', 'eventName'),
-              select: select.build(),
-              filter: _filter?.build());
+          _$EventQueryEvent._(
+            eventName: BuiltValueNullFieldError.checkNotNull(
+                eventName, r'EventQueryEvent', 'eventName'),
+            select: select.build(),
+            filter: _filter?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -126,7 +120,7 @@ class EventQueryEventBuilder
         _$failedField = 'filter';
         _filter?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EventQueryEvent', _$failedField, e.toString());
       }
       rethrow;

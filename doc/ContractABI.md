@@ -8,9 +8,10 @@ import 'package:multibaas/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**constructor** | [**ContractABIMethod1**](ContractABIMethod1.md) |  | 
+**constructor** | [**ContractABIMethod**](ContractABIMethod.md) |  | 
 **methods** | [**BuiltMap&lt;String, ContractABIMethod&gt;**](ContractABIMethod.md) |  | 
 **events** | [**BuiltMap&lt;String, ContractABIEvent&gt;**](ContractABIEvent.md) |  | 
+**errors** | [**BuiltMap&lt;String, ContractABIError&gt;**](ContractABIError.md) |  | [optional] 
 **fallback** | [**ContractABIMethod**](ContractABIMethod.md) |  | 
 **receive** | [**ContractABIMethod**](ContractABIMethod.md) |  | 
 

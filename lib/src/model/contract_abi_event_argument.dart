@@ -15,8 +15,10 @@ part 'contract_abi_event_argument.g.dart';
 /// Properties:
 /// * [name] 
 /// * [type] 
+/// * [typeName] 
 /// * [indexed] 
 /// * [typeConversion] 
+/// * [notes] - The developer documentation.
 @BuiltValue()
 abstract class ContractABIEventArgument implements Built<ContractABIEventArgument, ContractABIEventArgumentBuilder> {
   @BuiltValueField(wireName: r'name')
@@ -25,11 +27,18 @@ abstract class ContractABIEventArgument implements Built<ContractABIEventArgumen
   @BuiltValueField(wireName: r'type')
   ContractABIType get type;
 
+  @BuiltValueField(wireName: r'typeName')
+  String get typeName;
+
   @BuiltValueField(wireName: r'indexed')
   bool get indexed;
 
   @BuiltValueField(wireName: r'typeConversion')
   ContractABITypeConversion? get typeConversion;
+
+  /// The developer documentation.
+  @BuiltValueField(wireName: r'notes')
+  String get notes;
 
   ContractABIEventArgument._();
 
@@ -64,6 +73,11 @@ class _$ContractABIEventArgumentSerializer implements PrimitiveSerializer<Contra
       object.type,
       specifiedType: const FullType(ContractABIType),
     );
+    yield r'typeName';
+    yield serializers.serialize(
+      object.typeName,
+      specifiedType: const FullType(String),
+    );
     yield r'indexed';
     yield serializers.serialize(
       object.indexed,
@@ -73,6 +87,11 @@ class _$ContractABIEventArgumentSerializer implements PrimitiveSerializer<Contra
     yield object.typeConversion == null ? null : serializers.serialize(
       object.typeConversion,
       specifiedType: const FullType.nullable(ContractABITypeConversion),
+    );
+    yield r'notes';
+    yield serializers.serialize(
+      object.notes,
+      specifiedType: const FullType(String),
     );
   }
 
@@ -111,6 +130,13 @@ class _$ContractABIEventArgumentSerializer implements PrimitiveSerializer<Contra
           ) as ContractABIType;
           result.type.replace(valueDes);
           break;
+        case r'typeName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.typeName = valueDes;
+          break;
         case r'indexed':
           final valueDes = serializers.deserialize(
             value,
@@ -125,6 +151,13 @@ class _$ContractABIEventArgumentSerializer implements PrimitiveSerializer<Contra
           ) as ContractABITypeConversion?;
           if (valueDes == null) continue;
           result.typeConversion.replace(valueDes);
+          break;
+        case r'notes':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.notes = valueDes;
           break;
         default:
           unhandled.add(key);

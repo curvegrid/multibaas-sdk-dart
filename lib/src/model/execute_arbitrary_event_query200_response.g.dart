@@ -18,20 +18,12 @@ class _$ExecuteArbitraryEventQuery200Response
   factory _$ExecuteArbitraryEventQuery200Response(
           [void Function(ExecuteArbitraryEventQuery200ResponseBuilder)?
               updates]) =>
-      (new ExecuteArbitraryEventQuery200ResponseBuilder()..update(updates))
+      (ExecuteArbitraryEventQuery200ResponseBuilder()..update(updates))
           ._build();
 
   _$ExecuteArbitraryEventQuery200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ExecuteArbitraryEventQuery200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ExecuteArbitraryEventQuery200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ExecuteArbitraryEventQuery200Response', 'message');
-  }
-
+      : super._();
   @override
   ExecuteArbitraryEventQuery200Response rebuild(
           void Function(ExecuteArbitraryEventQuery200ResponseBuilder)
@@ -40,7 +32,7 @@ class _$ExecuteArbitraryEventQuery200Response
 
   @override
   ExecuteArbitraryEventQuery200ResponseBuilder toBuilder() =>
-      new ExecuteArbitraryEventQuery200ResponseBuilder()..replace(this);
+      ExecuteArbitraryEventQuery200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +73,7 @@ class ExecuteArbitraryEventQuery200ResponseBuilder
 
   EventQueryResultsBuilder? _result;
   EventQueryResultsBuilder get result =>
-      _$this._result ??= new EventQueryResultsBuilder();
+      _$this._result ??= EventQueryResultsBuilder();
   set result(covariant EventQueryResultsBuilder? result) =>
       _$this._result = result;
 
@@ -110,7 +102,6 @@ class ExecuteArbitraryEventQuery200ResponseBuilder
 
   @override
   void replace(covariant ExecuteArbitraryEventQuery200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ExecuteArbitraryEventQuery200Response;
   }
 
@@ -127,19 +118,20 @@ class ExecuteArbitraryEventQuery200ResponseBuilder
     _$ExecuteArbitraryEventQuery200Response _$result;
     try {
       _$result = _$v ??
-          new _$ExecuteArbitraryEventQuery200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ExecuteArbitraryEventQuery200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(message,
-                  r'ExecuteArbitraryEventQuery200Response', 'message'));
+          _$ExecuteArbitraryEventQuery200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ExecuteArbitraryEventQuery200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ExecuteArbitraryEventQuery200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ExecuteArbitraryEventQuery200Response',
             _$failedField,
             e.toString());

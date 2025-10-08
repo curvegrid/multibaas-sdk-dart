@@ -18,12 +18,12 @@ WebhookEventsType _$valueOf(String name) {
     case 'eventPeriodEmitted':
       return _$eventPeriodEmitted;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<WebhookEventsType> _$values =
-    new BuiltSet<WebhookEventsType>(const <WebhookEventsType>[
+    BuiltSet<WebhookEventsType>(const <WebhookEventsType>[
   _$transactionPeriodIncluded,
   _$eventPeriodEmitted,
 ]);
@@ -44,7 +44,7 @@ abstract class _$WebhookEventsTypeMixin {
 }
 
 Serializer<WebhookEventsType> _$webhookEventsTypeSerializer =
-    new _$WebhookEventsTypeSerializer();
+    _$WebhookEventsTypeSerializer();
 
 class _$WebhookEventsTypeSerializer
     implements PrimitiveSerializer<WebhookEventsType> {

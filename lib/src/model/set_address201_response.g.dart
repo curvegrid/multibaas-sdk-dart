@@ -16,19 +16,11 @@ class _$SetAddress201Response extends SetAddress201Response {
 
   factory _$SetAddress201Response(
           [void Function(SetAddress201ResponseBuilder)? updates]) =>
-      (new SetAddress201ResponseBuilder()..update(updates))._build();
+      (SetAddress201ResponseBuilder()..update(updates))._build();
 
   _$SetAddress201Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'SetAddress201Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'SetAddress201Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'SetAddress201Response', 'message');
-  }
-
+      : super._();
   @override
   SetAddress201Response rebuild(
           void Function(SetAddress201ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$SetAddress201Response extends SetAddress201Response {
 
   @override
   SetAddress201ResponseBuilder toBuilder() =>
-      new SetAddress201ResponseBuilder()..replace(this);
+      SetAddress201ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +66,7 @@ class SetAddress201ResponseBuilder
   _$SetAddress201Response? _$v;
 
   AddressBuilder? _result;
-  AddressBuilder get result => _$this._result ??= new AddressBuilder();
+  AddressBuilder get result => _$this._result ??= AddressBuilder();
   set result(covariant AddressBuilder? result) => _$this._result = result;
 
   int? _status;
@@ -102,7 +94,6 @@ class SetAddress201ResponseBuilder
 
   @override
   void replace(covariant SetAddress201Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SetAddress201Response;
   }
 
@@ -118,19 +109,20 @@ class SetAddress201ResponseBuilder
     _$SetAddress201Response _$result;
     try {
       _$result = _$v ??
-          new _$SetAddress201Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'SetAddress201Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'SetAddress201Response', 'message'));
+          _$SetAddress201Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'SetAddress201Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'SetAddress201Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SetAddress201Response', _$failedField, e.toString());
       }
       rethrow;

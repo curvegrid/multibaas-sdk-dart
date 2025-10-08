@@ -6,7 +6,29 @@ part of 'api_key.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$APIKey extends APIKey {
+abstract class APIKeyBuilder implements BaseAPIKeyBuilder {
+  void replace(covariant APIKey other);
+  void update(void Function(APIKeyBuilder) updates);
+  DateTime? get createdAt;
+  set createdAt(covariant DateTime? createdAt);
+
+  DateTime? get lastUsedAt;
+  set lastUsedAt(covariant DateTime? lastUsedAt);
+
+  int? get createdBy;
+  set createdBy(covariant int? createdBy);
+
+  String? get signature;
+  set signature(covariant String? signature);
+
+  int? get id;
+  set id(covariant int? id);
+
+  String? get label;
+  set label(covariant String? label);
+}
+
+class _$$APIKey extends $APIKey {
   @override
   final DateTime createdAt;
   @override
@@ -20,35 +42,28 @@ class _$APIKey extends APIKey {
   @override
   final String label;
 
-  factory _$APIKey([void Function(APIKeyBuilder)? updates]) =>
-      (new APIKeyBuilder()..update(updates))._build();
+  factory _$$APIKey([void Function($APIKeyBuilder)? updates]) =>
+      ($APIKeyBuilder()..update(updates))._build();
 
-  _$APIKey._(
+  _$$APIKey._(
       {required this.createdAt,
       this.lastUsedAt,
       required this.createdBy,
       required this.signature,
       required this.id,
       required this.label})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(createdAt, r'APIKey', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(createdBy, r'APIKey', 'createdBy');
-    BuiltValueNullFieldError.checkNotNull(signature, r'APIKey', 'signature');
-    BuiltValueNullFieldError.checkNotNull(id, r'APIKey', 'id');
-    BuiltValueNullFieldError.checkNotNull(label, r'APIKey', 'label');
-  }
-
+      : super._();
   @override
-  APIKey rebuild(void Function(APIKeyBuilder) updates) =>
+  $APIKey rebuild(void Function($APIKeyBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  APIKeyBuilder toBuilder() => new APIKeyBuilder()..replace(this);
+  $APIKeyBuilder toBuilder() => $APIKeyBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is APIKey &&
+    return other is $APIKey &&
         createdAt == other.createdAt &&
         lastUsedAt == other.lastUsedAt &&
         createdBy == other.createdBy &&
@@ -72,7 +87,7 @@ class _$APIKey extends APIKey {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'APIKey')
+    return (newBuiltValueToStringHelper(r'$APIKey')
           ..add('createdAt', createdAt)
           ..add('lastUsedAt', lastUsedAt)
           ..add('createdBy', createdBy)
@@ -83,9 +98,9 @@ class _$APIKey extends APIKey {
   }
 }
 
-class APIKeyBuilder
-    implements Builder<APIKey, APIKeyBuilder>, BaseAPIKeyBuilder {
-  _$APIKey? _$v;
+class $APIKeyBuilder
+    implements Builder<$APIKey, $APIKeyBuilder>, APIKeyBuilder {
+  _$$APIKey? _$v;
 
   DateTime? _createdAt;
   DateTime? get createdAt => _$this._createdAt;
@@ -112,11 +127,11 @@ class APIKeyBuilder
   String? get label => _$this._label;
   set label(covariant String? label) => _$this._label = label;
 
-  APIKeyBuilder() {
-    APIKey._defaults(this);
+  $APIKeyBuilder() {
+    $APIKey._defaults(this);
   }
 
-  APIKeyBuilder get _$this {
+  $APIKeyBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _createdAt = $v.createdAt;
@@ -131,32 +146,32 @@ class APIKeyBuilder
   }
 
   @override
-  void replace(covariant APIKey other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$APIKey;
+  void replace(covariant $APIKey other) {
+    _$v = other as _$$APIKey;
   }
 
   @override
-  void update(void Function(APIKeyBuilder)? updates) {
+  void update(void Function($APIKeyBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  APIKey build() => _build();
+  $APIKey build() => _build();
 
-  _$APIKey _build() {
+  _$$APIKey _build() {
     final _$result = _$v ??
-        new _$APIKey._(
-            createdAt: BuiltValueNullFieldError.checkNotNull(
-                createdAt, r'APIKey', 'createdAt'),
-            lastUsedAt: lastUsedAt,
-            createdBy: BuiltValueNullFieldError.checkNotNull(
-                createdBy, r'APIKey', 'createdBy'),
-            signature: BuiltValueNullFieldError.checkNotNull(
-                signature, r'APIKey', 'signature'),
-            id: BuiltValueNullFieldError.checkNotNull(id, r'APIKey', 'id'),
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'APIKey', 'label'));
+        _$$APIKey._(
+          createdAt: BuiltValueNullFieldError.checkNotNull(
+              createdAt, r'$APIKey', 'createdAt'),
+          lastUsedAt: lastUsedAt,
+          createdBy: BuiltValueNullFieldError.checkNotNull(
+              createdBy, r'$APIKey', 'createdBy'),
+          signature: BuiltValueNullFieldError.checkNotNull(
+              signature, r'$APIKey', 'signature'),
+          id: BuiltValueNullFieldError.checkNotNull(id, r'$APIKey', 'id'),
+          label:
+              BuiltValueNullFieldError.checkNotNull(label, r'$APIKey', 'label'),
+        );
     replace(_$result);
     return _$result;
   }

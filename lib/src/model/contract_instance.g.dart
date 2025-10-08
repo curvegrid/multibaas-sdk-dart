@@ -8,41 +8,36 @@ part of 'contract_instance.dart';
 
 class _$ContractInstance extends ContractInstance {
   @override
-  final String label;
+  final String alias;
   @override
   final String address;
 
   factory _$ContractInstance(
           [void Function(ContractInstanceBuilder)? updates]) =>
-      (new ContractInstanceBuilder()..update(updates))._build();
+      (ContractInstanceBuilder()..update(updates))._build();
 
-  _$ContractInstance._({required this.label, required this.address})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(label, r'ContractInstance', 'label');
-    BuiltValueNullFieldError.checkNotNull(
-        address, r'ContractInstance', 'address');
-  }
-
+  _$ContractInstance._({required this.alias, required this.address})
+      : super._();
   @override
   ContractInstance rebuild(void Function(ContractInstanceBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ContractInstanceBuilder toBuilder() =>
-      new ContractInstanceBuilder()..replace(this);
+      ContractInstanceBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ContractInstance &&
-        label == other.label &&
+        alias == other.alias &&
         address == other.address;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, label.hashCode);
+    _$hash = $jc(_$hash, alias.hashCode);
     _$hash = $jc(_$hash, address.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -51,7 +46,7 @@ class _$ContractInstance extends ContractInstance {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ContractInstance')
-          ..add('label', label)
+          ..add('alias', alias)
           ..add('address', address))
         .toString();
   }
@@ -61,9 +56,9 @@ class ContractInstanceBuilder
     implements Builder<ContractInstance, ContractInstanceBuilder> {
   _$ContractInstance? _$v;
 
-  String? _label;
-  String? get label => _$this._label;
-  set label(String? label) => _$this._label = label;
+  String? _alias;
+  String? get alias => _$this._alias;
+  set alias(String? alias) => _$this._alias = alias;
 
   String? _address;
   String? get address => _$this._address;
@@ -76,7 +71,7 @@ class ContractInstanceBuilder
   ContractInstanceBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _label = $v.label;
+      _alias = $v.alias;
       _address = $v.address;
       _$v = null;
     }
@@ -85,7 +80,6 @@ class ContractInstanceBuilder
 
   @override
   void replace(ContractInstance other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractInstance;
   }
 
@@ -99,11 +93,12 @@ class ContractInstanceBuilder
 
   _$ContractInstance _build() {
     final _$result = _$v ??
-        new _$ContractInstance._(
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'ContractInstance', 'label'),
-            address: BuiltValueNullFieldError.checkNotNull(
-                address, r'ContractInstance', 'address'));
+        _$ContractInstance._(
+          alias: BuiltValueNullFieldError.checkNotNull(
+              alias, r'ContractInstance', 'alias'),
+          address: BuiltValueNullFieldError.checkNotNull(
+              address, r'ContractInstance', 'address'),
+        );
     replace(_$result);
     return _$result;
   }

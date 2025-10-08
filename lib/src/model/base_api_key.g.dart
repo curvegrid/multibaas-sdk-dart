@@ -18,18 +18,15 @@ class _$$BaseAPIKey extends $BaseAPIKey {
   final String label;
 
   factory _$$BaseAPIKey([void Function($BaseAPIKeyBuilder)? updates]) =>
-      (new $BaseAPIKeyBuilder()..update(updates))._build();
+      ($BaseAPIKeyBuilder()..update(updates))._build();
 
-  _$$BaseAPIKey._({required this.label}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(label, r'$BaseAPIKey', 'label');
-  }
-
+  _$$BaseAPIKey._({required this.label}) : super._();
   @override
   $BaseAPIKey rebuild(void Function($BaseAPIKeyBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $BaseAPIKeyBuilder toBuilder() => new $BaseAPIKeyBuilder()..replace(this);
+  $BaseAPIKeyBuilder toBuilder() => $BaseAPIKeyBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +72,6 @@ class $BaseAPIKeyBuilder
 
   @override
   void replace(covariant $BaseAPIKey other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$BaseAPIKey;
   }
 
@@ -89,9 +85,10 @@ class $BaseAPIKeyBuilder
 
   _$$BaseAPIKey _build() {
     final _$result = _$v ??
-        new _$$BaseAPIKey._(
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'$BaseAPIKey', 'label'));
+        _$$BaseAPIKey._(
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'$BaseAPIKey', 'label'),
+        );
     replace(_$result);
     return _$result;
   }

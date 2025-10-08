@@ -14,12 +14,9 @@ class _$MethodCallResponse extends MethodCallResponse {
 
   factory _$MethodCallResponse(
           [void Function(MethodCallResponseBuilder)? updates]) =>
-      (new MethodCallResponseBuilder()..update(updates))._build();
+      (MethodCallResponseBuilder()..update(updates))._build();
 
-  _$MethodCallResponse._({this.output, required this.kind}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(kind, r'MethodCallResponse', 'kind');
-  }
-
+  _$MethodCallResponse._({this.output, required this.kind}) : super._();
   @override
   MethodCallResponse rebuild(
           void Function(MethodCallResponseBuilder) updates) =>
@@ -27,7 +24,7 @@ class _$MethodCallResponse extends MethodCallResponse {
 
   @override
   MethodCallResponseBuilder toBuilder() =>
-      new MethodCallResponseBuilder()..replace(this);
+      MethodCallResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -85,7 +82,6 @@ class MethodCallResponseBuilder
 
   @override
   void replace(covariant MethodCallResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MethodCallResponse;
   }
 
@@ -99,10 +95,11 @@ class MethodCallResponseBuilder
 
   _$MethodCallResponse _build() {
     final _$result = _$v ??
-        new _$MethodCallResponse._(
-            output: output,
-            kind: BuiltValueNullFieldError.checkNotNull(
-                kind, r'MethodCallResponse', 'kind'));
+        _$MethodCallResponse._(
+          output: output,
+          kind: BuiltValueNullFieldError.checkNotNull(
+              kind, r'MethodCallResponse', 'kind'),
+        );
     replace(_$result);
     return _$result;
   }

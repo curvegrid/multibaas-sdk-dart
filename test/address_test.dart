@@ -7,9 +7,9 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(Address, () {
-    // A label.
-    // String label
-    test('to test the property `label`', () async {
+    // An alias to easily identify and reference addresses.
+    // String alias
+    test('to test the property `alias`', () async {
       // TODO
     });
 
@@ -26,11 +26,6 @@ void main() {
 
     // String chain
     test('to test the property `chain`', () async {
-      // TODO
-    });
-
-    // BuiltList<String> modules
-    test('to test the property `modules`', () async {
       // TODO
     });
 
@@ -53,6 +48,11 @@ void main() {
 
     // BuiltList<ContractMetadata> contracts
     test('to test the property `contracts`', () async {
+      // TODO
+    });
+
+    // BuiltList<ContractLookup> contractLookup
+    test('to test the property `contractLookup`', () async {
       // TODO
     });
 

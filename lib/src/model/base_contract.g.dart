@@ -49,16 +49,16 @@ class _$$BaseContract extends $BaseContract {
   @override
   final String rawAbi;
   @override
-  final String userDoc;
+  final String? userDoc;
   @override
-  final String developerDoc;
+  final String? developerDoc;
   @override
   final String? metadata;
   @override
   final bool? isFavorite;
 
   factory _$$BaseContract([void Function($BaseContractBuilder)? updates]) =>
-      (new $BaseContractBuilder()..update(updates))._build();
+      ($BaseContractBuilder()..update(updates))._build();
 
   _$$BaseContract._(
       {required this.label,
@@ -66,27 +66,17 @@ class _$$BaseContract extends $BaseContract {
       required this.version,
       this.bin,
       required this.rawAbi,
-      required this.userDoc,
-      required this.developerDoc,
+      this.userDoc,
+      this.developerDoc,
       this.metadata,
       this.isFavorite})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(label, r'$BaseContract', 'label');
-    BuiltValueNullFieldError.checkNotNull(
-        contractName, r'$BaseContract', 'contractName');
-    BuiltValueNullFieldError.checkNotNull(version, r'$BaseContract', 'version');
-    BuiltValueNullFieldError.checkNotNull(rawAbi, r'$BaseContract', 'rawAbi');
-    BuiltValueNullFieldError.checkNotNull(userDoc, r'$BaseContract', 'userDoc');
-    BuiltValueNullFieldError.checkNotNull(
-        developerDoc, r'$BaseContract', 'developerDoc');
-  }
-
+      : super._();
   @override
   $BaseContract rebuild(void Function($BaseContractBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $BaseContractBuilder toBuilder() => new $BaseContractBuilder()..replace(this);
+  $BaseContractBuilder toBuilder() => $BaseContractBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -202,7 +192,6 @@ class $BaseContractBuilder
 
   @override
   void replace(covariant $BaseContract other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$BaseContract;
   }
 
@@ -216,22 +205,21 @@ class $BaseContractBuilder
 
   _$$BaseContract _build() {
     final _$result = _$v ??
-        new _$$BaseContract._(
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'$BaseContract', 'label'),
-            contractName: BuiltValueNullFieldError.checkNotNull(
-                contractName, r'$BaseContract', 'contractName'),
-            version: BuiltValueNullFieldError.checkNotNull(
-                version, r'$BaseContract', 'version'),
-            bin: bin,
-            rawAbi: BuiltValueNullFieldError.checkNotNull(
-                rawAbi, r'$BaseContract', 'rawAbi'),
-            userDoc: BuiltValueNullFieldError.checkNotNull(
-                userDoc, r'$BaseContract', 'userDoc'),
-            developerDoc: BuiltValueNullFieldError.checkNotNull(
-                developerDoc, r'$BaseContract', 'developerDoc'),
-            metadata: metadata,
-            isFavorite: isFavorite);
+        _$$BaseContract._(
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'$BaseContract', 'label'),
+          contractName: BuiltValueNullFieldError.checkNotNull(
+              contractName, r'$BaseContract', 'contractName'),
+          version: BuiltValueNullFieldError.checkNotNull(
+              version, r'$BaseContract', 'version'),
+          bin: bin,
+          rawAbi: BuiltValueNullFieldError.checkNotNull(
+              rawAbi, r'$BaseContract', 'rawAbi'),
+          userDoc: userDoc,
+          developerDoc: developerDoc,
+          metadata: metadata,
+          isFavorite: isFavorite,
+        );
     replace(_$result);
     return _$result;
   }

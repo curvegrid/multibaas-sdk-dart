@@ -18,12 +18,12 @@ EventQueryFilterRuleEnum _$eventQueryFilterRuleEnumValueOf(String name) {
     case 'or':
       return _$eventQueryFilterRuleEnum_or;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<EventQueryFilterRuleEnum> _$eventQueryFilterRuleEnumValues =
-    new BuiltSet<EventQueryFilterRuleEnum>(const <EventQueryFilterRuleEnum>[
+    BuiltSet<EventQueryFilterRuleEnum>(const <EventQueryFilterRuleEnum>[
   _$eventQueryFilterRuleEnum_and,
   _$eventQueryFilterRuleEnum_or,
 ]);
@@ -59,12 +59,12 @@ EventQueryFilterOperator_Enum _$eventQueryFilterOperatorEnumValueOf(
     case 'greaterthanorequal':
       return _$eventQueryFilterOperatorEnum_greaterthanorequal;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<EventQueryFilterOperator_Enum>
-    _$eventQueryFilterOperatorEnumValues = new BuiltSet<
+    _$eventQueryFilterOperatorEnumValues = BuiltSet<
         EventQueryFilterOperator_Enum>(const <EventQueryFilterOperator_Enum>[
   _$eventQueryFilterOperatorEnum_equal,
   _$eventQueryFilterOperatorEnum_notequal,
@@ -75,10 +75,10 @@ final BuiltSet<EventQueryFilterOperator_Enum>
 ]);
 
 Serializer<EventQueryFilterRuleEnum> _$eventQueryFilterRuleEnumSerializer =
-    new _$EventQueryFilterRuleEnumSerializer();
+    _$EventQueryFilterRuleEnumSerializer();
 Serializer<EventQueryFilterOperator_Enum>
     _$eventQueryFilterOperatorEnumSerializer =
-    new _$EventQueryFilterOperator_EnumSerializer();
+    _$EventQueryFilterOperator_EnumSerializer();
 
 class _$EventQueryFilterRuleEnumSerializer
     implements PrimitiveSerializer<EventQueryFilterRuleEnum> {
@@ -163,7 +163,7 @@ class _$EventQueryFilter extends EventQueryFilter {
 
   factory _$EventQueryFilter(
           [void Function(EventQueryFilterBuilder)? updates]) =>
-      (new EventQueryFilterBuilder()..update(updates))._build();
+      (EventQueryFilterBuilder()..update(updates))._build();
 
   _$EventQueryFilter._(
       {this.rule,
@@ -173,14 +173,13 @@ class _$EventQueryFilter extends EventQueryFilter {
       this.value,
       this.children})
       : super._();
-
   @override
   EventQueryFilter rebuild(void Function(EventQueryFilterBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   EventQueryFilterBuilder toBuilder() =>
-      new EventQueryFilterBuilder()..replace(this);
+      EventQueryFilterBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -247,7 +246,7 @@ class EventQueryFilterBuilder
 
   ListBuilder<EventQueryFilter>? _children;
   ListBuilder<EventQueryFilter> get children =>
-      _$this._children ??= new ListBuilder<EventQueryFilter>();
+      _$this._children ??= ListBuilder<EventQueryFilter>();
   set children(ListBuilder<EventQueryFilter>? children) =>
       _$this._children = children;
 
@@ -271,7 +270,6 @@ class EventQueryFilterBuilder
 
   @override
   void replace(EventQueryFilter other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventQueryFilter;
   }
 
@@ -287,20 +285,21 @@ class EventQueryFilterBuilder
     _$EventQueryFilter _$result;
     try {
       _$result = _$v ??
-          new _$EventQueryFilter._(
-              rule: rule,
-              fieldType: fieldType,
-              inputIndex: inputIndex,
-              operator_: operator_,
-              value: value,
-              children: _children?.build());
+          _$EventQueryFilter._(
+            rule: rule,
+            fieldType: fieldType,
+            inputIndex: inputIndex,
+            operator_: operator_,
+            value: value,
+            children: _children?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'children';
         _children?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EventQueryFilter', _$failedField, e.toString());
       }
       rethrow;

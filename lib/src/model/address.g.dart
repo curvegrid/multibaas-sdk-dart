@@ -14,45 +14,38 @@ class _$Address extends Address {
   @override
   final int? localNonce;
   @override
+  final BuiltList<ContractLookup>? contractLookup;
+  @override
   final String? codeAt;
   @override
   final BuiltList<ContractMetadata> contracts;
   @override
   final int? nonce;
   @override
-  final BuiltList<String> modules;
-  @override
-  final String label;
+  final String alias;
   @override
   final String address;
 
   factory _$Address([void Function(AddressBuilder)? updates]) =>
-      (new AddressBuilder()..update(updates))._build();
+      (AddressBuilder()..update(updates))._build();
 
   _$Address._(
       {required this.chain,
       this.balance,
       this.localNonce,
+      this.contractLookup,
       this.codeAt,
       required this.contracts,
       this.nonce,
-      required this.modules,
-      required this.label,
+      required this.alias,
       required this.address})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(chain, r'Address', 'chain');
-    BuiltValueNullFieldError.checkNotNull(contracts, r'Address', 'contracts');
-    BuiltValueNullFieldError.checkNotNull(modules, r'Address', 'modules');
-    BuiltValueNullFieldError.checkNotNull(label, r'Address', 'label');
-    BuiltValueNullFieldError.checkNotNull(address, r'Address', 'address');
-  }
-
+      : super._();
   @override
   Address rebuild(void Function(AddressBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AddressBuilder toBuilder() => new AddressBuilder()..replace(this);
+  AddressBuilder toBuilder() => AddressBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -61,11 +54,11 @@ class _$Address extends Address {
         chain == other.chain &&
         balance == other.balance &&
         localNonce == other.localNonce &&
+        contractLookup == other.contractLookup &&
         codeAt == other.codeAt &&
         contracts == other.contracts &&
         nonce == other.nonce &&
-        modules == other.modules &&
-        label == other.label &&
+        alias == other.alias &&
         address == other.address;
   }
 
@@ -75,11 +68,11 @@ class _$Address extends Address {
     _$hash = $jc(_$hash, chain.hashCode);
     _$hash = $jc(_$hash, balance.hashCode);
     _$hash = $jc(_$hash, localNonce.hashCode);
+    _$hash = $jc(_$hash, contractLookup.hashCode);
     _$hash = $jc(_$hash, codeAt.hashCode);
     _$hash = $jc(_$hash, contracts.hashCode);
     _$hash = $jc(_$hash, nonce.hashCode);
-    _$hash = $jc(_$hash, modules.hashCode);
-    _$hash = $jc(_$hash, label.hashCode);
+    _$hash = $jc(_$hash, alias.hashCode);
     _$hash = $jc(_$hash, address.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -91,18 +84,18 @@ class _$Address extends Address {
           ..add('chain', chain)
           ..add('balance', balance)
           ..add('localNonce', localNonce)
+          ..add('contractLookup', contractLookup)
           ..add('codeAt', codeAt)
           ..add('contracts', contracts)
           ..add('nonce', nonce)
-          ..add('modules', modules)
-          ..add('label', label)
+          ..add('alias', alias)
           ..add('address', address))
         .toString();
   }
 }
 
 class AddressBuilder
-    implements Builder<Address, AddressBuilder>, AddressLabelBuilder {
+    implements Builder<Address, AddressBuilder>, AddressAliasBuilder {
   _$Address? _$v;
 
   String? _chain;
@@ -117,13 +110,19 @@ class AddressBuilder
   int? get localNonce => _$this._localNonce;
   set localNonce(covariant int? localNonce) => _$this._localNonce = localNonce;
 
+  ListBuilder<ContractLookup>? _contractLookup;
+  ListBuilder<ContractLookup> get contractLookup =>
+      _$this._contractLookup ??= ListBuilder<ContractLookup>();
+  set contractLookup(covariant ListBuilder<ContractLookup>? contractLookup) =>
+      _$this._contractLookup = contractLookup;
+
   String? _codeAt;
   String? get codeAt => _$this._codeAt;
   set codeAt(covariant String? codeAt) => _$this._codeAt = codeAt;
 
   ListBuilder<ContractMetadata>? _contracts;
   ListBuilder<ContractMetadata> get contracts =>
-      _$this._contracts ??= new ListBuilder<ContractMetadata>();
+      _$this._contracts ??= ListBuilder<ContractMetadata>();
   set contracts(covariant ListBuilder<ContractMetadata>? contracts) =>
       _$this._contracts = contracts;
 
@@ -131,15 +130,9 @@ class AddressBuilder
   int? get nonce => _$this._nonce;
   set nonce(covariant int? nonce) => _$this._nonce = nonce;
 
-  ListBuilder<String>? _modules;
-  ListBuilder<String> get modules =>
-      _$this._modules ??= new ListBuilder<String>();
-  set modules(covariant ListBuilder<String>? modules) =>
-      _$this._modules = modules;
-
-  String? _label;
-  String? get label => _$this._label;
-  set label(covariant String? label) => _$this._label = label;
+  String? _alias;
+  String? get alias => _$this._alias;
+  set alias(covariant String? alias) => _$this._alias = alias;
 
   String? _address;
   String? get address => _$this._address;
@@ -155,11 +148,11 @@ class AddressBuilder
       _chain = $v.chain;
       _balance = $v.balance;
       _localNonce = $v.localNonce;
+      _contractLookup = $v.contractLookup?.toBuilder();
       _codeAt = $v.codeAt;
       _contracts = $v.contracts.toBuilder();
       _nonce = $v.nonce;
-      _modules = $v.modules.toBuilder();
-      _label = $v.label;
+      _alias = $v.alias;
       _address = $v.address;
       _$v = null;
     }
@@ -168,7 +161,6 @@ class AddressBuilder
 
   @override
   void replace(covariant Address other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Address;
   }
 
@@ -184,29 +176,30 @@ class AddressBuilder
     _$Address _$result;
     try {
       _$result = _$v ??
-          new _$Address._(
-              chain: BuiltValueNullFieldError.checkNotNull(
-                  chain, r'Address', 'chain'),
-              balance: balance,
-              localNonce: localNonce,
-              codeAt: codeAt,
-              contracts: contracts.build(),
-              nonce: nonce,
-              modules: modules.build(),
-              label: BuiltValueNullFieldError.checkNotNull(
-                  label, r'Address', 'label'),
-              address: BuiltValueNullFieldError.checkNotNull(
-                  address, r'Address', 'address'));
+          _$Address._(
+            chain: BuiltValueNullFieldError.checkNotNull(
+                chain, r'Address', 'chain'),
+            balance: balance,
+            localNonce: localNonce,
+            contractLookup: _contractLookup?.build(),
+            codeAt: codeAt,
+            contracts: contracts.build(),
+            nonce: nonce,
+            alias: BuiltValueNullFieldError.checkNotNull(
+                alias, r'Address', 'alias'),
+            address: BuiltValueNullFieldError.checkNotNull(
+                address, r'Address', 'address'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
+        _$failedField = 'contractLookup';
+        _contractLookup?.build();
+
         _$failedField = 'contracts';
         contracts.build();
-
-        _$failedField = 'modules';
-        modules.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Address', _$failedField, e.toString());
       }
       rethrow;

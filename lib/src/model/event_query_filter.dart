@@ -28,7 +28,7 @@ abstract class EventQueryFilter implements Built<EventQueryFilter, EventQueryFil
 
   @BuiltValueField(wireName: r'fieldType')
   FieldType? get fieldType;
-  // enum fieldTypeEnum {  input,  contract_label,  contract_name,  contract_address,  contract_address_label,  block_number,  triggered_at,  event_signature,  block_hash,  tx_hash,  tx_from,  };
+  // enum fieldTypeEnum {  input,  contract_label,  contract_name,  contract_address,  contract_address_alias,  block_number,  triggered_at,  event_signature,  block_hash,  tx_hash,  tx_from,  };
 
   /// The field's index, can be used in place of `name`.
   @BuiltValueField(wireName: r'inputIndex')

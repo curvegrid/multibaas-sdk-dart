@@ -17,19 +17,11 @@ class _$ListContractVersions200Response
 
   factory _$ListContractVersions200Response(
           [void Function(ListContractVersions200ResponseBuilder)? updates]) =>
-      (new ListContractVersions200ResponseBuilder()..update(updates))._build();
+      (ListContractVersions200ResponseBuilder()..update(updates))._build();
 
   _$ListContractVersions200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListContractVersions200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListContractVersions200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListContractVersions200Response', 'message');
-  }
-
+      : super._();
   @override
   ListContractVersions200Response rebuild(
           void Function(ListContractVersions200ResponseBuilder) updates) =>
@@ -37,7 +29,7 @@ class _$ListContractVersions200Response
 
   @override
   ListContractVersions200ResponseBuilder toBuilder() =>
-      new ListContractVersions200ResponseBuilder()..replace(this);
+      ListContractVersions200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,8 +69,7 @@ class ListContractVersions200ResponseBuilder
 
   ListContractVersions200ResponseAllOfResultBuilder? _result;
   ListContractVersions200ResponseAllOfResultBuilder get result =>
-      _$this._result ??=
-          new ListContractVersions200ResponseAllOfResultBuilder();
+      _$this._result ??= ListContractVersions200ResponseAllOfResultBuilder();
   set result(
           covariant ListContractVersions200ResponseAllOfResultBuilder?
               result) =>
@@ -109,7 +100,6 @@ class ListContractVersions200ResponseBuilder
 
   @override
   void replace(covariant ListContractVersions200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListContractVersions200Response;
   }
 
@@ -125,19 +115,20 @@ class ListContractVersions200ResponseBuilder
     _$ListContractVersions200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListContractVersions200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListContractVersions200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListContractVersions200Response', 'message'));
+          _$ListContractVersions200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListContractVersions200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListContractVersions200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListContractVersions200Response', _$failedField, e.toString());
       }
       rethrow;

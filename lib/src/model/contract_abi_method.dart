@@ -13,6 +13,7 @@ part 'contract_abi_method.g.dart';
 /// A contract function.
 ///
 /// Properties:
+/// * [id] - A hex string.
 /// * [name] - Name of the function.
 /// * [signature] - The function signature.
 /// * [const_] 
@@ -21,10 +22,13 @@ part 'contract_abi_method.g.dart';
 /// * [outputs] - List of function outputs.
 /// * [author] 
 /// * [notes] 
-/// * [returns] 
 /// * [description] - The function description.
 @BuiltValue()
 abstract class ContractABIMethod implements Built<ContractABIMethod, ContractABIMethodBuilder> {
+  /// A hex string.
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
   /// Name of the function.
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -53,9 +57,6 @@ abstract class ContractABIMethod implements Built<ContractABIMethod, ContractABI
   @BuiltValueField(wireName: r'notes')
   String get notes;
 
-  @BuiltValueField(wireName: r'returns')
-  String get returns;
-
   /// The function description.
   @BuiltValueField(wireName: r'description')
   String get description;
@@ -83,6 +84,11 @@ class _$ContractABIMethodSerializer implements PrimitiveSerializer<ContractABIMe
     ContractABIMethod object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     yield r'name';
     yield serializers.serialize(
       object.name,
@@ -123,11 +129,6 @@ class _$ContractABIMethodSerializer implements PrimitiveSerializer<ContractABIMe
       object.notes,
       specifiedType: const FullType(String),
     );
-    yield r'returns';
-    yield serializers.serialize(
-      object.returns,
-      specifiedType: const FullType(String),
-    );
     yield r'description';
     yield serializers.serialize(
       object.description,
@@ -156,6 +157,13 @@ class _$ContractABIMethodSerializer implements PrimitiveSerializer<ContractABIMe
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
@@ -211,13 +219,6 @@ class _$ContractABIMethodSerializer implements PrimitiveSerializer<ContractABIMe
             specifiedType: const FullType(String),
           ) as String;
           result.notes = valueDes;
-          break;
-        case r'returns':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.returns = valueDes;
           break;
         case r'description':
           final valueDes = serializers.deserialize(

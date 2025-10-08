@@ -11,18 +11,15 @@ class _$SignerLabel extends SignerLabel {
   final String label;
 
   factory _$SignerLabel([void Function(SignerLabelBuilder)? updates]) =>
-      (new SignerLabelBuilder()..update(updates))._build();
+      (SignerLabelBuilder()..update(updates))._build();
 
-  _$SignerLabel._({required this.label}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(label, r'SignerLabel', 'label');
-  }
-
+  _$SignerLabel._({required this.label}) : super._();
   @override
   SignerLabel rebuild(void Function(SignerLabelBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SignerLabelBuilder toBuilder() => new SignerLabelBuilder()..replace(this);
+  SignerLabelBuilder toBuilder() => SignerLabelBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,7 +64,6 @@ class SignerLabelBuilder implements Builder<SignerLabel, SignerLabelBuilder> {
 
   @override
   void replace(SignerLabel other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignerLabel;
   }
 
@@ -81,9 +77,10 @@ class SignerLabelBuilder implements Builder<SignerLabel, SignerLabelBuilder> {
 
   _$SignerLabel _build() {
     final _$result = _$v ??
-        new _$SignerLabel._(
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'SignerLabel', 'label'));
+        _$SignerLabel._(
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'SignerLabel', 'label'),
+        );
     replace(_$result);
     return _$result;
   }

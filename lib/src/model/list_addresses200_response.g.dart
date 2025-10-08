@@ -8,7 +8,7 @@ part of 'list_addresses200_response.dart';
 
 class _$ListAddresses200Response extends ListAddresses200Response {
   @override
-  final BuiltList<AddressLabel> result;
+  final BuiltList<AddressAlias> result;
   @override
   final int status;
   @override
@@ -16,19 +16,11 @@ class _$ListAddresses200Response extends ListAddresses200Response {
 
   factory _$ListAddresses200Response(
           [void Function(ListAddresses200ResponseBuilder)? updates]) =>
-      (new ListAddresses200ResponseBuilder()..update(updates))._build();
+      (ListAddresses200ResponseBuilder()..update(updates))._build();
 
   _$ListAddresses200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListAddresses200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListAddresses200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListAddresses200Response', 'message');
-  }
-
+      : super._();
   @override
   ListAddresses200Response rebuild(
           void Function(ListAddresses200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListAddresses200Response extends ListAddresses200Response {
 
   @override
   ListAddresses200ResponseBuilder toBuilder() =>
-      new ListAddresses200ResponseBuilder()..replace(this);
+      ListAddresses200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,10 +65,10 @@ class ListAddresses200ResponseBuilder
         BaseResponseBuilder {
   _$ListAddresses200Response? _$v;
 
-  ListBuilder<AddressLabel>? _result;
-  ListBuilder<AddressLabel> get result =>
-      _$this._result ??= new ListBuilder<AddressLabel>();
-  set result(covariant ListBuilder<AddressLabel>? result) =>
+  ListBuilder<AddressAlias>? _result;
+  ListBuilder<AddressAlias> get result =>
+      _$this._result ??= ListBuilder<AddressAlias>();
+  set result(covariant ListBuilder<AddressAlias>? result) =>
       _$this._result = result;
 
   int? _status;
@@ -104,7 +96,6 @@ class ListAddresses200ResponseBuilder
 
   @override
   void replace(covariant ListAddresses200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListAddresses200Response;
   }
 
@@ -120,19 +111,20 @@ class ListAddresses200ResponseBuilder
     _$ListAddresses200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListAddresses200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListAddresses200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListAddresses200Response', 'message'));
+          _$ListAddresses200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListAddresses200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListAddresses200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListAddresses200Response', _$failedField, e.toString());
       }
       rethrow;

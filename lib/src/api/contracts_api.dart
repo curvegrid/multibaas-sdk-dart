@@ -40,7 +40,7 @@ class ContractsApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [addressOrLabel] - An address or the label of an address.
+  /// * [addressOrAlias] - An address or the alias of an address.
   /// * [contract] 
   /// * [method] - Contract function.
   /// * [postMethodArgs] 
@@ -55,10 +55,10 @@ class ContractsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CallContractFunction200Response>> callContractFunction({ 
     required ChainName chain,
-    required String addressOrLabel,
+    required String addressOrAlias,
     required String contract,
     required String method,
-    PostMethodArgs? postMethodArgs,
+    required PostMethodArgs postMethodArgs,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -66,7 +66,7 @@ class ContractsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chains/{chain}/addresses/{address-or-label}/contracts/{contract}/methods/{method}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-label' '}', encodeQueryParameter(_serializers, addressOrLabel, const FullType(String)).toString()).replaceAll('{' r'contract' '}', encodeQueryParameter(_serializers, contract, const FullType(String)).toString()).replaceAll('{' r'method' '}', encodeQueryParameter(_serializers, method, const FullType(String)).toString());
+    final _path = r'/chains/{chain}/addresses/{address-or-alias}/contracts/{contract}/methods/{method}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-alias' '}', encodeQueryParameter(_serializers, addressOrAlias, const FullType(String)).toString()).replaceAll('{' r'contract' '}', encodeQueryParameter(_serializers, contract, const FullType(String)).toString()).replaceAll('{' r'method' '}', encodeQueryParameter(_serializers, method, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -95,7 +95,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(PostMethodArgs);
-      _bodyData = postMethodArgs == null ? null : _serializers.serialize(postMethodArgs, specifiedType: _type);
+      _bodyData = _serializers.serialize(postMethodArgs, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -166,7 +166,7 @@ class ContractsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<GetContract200Response>> createContract({ 
     required String contract,
-    BaseContract? baseContract,
+    required BaseContract baseContract,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -203,7 +203,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(BaseContract);
-      _bodyData = baseContract == null ? null : _serializers.serialize(baseContract, specifiedType: _type);
+      _bodyData = _serializers.serialize(baseContract, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -272,7 +272,7 @@ class ContractsApi {
   /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> createContracts({ 
-    BuiltList<BaseContract>? baseContract,
+    required BuiltList<BaseContract> baseContract,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -309,7 +309,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(BuiltList, [FullType(BaseContract)]);
-      _bodyData = baseContract == null ? null : _serializers.serialize(baseContract, specifiedType: _type);
+      _bodyData = _serializers.serialize(baseContract, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -554,7 +554,7 @@ class ContractsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<DeployContract200Response>> deployContract({ 
     required String contract,
-    PostMethodArgs? postMethodArgs,
+    required PostMethodArgs postMethodArgs,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -591,7 +591,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(PostMethodArgs);
-      _bodyData = postMethodArgs == null ? null : _serializers.serialize(postMethodArgs, specifiedType: _type);
+      _bodyData = _serializers.serialize(postMethodArgs, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -664,7 +664,7 @@ class ContractsApi {
   Future<Response<DeployContract200Response>> deployContractVersion({ 
     required String contract,
     required String version,
-    PostMethodArgs? postMethodArgs,
+    required PostMethodArgs postMethodArgs,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -701,7 +701,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(PostMethodArgs);
-      _bodyData = postMethodArgs == null ? null : _serializers.serialize(postMethodArgs, specifiedType: _type);
+      _bodyData = _serializers.serialize(postMethodArgs, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1020,7 +1020,7 @@ class ContractsApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [addressOrLabel] - An address or the label of an address.
+  /// * [addressOrAlias] - An address or the alias of an address.
   /// * [contract] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1033,7 +1033,7 @@ class ContractsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<GetEventMonitorStatus200Response>> getEventMonitorStatus({ 
     required ChainName chain,
-    required String addressOrLabel,
+    required String addressOrAlias,
     required String contract,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1042,7 +1042,7 @@ class ContractsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chains/{chain}/addresses/{address-or-label}/contracts/{contract}/status'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-label' '}', encodeQueryParameter(_serializers, addressOrLabel, const FullType(String)).toString()).replaceAll('{' r'contract' '}', encodeQueryParameter(_serializers, contract, const FullType(String)).toString());
+    final _path = r'/chains/{chain}/addresses/{address-or-alias}/contracts/{contract}/status'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-alias' '}', encodeQueryParameter(_serializers, addressOrAlias, const FullType(String)).toString()).replaceAll('{' r'contract' '}', encodeQueryParameter(_serializers, contract, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -1290,7 +1290,7 @@ class ContractsApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [addressOrLabel] - An address or the label of an address.
+  /// * [addressOrAlias] - An address or the alias of an address.
   /// * [linkAddressContractRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1303,8 +1303,8 @@ class ContractsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<SetAddress201Response>> linkAddressContract({ 
     required ChainName chain,
-    required String addressOrLabel,
-    LinkAddressContractRequest? linkAddressContractRequest,
+    required String addressOrAlias,
+    required LinkAddressContractRequest linkAddressContractRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1312,7 +1312,7 @@ class ContractsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chains/{chain}/addresses/{address-or-label}/contracts'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-label' '}', encodeQueryParameter(_serializers, addressOrLabel, const FullType(String)).toString());
+    final _path = r'/chains/{chain}/addresses/{address-or-alias}/contracts'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-alias' '}', encodeQueryParameter(_serializers, addressOrAlias, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1341,7 +1341,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(LinkAddressContractRequest);
-      _bodyData = linkAddressContractRequest == null ? null : _serializers.serialize(linkAddressContractRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(linkAddressContractRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1586,7 +1586,7 @@ class ContractsApi {
     required String contract,
     required String version,
     required String event,
-    ContractEventOptions? contractEventOptions,
+    required ContractEventOptions contractEventOptions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1623,7 +1623,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(ContractEventOptions);
-      _bodyData = contractEventOptions == null ? null : _serializers.serialize(contractEventOptions, specifiedType: _type);
+      _bodyData = _serializers.serialize(contractEventOptions, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1698,7 +1698,7 @@ class ContractsApi {
     required String contract,
     required String version,
     required String method,
-    ContractMethodOptions? contractMethodOptions,
+    required ContractMethodOptions contractMethodOptions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1735,7 +1735,7 @@ class ContractsApi {
 
     try {
       const _type = FullType(ContractMethodOptions);
-      _bodyData = contractMethodOptions == null ? null : _serializers.serialize(contractMethodOptions, specifiedType: _type);
+      _bodyData = _serializers.serialize(contractMethodOptions, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1794,7 +1794,7 @@ class ContractsApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [addressOrLabel] - An address or the label of an address.
+  /// * [addressOrAlias] - An address or the alias of an address.
   /// * [contract] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1807,7 +1807,7 @@ class ContractsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<SetAddress201Response>> unlinkAddressContract({ 
     required ChainName chain,
-    required String addressOrLabel,
+    required String addressOrAlias,
     required String contract,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1816,7 +1816,7 @@ class ContractsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chains/{chain}/addresses/{address-or-label}/contracts/{contract}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-label' '}', encodeQueryParameter(_serializers, addressOrLabel, const FullType(String)).toString()).replaceAll('{' r'contract' '}', encodeQueryParameter(_serializers, contract, const FullType(String)).toString());
+    final _path = r'/chains/{chain}/addresses/{address-or-alias}/contracts/{contract}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-alias' '}', encodeQueryParameter(_serializers, addressOrAlias, const FullType(String)).toString()).replaceAll('{' r'contract' '}', encodeQueryParameter(_serializers, contract, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{

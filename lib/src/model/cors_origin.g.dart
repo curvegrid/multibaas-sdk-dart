@@ -13,16 +13,15 @@ class _$CORSOrigin extends CORSOrigin {
   final String? origin;
 
   factory _$CORSOrigin([void Function(CORSOriginBuilder)? updates]) =>
-      (new CORSOriginBuilder()..update(updates))._build();
+      (CORSOriginBuilder()..update(updates))._build();
 
   _$CORSOrigin._({this.id, this.origin}) : super._();
-
   @override
   CORSOrigin rebuild(void Function(CORSOriginBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CORSOriginBuilder toBuilder() => new CORSOriginBuilder()..replace(this);
+  CORSOriginBuilder toBuilder() => CORSOriginBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +74,6 @@ class CORSOriginBuilder implements Builder<CORSOrigin, CORSOriginBuilder> {
 
   @override
   void replace(CORSOrigin other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CORSOrigin;
   }
 
@@ -88,7 +86,11 @@ class CORSOriginBuilder implements Builder<CORSOrigin, CORSOriginBuilder> {
   CORSOrigin build() => _build();
 
   _$CORSOrigin _build() {
-    final _$result = _$v ?? new _$CORSOrigin._(id: id, origin: origin);
+    final _$result = _$v ??
+        _$CORSOrigin._(
+          id: id,
+          origin: origin,
+        );
     replace(_$result);
     return _$result;
   }

@@ -6,45 +6,50 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
-      ..add($AddressLabel.serializer)
+Serializers _$serializers = (Serializers().toBuilder()
+      ..add($APIKey.serializer)
+      ..add($AddressAlias.serializer)
       ..add($BaseAPIKey.serializer)
       ..add($BaseAzureAccount.serializer)
       ..add($BaseContract.serializer)
       ..add($BaseResponse.serializer)
-      ..add($BaseTransactionToSign.serializer)
       ..add($BaseUser.serializer)
       ..add($BaseWebhookEndpoint.serializer)
       ..add($PostMethodResponse.serializer)
       ..add($TransactionToSign.serializer)
-      ..add(APIKey.serializer)
+      ..add(APIKeyWithSecret.serializer)
       ..add(AcceptInvite200Response.serializer)
       ..add(AcceptInviteRequest.serializer)
+      ..add(AccessTuple.serializer)
       ..add(AddKey.serializer)
       ..add(Address.serializer)
       ..add(AuditLog.serializer)
+      ..add(AuthorizationExtraInfo.serializer)
       ..add(AzureAccount.serializer)
       ..add(AzureHardwareWallet.serializer)
       ..add(AzureWallet.serializer)
-      ..add(BaseTransactionToSignTx.serializer)
       ..add(Block.serializer)
       ..add(CORSOrigin.serializer)
       ..add(CallContractFunction200Response.serializer)
       ..add(CallContractFunction200ResponseAllOfResult.serializer)
       ..add(ChainName.serializer)
       ..add(ChainStatus.serializer)
+      ..add(CloudWalletTXToSign.serializer)
+      ..add(CloudWalletTXToSignTx.serializer)
       ..add(Contract.serializer)
       ..add(ContractABI.serializer)
+      ..add(ContractABIError.serializer)
+      ..add(ContractABIErrorArgument.serializer)
       ..add(ContractABIEvent.serializer)
       ..add(ContractABIEventArgument.serializer)
       ..add(ContractABIMethod.serializer)
-      ..add(ContractABIMethod1.serializer)
       ..add(ContractABIMethodArgument.serializer)
       ..add(ContractABIType.serializer)
       ..add(ContractABITypeConversion.serializer)
       ..add(ContractEventOptions.serializer)
       ..add(ContractInformation.serializer)
       ..add(ContractInstance.serializer)
+      ..add(ContractLookup.serializer)
       ..add(ContractMetadata.serializer)
       ..add(ContractMethodInformation.serializer)
       ..add(ContractMethodOptions.serializer)
@@ -61,6 +66,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CreateWebhook200Response.serializer)
       ..add(DeployContract200Response.serializer)
       ..add(DeployContractTransaction.serializer)
+      ..add(EIP712Domain.serializer)
+      ..add(EIP712DomainChainId.serializer)
+      ..add(EIP712TypeEntry.serializer)
+      ..add(EIP712TypedData.serializer)
+      ..add(EIP712Types.serializer)
       ..add(Error.serializer)
       ..add(Event.serializer)
       ..add(EventField.serializer)
@@ -79,6 +89,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ExecuteArbitraryEventQuery200Response.serializer)
       ..add(FieldType.serializer)
       ..add(GasParams.serializer)
+      ..add(GetApiKey200Response.serializer)
       ..add(GetBlock200Response.serializer)
       ..add(GetChainStatus200Response.serializer)
       ..add(GetContract200Response.serializer)
@@ -88,14 +99,18 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GetEventQuery200Response.serializer)
       ..add(GetEventTypeConversions200Response.serializer)
       ..add(GetFunctionTypeConversions200Response.serializer)
+      ..add(GetPlan200Response.serializer)
       ..add(GetTransaction200Response.serializer)
       ..add(GetTransactionReceipt200Response.serializer)
       ..add(Group.serializer)
       ..add(HSMData.serializer)
       ..add(HSMSignRequest.serializer)
-      ..add(HSMSignRequestChainId.serializer)
+      ..add(HSMSignRequestPersonalSign.serializer)
+      ..add(HSMSignRequestPersonalSignChainId.serializer)
+      ..add(HSMSignRequestTypedData.serializer)
       ..add(HSMSignResponse.serializer)
       ..add(Invite.serializer)
+      ..add(InviteRequest.serializer)
       ..add(LinkAddressContractRequest.serializer)
       ..add(ListAddresses200Response.serializer)
       ..add(ListApiKeys200Response.serializer)
@@ -109,6 +124,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ListGroups200Response.serializer)
       ..add(ListHsm200Response.serializer)
       ..add(ListHsmWallets200Response.serializer)
+      ..add(ListInvites200Response.serializer)
       ..add(ListUserSigners200Response.serializer)
       ..add(ListUsers200Response.serializer)
       ..add(ListWalletTransactions200Response.serializer)
@@ -116,21 +132,27 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ListWebhooks200Response.serializer)
       ..add(Log.serializer)
       ..add(MethodArg.serializer)
-      ..add(MethodCallPreviewResponse.serializer)
       ..add(MethodCallResponse.serializer)
       ..add(MethodTypeConversionOptions.serializer)
+      ..add(Plan.serializer)
+      ..add(PlanFeature.serializer)
+      ..add(PlanFeatureNameEnum.serializer)
+      ..add(PlanLimit.serializer)
+      ..add(PlanLimitNameEnum.serializer)
       ..add(PostMethodArgs.serializer)
-      ..add(PreviewArgs.serializer)
       ..add(Role.serializer)
       ..add(SavedEventQuery.serializer)
       ..add(SetAddress201Response.serializer)
+      ..add(SetCodeAuthorization.serializer)
       ..add(SetNonceRequest.serializer)
       ..add(SignData200Response.serializer)
+      ..add(SignedTransactionResponse.serializer)
       ..add(SignedTransactionSubmission.serializer)
       ..add(SignerLabel.serializer)
       ..add(SignerWallet.serializer)
       ..add(SignerWalletTypeEnum.serializer)
       ..add(StandaloneWallet.serializer)
+      ..add(SubmitSignedTransaction200Response.serializer)
       ..add(Transaction.serializer)
       ..add(TransactionData.serializer)
       ..add(TransactionInformation.serializer)
@@ -138,6 +160,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(TransactionReceiptData.serializer)
       ..add(TransactionStatus.serializer)
       ..add(TransactionToSignResponse.serializer)
+      ..add(TransactionToSignTx.serializer)
       ..add(TransferEth200Response.serializer)
       ..add(TypeConversionOptions.serializer)
       ..add(User.serializer)
@@ -147,17 +170,40 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(WebhookEventsType.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(APIKey)]),
-          () => new ListBuilder<APIKey>())
+          () => ListBuilder<APIKey>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AddressLabel)]),
-          () => new ListBuilder<AddressLabel>())
+          const FullType(BuiltList, const [const FullType(AccessTuple)]),
+          () => ListBuilder<AccessTuple>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(SetCodeAuthorization)]),
+          () => ListBuilder<SetCodeAuthorization>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(AddressAlias)]),
+          () => ListBuilder<AddressAlias>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AuditLog)]),
-          () => new ListBuilder<AuditLog>())
+          () => ListBuilder<AuditLog>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(AuthorizationExtraInfo)]),
+          () => ListBuilder<AuthorizationExtraInfo>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(AzureHardwareWallet)]),
-          () => new ListBuilder<AzureHardwareWallet>())
+          () => ListBuilder<AzureHardwareWallet>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(BuiltMap, const [
@@ -165,179 +211,182 @@ Serializers _$serializers = (new Serializers().toBuilder()
               const FullType.nullable(JsonObject)
             ])
           ]),
-          () => new ListBuilder<BuiltMap<String, JsonObject?>>())
+          () => ListBuilder<BuiltMap<String, JsonObject?>>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(CORSOrigin)]),
-          () => new ListBuilder<CORSOrigin>())
+          () => ListBuilder<CORSOrigin>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Contract)]),
-          () => new ListBuilder<Contract>())
+          () => ListBuilder<Contract>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(ContractABIErrorArgument)]),
+          () => ListBuilder<ContractABIErrorArgument>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ContractABIEventArgument)]),
-          () => new ListBuilder<ContractABIEventArgument>())
+          () => ListBuilder<ContractABIEventArgument>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ContractABIMethodArgument)]),
-          () => new ListBuilder<ContractABIMethodArgument>())
+          () => ListBuilder<ContractABIMethodArgument>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ContractABIMethodArgument)]),
-          () => new ListBuilder<ContractABIMethodArgument>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(ContractABIMethodArgument)]),
-          () => new ListBuilder<ContractABIMethodArgument>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(ContractABIMethodArgument)]),
-          () => new ListBuilder<ContractABIMethodArgument>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(ContractABIMethodArgument)]),
-          () => new ListBuilder<ContractABIMethodArgument>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(ContractABIMethodArgument)]),
-          () => new ListBuilder<ContractABIMethodArgument>())
+          () => ListBuilder<ContractABIMethodArgument>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractABIType)]),
-          () => new ListBuilder<ContractABIType>())
+          () => ListBuilder<ContractABIType>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractInstance)]),
-          () => new ListBuilder<ContractInstance>())
+          () => ListBuilder<ContractInstance>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractInstance)]),
-          () => new ListBuilder<ContractInstance>())
+          () => ListBuilder<ContractInstance>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ContractLookup)]),
+          () => ListBuilder<ContractLookup>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractMetadata)]),
-          () => new ListBuilder<ContractMetadata>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<ContractMetadata>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractOverview)]),
-          () => new ListBuilder<ContractOverview>())
+          () => ListBuilder<ContractOverview>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractParameter)]),
-          () => new ListBuilder<ContractParameter>())
+          () => ListBuilder<ContractParameter>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractParameter)]),
-          () => new ListBuilder<ContractParameter>())
+          () => ListBuilder<ContractParameter>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ContractParameter)]),
-          () => new ListBuilder<ContractParameter>())
+          () => ListBuilder<ContractParameter>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(EIP712TypeEntry)]),
+          () => ListBuilder<EIP712TypeEntry>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
+          () => ListBuilder<Event>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(EventField)]),
-          () => new ListBuilder<EventField>())
+          () => ListBuilder<EventField>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(EventInformation)]),
-          () => new ListBuilder<EventInformation>())
+          () => ListBuilder<EventInformation>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(EventQueryEvent)]),
-          () => new ListBuilder<EventQueryEvent>())
+          () => ListBuilder<EventQueryEvent>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(EventQueryField)]),
-          () => new ListBuilder<EventQueryField>())
+          () => ListBuilder<EventQueryField>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(EventQueryFilter)]),
-          () => new ListBuilder<EventQueryFilter>())
+          () => ListBuilder<EventQueryFilter>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Group)]),
-          () => new ListBuilder<Group>())
+          () => ListBuilder<Group>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(HSMData)]),
-          () => new ListBuilder<HSMData>())
+          () => ListBuilder<HSMData>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Invite)]),
+          () => ListBuilder<Invite>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Log)]),
-          () => new ListBuilder<Log>())
+          () => ListBuilder<Log>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(MethodArg)]),
-          () => new ListBuilder<MethodArg>())
+          () => ListBuilder<MethodArg>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PlanLimit)]),
+          () => ListBuilder<PlanLimit>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(PlanFeature)]),
+          () => ListBuilder<PlanFeature>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Role)]),
-          () => new ListBuilder<Role>())
+          () => ListBuilder<Role>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(SavedEventQuery)]),
-          () => new ListBuilder<SavedEventQuery>())
+          () => ListBuilder<SavedEventQuery>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(SignerWallet)]),
-          () => new ListBuilder<SignerWallet>())
+          () => ListBuilder<SignerWallet>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(StandaloneWallet)]),
-          () => new ListBuilder<StandaloneWallet>())
+          () => ListBuilder<StandaloneWallet>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Transaction)]),
-          () => new ListBuilder<Transaction>())
+          () => ListBuilder<Transaction>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(TypeConversionOptions)]),
-          () => new ListBuilder<TypeConversionOptions>())
+          () => ListBuilder<TypeConversionOptions>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(TypeConversionOptions)]),
-          () => new ListBuilder<TypeConversionOptions>())
+          () => ListBuilder<TypeConversionOptions>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(TypeConversionOptions)]),
-          () => new ListBuilder<TypeConversionOptions>())
+          () => ListBuilder<TypeConversionOptions>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(User)]),
-          () => new ListBuilder<User>())
+          () => ListBuilder<User>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WalletTransaction)]),
-          () => new ListBuilder<WalletTransaction>())
+          () => ListBuilder<WalletTransaction>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WebhookEndpoint)]),
-          () => new ListBuilder<WebhookEndpoint>())
+          () => ListBuilder<WebhookEndpoint>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WebhookEvent)]),
-          () => new ListBuilder<WebhookEvent>())
+          () => ListBuilder<WebhookEvent>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WebhookEventsType)]),
-          () => new ListBuilder<WebhookEventsType>())
+          () => ListBuilder<WebhookEventsType>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WebhookEventsType)]),
-          () => new ListBuilder<WebhookEventsType>())
+          () => ListBuilder<WebhookEventsType>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
-          () => new ListBuilder<int>())
+          () => ListBuilder<int>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
-          () => new ListBuilder<int>())
+          () => ListBuilder<int>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
+          () => ListBuilder<JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(ContractABIMethod)
           ]),
-          () => new MapBuilder<String, ContractABIMethod?>())
+          () => MapBuilder<String, ContractABIMethod?>())
       ..addBuilderFactory(
           const FullType(BuiltMap,
               const [const FullType(String), const FullType(ContractABIEvent)]),
-          () => new MapBuilder<String, ContractABIEvent>()))
+          () => MapBuilder<String, ContractABIEvent>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap,
+              const [const FullType(String), const FullType(ContractABIError)]),
+          () => MapBuilder<String, ContractABIError>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

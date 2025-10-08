@@ -8,36 +8,35 @@ part of 'contract_abi.dart';
 
 class _$ContractABI extends ContractABI {
   @override
-  final ContractABIMethod1? constructor;
+  final ContractABIMethod? constructor;
   @override
   final BuiltMap<String, ContractABIMethod?> methods;
   @override
   final BuiltMap<String, ContractABIEvent> events;
+  @override
+  final BuiltMap<String, ContractABIError>? errors;
   @override
   final ContractABIMethod? fallback;
   @override
   final ContractABIMethod? receive;
 
   factory _$ContractABI([void Function(ContractABIBuilder)? updates]) =>
-      (new ContractABIBuilder()..update(updates))._build();
+      (ContractABIBuilder()..update(updates))._build();
 
   _$ContractABI._(
       {this.constructor,
       required this.methods,
       required this.events,
+      this.errors,
       this.fallback,
       this.receive})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(methods, r'ContractABI', 'methods');
-    BuiltValueNullFieldError.checkNotNull(events, r'ContractABI', 'events');
-  }
-
+      : super._();
   @override
   ContractABI rebuild(void Function(ContractABIBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ContractABIBuilder toBuilder() => new ContractABIBuilder()..replace(this);
+  ContractABIBuilder toBuilder() => ContractABIBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -46,6 +45,7 @@ class _$ContractABI extends ContractABI {
         constructor == other.constructor &&
         methods == other.methods &&
         events == other.events &&
+        errors == other.errors &&
         fallback == other.fallback &&
         receive == other.receive;
   }
@@ -56,6 +56,7 @@ class _$ContractABI extends ContractABI {
     _$hash = $jc(_$hash, constructor.hashCode);
     _$hash = $jc(_$hash, methods.hashCode);
     _$hash = $jc(_$hash, events.hashCode);
+    _$hash = $jc(_$hash, errors.hashCode);
     _$hash = $jc(_$hash, fallback.hashCode);
     _$hash = $jc(_$hash, receive.hashCode);
     _$hash = $jf(_$hash);
@@ -68,6 +69,7 @@ class _$ContractABI extends ContractABI {
           ..add('constructor', constructor)
           ..add('methods', methods)
           ..add('events', events)
+          ..add('errors', errors)
           ..add('fallback', fallback)
           ..add('receive', receive))
         .toString();
@@ -77,33 +79,39 @@ class _$ContractABI extends ContractABI {
 class ContractABIBuilder implements Builder<ContractABI, ContractABIBuilder> {
   _$ContractABI? _$v;
 
-  ContractABIMethod1Builder? _constructor;
-  ContractABIMethod1Builder get constructor =>
-      _$this._constructor ??= new ContractABIMethod1Builder();
-  set constructor(ContractABIMethod1Builder? constructor) =>
+  ContractABIMethodBuilder? _constructor;
+  ContractABIMethodBuilder get constructor =>
+      _$this._constructor ??= ContractABIMethodBuilder();
+  set constructor(ContractABIMethodBuilder? constructor) =>
       _$this._constructor = constructor;
 
   MapBuilder<String, ContractABIMethod?>? _methods;
   MapBuilder<String, ContractABIMethod?> get methods =>
-      _$this._methods ??= new MapBuilder<String, ContractABIMethod?>();
+      _$this._methods ??= MapBuilder<String, ContractABIMethod?>();
   set methods(MapBuilder<String, ContractABIMethod?>? methods) =>
       _$this._methods = methods;
 
   MapBuilder<String, ContractABIEvent>? _events;
   MapBuilder<String, ContractABIEvent> get events =>
-      _$this._events ??= new MapBuilder<String, ContractABIEvent>();
+      _$this._events ??= MapBuilder<String, ContractABIEvent>();
   set events(MapBuilder<String, ContractABIEvent>? events) =>
       _$this._events = events;
 
+  MapBuilder<String, ContractABIError>? _errors;
+  MapBuilder<String, ContractABIError> get errors =>
+      _$this._errors ??= MapBuilder<String, ContractABIError>();
+  set errors(MapBuilder<String, ContractABIError>? errors) =>
+      _$this._errors = errors;
+
   ContractABIMethodBuilder? _fallback;
   ContractABIMethodBuilder get fallback =>
-      _$this._fallback ??= new ContractABIMethodBuilder();
+      _$this._fallback ??= ContractABIMethodBuilder();
   set fallback(ContractABIMethodBuilder? fallback) =>
       _$this._fallback = fallback;
 
   ContractABIMethodBuilder? _receive;
   ContractABIMethodBuilder get receive =>
-      _$this._receive ??= new ContractABIMethodBuilder();
+      _$this._receive ??= ContractABIMethodBuilder();
   set receive(ContractABIMethodBuilder? receive) => _$this._receive = receive;
 
   ContractABIBuilder() {
@@ -116,6 +124,7 @@ class ContractABIBuilder implements Builder<ContractABI, ContractABIBuilder> {
       _constructor = $v.constructor?.toBuilder();
       _methods = $v.methods.toBuilder();
       _events = $v.events.toBuilder();
+      _errors = $v.errors?.toBuilder();
       _fallback = $v.fallback?.toBuilder();
       _receive = $v.receive?.toBuilder();
       _$v = null;
@@ -125,7 +134,6 @@ class ContractABIBuilder implements Builder<ContractABI, ContractABIBuilder> {
 
   @override
   void replace(ContractABI other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractABI;
   }
 
@@ -141,12 +149,14 @@ class ContractABIBuilder implements Builder<ContractABI, ContractABIBuilder> {
     _$ContractABI _$result;
     try {
       _$result = _$v ??
-          new _$ContractABI._(
-              constructor: _constructor?.build(),
-              methods: methods.build(),
-              events: events.build(),
-              fallback: _fallback?.build(),
-              receive: _receive?.build());
+          _$ContractABI._(
+            constructor: _constructor?.build(),
+            methods: methods.build(),
+            events: events.build(),
+            errors: _errors?.build(),
+            fallback: _fallback?.build(),
+            receive: _receive?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -156,12 +166,14 @@ class ContractABIBuilder implements Builder<ContractABI, ContractABIBuilder> {
         methods.build();
         _$failedField = 'events';
         events.build();
+        _$failedField = 'errors';
+        _errors?.build();
         _$failedField = 'fallback';
         _fallback?.build();
         _$failedField = 'receive';
         _receive?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractABI', _$failedField, e.toString());
       }
       rethrow;

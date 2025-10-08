@@ -13,9 +13,9 @@ void main() {
       // TODO
     });
 
-    // A label.
-    // String addressLabel
-    test('to test the property `addressLabel`', () async {
+    // An alias to easily identify and reference addresses.
+    // String addressAlias
+    test('to test the property `addressAlias`', () async {
       // TODO
     });
 
@@ -25,7 +25,7 @@ void main() {
       // TODO
     });
 
-    // A label.
+    // An alias to easily identify and reference the entity in subsequent requests.
     // String label
     test('to test the property `label`', () async {
       // TODO

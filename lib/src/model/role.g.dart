@@ -17,26 +17,20 @@ class _$Role extends Role {
   final String description;
 
   factory _$Role([void Function(RoleBuilder)? updates]) =>
-      (new RoleBuilder()..update(updates))._build();
+      (RoleBuilder()..update(updates))._build();
 
   _$Role._(
       {required this.id,
       required this.name,
       required this.shortName,
       required this.description})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'Role', 'id');
-    BuiltValueNullFieldError.checkNotNull(name, r'Role', 'name');
-    BuiltValueNullFieldError.checkNotNull(shortName, r'Role', 'shortName');
-    BuiltValueNullFieldError.checkNotNull(description, r'Role', 'description');
-  }
-
+      : super._();
   @override
   Role rebuild(void Function(RoleBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  RoleBuilder toBuilder() => new RoleBuilder()..replace(this);
+  RoleBuilder toBuilder() => RoleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,7 +101,6 @@ class RoleBuilder implements Builder<Role, RoleBuilder> {
 
   @override
   void replace(Role other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Role;
   }
 
@@ -121,13 +114,14 @@ class RoleBuilder implements Builder<Role, RoleBuilder> {
 
   _$Role _build() {
     final _$result = _$v ??
-        new _$Role._(
-            id: BuiltValueNullFieldError.checkNotNull(id, r'Role', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(name, r'Role', 'name'),
-            shortName: BuiltValueNullFieldError.checkNotNull(
-                shortName, r'Role', 'shortName'),
-            description: BuiltValueNullFieldError.checkNotNull(
-                description, r'Role', 'description'));
+        _$Role._(
+          id: BuiltValueNullFieldError.checkNotNull(id, r'Role', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(name, r'Role', 'name'),
+          shortName: BuiltValueNullFieldError.checkNotNull(
+              shortName, r'Role', 'shortName'),
+          description: BuiltValueNullFieldError.checkNotNull(
+              description, r'Role', 'description'),
+        );
     replace(_$result);
     return _$result;
   }

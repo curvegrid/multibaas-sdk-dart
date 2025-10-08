@@ -14,7 +14,7 @@ part 'base_webhook_endpoint.g.dart';
 ///
 /// Properties:
 /// * [url] - The URL to send the webhook to.
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [subscriptions] - The events to subscribe to.
 @BuiltValue(instantiable: false)
 abstract class BaseWebhookEndpoint  {
@@ -22,7 +22,7 @@ abstract class BaseWebhookEndpoint  {
   @BuiltValueField(wireName: r'url')
   String get url;
 
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 

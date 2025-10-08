@@ -16,19 +16,11 @@ class _$GetContract200Response extends GetContract200Response {
 
   factory _$GetContract200Response(
           [void Function(GetContract200ResponseBuilder)? updates]) =>
-      (new GetContract200ResponseBuilder()..update(updates))._build();
+      (GetContract200ResponseBuilder()..update(updates))._build();
 
   _$GetContract200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'GetContract200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetContract200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GetContract200Response', 'message');
-  }
-
+      : super._();
   @override
   GetContract200Response rebuild(
           void Function(GetContract200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$GetContract200Response extends GetContract200Response {
 
   @override
   GetContract200ResponseBuilder toBuilder() =>
-      new GetContract200ResponseBuilder()..replace(this);
+      GetContract200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +66,7 @@ class GetContract200ResponseBuilder
   _$GetContract200Response? _$v;
 
   ContractBuilder? _result;
-  ContractBuilder get result => _$this._result ??= new ContractBuilder();
+  ContractBuilder get result => _$this._result ??= ContractBuilder();
   set result(covariant ContractBuilder? result) => _$this._result = result;
 
   int? _status;
@@ -102,7 +94,6 @@ class GetContract200ResponseBuilder
 
   @override
   void replace(covariant GetContract200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetContract200Response;
   }
 
@@ -118,19 +109,20 @@ class GetContract200ResponseBuilder
     _$GetContract200Response _$result;
     try {
       _$result = _$v ??
-          new _$GetContract200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'GetContract200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'GetContract200Response', 'message'));
+          _$GetContract200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'GetContract200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'GetContract200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GetContract200Response', _$failedField, e.toString());
       }
       rethrow;

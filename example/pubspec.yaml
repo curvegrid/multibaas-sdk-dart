@@ -10,3 +10,6 @@ environment:
 dependencies:
   multibaas:
     path: ../
+  built_value: any
+  built_collection: any
+  dio: any

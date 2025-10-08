@@ -16,19 +16,11 @@ class _$ListHsm200Response extends ListHsm200Response {
 
   factory _$ListHsm200Response(
           [void Function(ListHsm200ResponseBuilder)? updates]) =>
-      (new ListHsm200ResponseBuilder()..update(updates))._build();
+      (ListHsm200ResponseBuilder()..update(updates))._build();
 
   _$ListHsm200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListHsm200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListHsm200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListHsm200Response', 'message');
-  }
-
+      : super._();
   @override
   ListHsm200Response rebuild(
           void Function(ListHsm200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListHsm200Response extends ListHsm200Response {
 
   @override
   ListHsm200ResponseBuilder toBuilder() =>
-      new ListHsm200ResponseBuilder()..replace(this);
+      ListHsm200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,8 +66,7 @@ class ListHsm200ResponseBuilder
   _$ListHsm200Response? _$v;
 
   ListBuilder<HSMData>? _result;
-  ListBuilder<HSMData> get result =>
-      _$this._result ??= new ListBuilder<HSMData>();
+  ListBuilder<HSMData> get result => _$this._result ??= ListBuilder<HSMData>();
   set result(covariant ListBuilder<HSMData>? result) => _$this._result = result;
 
   int? _status;
@@ -103,7 +94,6 @@ class ListHsm200ResponseBuilder
 
   @override
   void replace(covariant ListHsm200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListHsm200Response;
   }
 
@@ -119,19 +109,20 @@ class ListHsm200ResponseBuilder
     _$ListHsm200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListHsm200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListHsm200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListHsm200Response', 'message'));
+          _$ListHsm200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListHsm200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListHsm200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListHsm200Response', _$failedField, e.toString());
       }
       rethrow;

@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
  **contractAddress** | **String**| Filter events by a contract address. | [optional] 
  **contractLabel** | **String**| Filter events by a contract label. | [optional] 
  **eventSignature** | **String**| Filter events by the signature. | [optional] 
- **limit** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
  **offset** | **int**|  | [optional] 
 
 ### Return type
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
  **contractAddress** | **String**| Filter events by a contract address. | [optional] 
  **contractLabel** | **String**| Filter events by a contract label. | [optional] 
  **eventSignature** | **String**| Filter events by the signature. | [optional] 
- **limit** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
  **offset** | **int**|  | [optional] 
 
 ### Return type

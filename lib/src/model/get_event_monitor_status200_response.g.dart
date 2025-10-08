@@ -17,19 +17,11 @@ class _$GetEventMonitorStatus200Response
 
   factory _$GetEventMonitorStatus200Response(
           [void Function(GetEventMonitorStatus200ResponseBuilder)? updates]) =>
-      (new GetEventMonitorStatus200ResponseBuilder()..update(updates))._build();
+      (GetEventMonitorStatus200ResponseBuilder()..update(updates))._build();
 
   _$GetEventMonitorStatus200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'GetEventMonitorStatus200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetEventMonitorStatus200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GetEventMonitorStatus200Response', 'message');
-  }
-
+      : super._();
   @override
   GetEventMonitorStatus200Response rebuild(
           void Function(GetEventMonitorStatus200ResponseBuilder) updates) =>
@@ -37,7 +29,7 @@ class _$GetEventMonitorStatus200Response
 
   @override
   GetEventMonitorStatus200ResponseBuilder toBuilder() =>
-      new GetEventMonitorStatus200ResponseBuilder()..replace(this);
+      GetEventMonitorStatus200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,7 +69,7 @@ class GetEventMonitorStatus200ResponseBuilder
 
   EventMonitorStatusBuilder? _result;
   EventMonitorStatusBuilder get result =>
-      _$this._result ??= new EventMonitorStatusBuilder();
+      _$this._result ??= EventMonitorStatusBuilder();
   set result(covariant EventMonitorStatusBuilder? result) =>
       _$this._result = result;
 
@@ -106,7 +98,6 @@ class GetEventMonitorStatus200ResponseBuilder
 
   @override
   void replace(covariant GetEventMonitorStatus200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetEventMonitorStatus200Response;
   }
 
@@ -122,19 +113,20 @@ class GetEventMonitorStatus200ResponseBuilder
     _$GetEventMonitorStatus200Response _$result;
     try {
       _$result = _$v ??
-          new _$GetEventMonitorStatus200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'GetEventMonitorStatus200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'GetEventMonitorStatus200Response', 'message'));
+          _$GetEventMonitorStatus200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'GetEventMonitorStatus200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'GetEventMonitorStatus200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GetEventMonitorStatus200Response', _$failedField, e.toString());
       }
       rethrow;

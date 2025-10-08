@@ -17,17 +17,16 @@ class _$GasParams extends GasParams {
   final int? gas;
 
   factory _$GasParams([void Function(GasParamsBuilder)? updates]) =>
-      (new GasParamsBuilder()..update(updates))._build();
+      (GasParamsBuilder()..update(updates))._build();
 
   _$GasParams._({this.gasPrice, this.gasFeeCap, this.gasTipCap, this.gas})
       : super._();
-
   @override
   GasParams rebuild(void Function(GasParamsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GasParamsBuilder toBuilder() => new GasParamsBuilder()..replace(this);
+  GasParamsBuilder toBuilder() => GasParamsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -98,7 +97,6 @@ class GasParamsBuilder implements Builder<GasParams, GasParamsBuilder> {
 
   @override
   void replace(GasParams other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GasParams;
   }
 
@@ -112,11 +110,12 @@ class GasParamsBuilder implements Builder<GasParams, GasParamsBuilder> {
 
   _$GasParams _build() {
     final _$result = _$v ??
-        new _$GasParams._(
-            gasPrice: gasPrice,
-            gasFeeCap: gasFeeCap,
-            gasTipCap: gasTipCap,
-            gas: gas);
+        _$GasParams._(
+          gasPrice: gasPrice,
+          gasFeeCap: gasFeeCap,
+          gasTipCap: gasTipCap,
+          gas: gas,
+        );
     replace(_$result);
     return _$result;
   }

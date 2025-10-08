@@ -23,7 +23,7 @@ class _$AuditLog extends AuditLog {
   final JsonObject activityData;
 
   factory _$AuditLog([void Function(AuditLogBuilder)? updates]) =>
-      (new AuditLogBuilder()..update(updates))._build();
+      (AuditLogBuilder()..update(updates))._build();
 
   _$AuditLog._(
       {required this.actionByID,
@@ -33,23 +33,13 @@ class _$AuditLog extends AuditLog {
       required this.type,
       required this.createdAt,
       required this.activityData})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        actionByID, r'AuditLog', 'actionByID');
-    BuiltValueNullFieldError.checkNotNull(
-        actionByUserEmail, r'AuditLog', 'actionByUserEmail');
-    BuiltValueNullFieldError.checkNotNull(type, r'AuditLog', 'type');
-    BuiltValueNullFieldError.checkNotNull(createdAt, r'AuditLog', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        activityData, r'AuditLog', 'activityData');
-  }
-
+      : super._();
   @override
   AuditLog rebuild(void Function(AuditLogBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AuditLogBuilder toBuilder() => new AuditLogBuilder()..replace(this);
+  AuditLogBuilder toBuilder() => AuditLogBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -147,7 +137,6 @@ class AuditLogBuilder implements Builder<AuditLog, AuditLogBuilder> {
 
   @override
   void replace(AuditLog other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AuditLog;
   }
 
@@ -161,19 +150,20 @@ class AuditLogBuilder implements Builder<AuditLog, AuditLogBuilder> {
 
   _$AuditLog _build() {
     final _$result = _$v ??
-        new _$AuditLog._(
-            actionByID: BuiltValueNullFieldError.checkNotNull(
-                actionByID, r'AuditLog', 'actionByID'),
-            actionOnID: actionOnID,
-            actionByUserEmail: BuiltValueNullFieldError.checkNotNull(
-                actionByUserEmail, r'AuditLog', 'actionByUserEmail'),
-            actionOnUserEmail: actionOnUserEmail,
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'AuditLog', 'type'),
-            createdAt: BuiltValueNullFieldError.checkNotNull(
-                createdAt, r'AuditLog', 'createdAt'),
-            activityData: BuiltValueNullFieldError.checkNotNull(
-                activityData, r'AuditLog', 'activityData'));
+        _$AuditLog._(
+          actionByID: BuiltValueNullFieldError.checkNotNull(
+              actionByID, r'AuditLog', 'actionByID'),
+          actionOnID: actionOnID,
+          actionByUserEmail: BuiltValueNullFieldError.checkNotNull(
+              actionByUserEmail, r'AuditLog', 'actionByUserEmail'),
+          actionOnUserEmail: actionOnUserEmail,
+          type:
+              BuiltValueNullFieldError.checkNotNull(type, r'AuditLog', 'type'),
+          createdAt: BuiltValueNullFieldError.checkNotNull(
+              createdAt, r'AuditLog', 'createdAt'),
+          activityData: BuiltValueNullFieldError.checkNotNull(
+              activityData, r'AuditLog', 'activityData'),
+        );
     replace(_$result);
     return _$result;
   }

@@ -3,6 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:multibaas/src/model/access_tuple.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:multibaas/src/model/set_code_authorization.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,18 +15,27 @@ part 'transaction.g.dart';
 ///
 /// Properties:
 /// * [type] - A hex string.
+/// * [chainId] - A hex string or null.
 /// * [nonce] - A hex string.
-/// * [gasPrice] - A hex string or null.
-/// * [maxFeePerGas] - A hex string or null.
-/// * [maxPriorityFeePerGas] - A hex string or null.
-/// * [gas] - A hex string.
 /// * [to] - An ethereum address.
+/// * [from] - An ethereum address.
+/// * [gas] - A hex string.
+/// * [gasPrice] - A hex string or null.
+/// * [maxPriorityFeePerGas] - A hex string or null.
+/// * [maxFeePerGas] - A hex string or null.
+/// * [maxFeePerBlobGas] - A hex string or null.
 /// * [value] - A hex string or null.
 /// * [input] - A hex string.
+/// * [accessList] 
+/// * [blobVersionedHashes] 
+/// * [authorizationList] 
 /// * [v] - A hex string.
 /// * [r] - A hex string.
 /// * [s] - A hex string.
-/// * [chainId] - A hex string.
+/// * [yParity] - A hex string or null.
+/// * [blobs] 
+/// * [commitments] 
+/// * [proofs] 
 /// * [hash] - The keccak256 hash as a hex string of 256 bits.
 @BuiltValue()
 abstract class Transaction implements Built<Transaction, TransactionBuilder> {
@@ -31,29 +43,41 @@ abstract class Transaction implements Built<Transaction, TransactionBuilder> {
   @BuiltValueField(wireName: r'type')
   String get type;
 
+  /// A hex string or null.
+  @BuiltValueField(wireName: r'chainId')
+  String? get chainId;
+
   /// A hex string.
   @BuiltValueField(wireName: r'nonce')
   String get nonce;
+
+  /// An ethereum address.
+  @BuiltValueField(wireName: r'to')
+  String? get to;
+
+  /// An ethereum address.
+  @BuiltValueField(wireName: r'from')
+  String? get from;
+
+  /// A hex string.
+  @BuiltValueField(wireName: r'gas')
+  String get gas;
 
   /// A hex string or null.
   @BuiltValueField(wireName: r'gasPrice')
   String? get gasPrice;
 
   /// A hex string or null.
+  @BuiltValueField(wireName: r'maxPriorityFeePerGas')
+  String? get maxPriorityFeePerGas;
+
+  /// A hex string or null.
   @BuiltValueField(wireName: r'maxFeePerGas')
   String? get maxFeePerGas;
 
   /// A hex string or null.
-  @BuiltValueField(wireName: r'maxPriorityFeePerGas')
-  String? get maxPriorityFeePerGas;
-
-  /// A hex string.
-  @BuiltValueField(wireName: r'gas')
-  String get gas;
-
-  /// An ethereum address.
-  @BuiltValueField(wireName: r'to')
-  String? get to;
+  @BuiltValueField(wireName: r'maxFeePerBlobGas')
+  String? get maxFeePerBlobGas;
 
   /// A hex string or null.
   @BuiltValueField(wireName: r'value')
@@ -62,6 +86,15 @@ abstract class Transaction implements Built<Transaction, TransactionBuilder> {
   /// A hex string.
   @BuiltValueField(wireName: r'input')
   String get input;
+
+  @BuiltValueField(wireName: r'accessList')
+  BuiltList<AccessTuple>? get accessList;
+
+  @BuiltValueField(wireName: r'blobVersionedHashes')
+  BuiltList<String>? get blobVersionedHashes;
+
+  @BuiltValueField(wireName: r'authorizationList')
+  BuiltList<SetCodeAuthorization>? get authorizationList;
 
   /// A hex string.
   @BuiltValueField(wireName: r'v')
@@ -75,9 +108,18 @@ abstract class Transaction implements Built<Transaction, TransactionBuilder> {
   @BuiltValueField(wireName: r's')
   String get s;
 
-  /// A hex string.
-  @BuiltValueField(wireName: r'chainId')
-  String? get chainId;
+  /// A hex string or null.
+  @BuiltValueField(wireName: r'yParity')
+  String? get yParity;
+
+  @BuiltValueField(wireName: r'blobs')
+  BuiltList<String>? get blobs;
+
+  @BuiltValueField(wireName: r'commitments')
+  BuiltList<String>? get commitments;
+
+  @BuiltValueField(wireName: r'proofs')
+  BuiltList<String>? get proofs;
 
   /// The keccak256 hash as a hex string of 256 bits.
   @BuiltValueField(wireName: r'hash')
@@ -111,22 +153,39 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
       object.type,
       specifiedType: const FullType(String),
     );
+    if (object.chainId != null) {
+      yield r'chainId';
+      yield serializers.serialize(
+        object.chainId,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     yield r'nonce';
     yield serializers.serialize(
       object.nonce,
+      specifiedType: const FullType(String),
+    );
+    yield r'to';
+    yield object.to == null ? null : serializers.serialize(
+      object.to,
+      specifiedType: const FullType.nullable(String),
+    );
+    if (object.from != null) {
+      yield r'from';
+      yield serializers.serialize(
+        object.from,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    yield r'gas';
+    yield serializers.serialize(
+      object.gas,
       specifiedType: const FullType(String),
     );
     if (object.gasPrice != null) {
       yield r'gasPrice';
       yield serializers.serialize(
         object.gasPrice,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.maxFeePerGas != null) {
-      yield r'maxFeePerGas';
-      yield serializers.serialize(
-        object.maxFeePerGas,
         specifiedType: const FullType.nullable(String),
       );
     }
@@ -137,16 +196,20 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
         specifiedType: const FullType.nullable(String),
       );
     }
-    yield r'gas';
-    yield serializers.serialize(
-      object.gas,
-      specifiedType: const FullType(String),
-    );
-    yield r'to';
-    yield object.to == null ? null : serializers.serialize(
-      object.to,
-      specifiedType: const FullType.nullable(String),
-    );
+    if (object.maxFeePerGas != null) {
+      yield r'maxFeePerGas';
+      yield serializers.serialize(
+        object.maxFeePerGas,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.maxFeePerBlobGas != null) {
+      yield r'maxFeePerBlobGas';
+      yield serializers.serialize(
+        object.maxFeePerBlobGas,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     yield r'value';
     yield object.value == null ? null : serializers.serialize(
       object.value,
@@ -157,6 +220,27 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
       object.input,
       specifiedType: const FullType(String),
     );
+    if (object.accessList != null) {
+      yield r'accessList';
+      yield serializers.serialize(
+        object.accessList,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(AccessTuple)]),
+      );
+    }
+    if (object.blobVersionedHashes != null) {
+      yield r'blobVersionedHashes';
+      yield serializers.serialize(
+        object.blobVersionedHashes,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.authorizationList != null) {
+      yield r'authorizationList';
+      yield serializers.serialize(
+        object.authorizationList,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(SetCodeAuthorization)]),
+      );
+    }
     yield r'v';
     yield serializers.serialize(
       object.v,
@@ -172,11 +256,32 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
       object.s,
       specifiedType: const FullType(String),
     );
-    if (object.chainId != null) {
-      yield r'chainId';
+    if (object.yParity != null) {
+      yield r'yParity';
       yield serializers.serialize(
-        object.chainId,
-        specifiedType: const FullType(String),
+        object.yParity,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
+    if (object.blobs != null) {
+      yield r'blobs';
+      yield serializers.serialize(
+        object.blobs,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.commitments != null) {
+      yield r'commitments';
+      yield serializers.serialize(
+        object.commitments,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.proofs != null) {
+      yield r'proofs';
+      yield serializers.serialize(
+        object.proofs,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
       );
     }
     yield r'hash';
@@ -214,12 +319,43 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
           ) as String;
           result.type = valueDes;
           break;
+        case r'chainId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.chainId = valueDes;
+          break;
         case r'nonce':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.nonce = valueDes;
+          break;
+        case r'to':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.to = valueDes;
+          break;
+        case r'from':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.from = valueDes;
+          break;
+        case r'gas':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.gas = valueDes;
           break;
         case r'gasPrice':
           final valueDes = serializers.deserialize(
@@ -229,14 +365,6 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
           if (valueDes == null) continue;
           result.gasPrice = valueDes;
           break;
-        case r'maxFeePerGas':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.maxFeePerGas = valueDes;
-          break;
         case r'maxPriorityFeePerGas':
           final valueDes = serializers.deserialize(
             value,
@@ -245,20 +373,21 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
           if (valueDes == null) continue;
           result.maxPriorityFeePerGas = valueDes;
           break;
-        case r'gas':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.gas = valueDes;
-          break;
-        case r'to':
+        case r'maxFeePerGas':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType.nullable(String),
           ) as String?;
           if (valueDes == null) continue;
-          result.to = valueDes;
+          result.maxFeePerGas = valueDes;
+          break;
+        case r'maxFeePerBlobGas':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.maxFeePerBlobGas = valueDes;
           break;
         case r'value':
           final valueDes = serializers.deserialize(
@@ -274,6 +403,30 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
             specifiedType: const FullType(String),
           ) as String;
           result.input = valueDes;
+          break;
+        case r'accessList':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AccessTuple)]),
+          ) as BuiltList<AccessTuple>?;
+          if (valueDes == null) continue;
+          result.accessList.replace(valueDes);
+          break;
+        case r'blobVersionedHashes':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
+          result.blobVersionedHashes.replace(valueDes);
+          break;
+        case r'authorizationList':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(SetCodeAuthorization)]),
+          ) as BuiltList<SetCodeAuthorization>?;
+          if (valueDes == null) continue;
+          result.authorizationList.replace(valueDes);
           break;
         case r'v':
           final valueDes = serializers.deserialize(
@@ -296,12 +449,37 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
           ) as String;
           result.s = valueDes;
           break;
-        case r'chainId':
+        case r'yParity':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.chainId = valueDes;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.yParity = valueDes;
+          break;
+        case r'blobs':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
+          result.blobs.replace(valueDes);
+          break;
+        case r'commitments':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
+          result.commitments.replace(valueDes);
+          break;
+        case r'proofs':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>?;
+          if (valueDes == null) continue;
+          result.proofs.replace(valueDes);
           break;
         case r'hash':
           final valueDes = serializers.deserialize(

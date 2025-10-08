@@ -26,7 +26,7 @@ class _$TransactionInformation extends TransactionInformation {
 
   factory _$TransactionInformation(
           [void Function(TransactionInformationBuilder)? updates]) =>
-      (new TransactionInformationBuilder()..update(updates))._build();
+      (TransactionInformationBuilder()..update(updates))._build();
 
   _$TransactionInformation._(
       {required this.from,
@@ -37,25 +37,7 @@ class _$TransactionInformation extends TransactionInformation {
       required this.blockNumber,
       required this.contract,
       required this.method})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        from, r'TransactionInformation', 'from');
-    BuiltValueNullFieldError.checkNotNull(
-        txData, r'TransactionInformation', 'txData');
-    BuiltValueNullFieldError.checkNotNull(
-        txHash, r'TransactionInformation', 'txHash');
-    BuiltValueNullFieldError.checkNotNull(
-        txIndexInBlock, r'TransactionInformation', 'txIndexInBlock');
-    BuiltValueNullFieldError.checkNotNull(
-        blockHash, r'TransactionInformation', 'blockHash');
-    BuiltValueNullFieldError.checkNotNull(
-        blockNumber, r'TransactionInformation', 'blockNumber');
-    BuiltValueNullFieldError.checkNotNull(
-        contract, r'TransactionInformation', 'contract');
-    BuiltValueNullFieldError.checkNotNull(
-        method, r'TransactionInformation', 'method');
-  }
-
+      : super._();
   @override
   TransactionInformation rebuild(
           void Function(TransactionInformationBuilder) updates) =>
@@ -63,7 +45,7 @@ class _$TransactionInformation extends TransactionInformation {
 
   @override
   TransactionInformationBuilder toBuilder() =>
-      new TransactionInformationBuilder()..replace(this);
+      TransactionInformationBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -140,13 +122,13 @@ class TransactionInformationBuilder
 
   ContractInformationBuilder? _contract;
   ContractInformationBuilder get contract =>
-      _$this._contract ??= new ContractInformationBuilder();
+      _$this._contract ??= ContractInformationBuilder();
   set contract(ContractInformationBuilder? contract) =>
       _$this._contract = contract;
 
   ContractMethodInformationBuilder? _method;
   ContractMethodInformationBuilder get method =>
-      _$this._method ??= new ContractMethodInformationBuilder();
+      _$this._method ??= ContractMethodInformationBuilder();
   set method(ContractMethodInformationBuilder? method) =>
       _$this._method = method;
 
@@ -172,7 +154,6 @@ class TransactionInformationBuilder
 
   @override
   void replace(TransactionInformation other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TransactionInformation;
   }
 
@@ -188,21 +169,22 @@ class TransactionInformationBuilder
     _$TransactionInformation _$result;
     try {
       _$result = _$v ??
-          new _$TransactionInformation._(
-              from: BuiltValueNullFieldError.checkNotNull(
-                  from, r'TransactionInformation', 'from'),
-              txData: BuiltValueNullFieldError.checkNotNull(
-                  txData, r'TransactionInformation', 'txData'),
-              txHash: BuiltValueNullFieldError.checkNotNull(
-                  txHash, r'TransactionInformation', 'txHash'),
-              txIndexInBlock: BuiltValueNullFieldError.checkNotNull(
-                  txIndexInBlock, r'TransactionInformation', 'txIndexInBlock'),
-              blockHash: BuiltValueNullFieldError.checkNotNull(
-                  blockHash, r'TransactionInformation', 'blockHash'),
-              blockNumber: BuiltValueNullFieldError.checkNotNull(
-                  blockNumber, r'TransactionInformation', 'blockNumber'),
-              contract: contract.build(),
-              method: method.build());
+          _$TransactionInformation._(
+            from: BuiltValueNullFieldError.checkNotNull(
+                from, r'TransactionInformation', 'from'),
+            txData: BuiltValueNullFieldError.checkNotNull(
+                txData, r'TransactionInformation', 'txData'),
+            txHash: BuiltValueNullFieldError.checkNotNull(
+                txHash, r'TransactionInformation', 'txHash'),
+            txIndexInBlock: BuiltValueNullFieldError.checkNotNull(
+                txIndexInBlock, r'TransactionInformation', 'txIndexInBlock'),
+            blockHash: BuiltValueNullFieldError.checkNotNull(
+                blockHash, r'TransactionInformation', 'blockHash'),
+            blockNumber: BuiltValueNullFieldError.checkNotNull(
+                blockNumber, r'TransactionInformation', 'blockNumber'),
+            contract: contract.build(),
+            method: method.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -211,7 +193,7 @@ class TransactionInformationBuilder
         _$failedField = 'method';
         method.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TransactionInformation', _$failedField, e.toString());
       }
       rethrow;

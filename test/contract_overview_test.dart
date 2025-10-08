@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ContractOverview, () {
-    // A label.
+    // An alias to easily identify and reference the entity in subsequent requests.
     // String label
     test('to test the property `label`', () async {
       // TODO
@@ -27,6 +27,11 @@ void main() {
 
     // bool isFavorite
     test('to test the property `isFavorite`', () async {
+      // TODO
+    });
+
+    // bool deployable
+    test('to test the property `deployable`', () async {
       // TODO
     });
 

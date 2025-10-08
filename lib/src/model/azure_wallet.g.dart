@@ -15,26 +15,19 @@ class _$AzureWallet extends AzureWallet {
   final String publicAddress;
 
   factory _$AzureWallet([void Function(AzureWalletBuilder)? updates]) =>
-      (new AzureWalletBuilder()..update(updates))._build();
+      (AzureWalletBuilder()..update(updates))._build();
 
   _$AzureWallet._(
       {required this.keyName,
       required this.keyVersion,
       required this.publicAddress})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(keyName, r'AzureWallet', 'keyName');
-    BuiltValueNullFieldError.checkNotNull(
-        keyVersion, r'AzureWallet', 'keyVersion');
-    BuiltValueNullFieldError.checkNotNull(
-        publicAddress, r'AzureWallet', 'publicAddress');
-  }
-
+      : super._();
   @override
   AzureWallet rebuild(void Function(AzureWalletBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AzureWalletBuilder toBuilder() => new AzureWalletBuilder()..replace(this);
+  AzureWalletBuilder toBuilder() => AzureWalletBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -98,7 +91,6 @@ class AzureWalletBuilder implements Builder<AzureWallet, AzureWalletBuilder> {
 
   @override
   void replace(AzureWallet other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AzureWallet;
   }
 
@@ -112,13 +104,14 @@ class AzureWalletBuilder implements Builder<AzureWallet, AzureWalletBuilder> {
 
   _$AzureWallet _build() {
     final _$result = _$v ??
-        new _$AzureWallet._(
-            keyName: BuiltValueNullFieldError.checkNotNull(
-                keyName, r'AzureWallet', 'keyName'),
-            keyVersion: BuiltValueNullFieldError.checkNotNull(
-                keyVersion, r'AzureWallet', 'keyVersion'),
-            publicAddress: BuiltValueNullFieldError.checkNotNull(
-                publicAddress, r'AzureWallet', 'publicAddress'));
+        _$AzureWallet._(
+          keyName: BuiltValueNullFieldError.checkNotNull(
+              keyName, r'AzureWallet', 'keyName'),
+          keyVersion: BuiltValueNullFieldError.checkNotNull(
+              keyVersion, r'AzureWallet', 'keyVersion'),
+          publicAddress: BuiltValueNullFieldError.checkNotNull(
+              publicAddress, r'AzureWallet', 'publicAddress'),
+        );
     replace(_$result);
     return _$result;
   }

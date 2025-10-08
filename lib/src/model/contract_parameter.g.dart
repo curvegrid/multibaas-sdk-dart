@@ -12,17 +12,16 @@ class _$ContractParameter extends ContractParameter {
 
   factory _$ContractParameter(
           [void Function(ContractParameterBuilder)? updates]) =>
-      (new ContractParameterBuilder()..update(updates))._build();
+      (ContractParameterBuilder()..update(updates))._build();
 
   _$ContractParameter._({this.typeConversion}) : super._();
-
   @override
   ContractParameter rebuild(void Function(ContractParameterBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ContractParameterBuilder toBuilder() =>
-      new ContractParameterBuilder()..replace(this);
+      ContractParameterBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -52,7 +51,7 @@ class ContractParameterBuilder
 
   ContractABITypeConversionBuilder? _typeConversion;
   ContractABITypeConversionBuilder get typeConversion =>
-      _$this._typeConversion ??= new ContractABITypeConversionBuilder();
+      _$this._typeConversion ??= ContractABITypeConversionBuilder();
   set typeConversion(ContractABITypeConversionBuilder? typeConversion) =>
       _$this._typeConversion = typeConversion;
 
@@ -71,7 +70,6 @@ class ContractParameterBuilder
 
   @override
   void replace(ContractParameter other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractParameter;
   }
 
@@ -87,14 +85,16 @@ class ContractParameterBuilder
     _$ContractParameter _$result;
     try {
       _$result = _$v ??
-          new _$ContractParameter._(typeConversion: _typeConversion?.build());
+          _$ContractParameter._(
+            typeConversion: _typeConversion?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'typeConversion';
         _typeConversion?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractParameter', _$failedField, e.toString());
       }
       rethrow;

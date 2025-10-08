@@ -16,19 +16,11 @@ class _$CreateWebhook200Response extends CreateWebhook200Response {
 
   factory _$CreateWebhook200Response(
           [void Function(CreateWebhook200ResponseBuilder)? updates]) =>
-      (new CreateWebhook200ResponseBuilder()..update(updates))._build();
+      (CreateWebhook200ResponseBuilder()..update(updates))._build();
 
   _$CreateWebhook200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'CreateWebhook200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'CreateWebhook200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CreateWebhook200Response', 'message');
-  }
-
+      : super._();
   @override
   CreateWebhook200Response rebuild(
           void Function(CreateWebhook200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$CreateWebhook200Response extends CreateWebhook200Response {
 
   @override
   CreateWebhook200ResponseBuilder toBuilder() =>
-      new CreateWebhook200ResponseBuilder()..replace(this);
+      CreateWebhook200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +67,7 @@ class CreateWebhook200ResponseBuilder
 
   WebhookEndpointBuilder? _result;
   WebhookEndpointBuilder get result =>
-      _$this._result ??= new WebhookEndpointBuilder();
+      _$this._result ??= WebhookEndpointBuilder();
   set result(covariant WebhookEndpointBuilder? result) =>
       _$this._result = result;
 
@@ -104,7 +96,6 @@ class CreateWebhook200ResponseBuilder
 
   @override
   void replace(covariant CreateWebhook200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateWebhook200Response;
   }
 
@@ -120,19 +111,20 @@ class CreateWebhook200ResponseBuilder
     _$CreateWebhook200Response _$result;
     try {
       _$result = _$v ??
-          new _$CreateWebhook200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'CreateWebhook200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'CreateWebhook200Response', 'message'));
+          _$CreateWebhook200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'CreateWebhook200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'CreateWebhook200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateWebhook200Response', _$failedField, e.toString());
       }
       rethrow;

@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TransactionToSign, () {
-    // BaseTransactionToSignTx tx
+    // TransactionToSignTx tx
     test('to test the property `tx`', () async {
       // TODO
     });

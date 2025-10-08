@@ -16,15 +16,11 @@ class _$LinkAddressContractRequest extends LinkAddressContractRequest {
 
   factory _$LinkAddressContractRequest(
           [void Function(LinkAddressContractRequestBuilder)? updates]) =>
-      (new LinkAddressContractRequestBuilder()..update(updates))._build();
+      (LinkAddressContractRequestBuilder()..update(updates))._build();
 
   _$LinkAddressContractRequest._(
       {required this.label, this.version, this.startingBlock})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        label, r'LinkAddressContractRequest', 'label');
-  }
-
+      : super._();
   @override
   LinkAddressContractRequest rebuild(
           void Function(LinkAddressContractRequestBuilder) updates) =>
@@ -32,7 +28,7 @@ class _$LinkAddressContractRequest extends LinkAddressContractRequest {
 
   @override
   LinkAddressContractRequestBuilder toBuilder() =>
-      new LinkAddressContractRequestBuilder()..replace(this);
+      LinkAddressContractRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -98,7 +94,6 @@ class LinkAddressContractRequestBuilder
 
   @override
   void replace(LinkAddressContractRequest other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LinkAddressContractRequest;
   }
 
@@ -112,11 +107,12 @@ class LinkAddressContractRequestBuilder
 
   _$LinkAddressContractRequest _build() {
     final _$result = _$v ??
-        new _$LinkAddressContractRequest._(
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'LinkAddressContractRequest', 'label'),
-            version: version,
-            startingBlock: startingBlock);
+        _$LinkAddressContractRequest._(
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'LinkAddressContractRequest', 'label'),
+          version: version,
+          startingBlock: startingBlock,
+        );
     replace(_$result);
     return _$result;
   }

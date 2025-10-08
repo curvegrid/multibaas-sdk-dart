@@ -11,10 +11,10 @@ part 'base_api_key.g.dart';
 /// An API key.
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 @BuiltValue(instantiable: false)
 abstract class BaseAPIKey  {
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 

@@ -19,7 +19,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<AddressLabel> result
+    // BuiltList<AddressAlias> result
     test('to test the property `result`', () async {
       // TODO
     });

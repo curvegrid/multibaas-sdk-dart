@@ -9,7 +9,7 @@ All URIs are relative to *https://your_deployment.multibaas.com/api/v0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**callContractFunction**](ContractsApi.md#callcontractfunction) | **POST** /chains/{chain}/addresses/{address-or-label}/contracts/{contract}/methods/{method} | Call a contract function
+[**callContractFunction**](ContractsApi.md#callcontractfunction) | **POST** /chains/{chain}/addresses/{address-or-alias}/contracts/{contract}/methods/{method} | Call a contract function
 [**createContract**](ContractsApi.md#createcontract) | **POST** /contracts/{contract} | Create a contract
 [**createContracts**](ContractsApi.md#createcontracts) | **POST** /contracts | Create multiple contracts
 [**deleteContract**](ContractsApi.md#deletecontract) | **DELETE** /contracts/{contract} | Delete a contract
@@ -19,19 +19,19 @@ Method | HTTP request | Description
 [**getContract**](ContractsApi.md#getcontract) | **GET** /contracts/{contract} | Get a contract
 [**getContractVersion**](ContractsApi.md#getcontractversion) | **GET** /contracts/{contract}/{version} | Get a contract version
 [**getContractVersions**](ContractsApi.md#getcontractversions) | **GET** /contracts/{contract}/all | Get all contract versions
-[**getEventMonitorStatus**](ContractsApi.md#geteventmonitorstatus) | **GET** /chains/{chain}/addresses/{address-or-label}/contracts/{contract}/status | Get event monitor status
+[**getEventMonitorStatus**](ContractsApi.md#geteventmonitorstatus) | **GET** /chains/{chain}/addresses/{address-or-alias}/contracts/{contract}/status | Get event monitor status
 [**getEventTypeConversions**](ContractsApi.md#geteventtypeconversions) | **GET** /contracts/{contract}/{version}/events/{event} | Get event type conversions
 [**getFunctionTypeConversions**](ContractsApi.md#getfunctiontypeconversions) | **GET** /contracts/{contract}/{version}/methods/{method} | Get function type conversions
-[**linkAddressContract**](ContractsApi.md#linkaddresscontract) | **POST** /chains/{chain}/addresses/{address-or-label}/contracts | Link address and contract
+[**linkAddressContract**](ContractsApi.md#linkaddresscontract) | **POST** /chains/{chain}/addresses/{address-or-alias}/contracts | Link address and contract
 [**listContractVersions**](ContractsApi.md#listcontractversions) | **GET** /contracts/{contract}/versions | List all contract versions
 [**listContracts**](ContractsApi.md#listcontracts) | **GET** /contracts | List contracts
 [**setEventTypeConversions**](ContractsApi.md#seteventtypeconversions) | **POST** /contracts/{contract}/{version}/events/{event} | Set event type conversions
 [**setFunctionTypeConversions**](ContractsApi.md#setfunctiontypeconversions) | **POST** /contracts/{contract}/{version}/methods/{method} | Set function type conversions
-[**unlinkAddressContract**](ContractsApi.md#unlinkaddresscontract) | **DELETE** /chains/{chain}/addresses/{address-or-label}/contracts/{contract} | Unlink address and contract
+[**unlinkAddressContract**](ContractsApi.md#unlinkaddresscontract) | **DELETE** /chains/{chain}/addresses/{address-or-alias}/contracts/{contract} | Unlink address and contract
 
 
 # **callContractFunction**
-> CallContractFunction200Response callContractFunction(chain, addressOrLabel, contract, method, postMethodArgs)
+> CallContractFunction200Response callContractFunction(chain, addressOrAlias, contract, method, postMethodArgs)
 
 Call a contract function
 
@@ -47,13 +47,13 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getContractsApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String addressOrLabel = addressOrLabel_example; // String | An address or the label of an address.
+final String addressOrAlias = addressOrAlias_example; // String | An address or the alias of an address.
 final String contract = contract_example; // String | 
 final String method = method_example; // String | Contract function.
 final PostMethodArgs postMethodArgs = ; // PostMethodArgs | 
 
 try {
-    final response = api.callContractFunction(chain, addressOrLabel, contract, method, postMethodArgs);
+    final response = api.callContractFunction(chain, addressOrAlias, contract, method, postMethodArgs);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling ContractsApi->callContractFunction: $e\n');
@@ -65,10 +65,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **addressOrLabel** | **String**| An address or the label of an address. | 
+ **addressOrAlias** | **String**| An address or the alias of an address. | 
  **contract** | **String**|  | 
  **method** | **String**| Contract function. | 
- **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | [optional] 
+ **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | 
 
 ### Return type
 
@@ -117,7 +117,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contract** | **String**|  | 
- **baseContract** | [**BaseContract**](BaseContract.md)|  | [optional] 
+ **baseContract** | [**BaseContract**](BaseContract.md)|  | 
 
 ### Return type
 
@@ -164,7 +164,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **baseContract** | [**BuiltList&lt;BaseContract&gt;**](BaseContract.md)|  | [optional] 
+ **baseContract** | [**BuiltList&lt;BaseContract&gt;**](BaseContract.md)|  | 
 
 ### Return type
 
@@ -309,7 +309,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contract** | **String**|  | 
- **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | [optional] 
+ **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | 
 
 ### Return type
 
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contract** | **String**|  | 
  **version** | **String**| Contract Version. | 
- **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | [optional] 
+ **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | 
 
 ### Return type
 
@@ -521,7 +521,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getEventMonitorStatus**
-> GetEventMonitorStatus200Response getEventMonitorStatus(chain, addressOrLabel, contract)
+> GetEventMonitorStatus200Response getEventMonitorStatus(chain, addressOrAlias, contract)
 
 Get event monitor status
 
@@ -537,11 +537,11 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getContractsApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String addressOrLabel = addressOrLabel_example; // String | An address or the label of an address.
+final String addressOrAlias = addressOrAlias_example; // String | An address or the alias of an address.
 final String contract = contract_example; // String | 
 
 try {
-    final response = api.getEventMonitorStatus(chain, addressOrLabel, contract);
+    final response = api.getEventMonitorStatus(chain, addressOrAlias, contract);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling ContractsApi->getEventMonitorStatus: $e\n');
@@ -553,7 +553,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **addressOrLabel** | **String**| An address or the label of an address. | 
+ **addressOrAlias** | **String**| An address or the alias of an address. | 
  **contract** | **String**|  | 
 
 ### Return type
@@ -674,7 +674,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **linkAddressContract**
-> SetAddress201Response linkAddressContract(chain, addressOrLabel, linkAddressContractRequest)
+> SetAddress201Response linkAddressContract(chain, addressOrAlias, linkAddressContractRequest)
 
 Link address and contract
 
@@ -690,11 +690,11 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getContractsApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String addressOrLabel = addressOrLabel_example; // String | An address or the label of an address.
+final String addressOrAlias = addressOrAlias_example; // String | An address or the alias of an address.
 final LinkAddressContractRequest linkAddressContractRequest = ; // LinkAddressContractRequest | 
 
 try {
-    final response = api.linkAddressContract(chain, addressOrLabel, linkAddressContractRequest);
+    final response = api.linkAddressContract(chain, addressOrAlias, linkAddressContractRequest);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling ContractsApi->linkAddressContract: $e\n');
@@ -706,8 +706,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **addressOrLabel** | **String**| An address or the label of an address. | 
- **linkAddressContractRequest** | [**LinkAddressContractRequest**](LinkAddressContractRequest.md)|  | [optional] 
+ **addressOrAlias** | **String**| An address or the alias of an address. | 
+ **linkAddressContractRequest** | [**LinkAddressContractRequest**](LinkAddressContractRequest.md)|  | 
 
 ### Return type
 
@@ -850,7 +850,7 @@ Name | Type | Description  | Notes
  **contract** | **String**|  | 
  **version** | **String**| Contract Version. | 
  **event** | **String**| Contract Event. | 
- **contractEventOptions** | [**ContractEventOptions**](ContractEventOptions.md)|  | [optional] 
+ **contractEventOptions** | [**ContractEventOptions**](ContractEventOptions.md)|  | 
 
 ### Return type
 
@@ -903,7 +903,7 @@ Name | Type | Description  | Notes
  **contract** | **String**|  | 
  **version** | **String**| Contract Version. | 
  **method** | **String**| Contract function. | 
- **contractMethodOptions** | [**ContractMethodOptions**](ContractMethodOptions.md)|  | [optional] 
+ **contractMethodOptions** | [**ContractMethodOptions**](ContractMethodOptions.md)|  | 
 
 ### Return type
 
@@ -921,7 +921,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unlinkAddressContract**
-> SetAddress201Response unlinkAddressContract(chain, addressOrLabel, contract)
+> SetAddress201Response unlinkAddressContract(chain, addressOrAlias, contract)
 
 Unlink address and contract
 
@@ -937,11 +937,11 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getContractsApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String addressOrLabel = addressOrLabel_example; // String | An address or the label of an address.
+final String addressOrAlias = addressOrAlias_example; // String | An address or the alias of an address.
 final String contract = contract_example; // String | 
 
 try {
-    final response = api.unlinkAddressContract(chain, addressOrLabel, contract);
+    final response = api.unlinkAddressContract(chain, addressOrAlias, contract);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling ContractsApi->unlinkAddressContract: $e\n');
@@ -953,7 +953,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **addressOrLabel** | **String**| An address or the label of an address. | 
+ **addressOrAlias** | **String**| An address or the alias of an address. | 
  **contract** | **String**|  | 
 
 ### Return type

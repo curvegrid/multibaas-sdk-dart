@@ -16,19 +16,11 @@ class _$AcceptInvite200Response extends AcceptInvite200Response {
 
   factory _$AcceptInvite200Response(
           [void Function(AcceptInvite200ResponseBuilder)? updates]) =>
-      (new AcceptInvite200ResponseBuilder()..update(updates))._build();
+      (AcceptInvite200ResponseBuilder()..update(updates))._build();
 
   _$AcceptInvite200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'AcceptInvite200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'AcceptInvite200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'AcceptInvite200Response', 'message');
-  }
-
+      : super._();
   @override
   AcceptInvite200Response rebuild(
           void Function(AcceptInvite200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$AcceptInvite200Response extends AcceptInvite200Response {
 
   @override
   AcceptInvite200ResponseBuilder toBuilder() =>
-      new AcceptInvite200ResponseBuilder()..replace(this);
+      AcceptInvite200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +66,7 @@ class AcceptInvite200ResponseBuilder
   _$AcceptInvite200Response? _$v;
 
   UserBuilder? _result;
-  UserBuilder get result => _$this._result ??= new UserBuilder();
+  UserBuilder get result => _$this._result ??= UserBuilder();
   set result(covariant UserBuilder? result) => _$this._result = result;
 
   int? _status;
@@ -102,7 +94,6 @@ class AcceptInvite200ResponseBuilder
 
   @override
   void replace(covariant AcceptInvite200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AcceptInvite200Response;
   }
 
@@ -118,19 +109,20 @@ class AcceptInvite200ResponseBuilder
     _$AcceptInvite200Response _$result;
     try {
       _$result = _$v ??
-          new _$AcceptInvite200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'AcceptInvite200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'AcceptInvite200Response', 'message'));
+          _$AcceptInvite200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'AcceptInvite200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'AcceptInvite200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'AcceptInvite200Response', _$failedField, e.toString());
       }
       rethrow;

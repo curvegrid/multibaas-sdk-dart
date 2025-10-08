@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **blockNumber** | **String** | The transaction block number. | [optional] 
 **contract** | [**ContractInformation**](ContractInformation.md) |  | [optional] 
 **method** | [**ContractMethodInformation**](ContractMethodInformation.md) |  | [optional] 
+**authorizationExtraInfo** | [**BuiltList&lt;AuthorizationExtraInfo&gt;**](AuthorizationExtraInfo.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

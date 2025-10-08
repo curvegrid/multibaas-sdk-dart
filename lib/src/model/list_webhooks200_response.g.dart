@@ -16,19 +16,11 @@ class _$ListWebhooks200Response extends ListWebhooks200Response {
 
   factory _$ListWebhooks200Response(
           [void Function(ListWebhooks200ResponseBuilder)? updates]) =>
-      (new ListWebhooks200ResponseBuilder()..update(updates))._build();
+      (ListWebhooks200ResponseBuilder()..update(updates))._build();
 
   _$ListWebhooks200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListWebhooks200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListWebhooks200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListWebhooks200Response', 'message');
-  }
-
+      : super._();
   @override
   ListWebhooks200Response rebuild(
           void Function(ListWebhooks200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListWebhooks200Response extends ListWebhooks200Response {
 
   @override
   ListWebhooks200ResponseBuilder toBuilder() =>
-      new ListWebhooks200ResponseBuilder()..replace(this);
+      ListWebhooks200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +67,7 @@ class ListWebhooks200ResponseBuilder
 
   ListBuilder<WebhookEndpoint>? _result;
   ListBuilder<WebhookEndpoint> get result =>
-      _$this._result ??= new ListBuilder<WebhookEndpoint>();
+      _$this._result ??= ListBuilder<WebhookEndpoint>();
   set result(covariant ListBuilder<WebhookEndpoint>? result) =>
       _$this._result = result;
 
@@ -104,7 +96,6 @@ class ListWebhooks200ResponseBuilder
 
   @override
   void replace(covariant ListWebhooks200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListWebhooks200Response;
   }
 
@@ -120,19 +111,20 @@ class ListWebhooks200ResponseBuilder
     _$ListWebhooks200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListWebhooks200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListWebhooks200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListWebhooks200Response', 'message'));
+          _$ListWebhooks200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListWebhooks200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListWebhooks200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListWebhooks200Response', _$failedField, e.toString());
       }
       rethrow;

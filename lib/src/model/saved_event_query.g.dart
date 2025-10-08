@@ -17,28 +17,20 @@ class _$SavedEventQuery extends SavedEventQuery {
   final bool isSystem;
 
   factory _$SavedEventQuery([void Function(SavedEventQueryBuilder)? updates]) =>
-      (new SavedEventQueryBuilder()..update(updates))._build();
+      (SavedEventQueryBuilder()..update(updates))._build();
 
   _$SavedEventQuery._(
       {required this.id,
       required this.label,
       required this.query,
       required this.isSystem})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'SavedEventQuery', 'id');
-    BuiltValueNullFieldError.checkNotNull(label, r'SavedEventQuery', 'label');
-    BuiltValueNullFieldError.checkNotNull(query, r'SavedEventQuery', 'query');
-    BuiltValueNullFieldError.checkNotNull(
-        isSystem, r'SavedEventQuery', 'isSystem');
-  }
-
+      : super._();
   @override
   SavedEventQuery rebuild(void Function(SavedEventQueryBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SavedEventQueryBuilder toBuilder() =>
-      new SavedEventQueryBuilder()..replace(this);
+  SavedEventQueryBuilder toBuilder() => SavedEventQueryBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -85,7 +77,7 @@ class SavedEventQueryBuilder
   set label(String? label) => _$this._label = label;
 
   EventQueryBuilder? _query;
-  EventQueryBuilder get query => _$this._query ??= new EventQueryBuilder();
+  EventQueryBuilder get query => _$this._query ??= EventQueryBuilder();
   set query(EventQueryBuilder? query) => _$this._query = query;
 
   bool? _isSystem;
@@ -110,7 +102,6 @@ class SavedEventQueryBuilder
 
   @override
   void replace(SavedEventQuery other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SavedEventQuery;
   }
 
@@ -126,21 +117,22 @@ class SavedEventQueryBuilder
     _$SavedEventQuery _$result;
     try {
       _$result = _$v ??
-          new _$SavedEventQuery._(
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'SavedEventQuery', 'id'),
-              label: BuiltValueNullFieldError.checkNotNull(
-                  label, r'SavedEventQuery', 'label'),
-              query: query.build(),
-              isSystem: BuiltValueNullFieldError.checkNotNull(
-                  isSystem, r'SavedEventQuery', 'isSystem'));
+          _$SavedEventQuery._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'SavedEventQuery', 'id'),
+            label: BuiltValueNullFieldError.checkNotNull(
+                label, r'SavedEventQuery', 'label'),
+            query: query.build(),
+            isSystem: BuiltValueNullFieldError.checkNotNull(
+                isSystem, r'SavedEventQuery', 'isSystem'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'query';
         query.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SavedEventQuery', _$failedField, e.toString());
       }
       rethrow;

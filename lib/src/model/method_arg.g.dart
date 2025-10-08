@@ -15,20 +15,16 @@ class _$MethodArg extends MethodArg {
   final String type;
 
   factory _$MethodArg([void Function(MethodArgBuilder)? updates]) =>
-      (new MethodArgBuilder()..update(updates))._build();
+      (MethodArgBuilder()..update(updates))._build();
 
   _$MethodArg._({required this.name, this.value, required this.type})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'MethodArg', 'name');
-    BuiltValueNullFieldError.checkNotNull(type, r'MethodArg', 'type');
-  }
-
+      : super._();
   @override
   MethodArg rebuild(void Function(MethodArgBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MethodArgBuilder toBuilder() => new MethodArgBuilder()..replace(this);
+  MethodArgBuilder toBuilder() => MethodArgBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -91,7 +87,6 @@ class MethodArgBuilder implements Builder<MethodArg, MethodArgBuilder> {
 
   @override
   void replace(MethodArg other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MethodArg;
   }
 
@@ -105,12 +100,13 @@ class MethodArgBuilder implements Builder<MethodArg, MethodArgBuilder> {
 
   _$MethodArg _build() {
     final _$result = _$v ??
-        new _$MethodArg._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'MethodArg', 'name'),
-            value: value,
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'MethodArg', 'type'));
+        _$MethodArg._(
+          name:
+              BuiltValueNullFieldError.checkNotNull(name, r'MethodArg', 'name'),
+          value: value,
+          type:
+              BuiltValueNullFieldError.checkNotNull(type, r'MethodArg', 'type'),
+        );
     replace(_$result);
     return _$result;
   }

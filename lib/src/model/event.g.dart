@@ -15,24 +15,19 @@ class _$Event extends Event {
   final TransactionInformation transaction;
 
   factory _$Event([void Function(EventBuilder)? updates]) =>
-      (new EventBuilder()..update(updates))._build();
+      (EventBuilder()..update(updates))._build();
 
   _$Event._(
       {required this.triggeredAt,
       required this.event,
       required this.transaction})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(triggeredAt, r'Event', 'triggeredAt');
-    BuiltValueNullFieldError.checkNotNull(event, r'Event', 'event');
-    BuiltValueNullFieldError.checkNotNull(transaction, r'Event', 'transaction');
-  }
-
+      : super._();
   @override
   Event rebuild(void Function(EventBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EventBuilder toBuilder() => new EventBuilder()..replace(this);
+  EventBuilder toBuilder() => EventBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,12 +67,12 @@ class EventBuilder implements Builder<Event, EventBuilder> {
 
   EventInformationBuilder? _event;
   EventInformationBuilder get event =>
-      _$this._event ??= new EventInformationBuilder();
+      _$this._event ??= EventInformationBuilder();
   set event(EventInformationBuilder? event) => _$this._event = event;
 
   TransactionInformationBuilder? _transaction;
   TransactionInformationBuilder get transaction =>
-      _$this._transaction ??= new TransactionInformationBuilder();
+      _$this._transaction ??= TransactionInformationBuilder();
   set transaction(TransactionInformationBuilder? transaction) =>
       _$this._transaction = transaction;
 
@@ -98,7 +93,6 @@ class EventBuilder implements Builder<Event, EventBuilder> {
 
   @override
   void replace(Event other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Event;
   }
 
@@ -114,11 +108,12 @@ class EventBuilder implements Builder<Event, EventBuilder> {
     _$Event _$result;
     try {
       _$result = _$v ??
-          new _$Event._(
-              triggeredAt: BuiltValueNullFieldError.checkNotNull(
-                  triggeredAt, r'Event', 'triggeredAt'),
-              event: event.build(),
-              transaction: transaction.build());
+          _$Event._(
+            triggeredAt: BuiltValueNullFieldError.checkNotNull(
+                triggeredAt, r'Event', 'triggeredAt'),
+            event: event.build(),
+            transaction: transaction.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -127,8 +122,7 @@ class EventBuilder implements Builder<Event, EventBuilder> {
         _$failedField = 'transaction';
         transaction.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Event', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Event', _$failedField, e.toString());
       }
       rethrow;
     }

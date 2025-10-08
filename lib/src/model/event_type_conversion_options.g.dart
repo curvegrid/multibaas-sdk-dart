@@ -12,13 +12,9 @@ class _$EventTypeConversionOptions extends EventTypeConversionOptions {
 
   factory _$EventTypeConversionOptions(
           [void Function(EventTypeConversionOptionsBuilder)? updates]) =>
-      (new EventTypeConversionOptionsBuilder()..update(updates))._build();
+      (EventTypeConversionOptionsBuilder()..update(updates))._build();
 
-  _$EventTypeConversionOptions._({required this.inputs}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'EventTypeConversionOptions', 'inputs');
-  }
-
+  _$EventTypeConversionOptions._({required this.inputs}) : super._();
   @override
   EventTypeConversionOptions rebuild(
           void Function(EventTypeConversionOptionsBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$EventTypeConversionOptions extends EventTypeConversionOptions {
 
   @override
   EventTypeConversionOptionsBuilder toBuilder() =>
-      new EventTypeConversionOptionsBuilder()..replace(this);
+      EventTypeConversionOptionsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -57,7 +53,7 @@ class EventTypeConversionOptionsBuilder
 
   ListBuilder<TypeConversionOptions>? _inputs;
   ListBuilder<TypeConversionOptions> get inputs =>
-      _$this._inputs ??= new ListBuilder<TypeConversionOptions>();
+      _$this._inputs ??= ListBuilder<TypeConversionOptions>();
   set inputs(ListBuilder<TypeConversionOptions>? inputs) =>
       _$this._inputs = inputs;
 
@@ -76,7 +72,6 @@ class EventTypeConversionOptionsBuilder
 
   @override
   void replace(EventTypeConversionOptions other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventTypeConversionOptions;
   }
 
@@ -91,15 +86,17 @@ class EventTypeConversionOptionsBuilder
   _$EventTypeConversionOptions _build() {
     _$EventTypeConversionOptions _$result;
     try {
-      _$result =
-          _$v ?? new _$EventTypeConversionOptions._(inputs: inputs.build());
+      _$result = _$v ??
+          _$EventTypeConversionOptions._(
+            inputs: inputs.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'inputs';
         inputs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EventTypeConversionOptions', _$failedField, e.toString());
       }
       rethrow;

@@ -12,13 +12,9 @@ class _$SignedTransactionSubmission extends SignedTransactionSubmission {
 
   factory _$SignedTransactionSubmission(
           [void Function(SignedTransactionSubmissionBuilder)? updates]) =>
-      (new SignedTransactionSubmissionBuilder()..update(updates))._build();
+      (SignedTransactionSubmissionBuilder()..update(updates))._build();
 
-  _$SignedTransactionSubmission._({required this.signedTx}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        signedTx, r'SignedTransactionSubmission', 'signedTx');
-  }
-
+  _$SignedTransactionSubmission._({required this.signedTx}) : super._();
   @override
   SignedTransactionSubmission rebuild(
           void Function(SignedTransactionSubmissionBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$SignedTransactionSubmission extends SignedTransactionSubmission {
 
   @override
   SignedTransactionSubmissionBuilder toBuilder() =>
-      new SignedTransactionSubmissionBuilder()..replace(this);
+      SignedTransactionSubmissionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +71,6 @@ class SignedTransactionSubmissionBuilder
 
   @override
   void replace(SignedTransactionSubmission other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignedTransactionSubmission;
   }
 
@@ -89,9 +84,10 @@ class SignedTransactionSubmissionBuilder
 
   _$SignedTransactionSubmission _build() {
     final _$result = _$v ??
-        new _$SignedTransactionSubmission._(
-            signedTx: BuiltValueNullFieldError.checkNotNull(
-                signedTx, r'SignedTransactionSubmission', 'signedTx'));
+        _$SignedTransactionSubmission._(
+          signedTx: BuiltValueNullFieldError.checkNotNull(
+              signedTx, r'SignedTransactionSubmission', 'signedTx'),
+        );
     replace(_$result);
     return _$result;
   }

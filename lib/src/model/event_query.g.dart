@@ -18,18 +18,18 @@ EventQueryOrderEnum _$eventQueryOrderEnumValueOf(String name) {
     case 'DESC':
       return _$eventQueryOrderEnum_DESC;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<EventQueryOrderEnum> _$eventQueryOrderEnumValues =
-    new BuiltSet<EventQueryOrderEnum>(const <EventQueryOrderEnum>[
+    BuiltSet<EventQueryOrderEnum>(const <EventQueryOrderEnum>[
   _$eventQueryOrderEnum_ASC,
   _$eventQueryOrderEnum_DESC,
 ]);
 
 Serializer<EventQueryOrderEnum> _$eventQueryOrderEnumSerializer =
-    new _$EventQueryOrderEnumSerializer();
+    _$EventQueryOrderEnumSerializer();
 
 class _$EventQueryOrderEnumSerializer
     implements PrimitiveSerializer<EventQueryOrderEnum> {
@@ -70,19 +70,16 @@ class _$EventQuery extends EventQuery {
   final EventQueryOrderEnum? order;
 
   factory _$EventQuery([void Function(EventQueryBuilder)? updates]) =>
-      (new EventQueryBuilder()..update(updates))._build();
+      (EventQueryBuilder()..update(updates))._build();
 
   _$EventQuery._({required this.events, this.groupBy, this.orderBy, this.order})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(events, r'EventQuery', 'events');
-  }
-
+      : super._();
   @override
   EventQuery rebuild(void Function(EventQueryBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EventQueryBuilder toBuilder() => new EventQueryBuilder()..replace(this);
+  EventQueryBuilder toBuilder() => EventQueryBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -121,7 +118,7 @@ class EventQueryBuilder implements Builder<EventQuery, EventQueryBuilder> {
 
   ListBuilder<EventQueryEvent>? _events;
   ListBuilder<EventQueryEvent> get events =>
-      _$this._events ??= new ListBuilder<EventQueryEvent>();
+      _$this._events ??= ListBuilder<EventQueryEvent>();
   set events(ListBuilder<EventQueryEvent>? events) => _$this._events = events;
 
   String? _groupBy;
@@ -154,7 +151,6 @@ class EventQueryBuilder implements Builder<EventQuery, EventQueryBuilder> {
 
   @override
   void replace(EventQuery other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventQuery;
   }
 
@@ -170,18 +166,19 @@ class EventQueryBuilder implements Builder<EventQuery, EventQueryBuilder> {
     _$EventQuery _$result;
     try {
       _$result = _$v ??
-          new _$EventQuery._(
-              events: events.build(),
-              groupBy: groupBy,
-              orderBy: orderBy,
-              order: order);
+          _$EventQuery._(
+            events: events.build(),
+            groupBy: groupBy,
+            orderBy: orderBy,
+            order: order,
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'events';
         events.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EventQuery', _$failedField, e.toString());
       }
       rethrow;

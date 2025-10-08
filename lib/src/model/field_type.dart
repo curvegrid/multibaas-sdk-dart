@@ -24,8 +24,8 @@ class FieldType extends EnumClass {
   @BuiltValueEnumConst(wireName: r'contract_address')
   static const FieldType contractAddress = _$contractAddress;
   /// The field type in a select or filter.
-  @BuiltValueEnumConst(wireName: r'contract_address_label')
-  static const FieldType contractAddressLabel = _$contractAddressLabel;
+  @BuiltValueEnumConst(wireName: r'contract_address_alias')
+  static const FieldType contractAddressAlias = _$contractAddressAlias;
   /// The field type in a select or filter.
   @BuiltValueEnumConst(wireName: r'block_number')
   static const FieldType blockNumber = _$blockNumber;

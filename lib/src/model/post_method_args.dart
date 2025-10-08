@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:multibaas/src/model/preview_args.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -16,23 +15,22 @@ part 'post_method_args.g.dart';
 /// Properties:
 /// * [signature] 
 /// * [args] - List of the function arguments.
-/// * [from] - An ethereum address.
+/// * [from] - An Ethereum address (0x prefixed hex) or an address alias.
 /// * [nonce] - Nonce to use for the transaction execution.
 /// * [gasPrice] - Gas price to use for the transaction execution.
 /// * [gasFeeCap] - Gas fee cap to use for the 1559 transaction execution.
 /// * [gasTipCap] - Gas priority fee cap to use for the 1559 transaction execution.
 /// * [gas] - Gas limit to set for the transaction execution.
-/// * [to] - An ethereum address.
-/// * [value] 
+/// * [to] - An Ethereum address (0x prefixed hex) or an address alias.
+/// * [value] - Amount (in wei) to send with the transaction.
 /// * [signAndSubmit] - If the `from` address is an HSM address and this flag is set to `true`, the transaction will be automatically signed and submitted to the blockchain.
 /// * [nonceManagement] - If the `from` address is an HSM address and this flag is set to `true`, MultiBaas will keep track of the nonce and set it accordingly. This is particularly useful when submitting multiple transactions concurrently or in a very short period of time. If this flag is set to `true` and a `nonce` is provided, it will reset the nonce tracker to the given nonce (useful if the nonce tracker is out of sync).
 /// * [preEIP1559] - If set to `true`, forces a legacy type transaction. Otherwise an EIP-1559 transaction will created if the network supports it.
-/// * [signer] - An ethereum address.
-/// * [formatInts] - Mode to format integer outputs in the function call's responses. There are 3 possible modes:   - `auto` (the default option), where number format is decided by its type:     - If the type has size at most 32 bits, then the number is returned verbatim.     - If the type has size larger than 32 bits, then the number is returned as a string.   - `as-numbers`, where all numbers are returned as strings.   - `as-strings`, where all numbers are returned verbatim. 
+/// * [signer] - An Ethereum address (0x prefixed hex) or an address alias.
+/// * [formatInts] - Mode to format integer outputs in the function call's responses. There are 3 possible modes:   - `auto` (the default option), where number format is decided by its type:     - If the type has size at most 32 bits, then the number is returned verbatim.     - If the type has size larger than 32 bits, then the number is returned as a string.   - `as_numbers`, where all numbers are returned verbatim.   - `as_strings`, where all numbers are returned as strings. 
 /// * [timestamp] - Call the function at a specific timestamp. Only available for read functions calls and if the `historical_blocks_feature` is enabled (see the plan endpoint). Mutually exclusive with the `blockNumber` parameter.
 /// * [blockNumber] - Call the function at a specific block. Only available for read functions calls and if the `historical_blocks_feature` is enabled (see the plan endpoint). Mutually exclusive with the `timestamp` parameter.
 /// * [contractOverride] - If set to true the given address and contract don't need to be linked for the function to be called.
-/// * [preview] 
 @BuiltValue()
 abstract class PostMethodArgs implements Built<PostMethodArgs, PostMethodArgsBuilder> {
   @BuiltValueField(wireName: r'signature')
@@ -42,7 +40,7 @@ abstract class PostMethodArgs implements Built<PostMethodArgs, PostMethodArgsBui
   @BuiltValueField(wireName: r'args')
   BuiltList<JsonObject?>? get args;
 
-  /// An ethereum address.
+  /// An Ethereum address (0x prefixed hex) or an address alias.
   @BuiltValueField(wireName: r'from')
   String? get from;
 
@@ -66,12 +64,13 @@ abstract class PostMethodArgs implements Built<PostMethodArgs, PostMethodArgsBui
   @BuiltValueField(wireName: r'gas')
   int? get gas;
 
-  /// An ethereum address.
+  /// An Ethereum address (0x prefixed hex) or an address alias.
   @BuiltValueField(wireName: r'to')
   String? get to;
 
+  /// Amount (in wei) to send with the transaction.
   @BuiltValueField(wireName: r'value')
-  int? get value;
+  String? get value;
 
   /// If the `from` address is an HSM address and this flag is set to `true`, the transaction will be automatically signed and submitted to the blockchain.
   @BuiltValueField(wireName: r'signAndSubmit')
@@ -85,11 +84,11 @@ abstract class PostMethodArgs implements Built<PostMethodArgs, PostMethodArgsBui
   @BuiltValueField(wireName: r'preEIP1559')
   bool? get preEIP1559;
 
-  /// An ethereum address.
+  /// An Ethereum address (0x prefixed hex) or an address alias.
   @BuiltValueField(wireName: r'signer')
   String? get signer;
 
-  /// Mode to format integer outputs in the function call's responses. There are 3 possible modes:   - `auto` (the default option), where number format is decided by its type:     - If the type has size at most 32 bits, then the number is returned verbatim.     - If the type has size larger than 32 bits, then the number is returned as a string.   - `as-numbers`, where all numbers are returned as strings.   - `as-strings`, where all numbers are returned verbatim. 
+  /// Mode to format integer outputs in the function call's responses. There are 3 possible modes:   - `auto` (the default option), where number format is decided by its type:     - If the type has size at most 32 bits, then the number is returned verbatim.     - If the type has size larger than 32 bits, then the number is returned as a string.   - `as_numbers`, where all numbers are returned verbatim.   - `as_strings`, where all numbers are returned as strings. 
   @BuiltValueField(wireName: r'formatInts')
   String? get formatInts;
 
@@ -104,9 +103,6 @@ abstract class PostMethodArgs implements Built<PostMethodArgs, PostMethodArgsBui
   /// If set to true the given address and contract don't need to be linked for the function to be called.
   @BuiltValueField(wireName: r'contractOverride')
   bool? get contractOverride;
-
-  @BuiltValueField(wireName: r'preview')
-  PreviewArgs? get preview;
 
   PostMethodArgs._();
 
@@ -202,7 +198,7 @@ class _$PostMethodArgsSerializer implements PrimitiveSerializer<PostMethodArgs> 
       yield r'value';
       yield serializers.serialize(
         object.value,
-        specifiedType: const FullType(int),
+        specifiedType: const FullType(String),
       );
     }
     if (object.signAndSubmit != null) {
@@ -259,13 +255,6 @@ class _$PostMethodArgsSerializer implements PrimitiveSerializer<PostMethodArgs> 
       yield serializers.serialize(
         object.contractOverride,
         specifiedType: const FullType(bool),
-      );
-    }
-    if (object.preview != null) {
-      yield r'preview';
-      yield serializers.serialize(
-        object.preview,
-        specifiedType: const FullType(PreviewArgs),
       );
     }
   }
@@ -357,8 +346,8 @@ class _$PostMethodArgsSerializer implements PrimitiveSerializer<PostMethodArgs> 
         case r'value':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(int),
-          ) as int;
+            specifiedType: const FullType(String),
+          ) as String;
           result.value = valueDes;
           break;
         case r'signAndSubmit':
@@ -416,13 +405,6 @@ class _$PostMethodArgsSerializer implements PrimitiveSerializer<PostMethodArgs> 
             specifiedType: const FullType(bool),
           ) as bool;
           result.contractOverride = valueDes;
-          break;
-        case r'preview':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(PreviewArgs),
-          ) as PreviewArgs;
-          result.preview.replace(valueDes);
           break;
         default:
           unhandled.add(key);

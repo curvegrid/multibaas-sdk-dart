@@ -13,21 +13,15 @@ class _$HSMData extends HSMData {
   final BuiltList<AzureHardwareWallet> wallets;
 
   factory _$HSMData([void Function(HSMDataBuilder)? updates]) =>
-      (new HSMDataBuilder()..update(updates))._build();
+      (HSMDataBuilder()..update(updates))._build();
 
-  _$HSMData._({required this.configuration, required this.wallets})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        configuration, r'HSMData', 'configuration');
-    BuiltValueNullFieldError.checkNotNull(wallets, r'HSMData', 'wallets');
-  }
-
+  _$HSMData._({required this.configuration, required this.wallets}) : super._();
   @override
   HSMData rebuild(void Function(HSMDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  HSMDataBuilder toBuilder() => new HSMDataBuilder()..replace(this);
+  HSMDataBuilder toBuilder() => HSMDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -60,13 +54,13 @@ class HSMDataBuilder implements Builder<HSMData, HSMDataBuilder> {
 
   AzureAccountBuilder? _configuration;
   AzureAccountBuilder get configuration =>
-      _$this._configuration ??= new AzureAccountBuilder();
+      _$this._configuration ??= AzureAccountBuilder();
   set configuration(AzureAccountBuilder? configuration) =>
       _$this._configuration = configuration;
 
   ListBuilder<AzureHardwareWallet>? _wallets;
   ListBuilder<AzureHardwareWallet> get wallets =>
-      _$this._wallets ??= new ListBuilder<AzureHardwareWallet>();
+      _$this._wallets ??= ListBuilder<AzureHardwareWallet>();
   set wallets(ListBuilder<AzureHardwareWallet>? wallets) =>
       _$this._wallets = wallets;
 
@@ -86,7 +80,6 @@ class HSMDataBuilder implements Builder<HSMData, HSMDataBuilder> {
 
   @override
   void replace(HSMData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$HSMData;
   }
 
@@ -102,8 +95,10 @@ class HSMDataBuilder implements Builder<HSMData, HSMDataBuilder> {
     _$HSMData _$result;
     try {
       _$result = _$v ??
-          new _$HSMData._(
-              configuration: configuration.build(), wallets: wallets.build());
+          _$HSMData._(
+            configuration: configuration.build(),
+            wallets: wallets.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -112,7 +107,7 @@ class HSMDataBuilder implements Builder<HSMData, HSMDataBuilder> {
         _$failedField = 'wallets';
         wallets.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'HSMData', _$failedField, e.toString());
       }
       rethrow;

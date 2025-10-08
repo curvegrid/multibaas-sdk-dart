@@ -16,19 +16,11 @@ class _$GetEventCount200Response extends GetEventCount200Response {
 
   factory _$GetEventCount200Response(
           [void Function(GetEventCount200ResponseBuilder)? updates]) =>
-      (new GetEventCount200ResponseBuilder()..update(updates))._build();
+      (GetEventCount200ResponseBuilder()..update(updates))._build();
 
   _$GetEventCount200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'GetEventCount200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetEventCount200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GetEventCount200Response', 'message');
-  }
-
+      : super._();
   @override
   GetEventCount200Response rebuild(
           void Function(GetEventCount200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$GetEventCount200Response extends GetEventCount200Response {
 
   @override
   GetEventCount200ResponseBuilder toBuilder() =>
-      new GetEventCount200ResponseBuilder()..replace(this);
+      GetEventCount200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -102,7 +94,6 @@ class GetEventCount200ResponseBuilder
 
   @override
   void replace(covariant GetEventCount200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetEventCount200Response;
   }
 
@@ -116,13 +107,14 @@ class GetEventCount200ResponseBuilder
 
   _$GetEventCount200Response _build() {
     final _$result = _$v ??
-        new _$GetEventCount200Response._(
-            result: BuiltValueNullFieldError.checkNotNull(
-                result, r'GetEventCount200Response', 'result'),
-            status: BuiltValueNullFieldError.checkNotNull(
-                status, r'GetEventCount200Response', 'status'),
-            message: BuiltValueNullFieldError.checkNotNull(
-                message, r'GetEventCount200Response', 'message'));
+        _$GetEventCount200Response._(
+          result: BuiltValueNullFieldError.checkNotNull(
+              result, r'GetEventCount200Response', 'result'),
+          status: BuiltValueNullFieldError.checkNotNull(
+              status, r'GetEventCount200Response', 'status'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'GetEventCount200Response', 'message'),
+        );
     replace(_$result);
     return _$result;
   }

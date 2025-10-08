@@ -10,8 +10,8 @@ const FieldType _$input = const FieldType._('input');
 const FieldType _$contractLabel = const FieldType._('contractLabel');
 const FieldType _$contractName = const FieldType._('contractName');
 const FieldType _$contractAddress = const FieldType._('contractAddress');
-const FieldType _$contractAddressLabel =
-    const FieldType._('contractAddressLabel');
+const FieldType _$contractAddressAlias =
+    const FieldType._('contractAddressAlias');
 const FieldType _$blockNumber = const FieldType._('blockNumber');
 const FieldType _$triggeredAt = const FieldType._('triggeredAt');
 const FieldType _$eventSignature = const FieldType._('eventSignature');
@@ -29,8 +29,8 @@ FieldType _$valueOf(String name) {
       return _$contractName;
     case 'contractAddress':
       return _$contractAddress;
-    case 'contractAddressLabel':
-      return _$contractAddressLabel;
+    case 'contractAddressAlias':
+      return _$contractAddressAlias;
     case 'blockNumber':
       return _$blockNumber;
     case 'triggeredAt':
@@ -44,16 +44,16 @@ FieldType _$valueOf(String name) {
     case 'txFrom':
       return _$txFrom;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
-final BuiltSet<FieldType> _$values = new BuiltSet<FieldType>(const <FieldType>[
+final BuiltSet<FieldType> _$values = BuiltSet<FieldType>(const <FieldType>[
   _$input,
   _$contractLabel,
   _$contractName,
   _$contractAddress,
-  _$contractAddressLabel,
+  _$contractAddressAlias,
   _$blockNumber,
   _$triggeredAt,
   _$eventSignature,
@@ -68,7 +68,7 @@ class _$FieldTypeMeta {
   FieldType get contractLabel => _$contractLabel;
   FieldType get contractName => _$contractName;
   FieldType get contractAddress => _$contractAddress;
-  FieldType get contractAddressLabel => _$contractAddressLabel;
+  FieldType get contractAddressAlias => _$contractAddressAlias;
   FieldType get blockNumber => _$blockNumber;
   FieldType get triggeredAt => _$triggeredAt;
   FieldType get eventSignature => _$eventSignature;
@@ -84,7 +84,7 @@ abstract class _$FieldTypeMixin {
   _$FieldTypeMeta get FieldType => const _$FieldTypeMeta();
 }
 
-Serializer<FieldType> _$fieldTypeSerializer = new _$FieldTypeSerializer();
+Serializer<FieldType> _$fieldTypeSerializer = _$FieldTypeSerializer();
 
 class _$FieldTypeSerializer implements PrimitiveSerializer<FieldType> {
   static const Map<String, Object> _toWire = const <String, Object>{
@@ -92,7 +92,7 @@ class _$FieldTypeSerializer implements PrimitiveSerializer<FieldType> {
     'contractLabel': 'contract_label',
     'contractName': 'contract_name',
     'contractAddress': 'contract_address',
-    'contractAddressLabel': 'contract_address_label',
+    'contractAddressAlias': 'contract_address_alias',
     'blockNumber': 'block_number',
     'triggeredAt': 'triggered_at',
     'eventSignature': 'event_signature',
@@ -105,7 +105,7 @@ class _$FieldTypeSerializer implements PrimitiveSerializer<FieldType> {
     'contract_label': 'contractLabel',
     'contract_name': 'contractName',
     'contract_address': 'contractAddress',
-    'contract_address_label': 'contractAddressLabel',
+    'contract_address_alias': 'contractAddressAlias',
     'block_number': 'blockNumber',
     'triggered_at': 'triggeredAt',
     'event_signature': 'eventSignature',

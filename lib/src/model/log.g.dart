@@ -27,7 +27,7 @@ class _$Log extends Log {
   final bool removed;
 
   factory _$Log([void Function(LogBuilder)? updates]) =>
-      (new LogBuilder()..update(updates))._build();
+      (LogBuilder()..update(updates))._build();
 
   _$Log._(
       {required this.address,
@@ -39,26 +39,13 @@ class _$Log extends Log {
       required this.blockHash,
       required this.logIndex,
       required this.removed})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(address, r'Log', 'address');
-    BuiltValueNullFieldError.checkNotNull(topics, r'Log', 'topics');
-    BuiltValueNullFieldError.checkNotNull(data, r'Log', 'data');
-    BuiltValueNullFieldError.checkNotNull(blockNumber, r'Log', 'blockNumber');
-    BuiltValueNullFieldError.checkNotNull(
-        transactionHash, r'Log', 'transactionHash');
-    BuiltValueNullFieldError.checkNotNull(
-        transactionIndex, r'Log', 'transactionIndex');
-    BuiltValueNullFieldError.checkNotNull(blockHash, r'Log', 'blockHash');
-    BuiltValueNullFieldError.checkNotNull(logIndex, r'Log', 'logIndex');
-    BuiltValueNullFieldError.checkNotNull(removed, r'Log', 'removed');
-  }
-
+      : super._();
   @override
   Log rebuild(void Function(LogBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LogBuilder toBuilder() => new LogBuilder()..replace(this);
+  LogBuilder toBuilder() => LogBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -115,8 +102,7 @@ class LogBuilder implements Builder<Log, LogBuilder> {
   set address(String? address) => _$this._address = address;
 
   ListBuilder<String>? _topics;
-  ListBuilder<String> get topics =>
-      _$this._topics ??= new ListBuilder<String>();
+  ListBuilder<String> get topics => _$this._topics ??= ListBuilder<String>();
   set topics(ListBuilder<String>? topics) => _$this._topics = topics;
 
   String? _data;
@@ -172,7 +158,6 @@ class LogBuilder implements Builder<Log, LogBuilder> {
 
   @override
   void replace(Log other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Log;
   }
 
@@ -188,31 +173,31 @@ class LogBuilder implements Builder<Log, LogBuilder> {
     _$Log _$result;
     try {
       _$result = _$v ??
-          new _$Log._(
-              address: BuiltValueNullFieldError.checkNotNull(
-                  address, r'Log', 'address'),
-              topics: topics.build(),
-              data: BuiltValueNullFieldError.checkNotNull(data, r'Log', 'data'),
-              blockNumber: BuiltValueNullFieldError.checkNotNull(
-                  blockNumber, r'Log', 'blockNumber'),
-              transactionHash: BuiltValueNullFieldError.checkNotNull(
-                  transactionHash, r'Log', 'transactionHash'),
-              transactionIndex: BuiltValueNullFieldError.checkNotNull(
-                  transactionIndex, r'Log', 'transactionIndex'),
-              blockHash: BuiltValueNullFieldError.checkNotNull(
-                  blockHash, r'Log', 'blockHash'),
-              logIndex: BuiltValueNullFieldError.checkNotNull(
-                  logIndex, r'Log', 'logIndex'),
-              removed: BuiltValueNullFieldError.checkNotNull(
-                  removed, r'Log', 'removed'));
+          _$Log._(
+            address: BuiltValueNullFieldError.checkNotNull(
+                address, r'Log', 'address'),
+            topics: topics.build(),
+            data: BuiltValueNullFieldError.checkNotNull(data, r'Log', 'data'),
+            blockNumber: BuiltValueNullFieldError.checkNotNull(
+                blockNumber, r'Log', 'blockNumber'),
+            transactionHash: BuiltValueNullFieldError.checkNotNull(
+                transactionHash, r'Log', 'transactionHash'),
+            transactionIndex: BuiltValueNullFieldError.checkNotNull(
+                transactionIndex, r'Log', 'transactionIndex'),
+            blockHash: BuiltValueNullFieldError.checkNotNull(
+                blockHash, r'Log', 'blockHash'),
+            logIndex: BuiltValueNullFieldError.checkNotNull(
+                logIndex, r'Log', 'logIndex'),
+            removed: BuiltValueNullFieldError.checkNotNull(
+                removed, r'Log', 'removed'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'topics';
         topics.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Log', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Log', _$failedField, e.toString());
       }
       rethrow;
     }

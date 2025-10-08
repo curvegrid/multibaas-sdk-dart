@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(Block, () {
-    // String blockchain
-    test('to test the property `blockchain`', () async {
-      // TODO
-    });
-
     // The keccak256 hash as a hex string of 256 bits.
     // String hash
     test('to test the property `hash`', () async {

@@ -31,7 +31,7 @@ class _$WebhookEndpoint extends WebhookEndpoint {
   final BuiltList<WebhookEventsType> subscriptions;
 
   factory _$WebhookEndpoint([void Function(WebhookEndpointBuilder)? updates]) =>
-      (new WebhookEndpointBuilder()..update(updates))._build();
+      (WebhookEndpointBuilder()..update(updates))._build();
 
   _$WebhookEndpoint._(
       {required this.createdAt,
@@ -45,28 +45,13 @@ class _$WebhookEndpoint extends WebhookEndpoint {
       required this.url,
       required this.label,
       required this.subscriptions})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'WebhookEndpoint', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        failedCalls, r'WebhookEndpoint', 'failedCalls');
-    BuiltValueNullFieldError.checkNotNull(id, r'WebhookEndpoint', 'id');
-    BuiltValueNullFieldError.checkNotNull(secret, r'WebhookEndpoint', 'secret');
-    BuiltValueNullFieldError.checkNotNull(
-        updatedAt, r'WebhookEndpoint', 'updatedAt');
-    BuiltValueNullFieldError.checkNotNull(url, r'WebhookEndpoint', 'url');
-    BuiltValueNullFieldError.checkNotNull(label, r'WebhookEndpoint', 'label');
-    BuiltValueNullFieldError.checkNotNull(
-        subscriptions, r'WebhookEndpoint', 'subscriptions');
-  }
-
+      : super._();
   @override
   WebhookEndpoint rebuild(void Function(WebhookEndpointBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WebhookEndpointBuilder toBuilder() =>
-      new WebhookEndpointBuilder()..replace(this);
+  WebhookEndpointBuilder toBuilder() => WebhookEndpointBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -172,7 +157,7 @@ class WebhookEndpointBuilder
 
   ListBuilder<WebhookEventsType>? _subscriptions;
   ListBuilder<WebhookEventsType> get subscriptions =>
-      _$this._subscriptions ??= new ListBuilder<WebhookEventsType>();
+      _$this._subscriptions ??= ListBuilder<WebhookEventsType>();
   set subscriptions(covariant ListBuilder<WebhookEventsType>? subscriptions) =>
       _$this._subscriptions = subscriptions;
 
@@ -201,7 +186,6 @@ class WebhookEndpointBuilder
 
   @override
   void replace(covariant WebhookEndpoint other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WebhookEndpoint;
   }
 
@@ -217,32 +201,33 @@ class WebhookEndpointBuilder
     _$WebhookEndpoint _$result;
     try {
       _$result = _$v ??
-          new _$WebhookEndpoint._(
-              createdAt: BuiltValueNullFieldError.checkNotNull(
-                  createdAt, r'WebhookEndpoint', 'createdAt'),
-              failedCalls: BuiltValueNullFieldError.checkNotNull(
-                  failedCalls, r'WebhookEndpoint', 'failedCalls'),
-              lastError: lastError,
-              lastAttempt: lastAttempt,
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'WebhookEndpoint', 'id'),
-              secret: BuiltValueNullFieldError.checkNotNull(
-                  secret, r'WebhookEndpoint', 'secret'),
-              nextAttempt: nextAttempt,
-              updatedAt: BuiltValueNullFieldError.checkNotNull(
-                  updatedAt, r'WebhookEndpoint', 'updatedAt'),
-              url: BuiltValueNullFieldError.checkNotNull(
-                  url, r'WebhookEndpoint', 'url'),
-              label: BuiltValueNullFieldError.checkNotNull(
-                  label, r'WebhookEndpoint', 'label'),
-              subscriptions: subscriptions.build());
+          _$WebhookEndpoint._(
+            createdAt: BuiltValueNullFieldError.checkNotNull(
+                createdAt, r'WebhookEndpoint', 'createdAt'),
+            failedCalls: BuiltValueNullFieldError.checkNotNull(
+                failedCalls, r'WebhookEndpoint', 'failedCalls'),
+            lastError: lastError,
+            lastAttempt: lastAttempt,
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'WebhookEndpoint', 'id'),
+            secret: BuiltValueNullFieldError.checkNotNull(
+                secret, r'WebhookEndpoint', 'secret'),
+            nextAttempt: nextAttempt,
+            updatedAt: BuiltValueNullFieldError.checkNotNull(
+                updatedAt, r'WebhookEndpoint', 'updatedAt'),
+            url: BuiltValueNullFieldError.checkNotNull(
+                url, r'WebhookEndpoint', 'url'),
+            label: BuiltValueNullFieldError.checkNotNull(
+                label, r'WebhookEndpoint', 'label'),
+            subscriptions: subscriptions.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'subscriptions';
         subscriptions.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'WebhookEndpoint', _$failedField, e.toString());
       }
       rethrow;

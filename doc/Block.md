@@ -8,7 +8,6 @@ import 'package:multibaas/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**blockchain** | **String** |  | 
 **hash** | **String** | The keccak256 hash as a hex string of 256 bits. | 
 **difficulty** | **String** |  | 
 **gasLimit** | **int** |  | 
@@ -26,7 +25,7 @@ Name | Type | Description | Notes
 **nonce** | **String** | A hex string. | 
 **mixHash** | **String** | The keccak256 hash as a hex string of 256 bits. | 
 **extraData** | **String** |  | 
-**baseFeePerGas** | **String** |  | 
+**baseFeePerGas** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

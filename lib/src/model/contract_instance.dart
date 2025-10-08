@@ -11,12 +11,12 @@ part 'contract_instance.g.dart';
 /// A contract instance
 ///
 /// Properties:
-/// * [label] 
+/// * [alias] 
 /// * [address] - An ethereum address.
 @BuiltValue()
 abstract class ContractInstance implements Built<ContractInstance, ContractInstanceBuilder> {
-  @BuiltValueField(wireName: r'label')
-  String get label;
+  @BuiltValueField(wireName: r'alias')
+  String get alias;
 
   /// An ethereum address.
   @BuiltValueField(wireName: r'address')
@@ -45,9 +45,9 @@ class _$ContractInstanceSerializer implements PrimitiveSerializer<ContractInstan
     ContractInstance object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'label';
+    yield r'alias';
     yield serializers.serialize(
-      object.label,
+      object.alias,
       specifiedType: const FullType(String),
     );
     yield r'address';
@@ -78,12 +78,12 @@ class _$ContractInstanceSerializer implements PrimitiveSerializer<ContractInstan
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'label':
+        case r'alias':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.label = valueDes;
+          result.alias = valueDes;
           break;
         case r'address':
           final valueDes = serializers.deserialize(

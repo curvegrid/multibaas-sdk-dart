@@ -11,7 +11,7 @@ void main() {
     //
     // Builds a transaction to call the given contract function. Returns a transaction to be signed and signs and submits to the blockchain it if the `signAndSubmit` flag is enabled.
     //
-    //Future<CallContractFunction200Response> callContractFunction(ChainName chain, String addressOrLabel, String contract, String method, { PostMethodArgs postMethodArgs }) async
+    //Future<CallContractFunction200Response> callContractFunction(ChainName chain, String addressOrAlias, String contract, String method, PostMethodArgs postMethodArgs) async
     test('test callContractFunction', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Adds a contract.
     //
-    //Future<GetContract200Response> createContract(String contract, { BaseContract baseContract }) async
+    //Future<GetContract200Response> createContract(String contract, BaseContract baseContract) async
     test('test createContract', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Adds multiple contracts.
     //
-    //Future<BaseResponse> createContracts({ BuiltList<BaseContract> baseContract }) async
+    //Future<BaseResponse> createContracts(BuiltList<BaseContract> baseContract) async
     test('test createContracts', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Returns a transaction to deploy the given contract to the blockchain.
     //
-    //Future<DeployContract200Response> deployContract(String contract, { PostMethodArgs postMethodArgs }) async
+    //Future<DeployContract200Response> deployContract(String contract, PostMethodArgs postMethodArgs) async
     test('test deployContract', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Returns a transaction to deploy the given contract version to the blockchain.
     //
-    //Future<DeployContract200Response> deployContractVersion(String contract, String version, { PostMethodArgs postMethodArgs }) async
+    //Future<DeployContract200Response> deployContractVersion(String contract, String version, PostMethodArgs postMethodArgs) async
     test('test deployContractVersion', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Returns the event monitor status for a given address and contract.
     //
-    //Future<GetEventMonitorStatus200Response> getEventMonitorStatus(ChainName chain, String addressOrLabel, String contract) async
+    //Future<GetEventMonitorStatus200Response> getEventMonitorStatus(ChainName chain, String addressOrAlias, String contract) async
     test('test getEventMonitorStatus', () async {
       // TODO
     });
@@ -128,7 +128,7 @@ void main() {
     //
     // Links an address to a contract.
     //
-    //Future<SetAddress201Response> linkAddressContract(ChainName chain, String addressOrLabel, { LinkAddressContractRequest linkAddressContractRequest }) async
+    //Future<SetAddress201Response> linkAddressContract(ChainName chain, String addressOrAlias, LinkAddressContractRequest linkAddressContractRequest) async
     test('test linkAddressContract', () async {
       // TODO
     });
@@ -155,7 +155,7 @@ void main() {
     //
     // Sets the type conversion options for a given contract and event signature.
     //
-    //Future<BaseResponse> setEventTypeConversions(String contract, String version, String event, { ContractEventOptions contractEventOptions }) async
+    //Future<BaseResponse> setEventTypeConversions(String contract, String version, String event, ContractEventOptions contractEventOptions) async
     test('test setEventTypeConversions', () async {
       // TODO
     });
@@ -164,7 +164,7 @@ void main() {
     //
     // Sets the type conversion options for a given contract and function signature.
     //
-    //Future<BaseResponse> setFunctionTypeConversions(String contract, String version, String method, { ContractMethodOptions contractMethodOptions }) async
+    //Future<BaseResponse> setFunctionTypeConversions(String contract, String version, String method, ContractMethodOptions contractMethodOptions) async
     test('test setFunctionTypeConversions', () async {
       // TODO
     });
@@ -173,7 +173,7 @@ void main() {
     //
     // Unlinks an address from a contract.
     //
-    //Future<SetAddress201Response> unlinkAddressContract(ChainName chain, String addressOrLabel, String contract) async
+    //Future<SetAddress201Response> unlinkAddressContract(ChainName chain, String addressOrAlias, String contract) async
     test('test unlinkAddressContract', () async {
       // TODO
     });

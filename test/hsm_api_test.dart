@@ -11,7 +11,7 @@ void main() {
     //
     // Adds a new Azure account configuration.
     //
-    //Future<BaseResponse> addHsmConfig({ BaseAzureAccount baseAzureAccount }) async
+    //Future<BaseResponse> addHsmConfig(BaseAzureAccount baseAzureAccount) async
     test('test addHsmConfig', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Adds an existing key configuration.
     //
-    //Future<BaseResponse> addHsmKey({ AddKey addKey }) async
+    //Future<BaseResponse> addHsmKey(AddKey addKey) async
     test('test addHsmKey', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Creates a new key in the Azure KeyVault.
     //
-    //Future<CreateHsmKey200Response> createHsmKey({ CreateKey createKey }) async
+    //Future<CreateHsmKey200Response> createHsmKey(CreateKey createKey) async
     test('test createHsmKey', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Sets the next transaction nonce for the given HSM address that will be used with the nonce management feature.
     //
-    //Future<BaseResponse> setLocalNonce(ChainName chain, String walletAddress, { SetNonceRequest setNonceRequest }) async
+    //Future<BaseResponse> setLocalNonce(ChainName chain, String walletAddress, SetNonceRequest setNonceRequest) async
     test('test setLocalNonce', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Signs and submits the given transaction using an HSM address.
     //
-    //Future<TransferEth200Response> signAndSubmitTransaction(ChainName chain, { BaseTransactionToSign baseTransactionToSign }) async
+    //Future<TransferEth200Response> signAndSubmitTransaction(ChainName chain, CloudWalletTXToSign cloudWalletTXToSign) async
     test('test signAndSubmitTransaction', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
     //
     // Signs the given data using the given HSM address.
     //
-    //Future<SignData200Response> signData(ChainName chain, { HSMSignRequest hSMSignRequest }) async
+    //Future<SignData200Response> signData(ChainName chain, HSMSignRequest hSMSignRequest) async
     test('test signData', () async {
       // TODO
     });

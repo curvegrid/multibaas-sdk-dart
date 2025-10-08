@@ -13,12 +13,19 @@ part 'contract_abi_event.g.dart';
 /// A contract event.
 ///
 /// Properties:
+/// * [id] - The keccak256 hash as a hex string of 256 bits.
 /// * [name] 
 /// * [signature] 
 /// * [anonymous] 
 /// * [inputs] - List of contract event's input arguments.
+/// * [notes] - The developer documentation.
+/// * [description] - The user documentation.
 @BuiltValue()
 abstract class ContractABIEvent implements Built<ContractABIEvent, ContractABIEventBuilder> {
+  /// The keccak256 hash as a hex string of 256 bits.
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -31,6 +38,14 @@ abstract class ContractABIEvent implements Built<ContractABIEvent, ContractABIEv
   /// List of contract event's input arguments.
   @BuiltValueField(wireName: r'inputs')
   BuiltList<ContractABIEventArgument> get inputs;
+
+  /// The developer documentation.
+  @BuiltValueField(wireName: r'notes')
+  String get notes;
+
+  /// The user documentation.
+  @BuiltValueField(wireName: r'description')
+  String get description;
 
   ContractABIEvent._();
 
@@ -55,6 +70,11 @@ class _$ContractABIEventSerializer implements PrimitiveSerializer<ContractABIEve
     ContractABIEvent object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     yield r'name';
     yield serializers.serialize(
       object.name,
@@ -74,6 +94,16 @@ class _$ContractABIEventSerializer implements PrimitiveSerializer<ContractABIEve
     yield serializers.serialize(
       object.inputs,
       specifiedType: const FullType(BuiltList, [FullType(ContractABIEventArgument)]),
+    );
+    yield r'notes';
+    yield serializers.serialize(
+      object.notes,
+      specifiedType: const FullType(String),
+    );
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
+      specifiedType: const FullType(String),
     );
   }
 
@@ -98,6 +128,13 @@ class _$ContractABIEventSerializer implements PrimitiveSerializer<ContractABIEve
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
@@ -125,6 +162,20 @@ class _$ContractABIEventSerializer implements PrimitiveSerializer<ContractABIEve
             specifiedType: const FullType(BuiltList, [FullType(ContractABIEventArgument)]),
           ) as BuiltList<ContractABIEventArgument>;
           result.inputs.replace(valueDes);
+          break;
+        case r'notes':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.notes = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         default:
           unhandled.add(key);

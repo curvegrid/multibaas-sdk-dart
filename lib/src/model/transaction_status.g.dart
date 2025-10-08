@@ -29,12 +29,12 @@ TransactionStatus _$valueOf(String name) {
     case 'exceededRetryLimit':
       return _$exceededRetryLimit;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<TransactionStatus> _$values =
-    new BuiltSet<TransactionStatus>(const <TransactionStatus>[
+    BuiltSet<TransactionStatus>(const <TransactionStatus>[
   _$pending,
   _$included,
   _$replaced,
@@ -62,7 +62,7 @@ abstract class _$TransactionStatusMixin {
 }
 
 Serializer<TransactionStatus> _$transactionStatusSerializer =
-    new _$TransactionStatusSerializer();
+    _$TransactionStatusSerializer();
 
 class _$TransactionStatusSerializer
     implements PrimitiveSerializer<TransactionStatus> {

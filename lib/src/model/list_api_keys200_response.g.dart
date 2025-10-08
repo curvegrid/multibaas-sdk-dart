@@ -16,19 +16,11 @@ class _$ListApiKeys200Response extends ListApiKeys200Response {
 
   factory _$ListApiKeys200Response(
           [void Function(ListApiKeys200ResponseBuilder)? updates]) =>
-      (new ListApiKeys200ResponseBuilder()..update(updates))._build();
+      (ListApiKeys200ResponseBuilder()..update(updates))._build();
 
   _$ListApiKeys200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListApiKeys200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListApiKeys200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListApiKeys200Response', 'message');
-  }
-
+      : super._();
   @override
   ListApiKeys200Response rebuild(
           void Function(ListApiKeys200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListApiKeys200Response extends ListApiKeys200Response {
 
   @override
   ListApiKeys200ResponseBuilder toBuilder() =>
-      new ListApiKeys200ResponseBuilder()..replace(this);
+      ListApiKeys200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,8 +66,7 @@ class ListApiKeys200ResponseBuilder
   _$ListApiKeys200Response? _$v;
 
   ListBuilder<APIKey>? _result;
-  ListBuilder<APIKey> get result =>
-      _$this._result ??= new ListBuilder<APIKey>();
+  ListBuilder<APIKey> get result => _$this._result ??= ListBuilder<APIKey>();
   set result(covariant ListBuilder<APIKey>? result) => _$this._result = result;
 
   int? _status;
@@ -103,7 +94,6 @@ class ListApiKeys200ResponseBuilder
 
   @override
   void replace(covariant ListApiKeys200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListApiKeys200Response;
   }
 
@@ -119,19 +109,20 @@ class ListApiKeys200ResponseBuilder
     _$ListApiKeys200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListApiKeys200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListApiKeys200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListApiKeys200Response', 'message'));
+          _$ListApiKeys200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListApiKeys200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListApiKeys200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListApiKeys200Response', _$failedField, e.toString());
       }
       rethrow;

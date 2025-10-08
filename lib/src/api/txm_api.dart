@@ -28,7 +28,7 @@ class TxmApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [nonce] - Transaction nonce.
   /// * [gasParams] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -44,7 +44,7 @@ class TxmApi {
     required ChainName chain,
     required String walletAddress,
     required int nonce,
-    GasParams? gasParams,
+    required GasParams gasParams,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -81,7 +81,7 @@ class TxmApi {
 
     try {
       const _type = FullType(GasParams);
-      _bodyData = gasParams == null ? null : _serializers.serialize(gasParams, specifiedType: _type);
+      _bodyData = _serializers.serialize(gasParams, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -140,7 +140,7 @@ class TxmApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -228,7 +228,7 @@ class TxmApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [hash] - Filter transactions by transaction hash. To filter for multiple hashes, use ampersands: `?hash=HASH1&hash=HASH2&hash=HASH3`
   /// * [nonce] - Filter transactions by nonce
   /// * [status] - Filter transactions by status
@@ -249,7 +249,7 @@ class TxmApi {
     String? hash,
     int? nonce,
     TransactionStatus? status,
-    int? limit,
+    int? limit = 10,
     int? offset,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -335,7 +335,7 @@ class TxmApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [nonce] - Transaction nonce.
   /// * [gasParams] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -351,7 +351,7 @@ class TxmApi {
     required ChainName chain,
     required String walletAddress,
     required int nonce,
-    GasParams? gasParams,
+    required GasParams gasParams,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -388,7 +388,7 @@ class TxmApi {
 
     try {
       const _type = FullType(GasParams);
-      _bodyData = gasParams == null ? null : _serializers.serialize(gasParams, specifiedType: _type);
+      _bodyData = _serializers.serialize(gasParams, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

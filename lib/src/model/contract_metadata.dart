@@ -11,13 +11,12 @@ part 'contract_metadata.g.dart';
 /// ContractMetadata
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [name] - The name of the contract.
 /// * [version] - The contract version.
-/// * [conflict] 
 @BuiltValue()
 abstract class ContractMetadata implements Built<ContractMetadata, ContractMetadataBuilder> {
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 
@@ -28,9 +27,6 @@ abstract class ContractMetadata implements Built<ContractMetadata, ContractMetad
   /// The contract version.
   @BuiltValueField(wireName: r'version')
   String get version;
-
-  @BuiltValueField(wireName: r'conflict')
-  bool get conflict;
 
   ContractMetadata._();
 
@@ -69,11 +65,6 @@ class _$ContractMetadataSerializer implements PrimitiveSerializer<ContractMetada
     yield serializers.serialize(
       object.version,
       specifiedType: const FullType(String),
-    );
-    yield r'conflict';
-    yield serializers.serialize(
-      object.conflict,
-      specifiedType: const FullType(bool),
     );
   }
 
@@ -118,13 +109,6 @@ class _$ContractMetadataSerializer implements PrimitiveSerializer<ContractMetada
             specifiedType: const FullType(String),
           ) as String;
           result.version = valueDes;
-          break;
-        case r'conflict':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.conflict = valueDes;
           break;
         default:
           unhandled.add(key);

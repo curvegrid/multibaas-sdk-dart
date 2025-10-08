@@ -18,8 +18,6 @@ const EventQueryFieldAggregatorEnum _$eventQueryFieldAggregatorEnum_min =
     const EventQueryFieldAggregatorEnum._('min');
 const EventQueryFieldAggregatorEnum _$eventQueryFieldAggregatorEnum_max =
     const EventQueryFieldAggregatorEnum._('max');
-const EventQueryFieldAggregatorEnum _$eventQueryFieldAggregatorEnum_null_ =
-    const EventQueryFieldAggregatorEnum._('null_');
 
 EventQueryFieldAggregatorEnum _$eventQueryFieldAggregatorEnumValueOf(
     String name) {
@@ -36,15 +34,13 @@ EventQueryFieldAggregatorEnum _$eventQueryFieldAggregatorEnumValueOf(
       return _$eventQueryFieldAggregatorEnum_min;
     case 'max':
       return _$eventQueryFieldAggregatorEnum_max;
-    case 'null_':
-      return _$eventQueryFieldAggregatorEnum_null_;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<EventQueryFieldAggregatorEnum>
-    _$eventQueryFieldAggregatorEnumValues = new BuiltSet<
+    _$eventQueryFieldAggregatorEnumValues = BuiltSet<
         EventQueryFieldAggregatorEnum>(const <EventQueryFieldAggregatorEnum>[
   _$eventQueryFieldAggregatorEnum_add,
   _$eventQueryFieldAggregatorEnum_subtract,
@@ -52,12 +48,11 @@ final BuiltSet<EventQueryFieldAggregatorEnum>
   _$eventQueryFieldAggregatorEnum_first,
   _$eventQueryFieldAggregatorEnum_min,
   _$eventQueryFieldAggregatorEnum_max,
-  _$eventQueryFieldAggregatorEnum_null_,
 ]);
 
 Serializer<EventQueryFieldAggregatorEnum>
     _$eventQueryFieldAggregatorEnumSerializer =
-    new _$EventQueryFieldAggregatorEnumSerializer();
+    _$EventQueryFieldAggregatorEnumSerializer();
 
 class _$EventQueryFieldAggregatorEnumSerializer
     implements PrimitiveSerializer<EventQueryFieldAggregatorEnum> {
@@ -68,7 +63,6 @@ class _$EventQueryFieldAggregatorEnumSerializer
     'first': 'first',
     'min': 'min',
     'max': 'max',
-    'null_': 'null',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'add': 'add',
@@ -77,7 +71,6 @@ class _$EventQueryFieldAggregatorEnumSerializer
     'first': 'first',
     'min': 'min',
     'max': 'max',
-    'null': 'null_',
   };
 
   @override
@@ -112,7 +105,7 @@ class _$EventQueryField extends EventQueryField {
   final EventQueryFieldAggregatorEnum? aggregator;
 
   factory _$EventQueryField([void Function(EventQueryFieldBuilder)? updates]) =>
-      (new EventQueryFieldBuilder()..update(updates))._build();
+      (EventQueryFieldBuilder()..update(updates))._build();
 
   _$EventQueryField._(
       {required this.type,
@@ -120,17 +113,13 @@ class _$EventQueryField extends EventQueryField {
       this.inputIndex,
       this.alias,
       this.aggregator})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, r'EventQueryField', 'type');
-  }
-
+      : super._();
   @override
   EventQueryField rebuild(void Function(EventQueryFieldBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EventQueryFieldBuilder toBuilder() =>
-      new EventQueryFieldBuilder()..replace(this);
+  EventQueryFieldBuilder toBuilder() => EventQueryFieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -211,7 +200,6 @@ class EventQueryFieldBuilder
 
   @override
   void replace(EventQueryField other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventQueryField;
   }
 
@@ -225,13 +213,14 @@ class EventQueryFieldBuilder
 
   _$EventQueryField _build() {
     final _$result = _$v ??
-        new _$EventQueryField._(
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'EventQueryField', 'type'),
-            name: name,
-            inputIndex: inputIndex,
-            alias: alias,
-            aggregator: aggregator);
+        _$EventQueryField._(
+          type: BuiltValueNullFieldError.checkNotNull(
+              type, r'EventQueryField', 'type'),
+          name: name,
+          inputIndex: inputIndex,
+          alias: alias,
+          aggregator: aggregator,
+        );
     replace(_$result);
     return _$result;
   }

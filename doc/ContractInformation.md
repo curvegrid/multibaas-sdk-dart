@@ -9,9 +9,9 @@ import 'package:multibaas/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **String** | An ethereum address. | 
-**addressLabel** | **String** | A label. | 
+**addressAlias** | **String** | An alias to easily identify and reference addresses. | 
 **name** | **String** | The name of the contract. | 
-**label** | **String** | A label. | 
+**label** | **String** | An alias to easily identify and reference the entity in subsequent requests. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

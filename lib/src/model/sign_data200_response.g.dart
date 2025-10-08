@@ -16,19 +16,11 @@ class _$SignData200Response extends SignData200Response {
 
   factory _$SignData200Response(
           [void Function(SignData200ResponseBuilder)? updates]) =>
-      (new SignData200ResponseBuilder()..update(updates))._build();
+      (SignData200ResponseBuilder()..update(updates))._build();
 
   _$SignData200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'SignData200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'SignData200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'SignData200Response', 'message');
-  }
-
+      : super._();
   @override
   SignData200Response rebuild(
           void Function(SignData200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$SignData200Response extends SignData200Response {
 
   @override
   SignData200ResponseBuilder toBuilder() =>
-      new SignData200ResponseBuilder()..replace(this);
+      SignData200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +67,7 @@ class SignData200ResponseBuilder
 
   HSMSignResponseBuilder? _result;
   HSMSignResponseBuilder get result =>
-      _$this._result ??= new HSMSignResponseBuilder();
+      _$this._result ??= HSMSignResponseBuilder();
   set result(covariant HSMSignResponseBuilder? result) =>
       _$this._result = result;
 
@@ -104,7 +96,6 @@ class SignData200ResponseBuilder
 
   @override
   void replace(covariant SignData200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignData200Response;
   }
 
@@ -120,19 +111,20 @@ class SignData200ResponseBuilder
     _$SignData200Response _$result;
     try {
       _$result = _$v ??
-          new _$SignData200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'SignData200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'SignData200Response', 'message'));
+          _$SignData200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'SignData200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'SignData200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SignData200Response', _$failedField, e.toString());
       }
       rethrow;

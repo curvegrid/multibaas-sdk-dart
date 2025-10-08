@@ -23,7 +23,7 @@ class _$AzureAccount extends AzureAccount {
   final String baseGroupName;
 
   factory _$AzureAccount([void Function(AzureAccountBuilder)? updates]) =>
-      (new AzureAccountBuilder()..update(updates))._build();
+      (AzureAccountBuilder()..update(updates))._build();
 
   _$AzureAccount._(
       {required this.id,
@@ -33,27 +33,13 @@ class _$AzureAccount extends AzureAccount {
       required this.tenantID,
       required this.subscriptionID,
       required this.baseGroupName})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'AzureAccount', 'id');
-    BuiltValueNullFieldError.checkNotNull(label, r'AzureAccount', 'label');
-    BuiltValueNullFieldError.checkNotNull(
-        clientID, r'AzureAccount', 'clientID');
-    BuiltValueNullFieldError.checkNotNull(
-        clientSecret, r'AzureAccount', 'clientSecret');
-    BuiltValueNullFieldError.checkNotNull(
-        tenantID, r'AzureAccount', 'tenantID');
-    BuiltValueNullFieldError.checkNotNull(
-        subscriptionID, r'AzureAccount', 'subscriptionID');
-    BuiltValueNullFieldError.checkNotNull(
-        baseGroupName, r'AzureAccount', 'baseGroupName');
-  }
-
+      : super._();
   @override
   AzureAccount rebuild(void Function(AzureAccountBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AzureAccountBuilder toBuilder() => new AzureAccountBuilder()..replace(this);
+  AzureAccountBuilder toBuilder() => AzureAccountBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -154,7 +140,6 @@ class AzureAccountBuilder
 
   @override
   void replace(covariant AzureAccount other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AzureAccount;
   }
 
@@ -168,21 +153,21 @@ class AzureAccountBuilder
 
   _$AzureAccount _build() {
     final _$result = _$v ??
-        new _$AzureAccount._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'AzureAccount', 'id'),
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'AzureAccount', 'label'),
-            clientID: BuiltValueNullFieldError.checkNotNull(
-                clientID, r'AzureAccount', 'clientID'),
-            clientSecret: BuiltValueNullFieldError.checkNotNull(
-                clientSecret, r'AzureAccount', 'clientSecret'),
-            tenantID: BuiltValueNullFieldError.checkNotNull(
-                tenantID, r'AzureAccount', 'tenantID'),
-            subscriptionID: BuiltValueNullFieldError.checkNotNull(
-                subscriptionID, r'AzureAccount', 'subscriptionID'),
-            baseGroupName: BuiltValueNullFieldError.checkNotNull(
-                baseGroupName, r'AzureAccount', 'baseGroupName'));
+        _$AzureAccount._(
+          id: BuiltValueNullFieldError.checkNotNull(id, r'AzureAccount', 'id'),
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'AzureAccount', 'label'),
+          clientID: BuiltValueNullFieldError.checkNotNull(
+              clientID, r'AzureAccount', 'clientID'),
+          clientSecret: BuiltValueNullFieldError.checkNotNull(
+              clientSecret, r'AzureAccount', 'clientSecret'),
+          tenantID: BuiltValueNullFieldError.checkNotNull(
+              tenantID, r'AzureAccount', 'tenantID'),
+          subscriptionID: BuiltValueNullFieldError.checkNotNull(
+              subscriptionID, r'AzureAccount', 'subscriptionID'),
+          baseGroupName: BuiltValueNullFieldError.checkNotNull(
+              baseGroupName, r'AzureAccount', 'baseGroupName'),
+        );
     replace(_$result);
     return _$result;
   }

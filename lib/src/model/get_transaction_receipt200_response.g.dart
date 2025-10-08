@@ -17,19 +17,11 @@ class _$GetTransactionReceipt200Response
 
   factory _$GetTransactionReceipt200Response(
           [void Function(GetTransactionReceipt200ResponseBuilder)? updates]) =>
-      (new GetTransactionReceipt200ResponseBuilder()..update(updates))._build();
+      (GetTransactionReceipt200ResponseBuilder()..update(updates))._build();
 
   _$GetTransactionReceipt200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'GetTransactionReceipt200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetTransactionReceipt200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GetTransactionReceipt200Response', 'message');
-  }
-
+      : super._();
   @override
   GetTransactionReceipt200Response rebuild(
           void Function(GetTransactionReceipt200ResponseBuilder) updates) =>
@@ -37,7 +29,7 @@ class _$GetTransactionReceipt200Response
 
   @override
   GetTransactionReceipt200ResponseBuilder toBuilder() =>
-      new GetTransactionReceipt200ResponseBuilder()..replace(this);
+      GetTransactionReceipt200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,7 +69,7 @@ class GetTransactionReceipt200ResponseBuilder
 
   TransactionReceiptBuilder? _result;
   TransactionReceiptBuilder get result =>
-      _$this._result ??= new TransactionReceiptBuilder();
+      _$this._result ??= TransactionReceiptBuilder();
   set result(covariant TransactionReceiptBuilder? result) =>
       _$this._result = result;
 
@@ -106,7 +98,6 @@ class GetTransactionReceipt200ResponseBuilder
 
   @override
   void replace(covariant GetTransactionReceipt200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetTransactionReceipt200Response;
   }
 
@@ -122,19 +113,20 @@ class GetTransactionReceipt200ResponseBuilder
     _$GetTransactionReceipt200Response _$result;
     try {
       _$result = _$v ??
-          new _$GetTransactionReceipt200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'GetTransactionReceipt200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'GetTransactionReceipt200Response', 'message'));
+          _$GetTransactionReceipt200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'GetTransactionReceipt200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'GetTransactionReceipt200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GetTransactionReceipt200Response', _$failedField, e.toString());
       }
       rethrow;

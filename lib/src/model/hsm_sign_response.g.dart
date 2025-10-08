@@ -13,23 +13,16 @@ class _$HSMSignResponse extends HSMSignResponse {
   final String signature;
 
   factory _$HSMSignResponse([void Function(HSMSignResponseBuilder)? updates]) =>
-      (new HSMSignResponseBuilder()..update(updates))._build();
+      (HSMSignResponseBuilder()..update(updates))._build();
 
   _$HSMSignResponse._({required this.publicKey, required this.signature})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        publicKey, r'HSMSignResponse', 'publicKey');
-    BuiltValueNullFieldError.checkNotNull(
-        signature, r'HSMSignResponse', 'signature');
-  }
-
+      : super._();
   @override
   HSMSignResponse rebuild(void Function(HSMSignResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  HSMSignResponseBuilder toBuilder() =>
-      new HSMSignResponseBuilder()..replace(this);
+  HSMSignResponseBuilder toBuilder() => HSMSignResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -85,7 +78,6 @@ class HSMSignResponseBuilder
 
   @override
   void replace(HSMSignResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$HSMSignResponse;
   }
 
@@ -99,11 +91,12 @@ class HSMSignResponseBuilder
 
   _$HSMSignResponse _build() {
     final _$result = _$v ??
-        new _$HSMSignResponse._(
-            publicKey: BuiltValueNullFieldError.checkNotNull(
-                publicKey, r'HSMSignResponse', 'publicKey'),
-            signature: BuiltValueNullFieldError.checkNotNull(
-                signature, r'HSMSignResponse', 'signature'));
+        _$HSMSignResponse._(
+          publicKey: BuiltValueNullFieldError.checkNotNull(
+              publicKey, r'HSMSignResponse', 'publicKey'),
+          signature: BuiltValueNullFieldError.checkNotNull(
+              signature, r'HSMSignResponse', 'signature'),
+        );
     replace(_$result);
     return _$result;
   }

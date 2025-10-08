@@ -209,7 +209,7 @@ class WebhooksApi {
   /// Returns a [Future] containing a [Response] with a [CreateWebhook200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateWebhook200Response>> createWebhook({ 
-    BaseWebhookEndpoint? baseWebhookEndpoint,
+    required BaseWebhookEndpoint baseWebhookEndpoint,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -246,7 +246,7 @@ class WebhooksApi {
 
     try {
       const _type = FullType(BaseWebhookEndpoint);
-      _bodyData = baseWebhookEndpoint == null ? null : _serializers.serialize(baseWebhookEndpoint, specifiedType: _type);
+      _bodyData = _serializers.serialize(baseWebhookEndpoint, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -490,7 +490,7 @@ class WebhooksApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ListWebhookEvents200Response>> listWebhookEvents({ 
     required int webhookID,
-    int? limit,
+    int? limit = 10,
     int? offset,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -584,7 +584,7 @@ class WebhooksApi {
   /// Returns a [Future] containing a [Response] with a [ListWebhooks200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<ListWebhooks200Response>> listWebhooks({ 
-    int? limit,
+    int? limit = 10,
     int? offset,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -679,7 +679,7 @@ class WebhooksApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateWebhook200Response>> updateWebhook({ 
     required int webhookID,
-    BaseWebhookEndpoint? baseWebhookEndpoint,
+    required BaseWebhookEndpoint baseWebhookEndpoint,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -716,7 +716,7 @@ class WebhooksApi {
 
     try {
       const _type = FullType(BaseWebhookEndpoint);
-      _bodyData = baseWebhookEndpoint == null ? null : _serializers.serialize(baseWebhookEndpoint, specifiedType: _type);
+      _bodyData = _serializers.serialize(baseWebhookEndpoint, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

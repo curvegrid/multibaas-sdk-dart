@@ -8,7 +8,7 @@ part of 'create_api_key200_response.dart';
 
 class _$CreateApiKey200Response extends CreateApiKey200Response {
   @override
-  final APIKey result;
+  final APIKeyWithSecret result;
   @override
   final int status;
   @override
@@ -16,19 +16,11 @@ class _$CreateApiKey200Response extends CreateApiKey200Response {
 
   factory _$CreateApiKey200Response(
           [void Function(CreateApiKey200ResponseBuilder)? updates]) =>
-      (new CreateApiKey200ResponseBuilder()..update(updates))._build();
+      (CreateApiKey200ResponseBuilder()..update(updates))._build();
 
   _$CreateApiKey200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'CreateApiKey200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'CreateApiKey200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CreateApiKey200Response', 'message');
-  }
-
+      : super._();
   @override
   CreateApiKey200Response rebuild(
           void Function(CreateApiKey200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$CreateApiKey200Response extends CreateApiKey200Response {
 
   @override
   CreateApiKey200ResponseBuilder toBuilder() =>
-      new CreateApiKey200ResponseBuilder()..replace(this);
+      CreateApiKey200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,9 +65,11 @@ class CreateApiKey200ResponseBuilder
         BaseResponseBuilder {
   _$CreateApiKey200Response? _$v;
 
-  APIKeyBuilder? _result;
-  APIKeyBuilder get result => _$this._result ??= new APIKeyBuilder();
-  set result(covariant APIKeyBuilder? result) => _$this._result = result;
+  APIKeyWithSecretBuilder? _result;
+  APIKeyWithSecretBuilder get result =>
+      _$this._result ??= APIKeyWithSecretBuilder();
+  set result(covariant APIKeyWithSecretBuilder? result) =>
+      _$this._result = result;
 
   int? _status;
   int? get status => _$this._status;
@@ -102,7 +96,6 @@ class CreateApiKey200ResponseBuilder
 
   @override
   void replace(covariant CreateApiKey200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateApiKey200Response;
   }
 
@@ -118,19 +111,20 @@ class CreateApiKey200ResponseBuilder
     _$CreateApiKey200Response _$result;
     try {
       _$result = _$v ??
-          new _$CreateApiKey200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'CreateApiKey200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'CreateApiKey200Response', 'message'));
+          _$CreateApiKey200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'CreateApiKey200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'CreateApiKey200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateApiKey200Response', _$failedField, e.toString());
       }
       rethrow;

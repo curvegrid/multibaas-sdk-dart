@@ -13,11 +13,11 @@ ChainName _$valueOf(String name) {
     case 'ethereum':
       return _$ethereum;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
-final BuiltSet<ChainName> _$values = new BuiltSet<ChainName>(const <ChainName>[
+final BuiltSet<ChainName> _$values = BuiltSet<ChainName>(const <ChainName>[
   _$ethereum,
 ]);
 
@@ -33,7 +33,7 @@ abstract class _$ChainNameMixin {
   _$ChainNameMeta get ChainName => const _$ChainNameMeta();
 }
 
-Serializer<ChainName> _$chainNameSerializer = new _$ChainNameSerializer();
+Serializer<ChainName> _$chainNameSerializer = _$ChainNameSerializer();
 
 class _$ChainNameSerializer implements PrimitiveSerializer<ChainName> {
   static const Map<String, Object> _toWire = const <String, Object>{

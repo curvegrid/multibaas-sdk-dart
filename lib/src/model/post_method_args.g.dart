@@ -26,7 +26,7 @@ class _$PostMethodArgs extends PostMethodArgs {
   @override
   final String? to;
   @override
-  final int? value;
+  final String? value;
   @override
   final bool? signAndSubmit;
   @override
@@ -43,11 +43,9 @@ class _$PostMethodArgs extends PostMethodArgs {
   final String? blockNumber;
   @override
   final bool? contractOverride;
-  @override
-  final PreviewArgs? preview;
 
   factory _$PostMethodArgs([void Function(PostMethodArgsBuilder)? updates]) =>
-      (new PostMethodArgsBuilder()..update(updates))._build();
+      (PostMethodArgsBuilder()..update(updates))._build();
 
   _$PostMethodArgs._(
       {this.signature,
@@ -67,17 +65,14 @@ class _$PostMethodArgs extends PostMethodArgs {
       this.formatInts,
       this.timestamp,
       this.blockNumber,
-      this.contractOverride,
-      this.preview})
+      this.contractOverride})
       : super._();
-
   @override
   PostMethodArgs rebuild(void Function(PostMethodArgsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PostMethodArgsBuilder toBuilder() =>
-      new PostMethodArgsBuilder()..replace(this);
+  PostMethodArgsBuilder toBuilder() => PostMethodArgsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -100,8 +95,7 @@ class _$PostMethodArgs extends PostMethodArgs {
         formatInts == other.formatInts &&
         timestamp == other.timestamp &&
         blockNumber == other.blockNumber &&
-        contractOverride == other.contractOverride &&
-        preview == other.preview;
+        contractOverride == other.contractOverride;
   }
 
   @override
@@ -125,7 +119,6 @@ class _$PostMethodArgs extends PostMethodArgs {
     _$hash = $jc(_$hash, timestamp.hashCode);
     _$hash = $jc(_$hash, blockNumber.hashCode);
     _$hash = $jc(_$hash, contractOverride.hashCode);
-    _$hash = $jc(_$hash, preview.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -150,8 +143,7 @@ class _$PostMethodArgs extends PostMethodArgs {
           ..add('formatInts', formatInts)
           ..add('timestamp', timestamp)
           ..add('blockNumber', blockNumber)
-          ..add('contractOverride', contractOverride)
-          ..add('preview', preview))
+          ..add('contractOverride', contractOverride))
         .toString();
   }
 }
@@ -166,7 +158,7 @@ class PostMethodArgsBuilder
 
   ListBuilder<JsonObject?>? _args;
   ListBuilder<JsonObject?> get args =>
-      _$this._args ??= new ListBuilder<JsonObject?>();
+      _$this._args ??= ListBuilder<JsonObject?>();
   set args(ListBuilder<JsonObject?>? args) => _$this._args = args;
 
   String? _from;
@@ -197,9 +189,9 @@ class PostMethodArgsBuilder
   String? get to => _$this._to;
   set to(String? to) => _$this._to = to;
 
-  int? _value;
-  int? get value => _$this._value;
-  set value(int? value) => _$this._value = value;
+  String? _value;
+  String? get value => _$this._value;
+  set value(String? value) => _$this._value = value;
 
   bool? _signAndSubmit;
   bool? get signAndSubmit => _$this._signAndSubmit;
@@ -236,11 +228,6 @@ class PostMethodArgsBuilder
   set contractOverride(bool? contractOverride) =>
       _$this._contractOverride = contractOverride;
 
-  PreviewArgsBuilder? _preview;
-  PreviewArgsBuilder get preview =>
-      _$this._preview ??= new PreviewArgsBuilder();
-  set preview(PreviewArgsBuilder? preview) => _$this._preview = preview;
-
   PostMethodArgsBuilder() {
     PostMethodArgs._defaults(this);
   }
@@ -266,7 +253,6 @@ class PostMethodArgsBuilder
       _timestamp = $v.timestamp;
       _blockNumber = $v.blockNumber;
       _contractOverride = $v.contractOverride;
-      _preview = $v.preview?.toBuilder();
       _$v = null;
     }
     return this;
@@ -274,7 +260,6 @@ class PostMethodArgsBuilder
 
   @override
   void replace(PostMethodArgs other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PostMethodArgs;
   }
 
@@ -290,36 +275,33 @@ class PostMethodArgsBuilder
     _$PostMethodArgs _$result;
     try {
       _$result = _$v ??
-          new _$PostMethodArgs._(
-              signature: signature,
-              args: _args?.build(),
-              from: from,
-              nonce: nonce,
-              gasPrice: gasPrice,
-              gasFeeCap: gasFeeCap,
-              gasTipCap: gasTipCap,
-              gas: gas,
-              to: to,
-              value: value,
-              signAndSubmit: signAndSubmit,
-              nonceManagement: nonceManagement,
-              preEIP1559: preEIP1559,
-              signer: signer,
-              formatInts: formatInts,
-              timestamp: timestamp,
-              blockNumber: blockNumber,
-              contractOverride: contractOverride,
-              preview: _preview?.build());
+          _$PostMethodArgs._(
+            signature: signature,
+            args: _args?.build(),
+            from: from,
+            nonce: nonce,
+            gasPrice: gasPrice,
+            gasFeeCap: gasFeeCap,
+            gasTipCap: gasTipCap,
+            gas: gas,
+            to: to,
+            value: value,
+            signAndSubmit: signAndSubmit,
+            nonceManagement: nonceManagement,
+            preEIP1559: preEIP1559,
+            signer: signer,
+            formatInts: formatInts,
+            timestamp: timestamp,
+            blockNumber: blockNumber,
+            contractOverride: contractOverride,
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'args';
         _args?.build();
-
-        _$failedField = 'preview';
-        _preview?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PostMethodArgs', _$failedField, e.toString());
       }
       rethrow;

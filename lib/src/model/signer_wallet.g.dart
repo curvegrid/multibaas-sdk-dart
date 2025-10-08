@@ -10,8 +10,8 @@ const SignerWalletTypeEnum _$signerWalletTypeEnum_web3 =
     const SignerWalletTypeEnum._('web3');
 const SignerWalletTypeEnum _$signerWalletTypeEnum_cloud =
     const SignerWalletTypeEnum._('cloud');
-const SignerWalletTypeEnum _$signerWalletTypeEnum_multisig =
-    const SignerWalletTypeEnum._('multisig');
+const SignerWalletTypeEnum _$signerWalletTypeEnum_safe =
+    const SignerWalletTypeEnum._('safe');
 
 SignerWalletTypeEnum _$signerWalletTypeEnumValueOf(String name) {
   switch (name) {
@@ -19,34 +19,34 @@ SignerWalletTypeEnum _$signerWalletTypeEnumValueOf(String name) {
       return _$signerWalletTypeEnum_web3;
     case 'cloud':
       return _$signerWalletTypeEnum_cloud;
-    case 'multisig':
-      return _$signerWalletTypeEnum_multisig;
+    case 'safe':
+      return _$signerWalletTypeEnum_safe;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SignerWalletTypeEnum> _$signerWalletTypeEnumValues =
-    new BuiltSet<SignerWalletTypeEnum>(const <SignerWalletTypeEnum>[
+    BuiltSet<SignerWalletTypeEnum>(const <SignerWalletTypeEnum>[
   _$signerWalletTypeEnum_web3,
   _$signerWalletTypeEnum_cloud,
-  _$signerWalletTypeEnum_multisig,
+  _$signerWalletTypeEnum_safe,
 ]);
 
 Serializer<SignerWalletTypeEnum> _$signerWalletTypeEnumSerializer =
-    new _$SignerWalletTypeEnumSerializer();
+    _$SignerWalletTypeEnumSerializer();
 
 class _$SignerWalletTypeEnumSerializer
     implements PrimitiveSerializer<SignerWalletTypeEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
     'web3': 'web3',
     'cloud': 'cloud',
-    'multisig': 'multisig',
+    'safe': 'safe',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'web3': 'web3',
     'cloud': 'cloud',
-    'multisig': 'multisig',
+    'safe': 'safe',
   };
 
   @override
@@ -77,26 +77,20 @@ class _$SignerWallet extends SignerWallet {
   final String label;
 
   factory _$SignerWallet([void Function(SignerWalletBuilder)? updates]) =>
-      (new SignerWalletBuilder()..update(updates))._build();
+      (SignerWalletBuilder()..update(updates))._build();
 
   _$SignerWallet._(
       {required this.type,
       required this.wallet,
       required this.signer,
       required this.label})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, r'SignerWallet', 'type');
-    BuiltValueNullFieldError.checkNotNull(wallet, r'SignerWallet', 'wallet');
-    BuiltValueNullFieldError.checkNotNull(signer, r'SignerWallet', 'signer');
-    BuiltValueNullFieldError.checkNotNull(label, r'SignerWallet', 'label');
-  }
-
+      : super._();
   @override
   SignerWallet rebuild(void Function(SignerWalletBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SignerWalletBuilder toBuilder() => new SignerWalletBuilder()..replace(this);
+  SignerWalletBuilder toBuilder() => SignerWalletBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -168,7 +162,6 @@ class SignerWalletBuilder
 
   @override
   void replace(SignerWallet other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignerWallet;
   }
 
@@ -182,15 +175,16 @@ class SignerWalletBuilder
 
   _$SignerWallet _build() {
     final _$result = _$v ??
-        new _$SignerWallet._(
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'SignerWallet', 'type'),
-            wallet: BuiltValueNullFieldError.checkNotNull(
-                wallet, r'SignerWallet', 'wallet'),
-            signer: BuiltValueNullFieldError.checkNotNull(
-                signer, r'SignerWallet', 'signer'),
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'SignerWallet', 'label'));
+        _$SignerWallet._(
+          type: BuiltValueNullFieldError.checkNotNull(
+              type, r'SignerWallet', 'type'),
+          wallet: BuiltValueNullFieldError.checkNotNull(
+              wallet, r'SignerWallet', 'wallet'),
+          signer: BuiltValueNullFieldError.checkNotNull(
+              signer, r'SignerWallet', 'signer'),
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'SignerWallet', 'label'),
+        );
     replace(_$result);
     return _$result;
   }

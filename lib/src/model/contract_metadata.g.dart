@@ -13,34 +13,21 @@ class _$ContractMetadata extends ContractMetadata {
   final String name;
   @override
   final String version;
-  @override
-  final bool conflict;
 
   factory _$ContractMetadata(
           [void Function(ContractMetadataBuilder)? updates]) =>
-      (new ContractMetadataBuilder()..update(updates))._build();
+      (ContractMetadataBuilder()..update(updates))._build();
 
   _$ContractMetadata._(
-      {required this.label,
-      required this.name,
-      required this.version,
-      required this.conflict})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(label, r'ContractMetadata', 'label');
-    BuiltValueNullFieldError.checkNotNull(name, r'ContractMetadata', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        version, r'ContractMetadata', 'version');
-    BuiltValueNullFieldError.checkNotNull(
-        conflict, r'ContractMetadata', 'conflict');
-  }
-
+      {required this.label, required this.name, required this.version})
+      : super._();
   @override
   ContractMetadata rebuild(void Function(ContractMetadataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ContractMetadataBuilder toBuilder() =>
-      new ContractMetadataBuilder()..replace(this);
+      ContractMetadataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -48,8 +35,7 @@ class _$ContractMetadata extends ContractMetadata {
     return other is ContractMetadata &&
         label == other.label &&
         name == other.name &&
-        version == other.version &&
-        conflict == other.conflict;
+        version == other.version;
   }
 
   @override
@@ -58,7 +44,6 @@ class _$ContractMetadata extends ContractMetadata {
     _$hash = $jc(_$hash, label.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, version.hashCode);
-    _$hash = $jc(_$hash, conflict.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -68,8 +53,7 @@ class _$ContractMetadata extends ContractMetadata {
     return (newBuiltValueToStringHelper(r'ContractMetadata')
           ..add('label', label)
           ..add('name', name)
-          ..add('version', version)
-          ..add('conflict', conflict))
+          ..add('version', version))
         .toString();
   }
 }
@@ -90,10 +74,6 @@ class ContractMetadataBuilder
   String? get version => _$this._version;
   set version(String? version) => _$this._version = version;
 
-  bool? _conflict;
-  bool? get conflict => _$this._conflict;
-  set conflict(bool? conflict) => _$this._conflict = conflict;
-
   ContractMetadataBuilder() {
     ContractMetadata._defaults(this);
   }
@@ -104,7 +84,6 @@ class ContractMetadataBuilder
       _label = $v.label;
       _name = $v.name;
       _version = $v.version;
-      _conflict = $v.conflict;
       _$v = null;
     }
     return this;
@@ -112,7 +91,6 @@ class ContractMetadataBuilder
 
   @override
   void replace(ContractMetadata other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractMetadata;
   }
 
@@ -126,15 +104,14 @@ class ContractMetadataBuilder
 
   _$ContractMetadata _build() {
     final _$result = _$v ??
-        new _$ContractMetadata._(
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'ContractMetadata', 'label'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'ContractMetadata', 'name'),
-            version: BuiltValueNullFieldError.checkNotNull(
-                version, r'ContractMetadata', 'version'),
-            conflict: BuiltValueNullFieldError.checkNotNull(
-                conflict, r'ContractMetadata', 'conflict'));
+        _$ContractMetadata._(
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'ContractMetadata', 'label'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'ContractMetadata', 'name'),
+          version: BuiltValueNullFieldError.checkNotNull(
+              version, r'ContractMetadata', 'version'),
+        );
     replace(_$result);
     return _$result;
   }

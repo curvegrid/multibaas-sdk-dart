@@ -13,7 +13,7 @@ part 'create_api_key_request.g.dart';
 /// CreateApiKeyRequest
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [groupIDs] 
 @BuiltValue()
 abstract class CreateApiKeyRequest implements BaseAPIKey, Built<CreateApiKeyRequest, CreateApiKeyRequestBuilder> {

@@ -19,7 +19,7 @@ void main() {
       // TODO
     });
 
-    // APIKey result
+    // APIKeyWithSecret result
     test('to test the property `result`', () async {
       // TODO
     });

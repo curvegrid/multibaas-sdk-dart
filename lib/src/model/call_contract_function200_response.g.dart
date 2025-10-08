@@ -17,19 +17,11 @@ class _$CallContractFunction200Response
 
   factory _$CallContractFunction200Response(
           [void Function(CallContractFunction200ResponseBuilder)? updates]) =>
-      (new CallContractFunction200ResponseBuilder()..update(updates))._build();
+      (CallContractFunction200ResponseBuilder()..update(updates))._build();
 
   _$CallContractFunction200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'CallContractFunction200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'CallContractFunction200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CallContractFunction200Response', 'message');
-  }
-
+      : super._();
   @override
   CallContractFunction200Response rebuild(
           void Function(CallContractFunction200ResponseBuilder) updates) =>
@@ -37,7 +29,7 @@ class _$CallContractFunction200Response
 
   @override
   CallContractFunction200ResponseBuilder toBuilder() =>
-      new CallContractFunction200ResponseBuilder()..replace(this);
+      CallContractFunction200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,8 +69,7 @@ class CallContractFunction200ResponseBuilder
 
   CallContractFunction200ResponseAllOfResultBuilder? _result;
   CallContractFunction200ResponseAllOfResultBuilder get result =>
-      _$this._result ??=
-          new CallContractFunction200ResponseAllOfResultBuilder();
+      _$this._result ??= CallContractFunction200ResponseAllOfResultBuilder();
   set result(
           covariant CallContractFunction200ResponseAllOfResultBuilder?
               result) =>
@@ -109,7 +100,6 @@ class CallContractFunction200ResponseBuilder
 
   @override
   void replace(covariant CallContractFunction200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CallContractFunction200Response;
   }
 
@@ -125,19 +115,20 @@ class CallContractFunction200ResponseBuilder
     _$CallContractFunction200Response _$result;
     try {
       _$result = _$v ??
-          new _$CallContractFunction200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'CallContractFunction200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'CallContractFunction200Response', 'message'));
+          _$CallContractFunction200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'CallContractFunction200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'CallContractFunction200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CallContractFunction200Response', _$failedField, e.toString());
       }
       rethrow;

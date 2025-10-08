@@ -11,7 +11,7 @@ void main() {
     //
     // Cancels a transaction by resubmitting it as no-op transaction and with a higher gas price.
     //
-    //Future<TransferEth200Response> cancelTransaction(ChainName chain, String walletAddress, int nonce, { GasParams gasParams }) async
+    //Future<TransferEth200Response> cancelTransaction(ChainName chain, String walletAddress, int nonce, GasParams gasParams) async
     test('test cancelTransaction', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Speeds up a transaction by resubmitting it with a higher gas price.
     //
-    //Future<TransferEth200Response> speedUpTransaction(ChainName chain, String walletAddress, int nonce, { GasParams gasParams }) async
+    //Future<TransferEth200Response> speedUpTransaction(ChainName chain, String walletAddress, int nonce, GasParams gasParams) async
     test('test speedUpTransaction', () async {
       // TODO
     });

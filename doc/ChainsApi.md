@@ -130,7 +130,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getChainsApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String hash = hash_example; // String | Transaction hash.
+final String hash = hash_example; // String | A transaction hash.
 final String include = include_example; // String | Include contract and method call details, if available.
 
 try {
@@ -146,7 +146,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **hash** | **String**| Transaction hash. | 
+ **hash** | **String**| A transaction hash. | 
  **include** | **String**| Include contract and method call details, if available. | [optional] 
 
 ### Return type
@@ -181,7 +181,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getChainsApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String hash = hash_example; // String | Transaction hash.
+final String hash = hash_example; // String | A transaction hash.
 final String include = include_example; // String | Include contract and event details, if available.
 
 try {
@@ -197,7 +197,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **hash** | **String**| Transaction hash. | 
+ **hash** | **String**| A transaction hash. | 
  **include** | **String**| Include contract and event details, if available. | [optional] 
 
 ### Return type
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **submitSignedTransaction**
-> BaseResponse submitSignedTransaction(chain, signedTransactionSubmission)
+> SubmitSignedTransaction200Response submitSignedTransaction(chain, signedTransactionSubmission)
 
 Submit signed transaction
 
@@ -247,11 +247,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **signedTransactionSubmission** | [**SignedTransactionSubmission**](SignedTransactionSubmission.md)|  | [optional] 
+ **signedTransactionSubmission** | [**SignedTransactionSubmission**](SignedTransactionSubmission.md)|  | 
 
 ### Return type
 
-[**BaseResponse**](BaseResponse.md)
+[**SubmitSignedTransaction200Response**](SubmitSignedTransaction200Response.md)
 
 ### Authorization
 
@@ -296,7 +296,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | [optional] 
+ **postMethodArgs** | [**PostMethodArgs**](PostMethodArgs.md)|  | 
 
 ### Return type
 

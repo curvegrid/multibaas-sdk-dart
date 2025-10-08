@@ -22,7 +22,7 @@ class _$EventInformation extends EventInformation {
 
   factory _$EventInformation(
           [void Function(EventInformationBuilder)? updates]) =>
-      (new EventInformationBuilder()..update(updates))._build();
+      (EventInformationBuilder()..update(updates))._build();
 
   _$EventInformation._(
       {required this.name,
@@ -31,25 +31,14 @@ class _$EventInformation extends EventInformation {
       this.rawFields,
       required this.contract,
       required this.indexInLog})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'EventInformation', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        signature, r'EventInformation', 'signature');
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'EventInformation', 'inputs');
-    BuiltValueNullFieldError.checkNotNull(
-        contract, r'EventInformation', 'contract');
-    BuiltValueNullFieldError.checkNotNull(
-        indexInLog, r'EventInformation', 'indexInLog');
-  }
-
+      : super._();
   @override
   EventInformation rebuild(void Function(EventInformationBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   EventInformationBuilder toBuilder() =>
-      new EventInformationBuilder()..replace(this);
+      EventInformationBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -103,7 +92,7 @@ class EventInformationBuilder
 
   ListBuilder<EventField>? _inputs;
   ListBuilder<EventField> get inputs =>
-      _$this._inputs ??= new ListBuilder<EventField>();
+      _$this._inputs ??= ListBuilder<EventField>();
   set inputs(ListBuilder<EventField>? inputs) => _$this._inputs = inputs;
 
   String? _rawFields;
@@ -112,7 +101,7 @@ class EventInformationBuilder
 
   ContractInformationBuilder? _contract;
   ContractInformationBuilder get contract =>
-      _$this._contract ??= new ContractInformationBuilder();
+      _$this._contract ??= ContractInformationBuilder();
   set contract(ContractInformationBuilder? contract) =>
       _$this._contract = contract;
 
@@ -140,7 +129,6 @@ class EventInformationBuilder
 
   @override
   void replace(EventInformation other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventInformation;
   }
 
@@ -156,16 +144,17 @@ class EventInformationBuilder
     _$EventInformation _$result;
     try {
       _$result = _$v ??
-          new _$EventInformation._(
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'EventInformation', 'name'),
-              signature: BuiltValueNullFieldError.checkNotNull(
-                  signature, r'EventInformation', 'signature'),
-              inputs: inputs.build(),
-              rawFields: rawFields,
-              contract: contract.build(),
-              indexInLog: BuiltValueNullFieldError.checkNotNull(
-                  indexInLog, r'EventInformation', 'indexInLog'));
+          _$EventInformation._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'EventInformation', 'name'),
+            signature: BuiltValueNullFieldError.checkNotNull(
+                signature, r'EventInformation', 'signature'),
+            inputs: inputs.build(),
+            rawFields: rawFields,
+            contract: contract.build(),
+            indexInLog: BuiltValueNullFieldError.checkNotNull(
+                indexInLog, r'EventInformation', 'indexInLog'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -175,7 +164,7 @@ class EventInformationBuilder
         _$failedField = 'contract';
         contract.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EventInformation', _$failedField, e.toString());
       }
       rethrow;

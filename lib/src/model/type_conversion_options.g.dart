@@ -12,10 +12,9 @@ class _$TypeConversionOptions extends TypeConversionOptions {
 
   factory _$TypeConversionOptions(
           [void Function(TypeConversionOptionsBuilder)? updates]) =>
-      (new TypeConversionOptionsBuilder()..update(updates))._build();
+      (TypeConversionOptionsBuilder()..update(updates))._build();
 
   _$TypeConversionOptions._({this.types}) : super._();
-
   @override
   TypeConversionOptions rebuild(
           void Function(TypeConversionOptionsBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$TypeConversionOptions extends TypeConversionOptions {
 
   @override
   TypeConversionOptionsBuilder toBuilder() =>
-      new TypeConversionOptionsBuilder()..replace(this);
+      TypeConversionOptionsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -52,7 +51,7 @@ class TypeConversionOptionsBuilder
   _$TypeConversionOptions? _$v;
 
   ListBuilder<String>? _types;
-  ListBuilder<String> get types => _$this._types ??= new ListBuilder<String>();
+  ListBuilder<String> get types => _$this._types ??= ListBuilder<String>();
   set types(ListBuilder<String>? types) => _$this._types = types;
 
   TypeConversionOptionsBuilder() {
@@ -70,7 +69,6 @@ class TypeConversionOptionsBuilder
 
   @override
   void replace(TypeConversionOptions other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TypeConversionOptions;
   }
 
@@ -85,14 +83,17 @@ class TypeConversionOptionsBuilder
   _$TypeConversionOptions _build() {
     _$TypeConversionOptions _$result;
     try {
-      _$result = _$v ?? new _$TypeConversionOptions._(types: _types?.build());
+      _$result = _$v ??
+          _$TypeConversionOptions._(
+            types: _types?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'types';
         _types?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TypeConversionOptions', _$failedField, e.toString());
       }
       rethrow;

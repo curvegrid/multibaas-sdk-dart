@@ -18,20 +18,11 @@ class _$GetEventTypeConversions200Response
   factory _$GetEventTypeConversions200Response(
           [void Function(GetEventTypeConversions200ResponseBuilder)?
               updates]) =>
-      (new GetEventTypeConversions200ResponseBuilder()..update(updates))
-          ._build();
+      (GetEventTypeConversions200ResponseBuilder()..update(updates))._build();
 
   _$GetEventTypeConversions200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'GetEventTypeConversions200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetEventTypeConversions200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GetEventTypeConversions200Response', 'message');
-  }
-
+      : super._();
   @override
   GetEventTypeConversions200Response rebuild(
           void Function(GetEventTypeConversions200ResponseBuilder) updates) =>
@@ -39,7 +30,7 @@ class _$GetEventTypeConversions200Response
 
   @override
   GetEventTypeConversions200ResponseBuilder toBuilder() =>
-      new GetEventTypeConversions200ResponseBuilder()..replace(this);
+      GetEventTypeConversions200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -79,7 +70,7 @@ class GetEventTypeConversions200ResponseBuilder
 
   EventTypeConversionOptionsBuilder? _result;
   EventTypeConversionOptionsBuilder get result =>
-      _$this._result ??= new EventTypeConversionOptionsBuilder();
+      _$this._result ??= EventTypeConversionOptionsBuilder();
   set result(covariant EventTypeConversionOptionsBuilder? result) =>
       _$this._result = result;
 
@@ -108,7 +99,6 @@ class GetEventTypeConversions200ResponseBuilder
 
   @override
   void replace(covariant GetEventTypeConversions200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetEventTypeConversions200Response;
   }
 
@@ -125,19 +115,20 @@ class GetEventTypeConversions200ResponseBuilder
     _$GetEventTypeConversions200Response _$result;
     try {
       _$result = _$v ??
-          new _$GetEventTypeConversions200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'GetEventTypeConversions200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'GetEventTypeConversions200Response', 'message'));
+          _$GetEventTypeConversions200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'GetEventTypeConversions200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'GetEventTypeConversions200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GetEventTypeConversions200Response', _$failedField, e.toString());
       }
       rethrow;

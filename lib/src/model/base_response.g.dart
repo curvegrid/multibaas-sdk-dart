@@ -23,19 +23,15 @@ class _$$BaseResponse extends $BaseResponse {
   final String message;
 
   factory _$$BaseResponse([void Function($BaseResponseBuilder)? updates]) =>
-      (new $BaseResponseBuilder()..update(updates))._build();
+      ($BaseResponseBuilder()..update(updates))._build();
 
-  _$$BaseResponse._({required this.status, required this.message}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(status, r'$BaseResponse', 'status');
-    BuiltValueNullFieldError.checkNotNull(message, r'$BaseResponse', 'message');
-  }
-
+  _$$BaseResponse._({required this.status, required this.message}) : super._();
   @override
   $BaseResponse rebuild(void Function($BaseResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $BaseResponseBuilder toBuilder() => new $BaseResponseBuilder()..replace(this);
+  $BaseResponseBuilder toBuilder() => $BaseResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -93,7 +89,6 @@ class $BaseResponseBuilder
 
   @override
   void replace(covariant $BaseResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$BaseResponse;
   }
 
@@ -107,11 +102,12 @@ class $BaseResponseBuilder
 
   _$$BaseResponse _build() {
     final _$result = _$v ??
-        new _$$BaseResponse._(
-            status: BuiltValueNullFieldError.checkNotNull(
-                status, r'$BaseResponse', 'status'),
-            message: BuiltValueNullFieldError.checkNotNull(
-                message, r'$BaseResponse', 'message'));
+        _$$BaseResponse._(
+          status: BuiltValueNullFieldError.checkNotNull(
+              status, r'$BaseResponse', 'status'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'$BaseResponse', 'message'),
+        );
     replace(_$result);
     return _$result;
   }

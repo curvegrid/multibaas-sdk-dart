@@ -21,7 +21,7 @@ abstract class SignerWallet implements Built<SignerWallet, SignerWalletBuilder> 
   /// The type of the signer.
   @BuiltValueField(wireName: r'type')
   SignerWalletTypeEnum get type;
-  // enum typeEnum {  web3,  cloud,  multisig,  };
+  // enum typeEnum {  web3,  cloud,  safe,  };
 
   /// An ethereum address.
   @BuiltValueField(wireName: r'wallet')
@@ -167,8 +167,8 @@ class SignerWalletTypeEnum extends EnumClass {
   @BuiltValueEnumConst(wireName: r'cloud')
   static const SignerWalletTypeEnum cloud = _$signerWalletTypeEnum_cloud;
   /// The type of the signer.
-  @BuiltValueEnumConst(wireName: r'multisig')
-  static const SignerWalletTypeEnum multisig = _$signerWalletTypeEnum_multisig;
+  @BuiltValueEnumConst(wireName: r'safe')
+  static const SignerWalletTypeEnum safe = _$signerWalletTypeEnum_safe;
 
   static Serializer<SignerWalletTypeEnum> get serializer => _$signerWalletTypeEnumSerializer;
 

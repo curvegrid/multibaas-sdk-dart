@@ -14,15 +14,11 @@ class _$CallContractFunction200ResponseAllOfResult
   factory _$CallContractFunction200ResponseAllOfResult(
           [void Function(CallContractFunction200ResponseAllOfResultBuilder)?
               updates]) =>
-      (new CallContractFunction200ResponseAllOfResultBuilder()..update(updates))
+      (CallContractFunction200ResponseAllOfResultBuilder()..update(updates))
           ._build();
 
   _$CallContractFunction200ResponseAllOfResult._({required this.oneOf})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'CallContractFunction200ResponseAllOfResult', 'oneOf');
-  }
-
+      : super._();
   @override
   CallContractFunction200ResponseAllOfResult rebuild(
           void Function(CallContractFunction200ResponseAllOfResultBuilder)
@@ -31,7 +27,7 @@ class _$CallContractFunction200ResponseAllOfResult
 
   @override
   CallContractFunction200ResponseAllOfResultBuilder toBuilder() =>
-      new CallContractFunction200ResponseAllOfResultBuilder()..replace(this);
+      CallContractFunction200ResponseAllOfResultBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +78,6 @@ class CallContractFunction200ResponseAllOfResultBuilder
 
   @override
   void replace(CallContractFunction200ResponseAllOfResult other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CallContractFunction200ResponseAllOfResult;
   }
 
@@ -98,9 +93,10 @@ class CallContractFunction200ResponseAllOfResultBuilder
 
   _$CallContractFunction200ResponseAllOfResult _build() {
     final _$result = _$v ??
-        new _$CallContractFunction200ResponseAllOfResult._(
-            oneOf: BuiltValueNullFieldError.checkNotNull(
-                oneOf, r'CallContractFunction200ResponseAllOfResult', 'oneOf'));
+        _$CallContractFunction200ResponseAllOfResult._(
+          oneOf: BuiltValueNullFieldError.checkNotNull(
+              oneOf, r'CallContractFunction200ResponseAllOfResult', 'oneOf'),
+        );
     replace(_$result);
     return _$result;
   }

@@ -6,34 +6,28 @@ part of 'transaction_to_sign.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class TransactionToSignBuilder
-    implements BaseTransactionToSignBuilder {
-  void replace(covariant TransactionToSign other);
+abstract class TransactionToSignBuilder {
+  void replace(TransactionToSign other);
   void update(void Function(TransactionToSignBuilder) updates);
-  bool? get submitted;
-  set submitted(covariant bool? submitted);
+  TransactionToSignTxBuilder get tx;
+  set tx(TransactionToSignTxBuilder? tx);
 
-  BaseTransactionToSignTxBuilder get tx;
-  set tx(covariant BaseTransactionToSignTxBuilder? tx);
+  bool? get submitted;
+  set submitted(bool? submitted);
 }
 
 class _$$TransactionToSign extends $TransactionToSign {
   @override
-  final bool submitted;
+  final TransactionToSignTx tx;
   @override
-  final BaseTransactionToSignTx tx;
+  final bool submitted;
 
   factory _$$TransactionToSign(
           [void Function($TransactionToSignBuilder)? updates]) =>
-      (new $TransactionToSignBuilder()..update(updates))._build();
+      ($TransactionToSignBuilder()..update(updates))._build();
 
-  _$$TransactionToSign._({required this.submitted, required this.tx})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        submitted, r'$TransactionToSign', 'submitted');
-    BuiltValueNullFieldError.checkNotNull(tx, r'$TransactionToSign', 'tx');
-  }
-
+  _$$TransactionToSign._({required this.tx, required this.submitted})
+      : super._();
   @override
   $TransactionToSign rebuild(
           void Function($TransactionToSignBuilder) updates) =>
@@ -41,21 +35,21 @@ class _$$TransactionToSign extends $TransactionToSign {
 
   @override
   $TransactionToSignBuilder toBuilder() =>
-      new $TransactionToSignBuilder()..replace(this);
+      $TransactionToSignBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is $TransactionToSign &&
-        submitted == other.submitted &&
-        tx == other.tx;
+        tx == other.tx &&
+        submitted == other.submitted;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, submitted.hashCode);
     _$hash = $jc(_$hash, tx.hashCode);
+    _$hash = $jc(_$hash, submitted.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -63,8 +57,8 @@ class _$$TransactionToSign extends $TransactionToSign {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'$TransactionToSign')
-          ..add('submitted', submitted)
-          ..add('tx', tx))
+          ..add('tx', tx)
+          ..add('submitted', submitted))
         .toString();
   }
 }
@@ -75,14 +69,14 @@ class $TransactionToSignBuilder
         TransactionToSignBuilder {
   _$$TransactionToSign? _$v;
 
+  TransactionToSignTxBuilder? _tx;
+  TransactionToSignTxBuilder get tx =>
+      _$this._tx ??= TransactionToSignTxBuilder();
+  set tx(covariant TransactionToSignTxBuilder? tx) => _$this._tx = tx;
+
   bool? _submitted;
   bool? get submitted => _$this._submitted;
   set submitted(covariant bool? submitted) => _$this._submitted = submitted;
-
-  BaseTransactionToSignTxBuilder? _tx;
-  BaseTransactionToSignTxBuilder get tx =>
-      _$this._tx ??= new BaseTransactionToSignTxBuilder();
-  set tx(covariant BaseTransactionToSignTxBuilder? tx) => _$this._tx = tx;
 
   $TransactionToSignBuilder() {
     $TransactionToSign._defaults(this);
@@ -91,8 +85,8 @@ class $TransactionToSignBuilder
   $TransactionToSignBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _submitted = $v.submitted;
       _tx = $v.tx.toBuilder();
+      _submitted = $v.submitted;
       _$v = null;
     }
     return this;
@@ -100,7 +94,6 @@ class $TransactionToSignBuilder
 
   @override
   void replace(covariant $TransactionToSign other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$TransactionToSign;
   }
 
@@ -116,17 +109,18 @@ class $TransactionToSignBuilder
     _$$TransactionToSign _$result;
     try {
       _$result = _$v ??
-          new _$$TransactionToSign._(
-              submitted: BuiltValueNullFieldError.checkNotNull(
-                  submitted, r'$TransactionToSign', 'submitted'),
-              tx: tx.build());
+          _$$TransactionToSign._(
+            tx: tx.build(),
+            submitted: BuiltValueNullFieldError.checkNotNull(
+                submitted, r'$TransactionToSign', 'submitted'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'tx';
         tx.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'$TransactionToSign', _$failedField, e.toString());
       }
       rethrow;

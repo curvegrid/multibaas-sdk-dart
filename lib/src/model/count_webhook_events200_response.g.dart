@@ -16,19 +16,11 @@ class _$CountWebhookEvents200Response extends CountWebhookEvents200Response {
 
   factory _$CountWebhookEvents200Response(
           [void Function(CountWebhookEvents200ResponseBuilder)? updates]) =>
-      (new CountWebhookEvents200ResponseBuilder()..update(updates))._build();
+      (CountWebhookEvents200ResponseBuilder()..update(updates))._build();
 
   _$CountWebhookEvents200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'CountWebhookEvents200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'CountWebhookEvents200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CountWebhookEvents200Response', 'message');
-  }
-
+      : super._();
   @override
   CountWebhookEvents200Response rebuild(
           void Function(CountWebhookEvents200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$CountWebhookEvents200Response extends CountWebhookEvents200Response {
 
   @override
   CountWebhookEvents200ResponseBuilder toBuilder() =>
-      new CountWebhookEvents200ResponseBuilder()..replace(this);
+      CountWebhookEvents200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -103,7 +95,6 @@ class CountWebhookEvents200ResponseBuilder
 
   @override
   void replace(covariant CountWebhookEvents200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CountWebhookEvents200Response;
   }
 
@@ -117,13 +108,14 @@ class CountWebhookEvents200ResponseBuilder
 
   _$CountWebhookEvents200Response _build() {
     final _$result = _$v ??
-        new _$CountWebhookEvents200Response._(
-            result: BuiltValueNullFieldError.checkNotNull(
-                result, r'CountWebhookEvents200Response', 'result'),
-            status: BuiltValueNullFieldError.checkNotNull(
-                status, r'CountWebhookEvents200Response', 'status'),
-            message: BuiltValueNullFieldError.checkNotNull(
-                message, r'CountWebhookEvents200Response', 'message'));
+        _$CountWebhookEvents200Response._(
+          result: BuiltValueNullFieldError.checkNotNull(
+              result, r'CountWebhookEvents200Response', 'result'),
+          status: BuiltValueNullFieldError.checkNotNull(
+              status, r'CountWebhookEvents200Response', 'status'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'CountWebhookEvents200Response', 'message'),
+        );
     replace(_$result);
     return _$result;
   }

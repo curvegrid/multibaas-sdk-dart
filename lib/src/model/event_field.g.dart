@@ -17,25 +17,20 @@ class _$EventField extends EventField {
   final String type;
 
   factory _$EventField([void Function(EventFieldBuilder)? updates]) =>
-      (new EventFieldBuilder()..update(updates))._build();
+      (EventFieldBuilder()..update(updates))._build();
 
   _$EventField._(
       {required this.name,
       this.value,
       required this.hashed,
       required this.type})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'EventField', 'name');
-    BuiltValueNullFieldError.checkNotNull(hashed, r'EventField', 'hashed');
-    BuiltValueNullFieldError.checkNotNull(type, r'EventField', 'type');
-  }
-
+      : super._();
   @override
   EventField rebuild(void Function(EventFieldBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EventFieldBuilder toBuilder() => new EventFieldBuilder()..replace(this);
+  EventFieldBuilder toBuilder() => EventFieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -106,7 +101,6 @@ class EventFieldBuilder implements Builder<EventField, EventFieldBuilder> {
 
   @override
   void replace(EventField other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventField;
   }
 
@@ -120,14 +114,15 @@ class EventFieldBuilder implements Builder<EventField, EventFieldBuilder> {
 
   _$EventField _build() {
     final _$result = _$v ??
-        new _$EventField._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'EventField', 'name'),
-            value: value,
-            hashed: BuiltValueNullFieldError.checkNotNull(
-                hashed, r'EventField', 'hashed'),
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'EventField', 'type'));
+        _$EventField._(
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'EventField', 'name'),
+          value: value,
+          hashed: BuiltValueNullFieldError.checkNotNull(
+              hashed, r'EventField', 'hashed'),
+          type: BuiltValueNullFieldError.checkNotNull(
+              type, r'EventField', 'type'),
+        );
     replace(_$result);
     return _$result;
   }

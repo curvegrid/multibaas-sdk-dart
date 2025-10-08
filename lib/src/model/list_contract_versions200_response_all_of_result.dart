@@ -12,11 +12,11 @@ part 'list_contract_versions200_response_all_of_result.g.dart';
 /// ListContractVersions200ResponseAllOfResult
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [versions] 
 @BuiltValue()
 abstract class ListContractVersions200ResponseAllOfResult implements Built<ListContractVersions200ResponseAllOfResult, ListContractVersions200ResponseAllOfResultBuilder> {
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 

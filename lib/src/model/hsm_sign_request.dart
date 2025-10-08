@@ -3,35 +3,32 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/hsm_sign_request_chain_id.dart';
+import 'package:multibaas/src/model/hsm_sign_request_personal_sign.dart';
+import 'package:multibaas/src/model/hsm_sign_request_typed_data.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
 
 part 'hsm_sign_request.g.dart';
 
-/// Request body representing a sign-data request.
+/// HSMSignRequest
 ///
 /// Properties:
+/// * [method] - The signing method to use.
 /// * [address] - An ethereum address.
-/// * [isTyped] - Is the data field an encapsulated EIP-712 typed message?
-/// * [data] - Data to sign
+/// * [data] 
 /// * [chainId] 
 @BuiltValue()
 abstract class HSMSignRequest implements Built<HSMSignRequest, HSMSignRequestBuilder> {
-  /// An ethereum address.
-  @BuiltValueField(wireName: r'address')
-  String get address;
+  /// One Of [HSMSignRequestPersonalSign], [HSMSignRequestTypedData]
+  OneOf get oneOf;
 
-  /// Is the data field an encapsulated EIP-712 typed message?
-  @BuiltValueField(wireName: r'isTyped')
-  bool? get isTyped;
+  static const String discriminatorFieldName = r'method';
 
-  /// Data to sign
-  @BuiltValueField(wireName: r'data')
-  String get data;
-
-  @BuiltValueField(wireName: r'chainId')
-  HSMSignRequestChainId? get chainId;
+  static const Map<String, Type> discriminatorMapping = {
+    r'eth_signTypedData_v4': HSMSignRequestTypedData,
+    r'personal_sign': HSMSignRequestPersonalSign,
+  };
 
   HSMSignRequest._();
 
@@ -44,6 +41,29 @@ abstract class HSMSignRequest implements Built<HSMSignRequest, HSMSignRequestBui
   static Serializer<HSMSignRequest> get serializer => _$HSMSignRequestSerializer();
 }
 
+extension HSMSignRequestDiscriminatorExt on HSMSignRequest {
+    String? get discriminatorValue {
+        if (this is HSMSignRequestTypedData) {
+            return r'eth_signTypedData_v4';
+        }
+        if (this is HSMSignRequestPersonalSign) {
+            return r'personal_sign';
+        }
+        return null;
+    }
+}
+extension HSMSignRequestBuilderDiscriminatorExt on HSMSignRequestBuilder {
+    String? get discriminatorValue {
+        if (this is HSMSignRequestTypedDataBuilder) {
+            return r'eth_signTypedData_v4';
+        }
+        if (this is HSMSignRequestPersonalSignBuilder) {
+            return r'personal_sign';
+        }
+        return null;
+    }
+}
+
 class _$HSMSignRequestSerializer implements PrimitiveSerializer<HSMSignRequest> {
   @override
   final Iterable<Type> types = const [HSMSignRequest, _$HSMSignRequest];
@@ -53,33 +73,7 @@ class _$HSMSignRequestSerializer implements PrimitiveSerializer<HSMSignRequest> 
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    HSMSignRequest object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'address';
-    yield serializers.serialize(
-      object.address,
-      specifiedType: const FullType(String),
-    );
-    if (object.isTyped != null) {
-      yield r'isTyped';
-      yield serializers.serialize(
-        object.isTyped,
-        specifiedType: const FullType(bool),
-      );
-    }
-    yield r'data';
-    yield serializers.serialize(
-      object.data,
-      specifiedType: const FullType(String),
-    );
-    if (object.chainId != null) {
-      yield r'chainId';
-      yield serializers.serialize(
-        object.chainId,
-        specifiedType: const FullType(HSMSignRequestChainId),
-      );
-    }
+    HSMSignRequest object) sync* {
   }
 
   @override
@@ -88,55 +82,8 @@ class _$HSMSignRequestSerializer implements PrimitiveSerializer<HSMSignRequest> 
     HSMSignRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required HSMSignRequestBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'address':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.address = valueDes;
-          break;
-        case r'isTyped':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.isTyped = valueDes;
-          break;
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.data = valueDes;
-          break;
-        case r'chainId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(HSMSignRequestChainId),
-          ) as HSMSignRequestChainId;
-          result.chainId.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
+    final oneOf = object.oneOf;
+    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -146,16 +93,33 @@ class _$HSMSignRequestSerializer implements PrimitiveSerializer<HSMSignRequest> 
     FullType specifiedType = FullType.unspecified,
   }) {
     final result = HSMSignRequestBuilder();
+    Object? oneOfDataSrc;
     final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
+    final discIndex = serializedList.indexOf(HSMSignRequest.discriminatorFieldName) + 1;
+    final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
+    oneOfDataSrc = serialized;
+    final oneOfTypes = [HSMSignRequestTypedData, HSMSignRequestPersonalSign, ];
+    Object oneOfResult;
+    Type oneOfType;
+    switch (discValue) {
+      case r'eth_signTypedData_v4':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(HSMSignRequestTypedData),
+        ) as HSMSignRequestTypedData;
+        oneOfType = HSMSignRequestTypedData;
+        break;
+      case r'personal_sign':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(HSMSignRequestPersonalSign),
+        ) as HSMSignRequestPersonalSign;
+        oneOfType = HSMSignRequestPersonalSign;
+        break;
+      default:
+        throw UnsupportedError("Couldn't deserialize oneOf for the discriminator value: ${discValue}");
+    }
+    result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
 }

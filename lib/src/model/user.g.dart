@@ -15,21 +15,16 @@ class _$User extends User {
   final String name;
 
   factory _$User([void Function(UserBuilder)? updates]) =>
-      (new UserBuilder()..update(updates))._build();
+      (UserBuilder()..update(updates))._build();
 
   _$User._({required this.id, required this.email, required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'User', 'id');
-    BuiltValueNullFieldError.checkNotNull(email, r'User', 'email');
-    BuiltValueNullFieldError.checkNotNull(name, r'User', 'name');
-  }
-
+      : super._();
   @override
   User rebuild(void Function(UserBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserBuilder toBuilder() => new UserBuilder()..replace(this);
+  UserBuilder toBuilder() => UserBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -92,7 +87,6 @@ class UserBuilder implements Builder<User, UserBuilder>, BaseUserBuilder {
 
   @override
   void replace(covariant User other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$User;
   }
 
@@ -106,11 +100,11 @@ class UserBuilder implements Builder<User, UserBuilder>, BaseUserBuilder {
 
   _$User _build() {
     final _$result = _$v ??
-        new _$User._(
-            id: BuiltValueNullFieldError.checkNotNull(id, r'User', 'id'),
-            email:
-                BuiltValueNullFieldError.checkNotNull(email, r'User', 'email'),
-            name: BuiltValueNullFieldError.checkNotNull(name, r'User', 'name'));
+        _$User._(
+          id: BuiltValueNullFieldError.checkNotNull(id, r'User', 'id'),
+          email: BuiltValueNullFieldError.checkNotNull(email, r'User', 'email'),
+          name: BuiltValueNullFieldError.checkNotNull(name, r'User', 'name'),
+        );
     replace(_$result);
     return _$result;
   }

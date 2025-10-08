@@ -3,8 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/base_transaction_to_sign.dart';
-import 'package:multibaas/src/model/base_transaction_to_sign_tx.dart';
+import 'package:multibaas/src/model/transaction_to_sign_tx.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,7 +15,10 @@ part 'transaction_to_sign.g.dart';
 /// * [tx] 
 /// * [submitted] 
 @BuiltValue(instantiable: false)
-abstract class TransactionToSign implements BaseTransactionToSign {
+abstract class TransactionToSign  {
+  @BuiltValueField(wireName: r'tx')
+  TransactionToSignTx get tx;
+
   @BuiltValueField(wireName: r'submitted')
   bool get submitted;
 
@@ -39,7 +41,7 @@ class _$TransactionToSignSerializer implements PrimitiveSerializer<TransactionTo
     yield r'tx';
     yield serializers.serialize(
       object.tx,
-      specifiedType: const FullType(BaseTransactionToSignTx),
+      specifiedType: const FullType(TransactionToSignTx),
     );
     yield r'submitted';
     yield serializers.serialize(
@@ -112,8 +114,8 @@ class _$$TransactionToSignSerializer implements PrimitiveSerializer<$Transaction
         case r'tx':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BaseTransactionToSignTx),
-          ) as BaseTransactionToSignTx;
+            specifiedType: const FullType(TransactionToSignTx),
+          ) as TransactionToSignTx;
           result.tx.replace(valueDes);
           break;
         case r'submitted':

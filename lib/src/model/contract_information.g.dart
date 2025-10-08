@@ -10,7 +10,7 @@ class _$ContractInformation extends ContractInformation {
   @override
   final String address;
   @override
-  final String addressLabel;
+  final String addressAlias;
   @override
   final String name;
   @override
@@ -18,23 +18,14 @@ class _$ContractInformation extends ContractInformation {
 
   factory _$ContractInformation(
           [void Function(ContractInformationBuilder)? updates]) =>
-      (new ContractInformationBuilder()..update(updates))._build();
+      (ContractInformationBuilder()..update(updates))._build();
 
   _$ContractInformation._(
       {required this.address,
-      required this.addressLabel,
+      required this.addressAlias,
       required this.name,
       required this.label})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        address, r'ContractInformation', 'address');
-    BuiltValueNullFieldError.checkNotNull(
-        addressLabel, r'ContractInformation', 'addressLabel');
-    BuiltValueNullFieldError.checkNotNull(name, r'ContractInformation', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        label, r'ContractInformation', 'label');
-  }
-
+      : super._();
   @override
   ContractInformation rebuild(
           void Function(ContractInformationBuilder) updates) =>
@@ -42,14 +33,14 @@ class _$ContractInformation extends ContractInformation {
 
   @override
   ContractInformationBuilder toBuilder() =>
-      new ContractInformationBuilder()..replace(this);
+      ContractInformationBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ContractInformation &&
         address == other.address &&
-        addressLabel == other.addressLabel &&
+        addressAlias == other.addressAlias &&
         name == other.name &&
         label == other.label;
   }
@@ -58,7 +49,7 @@ class _$ContractInformation extends ContractInformation {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, address.hashCode);
-    _$hash = $jc(_$hash, addressLabel.hashCode);
+    _$hash = $jc(_$hash, addressAlias.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, label.hashCode);
     _$hash = $jf(_$hash);
@@ -69,7 +60,7 @@ class _$ContractInformation extends ContractInformation {
   String toString() {
     return (newBuiltValueToStringHelper(r'ContractInformation')
           ..add('address', address)
-          ..add('addressLabel', addressLabel)
+          ..add('addressAlias', addressAlias)
           ..add('name', name)
           ..add('label', label))
         .toString();
@@ -84,9 +75,9 @@ class ContractInformationBuilder
   String? get address => _$this._address;
   set address(String? address) => _$this._address = address;
 
-  String? _addressLabel;
-  String? get addressLabel => _$this._addressLabel;
-  set addressLabel(String? addressLabel) => _$this._addressLabel = addressLabel;
+  String? _addressAlias;
+  String? get addressAlias => _$this._addressAlias;
+  set addressAlias(String? addressAlias) => _$this._addressAlias = addressAlias;
 
   String? _name;
   String? get name => _$this._name;
@@ -104,7 +95,7 @@ class ContractInformationBuilder
     final $v = _$v;
     if ($v != null) {
       _address = $v.address;
-      _addressLabel = $v.addressLabel;
+      _addressAlias = $v.addressAlias;
       _name = $v.name;
       _label = $v.label;
       _$v = null;
@@ -114,7 +105,6 @@ class ContractInformationBuilder
 
   @override
   void replace(ContractInformation other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractInformation;
   }
 
@@ -128,15 +118,16 @@ class ContractInformationBuilder
 
   _$ContractInformation _build() {
     final _$result = _$v ??
-        new _$ContractInformation._(
-            address: BuiltValueNullFieldError.checkNotNull(
-                address, r'ContractInformation', 'address'),
-            addressLabel: BuiltValueNullFieldError.checkNotNull(
-                addressLabel, r'ContractInformation', 'addressLabel'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'ContractInformation', 'name'),
-            label: BuiltValueNullFieldError.checkNotNull(
-                label, r'ContractInformation', 'label'));
+        _$ContractInformation._(
+          address: BuiltValueNullFieldError.checkNotNull(
+              address, r'ContractInformation', 'address'),
+          addressAlias: BuiltValueNullFieldError.checkNotNull(
+              addressAlias, r'ContractInformation', 'addressAlias'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'ContractInformation', 'name'),
+          label: BuiltValueNullFieldError.checkNotNull(
+              label, r'ContractInformation', 'label'),
+        );
     replace(_$result);
     return _$result;
   }

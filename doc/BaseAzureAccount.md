@@ -8,7 +8,7 @@ import 'package:multibaas/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**label** | **String** | A label. | 
+**label** | **String** | An alias to easily identify and reference the entity in subsequent requests. | 
 **clientID** | **String** | The Application ID that will be accessing the Key Vault. | 
 **clientSecret** | **String** | The application’s secret key that you generate when you first register the application in Azure. | 
 **tenantID** | **String** | Also known as Directory ID. | 

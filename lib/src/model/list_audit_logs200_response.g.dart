@@ -16,19 +16,11 @@ class _$ListAuditLogs200Response extends ListAuditLogs200Response {
 
   factory _$ListAuditLogs200Response(
           [void Function(ListAuditLogs200ResponseBuilder)? updates]) =>
-      (new ListAuditLogs200ResponseBuilder()..update(updates))._build();
+      (ListAuditLogs200ResponseBuilder()..update(updates))._build();
 
   _$ListAuditLogs200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListAuditLogs200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListAuditLogs200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListAuditLogs200Response', 'message');
-  }
-
+      : super._();
   @override
   ListAuditLogs200Response rebuild(
           void Function(ListAuditLogs200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListAuditLogs200Response extends ListAuditLogs200Response {
 
   @override
   ListAuditLogs200ResponseBuilder toBuilder() =>
-      new ListAuditLogs200ResponseBuilder()..replace(this);
+      ListAuditLogs200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +67,7 @@ class ListAuditLogs200ResponseBuilder
 
   ListBuilder<AuditLog>? _result;
   ListBuilder<AuditLog> get result =>
-      _$this._result ??= new ListBuilder<AuditLog>();
+      _$this._result ??= ListBuilder<AuditLog>();
   set result(covariant ListBuilder<AuditLog>? result) =>
       _$this._result = result;
 
@@ -104,7 +96,6 @@ class ListAuditLogs200ResponseBuilder
 
   @override
   void replace(covariant ListAuditLogs200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListAuditLogs200Response;
   }
 
@@ -120,19 +111,20 @@ class ListAuditLogs200ResponseBuilder
     _$ListAuditLogs200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListAuditLogs200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListAuditLogs200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListAuditLogs200Response', 'message'));
+          _$ListAuditLogs200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListAuditLogs200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListAuditLogs200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListAuditLogs200Response', _$failedField, e.toString());
       }
       rethrow;

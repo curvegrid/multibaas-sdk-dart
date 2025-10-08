@@ -18,20 +18,11 @@ class _$CountWalletTransactions200Response
   factory _$CountWalletTransactions200Response(
           [void Function(CountWalletTransactions200ResponseBuilder)?
               updates]) =>
-      (new CountWalletTransactions200ResponseBuilder()..update(updates))
-          ._build();
+      (CountWalletTransactions200ResponseBuilder()..update(updates))._build();
 
   _$CountWalletTransactions200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'CountWalletTransactions200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'CountWalletTransactions200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CountWalletTransactions200Response', 'message');
-  }
-
+      : super._();
   @override
   CountWalletTransactions200Response rebuild(
           void Function(CountWalletTransactions200ResponseBuilder) updates) =>
@@ -39,7 +30,7 @@ class _$CountWalletTransactions200Response
 
   @override
   CountWalletTransactions200ResponseBuilder toBuilder() =>
-      new CountWalletTransactions200ResponseBuilder()..replace(this);
+      CountWalletTransactions200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -106,7 +97,6 @@ class CountWalletTransactions200ResponseBuilder
 
   @override
   void replace(covariant CountWalletTransactions200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CountWalletTransactions200Response;
   }
 
@@ -121,13 +111,14 @@ class CountWalletTransactions200ResponseBuilder
 
   _$CountWalletTransactions200Response _build() {
     final _$result = _$v ??
-        new _$CountWalletTransactions200Response._(
-            result: BuiltValueNullFieldError.checkNotNull(
-                result, r'CountWalletTransactions200Response', 'result'),
-            status: BuiltValueNullFieldError.checkNotNull(
-                status, r'CountWalletTransactions200Response', 'status'),
-            message: BuiltValueNullFieldError.checkNotNull(
-                message, r'CountWalletTransactions200Response', 'message'));
+        _$CountWalletTransactions200Response._(
+          result: BuiltValueNullFieldError.checkNotNull(
+              result, r'CountWalletTransactions200Response', 'result'),
+          status: BuiltValueNullFieldError.checkNotNull(
+              status, r'CountWalletTransactions200Response', 'status'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'CountWalletTransactions200Response', 'message'),
+        );
     replace(_$result);
     return _$result;
   }

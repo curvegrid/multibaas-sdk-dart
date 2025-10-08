@@ -16,19 +16,11 @@ class _$ListUsers200Response extends ListUsers200Response {
 
   factory _$ListUsers200Response(
           [void Function(ListUsers200ResponseBuilder)? updates]) =>
-      (new ListUsers200ResponseBuilder()..update(updates))._build();
+      (ListUsers200ResponseBuilder()..update(updates))._build();
 
   _$ListUsers200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListUsers200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListUsers200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListUsers200Response', 'message');
-  }
-
+      : super._();
   @override
   ListUsers200Response rebuild(
           void Function(ListUsers200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListUsers200Response extends ListUsers200Response {
 
   @override
   ListUsers200ResponseBuilder toBuilder() =>
-      new ListUsers200ResponseBuilder()..replace(this);
+      ListUsers200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +66,7 @@ class ListUsers200ResponseBuilder
   _$ListUsers200Response? _$v;
 
   ListBuilder<User>? _result;
-  ListBuilder<User> get result => _$this._result ??= new ListBuilder<User>();
+  ListBuilder<User> get result => _$this._result ??= ListBuilder<User>();
   set result(covariant ListBuilder<User>? result) => _$this._result = result;
 
   int? _status;
@@ -102,7 +94,6 @@ class ListUsers200ResponseBuilder
 
   @override
   void replace(covariant ListUsers200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListUsers200Response;
   }
 
@@ -118,19 +109,20 @@ class ListUsers200ResponseBuilder
     _$ListUsers200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListUsers200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListUsers200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListUsers200Response', 'message'));
+          _$ListUsers200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListUsers200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListUsers200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListUsers200Response', _$failedField, e.toString());
       }
       rethrow;

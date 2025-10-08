@@ -6,7 +6,7 @@
 import 'package:multibaas/src/model/contract_abi_event.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:multibaas/src/model/contract_abi_method.dart';
-import 'package:multibaas/src/model/contract_abi_method1.dart';
+import 'package:multibaas/src/model/contract_abi_error.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -18,18 +18,22 @@ part 'contract_abi.g.dart';
 /// * [constructor] 
 /// * [methods] 
 /// * [events] 
+/// * [errors] 
 /// * [fallback] 
 /// * [receive] 
 @BuiltValue()
 abstract class ContractABI implements Built<ContractABI, ContractABIBuilder> {
   @BuiltValueField(wireName: r'constructor')
-  ContractABIMethod1? get constructor;
+  ContractABIMethod? get constructor;
 
   @BuiltValueField(wireName: r'methods')
   BuiltMap<String, ContractABIMethod?> get methods;
 
   @BuiltValueField(wireName: r'events')
   BuiltMap<String, ContractABIEvent> get events;
+
+  @BuiltValueField(wireName: r'errors')
+  BuiltMap<String, ContractABIError>? get errors;
 
   @BuiltValueField(wireName: r'fallback')
   ContractABIMethod? get fallback;
@@ -63,7 +67,7 @@ class _$ContractABISerializer implements PrimitiveSerializer<ContractABI> {
     yield r'constructor';
     yield object.constructor == null ? null : serializers.serialize(
       object.constructor,
-      specifiedType: const FullType.nullable(ContractABIMethod1),
+      specifiedType: const FullType.nullable(ContractABIMethod),
     );
     yield r'methods';
     yield serializers.serialize(
@@ -75,6 +79,13 @@ class _$ContractABISerializer implements PrimitiveSerializer<ContractABI> {
       object.events,
       specifiedType: const FullType(BuiltMap, [FullType(String), FullType(ContractABIEvent)]),
     );
+    if (object.errors != null) {
+      yield r'errors';
+      yield serializers.serialize(
+        object.errors,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(ContractABIError)]),
+      );
+    }
     yield r'fallback';
     yield object.fallback == null ? null : serializers.serialize(
       object.fallback,
@@ -111,8 +122,8 @@ class _$ContractABISerializer implements PrimitiveSerializer<ContractABI> {
         case r'constructor':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(ContractABIMethod1),
-          ) as ContractABIMethod1?;
+            specifiedType: const FullType.nullable(ContractABIMethod),
+          ) as ContractABIMethod?;
           if (valueDes == null) continue;
           result.constructor.replace(valueDes);
           break;
@@ -129,6 +140,13 @@ class _$ContractABISerializer implements PrimitiveSerializer<ContractABI> {
             specifiedType: const FullType(BuiltMap, [FullType(String), FullType(ContractABIEvent)]),
           ) as BuiltMap<String, ContractABIEvent>;
           result.events.replace(valueDes);
+          break;
+        case r'errors':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(ContractABIError)]),
+          ) as BuiltMap<String, ContractABIError>;
+          result.errors.replace(valueDes);
           break;
         case r'fallback':
           final valueDes = serializers.deserialize(

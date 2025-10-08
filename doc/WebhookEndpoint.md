@@ -9,7 +9,7 @@ import 'package:multibaas/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **String** | The URL to send the webhook to. | 
-**label** | **String** | A label. | 
+**label** | **String** | An alias to easily identify and reference the entity in subsequent requests. | 
 **subscriptions** | [**BuiltList&lt;WebhookEventsType&gt;**](WebhookEventsType.md) | The events to subscribe to. | 
 **id** | **int** |  | 
 **nextAttempt** | [**DateTime**](DateTime.md) | The time the next attempt will be made. | [optional] 

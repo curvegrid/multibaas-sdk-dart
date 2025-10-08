@@ -3,11 +3,11 @@ import 'package:multibaas/multibaas.dart';
 
 // tests for APIKey
 void main() {
-  final instance = APIKeyBuilder();
+  //final instance = APIKeyBuilder();
   // TODO add properties to the builder and call build()
 
   group(APIKey, () {
-    // A label.
+    // An alias to easily identify and reference the entity in subsequent requests.
     // String label
     test('to test the property `label`', () async {
       // TODO

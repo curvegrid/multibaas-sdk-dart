@@ -8,6 +8,8 @@ part of 'contract_abi_method.dart';
 
 class _$ContractABIMethod extends ContractABIMethod {
   @override
+  final String id;
+  @override
   final String name;
   @override
   final String signature;
@@ -24,16 +26,15 @@ class _$ContractABIMethod extends ContractABIMethod {
   @override
   final String notes;
   @override
-  final String returns;
-  @override
   final String description;
 
   factory _$ContractABIMethod(
           [void Function(ContractABIMethodBuilder)? updates]) =>
-      (new ContractABIMethodBuilder()..update(updates))._build();
+      (ContractABIMethodBuilder()..update(updates))._build();
 
   _$ContractABIMethod._(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.signature,
       required this.const_,
       required this.payable,
@@ -41,41 +42,21 @@ class _$ContractABIMethod extends ContractABIMethod {
       required this.outputs,
       required this.author,
       required this.notes,
-      required this.returns,
       required this.description})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'ContractABIMethod', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        signature, r'ContractABIMethod', 'signature');
-    BuiltValueNullFieldError.checkNotNull(
-        const_, r'ContractABIMethod', 'const_');
-    BuiltValueNullFieldError.checkNotNull(
-        payable, r'ContractABIMethod', 'payable');
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'ContractABIMethod', 'inputs');
-    BuiltValueNullFieldError.checkNotNull(
-        outputs, r'ContractABIMethod', 'outputs');
-    BuiltValueNullFieldError.checkNotNull(
-        author, r'ContractABIMethod', 'author');
-    BuiltValueNullFieldError.checkNotNull(notes, r'ContractABIMethod', 'notes');
-    BuiltValueNullFieldError.checkNotNull(
-        returns, r'ContractABIMethod', 'returns');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'ContractABIMethod', 'description');
-  }
-
+      : super._();
   @override
   ContractABIMethod rebuild(void Function(ContractABIMethodBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ContractABIMethodBuilder toBuilder() =>
-      new ContractABIMethodBuilder()..replace(this);
+      ContractABIMethodBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ContractABIMethod &&
+        id == other.id &&
         name == other.name &&
         signature == other.signature &&
         const_ == other.const_ &&
@@ -84,13 +65,13 @@ class _$ContractABIMethod extends ContractABIMethod {
         outputs == other.outputs &&
         author == other.author &&
         notes == other.notes &&
-        returns == other.returns &&
         description == other.description;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, signature.hashCode);
     _$hash = $jc(_$hash, const_.hashCode);
@@ -99,7 +80,6 @@ class _$ContractABIMethod extends ContractABIMethod {
     _$hash = $jc(_$hash, outputs.hashCode);
     _$hash = $jc(_$hash, author.hashCode);
     _$hash = $jc(_$hash, notes.hashCode);
-    _$hash = $jc(_$hash, returns.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -108,6 +88,7 @@ class _$ContractABIMethod extends ContractABIMethod {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ContractABIMethod')
+          ..add('id', id)
           ..add('name', name)
           ..add('signature', signature)
           ..add('const_', const_)
@@ -116,7 +97,6 @@ class _$ContractABIMethod extends ContractABIMethod {
           ..add('outputs', outputs)
           ..add('author', author)
           ..add('notes', notes)
-          ..add('returns', returns)
           ..add('description', description))
         .toString();
   }
@@ -125,6 +105,10 @@ class _$ContractABIMethod extends ContractABIMethod {
 class ContractABIMethodBuilder
     implements Builder<ContractABIMethod, ContractABIMethodBuilder> {
   _$ContractABIMethod? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
@@ -144,13 +128,13 @@ class ContractABIMethodBuilder
 
   ListBuilder<ContractABIMethodArgument>? _inputs;
   ListBuilder<ContractABIMethodArgument> get inputs =>
-      _$this._inputs ??= new ListBuilder<ContractABIMethodArgument>();
+      _$this._inputs ??= ListBuilder<ContractABIMethodArgument>();
   set inputs(ListBuilder<ContractABIMethodArgument>? inputs) =>
       _$this._inputs = inputs;
 
   ListBuilder<ContractABIMethodArgument>? _outputs;
   ListBuilder<ContractABIMethodArgument> get outputs =>
-      _$this._outputs ??= new ListBuilder<ContractABIMethodArgument>();
+      _$this._outputs ??= ListBuilder<ContractABIMethodArgument>();
   set outputs(ListBuilder<ContractABIMethodArgument>? outputs) =>
       _$this._outputs = outputs;
 
@@ -161,10 +145,6 @@ class ContractABIMethodBuilder
   String? _notes;
   String? get notes => _$this._notes;
   set notes(String? notes) => _$this._notes = notes;
-
-  String? _returns;
-  String? get returns => _$this._returns;
-  set returns(String? returns) => _$this._returns = returns;
 
   String? _description;
   String? get description => _$this._description;
@@ -177,6 +157,7 @@ class ContractABIMethodBuilder
   ContractABIMethodBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _name = $v.name;
       _signature = $v.signature;
       _const_ = $v.const_;
@@ -185,7 +166,6 @@ class ContractABIMethodBuilder
       _outputs = $v.outputs.toBuilder();
       _author = $v.author;
       _notes = $v.notes;
-      _returns = $v.returns;
       _description = $v.description;
       _$v = null;
     }
@@ -194,7 +174,6 @@ class ContractABIMethodBuilder
 
   @override
   void replace(ContractABIMethod other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractABIMethod;
   }
 
@@ -210,25 +189,26 @@ class ContractABIMethodBuilder
     _$ContractABIMethod _$result;
     try {
       _$result = _$v ??
-          new _$ContractABIMethod._(
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'ContractABIMethod', 'name'),
-              signature: BuiltValueNullFieldError.checkNotNull(
-                  signature, r'ContractABIMethod', 'signature'),
-              const_: BuiltValueNullFieldError.checkNotNull(
-                  const_, r'ContractABIMethod', 'const_'),
-              payable: BuiltValueNullFieldError.checkNotNull(
-                  payable, r'ContractABIMethod', 'payable'),
-              inputs: inputs.build(),
-              outputs: outputs.build(),
-              author: BuiltValueNullFieldError.checkNotNull(
-                  author, r'ContractABIMethod', 'author'),
-              notes: BuiltValueNullFieldError.checkNotNull(
-                  notes, r'ContractABIMethod', 'notes'),
-              returns: BuiltValueNullFieldError.checkNotNull(
-                  returns, r'ContractABIMethod', 'returns'),
-              description: BuiltValueNullFieldError.checkNotNull(
-                  description, r'ContractABIMethod', 'description'));
+          _$ContractABIMethod._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'ContractABIMethod', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'ContractABIMethod', 'name'),
+            signature: BuiltValueNullFieldError.checkNotNull(
+                signature, r'ContractABIMethod', 'signature'),
+            const_: BuiltValueNullFieldError.checkNotNull(
+                const_, r'ContractABIMethod', 'const_'),
+            payable: BuiltValueNullFieldError.checkNotNull(
+                payable, r'ContractABIMethod', 'payable'),
+            inputs: inputs.build(),
+            outputs: outputs.build(),
+            author: BuiltValueNullFieldError.checkNotNull(
+                author, r'ContractABIMethod', 'author'),
+            notes: BuiltValueNullFieldError.checkNotNull(
+                notes, r'ContractABIMethod', 'notes'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'ContractABIMethod', 'description'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -237,7 +217,7 @@ class ContractABIMethodBuilder
         _$failedField = 'outputs';
         outputs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractABIMethod', _$failedField, e.toString());
       }
       rethrow;

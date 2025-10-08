@@ -29,18 +29,11 @@ class _$$BaseWebhookEndpoint extends $BaseWebhookEndpoint {
 
   factory _$$BaseWebhookEndpoint(
           [void Function($BaseWebhookEndpointBuilder)? updates]) =>
-      (new $BaseWebhookEndpointBuilder()..update(updates))._build();
+      ($BaseWebhookEndpointBuilder()..update(updates))._build();
 
   _$$BaseWebhookEndpoint._(
       {required this.url, required this.label, required this.subscriptions})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(url, r'$BaseWebhookEndpoint', 'url');
-    BuiltValueNullFieldError.checkNotNull(
-        label, r'$BaseWebhookEndpoint', 'label');
-    BuiltValueNullFieldError.checkNotNull(
-        subscriptions, r'$BaseWebhookEndpoint', 'subscriptions');
-  }
-
+      : super._();
   @override
   $BaseWebhookEndpoint rebuild(
           void Function($BaseWebhookEndpointBuilder) updates) =>
@@ -48,7 +41,7 @@ class _$$BaseWebhookEndpoint extends $BaseWebhookEndpoint {
 
   @override
   $BaseWebhookEndpointBuilder toBuilder() =>
-      new $BaseWebhookEndpointBuilder()..replace(this);
+      $BaseWebhookEndpointBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -95,7 +88,7 @@ class $BaseWebhookEndpointBuilder
 
   ListBuilder<WebhookEventsType>? _subscriptions;
   ListBuilder<WebhookEventsType> get subscriptions =>
-      _$this._subscriptions ??= new ListBuilder<WebhookEventsType>();
+      _$this._subscriptions ??= ListBuilder<WebhookEventsType>();
   set subscriptions(covariant ListBuilder<WebhookEventsType>? subscriptions) =>
       _$this._subscriptions = subscriptions;
 
@@ -116,7 +109,6 @@ class $BaseWebhookEndpointBuilder
 
   @override
   void replace(covariant $BaseWebhookEndpoint other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$BaseWebhookEndpoint;
   }
 
@@ -132,19 +124,20 @@ class $BaseWebhookEndpointBuilder
     _$$BaseWebhookEndpoint _$result;
     try {
       _$result = _$v ??
-          new _$$BaseWebhookEndpoint._(
-              url: BuiltValueNullFieldError.checkNotNull(
-                  url, r'$BaseWebhookEndpoint', 'url'),
-              label: BuiltValueNullFieldError.checkNotNull(
-                  label, r'$BaseWebhookEndpoint', 'label'),
-              subscriptions: subscriptions.build());
+          _$$BaseWebhookEndpoint._(
+            url: BuiltValueNullFieldError.checkNotNull(
+                url, r'$BaseWebhookEndpoint', 'url'),
+            label: BuiltValueNullFieldError.checkNotNull(
+                label, r'$BaseWebhookEndpoint', 'label'),
+            subscriptions: subscriptions.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'subscriptions';
         subscriptions.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'$BaseWebhookEndpoint', _$failedField, e.toString());
       }
       rethrow;

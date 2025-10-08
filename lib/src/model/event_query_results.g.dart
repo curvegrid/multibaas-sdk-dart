@@ -12,19 +12,16 @@ class _$EventQueryResults extends EventQueryResults {
 
   factory _$EventQueryResults(
           [void Function(EventQueryResultsBuilder)? updates]) =>
-      (new EventQueryResultsBuilder()..update(updates))._build();
+      (EventQueryResultsBuilder()..update(updates))._build();
 
-  _$EventQueryResults._({required this.rows}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(rows, r'EventQueryResults', 'rows');
-  }
-
+  _$EventQueryResults._({required this.rows}) : super._();
   @override
   EventQueryResults rebuild(void Function(EventQueryResultsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   EventQueryResultsBuilder toBuilder() =>
-      new EventQueryResultsBuilder()..replace(this);
+      EventQueryResultsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -54,7 +51,7 @@ class EventQueryResultsBuilder
 
   ListBuilder<BuiltMap<String, JsonObject?>>? _rows;
   ListBuilder<BuiltMap<String, JsonObject?>> get rows =>
-      _$this._rows ??= new ListBuilder<BuiltMap<String, JsonObject?>>();
+      _$this._rows ??= ListBuilder<BuiltMap<String, JsonObject?>>();
   set rows(ListBuilder<BuiltMap<String, JsonObject?>>? rows) =>
       _$this._rows = rows;
 
@@ -73,7 +70,6 @@ class EventQueryResultsBuilder
 
   @override
   void replace(EventQueryResults other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EventQueryResults;
   }
 
@@ -88,14 +84,17 @@ class EventQueryResultsBuilder
   _$EventQueryResults _build() {
     _$EventQueryResults _$result;
     try {
-      _$result = _$v ?? new _$EventQueryResults._(rows: rows.build());
+      _$result = _$v ??
+          _$EventQueryResults._(
+            rows: rows.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'rows';
         rows.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EventQueryResults', _$failedField, e.toString());
       }
       rethrow;

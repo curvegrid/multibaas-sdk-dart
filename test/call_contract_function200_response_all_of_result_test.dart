@@ -13,7 +13,7 @@ void main() {
       // TODO
     });
 
-    // BaseTransactionToSignTx tx
+    // TransactionToSignTx tx
     test('to test the property `tx`', () async {
       // TODO
     });
@@ -26,12 +26,6 @@ void main() {
     // The function call output.
     // JsonObject output
     test('to test the property `output`', () async {
-      // TODO
-    });
-
-    // The function call inputs.
-    // BuiltList<JsonObject> input
-    test('to test the property `input`', () async {
       // TODO
     });
 

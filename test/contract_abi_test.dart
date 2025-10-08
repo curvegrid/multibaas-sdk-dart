@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ContractABI, () {
-    // ContractABIMethod1 constructor
+    // ContractABIMethod constructor
     test('to test the property `constructor`', () async {
       // TODO
     });
@@ -19,6 +19,11 @@ void main() {
 
     // BuiltMap<String, ContractABIEvent> events
     test('to test the property `events`', () async {
+      // TODO
+    });
+
+    // BuiltMap<String, ContractABIError> errors
+    test('to test the property `errors`', () async {
       // TODO
     });
 

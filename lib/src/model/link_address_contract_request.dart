@@ -11,12 +11,12 @@ part 'link_address_contract_request.g.dart';
 /// LinkAddressContractRequest
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [version] - The contract version.
 /// * [startingBlock] - The block number from which to start syncing events. The value can be `latest` for the latest block number, an absolute block number (e.g. `123` for the block number 123), or a relative block number (e.g. `-100` for 100 blocks before the latest block). If absent, the event monitor will be disabled for this contract and events won't be synced.
 @BuiltValue()
 abstract class LinkAddressContractRequest implements Built<LinkAddressContractRequest, LinkAddressContractRequestBuilder> {
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 

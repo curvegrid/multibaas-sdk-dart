@@ -16,18 +16,12 @@ class _$ListContractVersions200ResponseAllOfResult
   factory _$ListContractVersions200ResponseAllOfResult(
           [void Function(ListContractVersions200ResponseAllOfResultBuilder)?
               updates]) =>
-      (new ListContractVersions200ResponseAllOfResultBuilder()..update(updates))
+      (ListContractVersions200ResponseAllOfResultBuilder()..update(updates))
           ._build();
 
   _$ListContractVersions200ResponseAllOfResult._(
       {required this.label, required this.versions})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        label, r'ListContractVersions200ResponseAllOfResult', 'label');
-    BuiltValueNullFieldError.checkNotNull(
-        versions, r'ListContractVersions200ResponseAllOfResult', 'versions');
-  }
-
+      : super._();
   @override
   ListContractVersions200ResponseAllOfResult rebuild(
           void Function(ListContractVersions200ResponseAllOfResultBuilder)
@@ -36,7 +30,7 @@ class _$ListContractVersions200ResponseAllOfResult
 
   @override
   ListContractVersions200ResponseAllOfResultBuilder toBuilder() =>
-      new ListContractVersions200ResponseAllOfResultBuilder()..replace(this);
+      ListContractVersions200ResponseAllOfResultBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,7 +71,7 @@ class ListContractVersions200ResponseAllOfResultBuilder
 
   ListBuilder<String>? _versions;
   ListBuilder<String> get versions =>
-      _$this._versions ??= new ListBuilder<String>();
+      _$this._versions ??= ListBuilder<String>();
   set versions(ListBuilder<String>? versions) => _$this._versions = versions;
 
   ListContractVersions200ResponseAllOfResultBuilder() {
@@ -96,7 +90,6 @@ class ListContractVersions200ResponseAllOfResultBuilder
 
   @override
   void replace(ListContractVersions200ResponseAllOfResult other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListContractVersions200ResponseAllOfResult;
   }
 
@@ -114,17 +107,18 @@ class ListContractVersions200ResponseAllOfResultBuilder
     _$ListContractVersions200ResponseAllOfResult _$result;
     try {
       _$result = _$v ??
-          new _$ListContractVersions200ResponseAllOfResult._(
-              label: BuiltValueNullFieldError.checkNotNull(label,
-                  r'ListContractVersions200ResponseAllOfResult', 'label'),
-              versions: versions.build());
+          _$ListContractVersions200ResponseAllOfResult._(
+            label: BuiltValueNullFieldError.checkNotNull(
+                label, r'ListContractVersions200ResponseAllOfResult', 'label'),
+            versions: versions.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'versions';
         versions.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListContractVersions200ResponseAllOfResult',
             _$failedField,
             e.toString());

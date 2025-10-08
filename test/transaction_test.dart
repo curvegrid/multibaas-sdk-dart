@@ -13,9 +13,33 @@ void main() {
       // TODO
     });
 
+    // A hex string or null.
+    // String chainId
+    test('to test the property `chainId`', () async {
+      // TODO
+    });
+
     // A hex string.
     // String nonce
     test('to test the property `nonce`', () async {
+      // TODO
+    });
+
+    // An ethereum address.
+    // String to
+    test('to test the property `to`', () async {
+      // TODO
+    });
+
+    // An ethereum address.
+    // String from
+    test('to test the property `from`', () async {
+      // TODO
+    });
+
+    // A hex string.
+    // String gas
+    test('to test the property `gas`', () async {
       // TODO
     });
 
@@ -26,26 +50,20 @@ void main() {
     });
 
     // A hex string or null.
+    // String maxPriorityFeePerGas
+    test('to test the property `maxPriorityFeePerGas`', () async {
+      // TODO
+    });
+
+    // A hex string or null.
     // String maxFeePerGas
     test('to test the property `maxFeePerGas`', () async {
       // TODO
     });
 
     // A hex string or null.
-    // String maxPriorityFeePerGas
-    test('to test the property `maxPriorityFeePerGas`', () async {
-      // TODO
-    });
-
-    // A hex string.
-    // String gas
-    test('to test the property `gas`', () async {
-      // TODO
-    });
-
-    // An ethereum address.
-    // String to
-    test('to test the property `to`', () async {
+    // String maxFeePerBlobGas
+    test('to test the property `maxFeePerBlobGas`', () async {
       // TODO
     });
 
@@ -58,6 +76,21 @@ void main() {
     // A hex string.
     // String input
     test('to test the property `input`', () async {
+      // TODO
+    });
+
+    // BuiltList<AccessTuple> accessList
+    test('to test the property `accessList`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> blobVersionedHashes
+    test('to test the property `blobVersionedHashes`', () async {
+      // TODO
+    });
+
+    // BuiltList<SetCodeAuthorization> authorizationList
+    test('to test the property `authorizationList`', () async {
       // TODO
     });
 
@@ -79,9 +112,24 @@ void main() {
       // TODO
     });
 
-    // A hex string.
-    // String chainId
-    test('to test the property `chainId`', () async {
+    // A hex string or null.
+    // String yParity
+    test('to test the property `yParity`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> blobs
+    test('to test the property `blobs`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> commitments
+    test('to test the property `commitments`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> proofs
+    test('to test the property `proofs`', () async {
       // TODO
     });
 

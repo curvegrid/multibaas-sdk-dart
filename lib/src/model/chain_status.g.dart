@@ -19,7 +19,7 @@ class _$ChainStatus extends ChainStatus {
   final String? baseFee;
 
   factory _$ChainStatus([void Function(ChainStatusBuilder)? updates]) =>
-      (new ChainStatusBuilder()..update(updates))._build();
+      (ChainStatusBuilder()..update(updates))._build();
 
   _$ChainStatus._(
       {required this.blockNumber,
@@ -27,21 +27,13 @@ class _$ChainStatus extends ChainStatus {
       required this.chainID,
       required this.networkID,
       this.baseFee})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        blockNumber, r'ChainStatus', 'blockNumber');
-    BuiltValueNullFieldError.checkNotNull(version, r'ChainStatus', 'version');
-    BuiltValueNullFieldError.checkNotNull(chainID, r'ChainStatus', 'chainID');
-    BuiltValueNullFieldError.checkNotNull(
-        networkID, r'ChainStatus', 'networkID');
-  }
-
+      : super._();
   @override
   ChainStatus rebuild(void Function(ChainStatusBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ChainStatusBuilder toBuilder() => new ChainStatusBuilder()..replace(this);
+  ChainStatusBuilder toBuilder() => ChainStatusBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -120,7 +112,6 @@ class ChainStatusBuilder implements Builder<ChainStatus, ChainStatusBuilder> {
 
   @override
   void replace(ChainStatus other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChainStatus;
   }
 
@@ -134,16 +125,17 @@ class ChainStatusBuilder implements Builder<ChainStatus, ChainStatusBuilder> {
 
   _$ChainStatus _build() {
     final _$result = _$v ??
-        new _$ChainStatus._(
-            blockNumber: BuiltValueNullFieldError.checkNotNull(
-                blockNumber, r'ChainStatus', 'blockNumber'),
-            version: BuiltValueNullFieldError.checkNotNull(
-                version, r'ChainStatus', 'version'),
-            chainID: BuiltValueNullFieldError.checkNotNull(
-                chainID, r'ChainStatus', 'chainID'),
-            networkID: BuiltValueNullFieldError.checkNotNull(
-                networkID, r'ChainStatus', 'networkID'),
-            baseFee: baseFee);
+        _$ChainStatus._(
+          blockNumber: BuiltValueNullFieldError.checkNotNull(
+              blockNumber, r'ChainStatus', 'blockNumber'),
+          version: BuiltValueNullFieldError.checkNotNull(
+              version, r'ChainStatus', 'version'),
+          chainID: BuiltValueNullFieldError.checkNotNull(
+              chainID, r'ChainStatus', 'chainID'),
+          networkID: BuiltValueNullFieldError.checkNotNull(
+              networkID, r'ChainStatus', 'networkID'),
+          baseFee: baseFee,
+        );
     replace(_$result);
     return _$result;
   }

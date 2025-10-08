@@ -32,7 +32,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getTxmApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 final int nonce = 789; // int | Transaction nonce.
 final GasParams gasParams = ; // GasParams | 
 
@@ -49,9 +49,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
  **nonce** | **int**| Transaction nonce. | 
- **gasParams** | [**GasParams**](GasParams.md)|  | [optional] 
+ **gasParams** | [**GasParams**](GasParams.md)|  | 
 
 ### Return type
 
@@ -85,7 +85,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getTxmApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 
 try {
     final response = api.countWalletTransactions(chain, walletAddress);
@@ -100,7 +100,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
 
 ### Return type
 
@@ -134,7 +134,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getTxmApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 final String hash = hash_example; // String | Filter transactions by transaction hash. To filter for multiple hashes, use ampersands: `?hash=HASH1&hash=HASH2&hash=HASH3`
 final int nonce = 789; // int | Filter transactions by nonce
 final TransactionStatus status = ; // TransactionStatus | Filter transactions by status
@@ -154,11 +154,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
  **hash** | **String**| Filter transactions by transaction hash. To filter for multiple hashes, use ampersands: `?hash=HASH1&hash=HASH2&hash=HASH3` | [optional] 
  **nonce** | **int**| Filter transactions by nonce | [optional] 
  **status** | [**TransactionStatus**](.md)| Filter transactions by status | [optional] 
- **limit** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
  **offset** | **int**|  | [optional] 
 
 ### Return type
@@ -193,7 +193,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getTxmApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 final int nonce = 789; // int | Transaction nonce.
 final GasParams gasParams = ; // GasParams | 
 
@@ -210,9 +210,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
  **nonce** | **int**| Transaction nonce. | 
- **gasParams** | [**GasParams**](GasParams.md)|  | [optional] 
+ **gasParams** | [**GasParams**](GasParams.md)|  | 
 
 ### Return type
 

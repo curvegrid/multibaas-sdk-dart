@@ -12,24 +12,24 @@ part 'contract_information.g.dart';
 ///
 /// Properties:
 /// * [address] - An ethereum address.
-/// * [addressLabel] - A label.
+/// * [addressAlias] - An alias to easily identify and reference addresses.
 /// * [name] - The name of the contract.
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 @BuiltValue()
 abstract class ContractInformation implements Built<ContractInformation, ContractInformationBuilder> {
   /// An ethereum address.
   @BuiltValueField(wireName: r'address')
   String get address;
 
-  /// A label.
-  @BuiltValueField(wireName: r'addressLabel')
-  String get addressLabel;
+  /// An alias to easily identify and reference addresses.
+  @BuiltValueField(wireName: r'addressAlias')
+  String get addressAlias;
 
   /// The name of the contract.
   @BuiltValueField(wireName: r'name')
   String get name;
 
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 
@@ -61,9 +61,9 @@ class _$ContractInformationSerializer implements PrimitiveSerializer<ContractInf
       object.address,
       specifiedType: const FullType(String),
     );
-    yield r'addressLabel';
+    yield r'addressAlias';
     yield serializers.serialize(
-      object.addressLabel,
+      object.addressAlias,
       specifiedType: const FullType(String),
     );
     yield r'name';
@@ -106,12 +106,12 @@ class _$ContractInformationSerializer implements PrimitiveSerializer<ContractInf
           ) as String;
           result.address = valueDes;
           break;
-        case r'addressLabel':
+        case r'addressAlias':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.addressLabel = valueDes;
+          result.addressAlias = valueDes;
           break;
         case r'name':
           final valueDes = serializers.deserialize(

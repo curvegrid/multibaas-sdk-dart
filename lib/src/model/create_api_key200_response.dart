@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/api_key.dart';
+import 'package:multibaas/src/model/api_key_with_secret.dart';
 import 'package:multibaas/src/model/base_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -19,7 +19,7 @@ part 'create_api_key200_response.g.dart';
 @BuiltValue()
 abstract class CreateApiKey200Response implements BaseResponse, Built<CreateApiKey200Response, CreateApiKey200ResponseBuilder> {
   @BuiltValueField(wireName: r'result')
-  APIKey get result;
+  APIKeyWithSecret get result;
 
   CreateApiKey200Response._();
 
@@ -47,7 +47,7 @@ class _$CreateApiKey200ResponseSerializer implements PrimitiveSerializer<CreateA
     yield r'result';
     yield serializers.serialize(
       object.result,
-      specifiedType: const FullType(APIKey),
+      specifiedType: const FullType(APIKeyWithSecret),
     );
     yield r'message';
     yield serializers.serialize(
@@ -85,8 +85,8 @@ class _$CreateApiKey200ResponseSerializer implements PrimitiveSerializer<CreateA
         case r'result':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(APIKey),
-          ) as APIKey;
+            specifiedType: const FullType(APIKeyWithSecret),
+          ) as APIKeyWithSecret;
           result.result.replace(valueDes);
           break;
         case r'message':

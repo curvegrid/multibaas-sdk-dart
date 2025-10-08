@@ -11,7 +11,7 @@ void main() {
     //
     // Accepts a user invite.
     //
-    //Future<AcceptInvite200Response> acceptInvite(String inviteID, { AcceptInviteRequest acceptInviteRequest }) async
+    //Future<AcceptInvite200Response> acceptInvite(String inviteID, AcceptInviteRequest acceptInviteRequest) async
     test('test acceptInvite', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Adds a CORS origin.
     //
-    //Future<BaseResponse> addCorsOrigin({ CORSOrigin cORSOrigin }) async
+    //Future<BaseResponse> addCorsOrigin(CORSOrigin cORSOrigin) async
     test('test addCorsOrigin', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Creates an API key and adds it to group IDs.
     //
-    //Future<CreateApiKey200Response> createApiKey({ CreateApiKeyRequest createApiKeyRequest }) async
+    //Future<CreateApiKey200Response> createApiKey(CreateApiKeyRequest createApiKeyRequest) async
     test('test createApiKey', () async {
       // TODO
     });
@@ -76,6 +76,15 @@ void main() {
     //
     //Future<BaseResponse> deleteApiKey(int apiKeyID) async
     test('test deleteApiKey', () async {
+      // TODO
+    });
+
+    // Delete invite
+    //
+    // Deletes a user invite.
+    //
+    //Future deleteInvite(String email) async
+    test('test deleteInvite', () async {
       // TODO
     });
 
@@ -92,8 +101,17 @@ void main() {
     //
     // Returns an API key.
     //
-    //Future<CreateApiKey200Response> getApiKey(int apiKeyID) async
+    //Future<GetApiKey200Response> getApiKey(int apiKeyID) async
     test('test getApiKey', () async {
+      // TODO
+    });
+
+    // Get plan
+    //
+    // Returns the current plan with limits and features.
+    //
+    //Future<GetPlan200Response> getPlan() async
+    test('test getPlan', () async {
       // TODO
     });
 
@@ -101,7 +119,7 @@ void main() {
     //
     // Invites a new user.
     //
-    //Future<BaseResponse> inviteUser({ Invite invite }) async
+    //Future<BaseResponse> inviteUser(InviteRequest inviteRequest) async
     test('test inviteUser', () async {
       // TODO
     });
@@ -139,6 +157,15 @@ void main() {
     //
     //Future<ListGroups200Response> listGroups({ int userID, int apiKeyID, bool assignable }) async
     test('test listGroups', () async {
+      // TODO
+    });
+
+    // List invites
+    //
+    // Returns all the user invites.
+    //
+    //Future<ListInvites200Response> listInvites() async
+    test('test listInvites', () async {
       // TODO
     });
 
@@ -205,6 +232,15 @@ void main() {
       // TODO
     });
 
+    // Remove user safe account signer
+    //
+    // Removes a safe account signer from a user.
+    //
+    //Future<BaseResponse> removeUserSignerSafeAccount(int userID, String walletAddress) async
+    test('test removeUserSignerSafeAccount', () async {
+      // TODO
+    });
+
     // Remove user web3 wallet signer
     //
     // Removes a web3 wallet signer from a user.
@@ -223,11 +259,20 @@ void main() {
       // TODO
     });
 
+    // Add or update user safe account signer
+    //
+    // Adds or updates a user's safe account signer.
+    //
+    //Future<BaseResponse> setUserSignerSafeAccount(int userID, String walletAddress, SignerLabel signerLabel) async
+    test('test setUserSignerSafeAccount', () async {
+      // TODO
+    });
+
     // Add or update user web3 wallet signer
     //
     // Adds or updates a user's web3 wallet signer.
     //
-    //Future<BaseResponse> setUserSignerWeb3Wallet(int userID, String walletAddress, { SignerLabel signerLabel }) async
+    //Future<BaseResponse> setUserSignerWeb3Wallet(int userID, String walletAddress, SignerLabel signerLabel) async
     test('test setUserSignerWeb3Wallet', () async {
       // TODO
     });
@@ -236,7 +281,7 @@ void main() {
     //
     // Updates an API key.
     //
-    //Future<BaseResponse> updateApiKey(int apiKeyID, { BaseAPIKey baseAPIKey }) async
+    //Future<BaseResponse> updateApiKey(int apiKeyID, BaseAPIKey baseAPIKey) async
     test('test updateApiKey', () async {
       // TODO
     });

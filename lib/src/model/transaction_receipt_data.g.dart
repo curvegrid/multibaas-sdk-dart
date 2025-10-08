@@ -36,7 +36,7 @@ class _$TransactionReceiptData extends TransactionReceiptData {
 
   factory _$TransactionReceiptData(
           [void Function(TransactionReceiptDataBuilder)? updates]) =>
-      (new TransactionReceiptDataBuilder()..update(updates))._build();
+      (TransactionReceiptDataBuilder()..update(updates))._build();
 
   _$TransactionReceiptData._(
       {this.type,
@@ -52,33 +52,7 @@ class _$TransactionReceiptData extends TransactionReceiptData {
       required this.blockNumber,
       required this.transactionIndex,
       required this.blockHash})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        root, r'TransactionReceiptData', 'root');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'TransactionReceiptData', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        cumulativeGasUsed, r'TransactionReceiptData', 'cumulativeGasUsed');
-    BuiltValueNullFieldError.checkNotNull(
-        logsBloom, r'TransactionReceiptData', 'logsBloom');
-    BuiltValueNullFieldError.checkNotNull(
-        logs, r'TransactionReceiptData', 'logs');
-    BuiltValueNullFieldError.checkNotNull(
-        transactionHash, r'TransactionReceiptData', 'transactionHash');
-    BuiltValueNullFieldError.checkNotNull(
-        contractAddress, r'TransactionReceiptData', 'contractAddress');
-    BuiltValueNullFieldError.checkNotNull(
-        gasUsed, r'TransactionReceiptData', 'gasUsed');
-    BuiltValueNullFieldError.checkNotNull(
-        effectiveGasPrice, r'TransactionReceiptData', 'effectiveGasPrice');
-    BuiltValueNullFieldError.checkNotNull(
-        blockNumber, r'TransactionReceiptData', 'blockNumber');
-    BuiltValueNullFieldError.checkNotNull(
-        transactionIndex, r'TransactionReceiptData', 'transactionIndex');
-    BuiltValueNullFieldError.checkNotNull(
-        blockHash, r'TransactionReceiptData', 'blockHash');
-  }
-
+      : super._();
   @override
   TransactionReceiptData rebuild(
           void Function(TransactionReceiptDataBuilder) updates) =>
@@ -86,7 +60,7 @@ class _$TransactionReceiptData extends TransactionReceiptData {
 
   @override
   TransactionReceiptDataBuilder toBuilder() =>
-      new TransactionReceiptDataBuilder()..replace(this);
+      TransactionReceiptDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -173,7 +147,7 @@ class TransactionReceiptDataBuilder
   set logsBloom(String? logsBloom) => _$this._logsBloom = logsBloom;
 
   ListBuilder<Log>? _logs;
-  ListBuilder<Log> get logs => _$this._logs ??= new ListBuilder<Log>();
+  ListBuilder<Log> get logs => _$this._logs ??= ListBuilder<Log>();
   set logs(ListBuilder<Log>? logs) => _$this._logs = logs;
 
   String? _transactionHash;
@@ -235,7 +209,6 @@ class TransactionReceiptDataBuilder
 
   @override
   void replace(TransactionReceiptData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TransactionReceiptData;
   }
 
@@ -251,35 +224,45 @@ class TransactionReceiptDataBuilder
     _$TransactionReceiptData _$result;
     try {
       _$result = _$v ??
-          new _$TransactionReceiptData._(
-              type: type,
-              root: BuiltValueNullFieldError.checkNotNull(
-                  root, r'TransactionReceiptData', 'root'),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'TransactionReceiptData', 'status'),
-              cumulativeGasUsed: BuiltValueNullFieldError.checkNotNull(
-                  cumulativeGasUsed, r'TransactionReceiptData', 'cumulativeGasUsed'),
-              logsBloom: BuiltValueNullFieldError.checkNotNull(
-                  logsBloom, r'TransactionReceiptData', 'logsBloom'),
-              logs: logs.build(),
-              transactionHash: BuiltValueNullFieldError.checkNotNull(
-                  transactionHash, r'TransactionReceiptData', 'transactionHash'),
-              contractAddress: BuiltValueNullFieldError.checkNotNull(
-                  contractAddress, r'TransactionReceiptData', 'contractAddress'),
-              gasUsed: BuiltValueNullFieldError.checkNotNull(
-                  gasUsed, r'TransactionReceiptData', 'gasUsed'),
-              effectiveGasPrice:
-                  BuiltValueNullFieldError.checkNotNull(effectiveGasPrice, r'TransactionReceiptData', 'effectiveGasPrice'),
-              blockNumber: BuiltValueNullFieldError.checkNotNull(blockNumber, r'TransactionReceiptData', 'blockNumber'),
-              transactionIndex: BuiltValueNullFieldError.checkNotNull(transactionIndex, r'TransactionReceiptData', 'transactionIndex'),
-              blockHash: BuiltValueNullFieldError.checkNotNull(blockHash, r'TransactionReceiptData', 'blockHash'));
+          _$TransactionReceiptData._(
+            type: type,
+            root: BuiltValueNullFieldError.checkNotNull(
+                root, r'TransactionReceiptData', 'root'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'TransactionReceiptData', 'status'),
+            cumulativeGasUsed: BuiltValueNullFieldError.checkNotNull(
+                cumulativeGasUsed,
+                r'TransactionReceiptData',
+                'cumulativeGasUsed'),
+            logsBloom: BuiltValueNullFieldError.checkNotNull(
+                logsBloom, r'TransactionReceiptData', 'logsBloom'),
+            logs: logs.build(),
+            transactionHash: BuiltValueNullFieldError.checkNotNull(
+                transactionHash, r'TransactionReceiptData', 'transactionHash'),
+            contractAddress: BuiltValueNullFieldError.checkNotNull(
+                contractAddress, r'TransactionReceiptData', 'contractAddress'),
+            gasUsed: BuiltValueNullFieldError.checkNotNull(
+                gasUsed, r'TransactionReceiptData', 'gasUsed'),
+            effectiveGasPrice: BuiltValueNullFieldError.checkNotNull(
+                effectiveGasPrice,
+                r'TransactionReceiptData',
+                'effectiveGasPrice'),
+            blockNumber: BuiltValueNullFieldError.checkNotNull(
+                blockNumber, r'TransactionReceiptData', 'blockNumber'),
+            transactionIndex: BuiltValueNullFieldError.checkNotNull(
+                transactionIndex,
+                r'TransactionReceiptData',
+                'transactionIndex'),
+            blockHash: BuiltValueNullFieldError.checkNotNull(
+                blockHash, r'TransactionReceiptData', 'blockHash'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'logs';
         logs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TransactionReceiptData', _$failedField, e.toString());
       }
       rethrow;

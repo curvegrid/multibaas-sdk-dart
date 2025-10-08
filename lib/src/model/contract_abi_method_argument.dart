@@ -15,21 +15,25 @@ part 'contract_abi_method_argument.g.dart';
 /// Properties:
 /// * [name] 
 /// * [type] 
+/// * [typeName] 
 /// * [typeConversion] 
 /// * [notes] 
 @BuiltValue()
 abstract class ContractABIMethodArgument implements Built<ContractABIMethodArgument, ContractABIMethodArgumentBuilder> {
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   @BuiltValueField(wireName: r'type')
-  ContractABIType? get type;
+  ContractABIType get type;
+
+  @BuiltValueField(wireName: r'typeName')
+  String get typeName;
 
   @BuiltValueField(wireName: r'typeConversion')
   ContractABITypeConversion? get typeConversion;
 
   @BuiltValueField(wireName: r'notes')
-  String? get notes;
+  String get notes;
 
   ContractABIMethodArgument._();
 
@@ -54,32 +58,31 @@ class _$ContractABIMethodArgumentSerializer implements PrimitiveSerializer<Contr
     ContractABIMethodArgument object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.type != null) {
-      yield r'type';
-      yield serializers.serialize(
-        object.type,
-        specifiedType: const FullType(ContractABIType),
-      );
-    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'type';
+    yield serializers.serialize(
+      object.type,
+      specifiedType: const FullType(ContractABIType),
+    );
+    yield r'typeName';
+    yield serializers.serialize(
+      object.typeName,
+      specifiedType: const FullType(String),
+    );
     yield r'typeConversion';
     yield object.typeConversion == null ? null : serializers.serialize(
       object.typeConversion,
       specifiedType: const FullType.nullable(ContractABITypeConversion),
     );
-    if (object.notes != null) {
-      yield r'notes';
-      yield serializers.serialize(
-        object.notes,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'notes';
+    yield serializers.serialize(
+      object.notes,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
@@ -116,6 +119,13 @@ class _$ContractABIMethodArgumentSerializer implements PrimitiveSerializer<Contr
             specifiedType: const FullType(ContractABIType),
           ) as ContractABIType;
           result.type.replace(valueDes);
+          break;
+        case r'typeName':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.typeName = valueDes;
           break;
         case r'typeConversion':
           final valueDes = serializers.deserialize(

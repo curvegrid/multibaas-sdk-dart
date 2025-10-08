@@ -13,7 +13,7 @@ void main() {
       // TODO
     });
 
-    // BaseTransactionToSignTx tx
+    // TransactionToSignTx tx
     test('to test the property `tx`', () async {
       // TODO
     });

@@ -11,17 +11,15 @@ class _$SetNonceRequest extends SetNonceRequest {
   final int? nonce;
 
   factory _$SetNonceRequest([void Function(SetNonceRequestBuilder)? updates]) =>
-      (new SetNonceRequestBuilder()..update(updates))._build();
+      (SetNonceRequestBuilder()..update(updates))._build();
 
   _$SetNonceRequest._({this.nonce}) : super._();
-
   @override
   SetNonceRequest rebuild(void Function(SetNonceRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SetNonceRequestBuilder toBuilder() =>
-      new SetNonceRequestBuilder()..replace(this);
+  SetNonceRequestBuilder toBuilder() => SetNonceRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -68,7 +66,6 @@ class SetNonceRequestBuilder
 
   @override
   void replace(SetNonceRequest other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SetNonceRequest;
   }
 
@@ -81,7 +78,10 @@ class SetNonceRequestBuilder
   SetNonceRequest build() => _build();
 
   _$SetNonceRequest _build() {
-    final _$result = _$v ?? new _$SetNonceRequest._(nonce: nonce);
+    final _$result = _$v ??
+        _$SetNonceRequest._(
+          nonce: nonce,
+        );
     replace(_$result);
     return _$result;
   }

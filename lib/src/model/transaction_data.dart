@@ -3,6 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
+import 'package:multibaas/src/model/authorization_extra_info.dart';
 import 'package:multibaas/src/model/transaction.dart';
 import 'package:multibaas/src/model/contract_information.dart';
 import 'package:multibaas/src/model/contract_method_information.dart';
@@ -21,6 +23,7 @@ part 'transaction_data.g.dart';
 /// * [blockNumber] - The transaction block number.
 /// * [contract] 
 /// * [method] 
+/// * [authorizationExtraInfo] 
 @BuiltValue()
 abstract class TransactionData implements Built<TransactionData, TransactionDataBuilder> {
   @BuiltValueField(wireName: r'data')
@@ -47,6 +50,9 @@ abstract class TransactionData implements Built<TransactionData, TransactionData
 
   @BuiltValueField(wireName: r'method')
   ContractMethodInformation? get method;
+
+  @BuiltValueField(wireName: r'authorizationExtraInfo')
+  BuiltList<AuthorizationExtraInfo>? get authorizationExtraInfo;
 
   TransactionData._();
 
@@ -112,6 +118,13 @@ class _$TransactionDataSerializer implements PrimitiveSerializer<TransactionData
       yield serializers.serialize(
         object.method,
         specifiedType: const FullType(ContractMethodInformation),
+      );
+    }
+    if (object.authorizationExtraInfo != null) {
+      yield r'authorizationExtraInfo';
+      yield serializers.serialize(
+        object.authorizationExtraInfo,
+        specifiedType: const FullType.nullable(BuiltList, [FullType(AuthorizationExtraInfo)]),
       );
     }
   }
@@ -185,6 +198,14 @@ class _$TransactionDataSerializer implements PrimitiveSerializer<TransactionData
             specifiedType: const FullType(ContractMethodInformation),
           ) as ContractMethodInformation;
           result.method.replace(valueDes);
+          break;
+        case r'authorizationExtraInfo':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(BuiltList, [FullType(AuthorizationExtraInfo)]),
+          ) as BuiltList<AuthorizationExtraInfo>?;
+          if (valueDes == null) continue;
+          result.authorizationExtraInfo.replace(valueDes);
           break;
         default:
           unhandled.add(key);

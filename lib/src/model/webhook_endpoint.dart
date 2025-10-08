@@ -15,7 +15,7 @@ part 'webhook_endpoint.g.dart';
 ///
 /// Properties:
 /// * [url] - The URL to send the webhook to.
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [subscriptions] - The events to subscribe to.
 /// * [id] 
 /// * [nextAttempt] - The time the next attempt will be made.

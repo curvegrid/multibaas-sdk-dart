@@ -29,7 +29,7 @@ void main() {
     //
     // Create a webhook.
     //
-    //Future<CreateWebhook200Response> createWebhook({ BaseWebhookEndpoint baseWebhookEndpoint }) async
+    //Future<CreateWebhook200Response> createWebhook(BaseWebhookEndpoint baseWebhookEndpoint) async
     test('test createWebhook', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // Update a webhook endpoint.
     //
-    //Future<CreateWebhook200Response> updateWebhook(int webhookID, { BaseWebhookEndpoint baseWebhookEndpoint }) async
+    //Future<CreateWebhook200Response> updateWebhook(int webhookID, BaseWebhookEndpoint baseWebhookEndpoint) async
     test('test updateWebhook', () async {
       // TODO
     });

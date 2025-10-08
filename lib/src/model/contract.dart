@@ -15,7 +15,7 @@ part 'contract.g.dart';
 /// A returned contract.
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [contractName] - The name of the contract.
 /// * [version] - The contract version.
 /// * [bin] - The smart-contract bytecode.
@@ -58,11 +58,13 @@ class _$ContractSerializer implements PrimitiveSerializer<Contract> {
     Contract object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'developerDoc';
-    yield serializers.serialize(
-      object.developerDoc,
-      specifiedType: const FullType(String),
-    );
+    if (object.developerDoc != null) {
+      yield r'developerDoc';
+      yield serializers.serialize(
+        object.developerDoc,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.metadata != null) {
       yield r'metadata';
       yield serializers.serialize(
@@ -89,11 +91,13 @@ class _$ContractSerializer implements PrimitiveSerializer<Contract> {
       object.rawAbi,
       specifiedType: const FullType(String),
     );
-    yield r'userDoc';
-    yield serializers.serialize(
-      object.userDoc,
-      specifiedType: const FullType(String),
-    );
+    if (object.userDoc != null) {
+      yield r'userDoc';
+      yield serializers.serialize(
+        object.userDoc,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'abi';
     yield serializers.serialize(
       object.abi,

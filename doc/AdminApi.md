@@ -17,13 +17,16 @@ Method | HTTP request | Description
 [**checkInvite**](AdminApi.md#checkinvite) | **GET** /invites/{inviteID} | Check invite
 [**createApiKey**](AdminApi.md#createapikey) | **POST** /api_keys | Create API key
 [**deleteApiKey**](AdminApi.md#deleteapikey) | **DELETE** /api_keys/{apiKeyID} | Delete API key
+[**deleteInvite**](AdminApi.md#deleteinvite) | **DELETE** /invites/{email}/delete | Delete invite
 [**deleteUser**](AdminApi.md#deleteuser) | **DELETE** /users/{userID} | Delete user
 [**getApiKey**](AdminApi.md#getapikey) | **GET** /api_keys/{apiKeyID} | Get API Key
+[**getPlan**](AdminApi.md#getplan) | **GET** /plan | Get plan
 [**inviteUser**](AdminApi.md#inviteuser) | **POST** /invites | Invite user
 [**listApiKeys**](AdminApi.md#listapikeys) | **GET** /api_keys | List API keys
 [**listAuditLogs**](AdminApi.md#listauditlogs) | **GET** /systemactivities | List audit logs
 [**listCorsOrigins**](AdminApi.md#listcorsorigins) | **GET** /cors | List CORS origins
 [**listGroups**](AdminApi.md#listgroups) | **GET** /groups | List groups
+[**listInvites**](AdminApi.md#listinvites) | **GET** /invites | List invites
 [**listUserSigners**](AdminApi.md#listusersigners) | **GET** /users/{userID}/signers | List user signers
 [**listUsers**](AdminApi.md#listusers) | **GET** /users | List users
 [**removeCorsOrigin**](AdminApi.md#removecorsorigin) | **DELETE** /cors/{originID} | Remove CORS Origin
@@ -31,8 +34,10 @@ Method | HTTP request | Description
 [**removeGroupRole**](AdminApi.md#removegrouprole) | **DELETE** /groups/{groupID}/roles/{roleShortName} | Remove role from group
 [**removeGroupUser**](AdminApi.md#removegroupuser) | **DELETE** /groups/{groupID}/users/{userID} | Remove user from group
 [**removeUserSignerCloudWallet**](AdminApi.md#removeusersignercloudwallet) | **DELETE** /users/{userID}/cloudwallets/{wallet_address} | Remove user cloud wallet signer
+[**removeUserSignerSafeAccount**](AdminApi.md#removeusersignersafeaccount) | **DELETE** /users/{userID}/safeaccounts/{wallet_address} | Remove user safe account signer
 [**removeUserSignerWeb3Wallet**](AdminApi.md#removeusersignerweb3wallet) | **DELETE** /users/{userID}/web3wallets/{wallet_address} | Remove user web3 wallet signer
 [**setUserSignerCloudWallet**](AdminApi.md#setusersignercloudwallet) | **PUT** /users/{userID}/cloudwallets/{wallet_address} | Add or update user cloud wallet signer
+[**setUserSignerSafeAccount**](AdminApi.md#setusersignersafeaccount) | **PUT** /users/{userID}/safeaccounts/{wallet_address} | Add or update user safe account signer
 [**setUserSignerWeb3Wallet**](AdminApi.md#setusersignerweb3wallet) | **PUT** /users/{userID}/web3wallets/{wallet_address} | Add or update user web3 wallet signer
 [**updateApiKey**](AdminApi.md#updateapikey) | **PUT** /api_keys/{apiKeyID} | Update API key
 
@@ -65,7 +70,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inviteID** | **String**|  | 
- **acceptInviteRequest** | [**AcceptInviteRequest**](AcceptInviteRequest.md)|  | [optional] 
+ **acceptInviteRequest** | [**AcceptInviteRequest**](AcceptInviteRequest.md)|  | 
 
 ### Return type
 
@@ -112,7 +117,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cORSOrigin** | [**CORSOrigin**](CORSOrigin.md)|  | [optional] 
+ **cORSOrigin** | [**CORSOrigin**](CORSOrigin.md)|  | 
 
 ### Return type
 
@@ -349,7 +354,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createApiKeyRequest** | [**CreateApiKeyRequest**](CreateApiKeyRequest.md)|  | [optional] 
+ **createApiKeyRequest** | [**CreateApiKeyRequest**](CreateApiKeyRequest.md)|  | 
 
 ### Return type
 
@@ -413,6 +418,48 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteInvite**
+> deleteInvite(email)
+
+Delete invite
+
+Deletes a user invite.
+
+### Example
+```dart
+import 'package:multibaas/api.dart';
+
+final api = Multibaas().getAdminApi();
+final String email = email_example; // String | 
+
+try {
+    api.deleteInvite(email);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->deleteInvite: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteUser**
 > BaseResponse deleteUser(userID)
 
@@ -461,7 +508,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getApiKey**
-> CreateApiKey200Response getApiKey(apiKeyID)
+> GetApiKey200Response getApiKey(apiKeyID)
 
 Get API Key
 
@@ -494,7 +541,50 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateApiKey200Response**](CreateApiKey200Response.md)
+[**GetApiKey200Response**](GetApiKey200Response.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getPlan**
+> GetPlan200Response getPlan()
+
+Get plan
+
+Returns the current plan with limits and features.
+
+### Example
+```dart
+import 'package:multibaas/api.dart';
+// TODO Configure API key authorization: cookie
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKeyPrefix = 'Bearer';
+
+final api = Multibaas().getAdminApi();
+
+try {
+    final response = api.getPlan();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->getPlan: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetPlan200Response**](GetPlan200Response.md)
 
 ### Authorization
 
@@ -508,7 +598,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **inviteUser**
-> BaseResponse inviteUser(invite)
+> BaseResponse inviteUser(inviteRequest)
 
 Invite user
 
@@ -523,10 +613,10 @@ import 'package:multibaas/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKeyPrefix = 'Bearer';
 
 final api = Multibaas().getAdminApi();
-final Invite invite = ; // Invite | 
+final InviteRequest inviteRequest = ; // InviteRequest | 
 
 try {
-    final response = api.inviteUser(invite);
+    final response = api.inviteUser(inviteRequest);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AdminApi->inviteUser: $e\n');
@@ -537,7 +627,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **invite** | [**Invite**](Invite.md)|  | [optional] 
+ **inviteRequest** | [**InviteRequest**](InviteRequest.md)|  | 
 
 ### Return type
 
@@ -726,6 +816,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListGroups200Response**](ListGroups200Response.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **listInvites**
+> ListInvites200Response listInvites()
+
+List invites
+
+Returns all the user invites.
+
+### Example
+```dart
+import 'package:multibaas/api.dart';
+// TODO Configure API key authorization: cookie
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKeyPrefix = 'Bearer';
+
+final api = Multibaas().getAdminApi();
+
+try {
+    final response = api.listInvites();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->listInvites: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListInvites200Response**](ListInvites200Response.md)
 
 ### Authorization
 
@@ -1043,7 +1176,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getAdminApi();
 final int userID = 789; // int | 
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 
 try {
     final response = api.removeUserSignerCloudWallet(userID, walletAddress);
@@ -1058,7 +1191,56 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userID** | **int**|  | 
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **removeUserSignerSafeAccount**
+> BaseResponse removeUserSignerSafeAccount(userID, walletAddress)
+
+Remove user safe account signer
+
+Removes a safe account signer from a user.
+
+### Example
+```dart
+import 'package:multibaas/api.dart';
+// TODO Configure API key authorization: cookie
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKeyPrefix = 'Bearer';
+
+final api = Multibaas().getAdminApi();
+final int userID = 789; // int | 
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
+
+try {
+    final response = api.removeUserSignerSafeAccount(userID, walletAddress);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->removeUserSignerSafeAccount: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userID** | **int**|  | 
+ **walletAddress** | **String**| An Ethereum address. | 
 
 ### Return type
 
@@ -1092,7 +1274,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getAdminApi();
 final int userID = 789; // int | 
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 
 try {
     final response = api.removeUserSignerWeb3Wallet(userID, walletAddress);
@@ -1107,7 +1289,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userID** | **int**|  | 
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
 
 ### Return type
 
@@ -1141,7 +1323,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getAdminApi();
 final int userID = 789; // int | 
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 
 try {
     final response = api.setUserSignerCloudWallet(userID, walletAddress);
@@ -1156,7 +1338,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userID** | **int**|  | 
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
 
 ### Return type
 
@@ -1169,6 +1351,57 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **setUserSignerSafeAccount**
+> BaseResponse setUserSignerSafeAccount(userID, walletAddress, signerLabel)
+
+Add or update user safe account signer
+
+Adds or updates a user's safe account signer.
+
+### Example
+```dart
+import 'package:multibaas/api.dart';
+// TODO Configure API key authorization: cookie
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKeyPrefix = 'Bearer';
+
+final api = Multibaas().getAdminApi();
+final int userID = 789; // int | 
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
+final SignerLabel signerLabel = ; // SignerLabel | 
+
+try {
+    final response = api.setUserSignerSafeAccount(userID, walletAddress, signerLabel);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AdminApi->setUserSignerSafeAccount: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userID** | **int**|  | 
+ **walletAddress** | **String**| An Ethereum address. | 
+ **signerLabel** | [**SignerLabel**](SignerLabel.md)|  | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1190,7 +1423,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getAdminApi();
 final int userID = 789; // int | 
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 final SignerLabel signerLabel = ; // SignerLabel | 
 
 try {
@@ -1206,8 +1439,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userID** | **int**|  | 
- **walletAddress** | **String**| An HSM ethereum address. | 
- **signerLabel** | [**SignerLabel**](SignerLabel.md)|  | [optional] 
+ **walletAddress** | **String**| An Ethereum address. | 
+ **signerLabel** | [**SignerLabel**](SignerLabel.md)|  | 
 
 ### Return type
 
@@ -1256,7 +1489,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiKeyID** | **int**|  | 
- **baseAPIKey** | [**BaseAPIKey**](BaseAPIKey.md)|  | [optional] 
+ **baseAPIKey** | [**BaseAPIKey**](BaseAPIKey.md)|  | 
 
 ### Return type
 

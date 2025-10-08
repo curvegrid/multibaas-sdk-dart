@@ -22,7 +22,7 @@ class _$AzureHardwareWallet extends AzureHardwareWallet {
 
   factory _$AzureHardwareWallet(
           [void Function(AzureHardwareWalletBuilder)? updates]) =>
-      (new AzureHardwareWalletBuilder()..update(updates))._build();
+      (AzureHardwareWalletBuilder()..update(updates))._build();
 
   _$AzureHardwareWallet._(
       {required this.id,
@@ -31,20 +31,7 @@ class _$AzureHardwareWallet extends AzureHardwareWallet {
       required this.keyName,
       required this.keyVersion,
       required this.publicAddress})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'AzureHardwareWallet', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        azureAccountID, r'AzureHardwareWallet', 'azureAccountID');
-    BuiltValueNullFieldError.checkNotNull(
-        vaultName, r'AzureHardwareWallet', 'vaultName');
-    BuiltValueNullFieldError.checkNotNull(
-        keyName, r'AzureHardwareWallet', 'keyName');
-    BuiltValueNullFieldError.checkNotNull(
-        keyVersion, r'AzureHardwareWallet', 'keyVersion');
-    BuiltValueNullFieldError.checkNotNull(
-        publicAddress, r'AzureHardwareWallet', 'publicAddress');
-  }
-
+      : super._();
   @override
   AzureHardwareWallet rebuild(
           void Function(AzureHardwareWalletBuilder) updates) =>
@@ -52,7 +39,7 @@ class _$AzureHardwareWallet extends AzureHardwareWallet {
 
   @override
   AzureHardwareWalletBuilder toBuilder() =>
-      new AzureHardwareWalletBuilder()..replace(this);
+      AzureHardwareWalletBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -142,7 +129,6 @@ class AzureHardwareWalletBuilder
 
   @override
   void replace(AzureHardwareWallet other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AzureHardwareWallet;
   }
 
@@ -156,19 +142,20 @@ class AzureHardwareWalletBuilder
 
   _$AzureHardwareWallet _build() {
     final _$result = _$v ??
-        new _$AzureHardwareWallet._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'AzureHardwareWallet', 'id'),
-            azureAccountID: BuiltValueNullFieldError.checkNotNull(
-                azureAccountID, r'AzureHardwareWallet', 'azureAccountID'),
-            vaultName: BuiltValueNullFieldError.checkNotNull(
-                vaultName, r'AzureHardwareWallet', 'vaultName'),
-            keyName: BuiltValueNullFieldError.checkNotNull(
-                keyName, r'AzureHardwareWallet', 'keyName'),
-            keyVersion: BuiltValueNullFieldError.checkNotNull(
-                keyVersion, r'AzureHardwareWallet', 'keyVersion'),
-            publicAddress: BuiltValueNullFieldError.checkNotNull(
-                publicAddress, r'AzureHardwareWallet', 'publicAddress'));
+        _$AzureHardwareWallet._(
+          id: BuiltValueNullFieldError.checkNotNull(
+              id, r'AzureHardwareWallet', 'id'),
+          azureAccountID: BuiltValueNullFieldError.checkNotNull(
+              azureAccountID, r'AzureHardwareWallet', 'azureAccountID'),
+          vaultName: BuiltValueNullFieldError.checkNotNull(
+              vaultName, r'AzureHardwareWallet', 'vaultName'),
+          keyName: BuiltValueNullFieldError.checkNotNull(
+              keyName, r'AzureHardwareWallet', 'keyName'),
+          keyVersion: BuiltValueNullFieldError.checkNotNull(
+              keyVersion, r'AzureHardwareWallet', 'keyVersion'),
+          publicAddress: BuiltValueNullFieldError.checkNotNull(
+              publicAddress, r'AzureHardwareWallet', 'publicAddress'),
+        );
     replace(_$result);
     return _$result;
   }

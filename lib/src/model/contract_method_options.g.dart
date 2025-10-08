@@ -16,15 +16,11 @@ class _$ContractMethodOptions extends ContractMethodOptions {
 
   factory _$ContractMethodOptions(
           [void Function(ContractMethodOptionsBuilder)? updates]) =>
-      (new ContractMethodOptionsBuilder()..update(updates))._build();
+      (ContractMethodOptionsBuilder()..update(updates))._build();
 
   _$ContractMethodOptions._(
       {this.signature, required this.inputs, this.outputs})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'ContractMethodOptions', 'inputs');
-  }
-
+      : super._();
   @override
   ContractMethodOptions rebuild(
           void Function(ContractMethodOptionsBuilder) updates) =>
@@ -32,7 +28,7 @@ class _$ContractMethodOptions extends ContractMethodOptions {
 
   @override
   ContractMethodOptionsBuilder toBuilder() =>
-      new ContractMethodOptionsBuilder()..replace(this);
+      ContractMethodOptionsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,12 +69,12 @@ class ContractMethodOptionsBuilder
 
   ListBuilder<ContractParameter>? _inputs;
   ListBuilder<ContractParameter> get inputs =>
-      _$this._inputs ??= new ListBuilder<ContractParameter>();
+      _$this._inputs ??= ListBuilder<ContractParameter>();
   set inputs(ListBuilder<ContractParameter>? inputs) => _$this._inputs = inputs;
 
   ListBuilder<ContractParameter>? _outputs;
   ListBuilder<ContractParameter> get outputs =>
-      _$this._outputs ??= new ListBuilder<ContractParameter>();
+      _$this._outputs ??= ListBuilder<ContractParameter>();
   set outputs(ListBuilder<ContractParameter>? outputs) =>
       _$this._outputs = outputs;
 
@@ -99,7 +95,6 @@ class ContractMethodOptionsBuilder
 
   @override
   void replace(ContractMethodOptions other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractMethodOptions;
   }
 
@@ -115,10 +110,11 @@ class ContractMethodOptionsBuilder
     _$ContractMethodOptions _$result;
     try {
       _$result = _$v ??
-          new _$ContractMethodOptions._(
-              signature: signature,
-              inputs: inputs.build(),
-              outputs: _outputs?.build());
+          _$ContractMethodOptions._(
+            signature: signature,
+            inputs: inputs.build(),
+            outputs: _outputs?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -127,7 +123,7 @@ class ContractMethodOptionsBuilder
         _$failedField = 'outputs';
         _outputs?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractMethodOptions', _$failedField, e.toString());
       }
       rethrow;

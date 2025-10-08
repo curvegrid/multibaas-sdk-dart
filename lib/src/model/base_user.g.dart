@@ -23,19 +23,15 @@ class _$$BaseUser extends $BaseUser {
   final String name;
 
   factory _$$BaseUser([void Function($BaseUserBuilder)? updates]) =>
-      (new $BaseUserBuilder()..update(updates))._build();
+      ($BaseUserBuilder()..update(updates))._build();
 
-  _$$BaseUser._({required this.email, required this.name}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(email, r'$BaseUser', 'email');
-    BuiltValueNullFieldError.checkNotNull(name, r'$BaseUser', 'name');
-  }
-
+  _$$BaseUser._({required this.email, required this.name}) : super._();
   @override
   $BaseUser rebuild(void Function($BaseUserBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $BaseUserBuilder toBuilder() => new $BaseUserBuilder()..replace(this);
+  $BaseUserBuilder toBuilder() => $BaseUserBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -89,7 +85,6 @@ class $BaseUserBuilder
 
   @override
   void replace(covariant $BaseUser other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$BaseUser;
   }
 
@@ -103,11 +98,12 @@ class $BaseUserBuilder
 
   _$$BaseUser _build() {
     final _$result = _$v ??
-        new _$$BaseUser._(
-            email: BuiltValueNullFieldError.checkNotNull(
-                email, r'$BaseUser', 'email'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'$BaseUser', 'name'));
+        _$$BaseUser._(
+          email: BuiltValueNullFieldError.checkNotNull(
+              email, r'$BaseUser', 'email'),
+          name:
+              BuiltValueNullFieldError.checkNotNull(name, r'$BaseUser', 'name'),
+        );
     replace(_$result);
     return _$result;
   }

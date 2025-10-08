@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:multibaas/src/api_util.dart';
-import 'package:multibaas/src/model/address_label.dart';
+import 'package:multibaas/src/model/address_alias.dart';
 import 'package:multibaas/src/model/base_response.dart';
 import 'package:multibaas/src/model/chain_name.dart';
 import 'package:multibaas/src/model/list_addresses200_response.dart';
@@ -24,11 +24,11 @@ class AddressesApi {
   const AddressesApi(this._dio, this._serializers);
 
   /// Delete address
-  /// Deletes an address label.
+  /// Deletes an address alias.
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [addressOrLabel] - An address or the label of an address.
+  /// * [addressOrAlias] - An address or the alias of an address.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -40,7 +40,7 @@ class AddressesApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> deleteAddress({ 
     required ChainName chain,
-    required String addressOrLabel,
+    required String addressOrAlias,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -48,7 +48,7 @@ class AddressesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chains/{chain}/addresses/{address-or-label}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-label' '}', encodeQueryParameter(_serializers, addressOrLabel, const FullType(String)).toString());
+    final _path = r'/chains/{chain}/addresses/{address-or-alias}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-alias' '}', encodeQueryParameter(_serializers, addressOrAlias, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -116,8 +116,8 @@ class AddressesApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [addressOrLabel] - An address or the label of an address.
-  /// * [include] - Optional data to fetch from the blockchain: - `balance` to get the balance of this address. - `code` to get the code at this address. - `nonce` to get the next available transaction nonce for this address. 
+  /// * [addressOrAlias] - An address or the alias of an address.
+  /// * [include] - Optional data to fetch from the blockchain: - `balance` to get the balance of this address. - `code` to get the code at this address. - `nonce` to get the next available transaction nonce for this address. - `contractLookup` to get the contract(s) details for this address. 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -129,7 +129,7 @@ class AddressesApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<SetAddress201Response>> getAddress({ 
     required ChainName chain,
-    required String addressOrLabel,
+    required String addressOrAlias,
     BuiltList<String>? include,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -138,7 +138,7 @@ class AddressesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/chains/{chain}/addresses/{address-or-label}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-label' '}', encodeQueryParameter(_serializers, addressOrLabel, const FullType(String)).toString());
+    final _path = r'/chains/{chain}/addresses/{address-or-alias}'.replaceAll('{' r'chain' '}', encodeQueryParameter(_serializers, chain, const FullType(ChainName)).toString()).replaceAll('{' r'address-or-alias' '}', encodeQueryParameter(_serializers, addressOrAlias, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -207,7 +207,7 @@ class AddressesApi {
   }
 
   /// List addresses
-  /// Returns all the labeled addresses.
+  /// Returns all the aliased addresses.
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
@@ -293,11 +293,11 @@ class AddressesApi {
   }
 
   /// Create or update address
-  /// Associates an address with a label.
+  /// Associates an address with an alias.
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [addressLabel] 
+  /// * [addressAlias] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -309,7 +309,7 @@ class AddressesApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<SetAddress201Response>> setAddress({ 
     required ChainName chain,
-    AddressLabel? addressLabel,
+    required AddressAlias addressAlias,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -345,8 +345,8 @@ class AddressesApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(AddressLabel);
-      _bodyData = addressLabel == null ? null : _serializers.serialize(addressLabel, specifiedType: _type);
+      const _type = FullType(AddressAlias);
+      _bodyData = _serializers.serialize(addressAlias, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

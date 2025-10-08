@@ -16,19 +16,11 @@ class _$ContractMethodInformation extends ContractMethodInformation {
 
   factory _$ContractMethodInformation(
           [void Function(ContractMethodInformationBuilder)? updates]) =>
-      (new ContractMethodInformationBuilder()..update(updates))._build();
+      (ContractMethodInformationBuilder()..update(updates))._build();
 
   _$ContractMethodInformation._(
       {required this.name, required this.signature, required this.inputs})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ContractMethodInformation', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        signature, r'ContractMethodInformation', 'signature');
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'ContractMethodInformation', 'inputs');
-  }
-
+      : super._();
   @override
   ContractMethodInformation rebuild(
           void Function(ContractMethodInformationBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ContractMethodInformation extends ContractMethodInformation {
 
   @override
   ContractMethodInformationBuilder toBuilder() =>
-      new ContractMethodInformationBuilder()..replace(this);
+      ContractMethodInformationBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +74,7 @@ class ContractMethodInformationBuilder
 
   ListBuilder<MethodArg>? _inputs;
   ListBuilder<MethodArg> get inputs =>
-      _$this._inputs ??= new ListBuilder<MethodArg>();
+      _$this._inputs ??= ListBuilder<MethodArg>();
   set inputs(ListBuilder<MethodArg>? inputs) => _$this._inputs = inputs;
 
   ContractMethodInformationBuilder() {
@@ -102,7 +94,6 @@ class ContractMethodInformationBuilder
 
   @override
   void replace(ContractMethodInformation other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractMethodInformation;
   }
 
@@ -118,19 +109,20 @@ class ContractMethodInformationBuilder
     _$ContractMethodInformation _$result;
     try {
       _$result = _$v ??
-          new _$ContractMethodInformation._(
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'ContractMethodInformation', 'name'),
-              signature: BuiltValueNullFieldError.checkNotNull(
-                  signature, r'ContractMethodInformation', 'signature'),
-              inputs: inputs.build());
+          _$ContractMethodInformation._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'ContractMethodInformation', 'name'),
+            signature: BuiltValueNullFieldError.checkNotNull(
+                signature, r'ContractMethodInformation', 'signature'),
+            inputs: inputs.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'inputs';
         inputs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractMethodInformation', _$failedField, e.toString());
       }
       rethrow;

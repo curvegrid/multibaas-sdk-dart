@@ -17,6 +17,11 @@ void main() {
       // TODO
     });
 
+    // String typeName
+    test('to test the property `typeName`', () async {
+      // TODO
+    });
+
     // bool indexed
     test('to test the property `indexed`', () async {
       // TODO
@@ -24,6 +29,12 @@ void main() {
 
     // ContractABITypeConversion typeConversion
     test('to test the property `typeConversion`', () async {
+      // TODO
+    });
+
+    // The developer documentation.
+    // String notes
+    test('to test the property `notes`', () async {
       // TODO
     });
 

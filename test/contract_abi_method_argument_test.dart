@@ -17,6 +17,11 @@ void main() {
       // TODO
     });
 
+    // String typeName
+    test('to test the property `typeName`', () async {
+      // TODO
+    });
+
     // ContractABITypeConversion typeConversion
     test('to test the property `typeConversion`', () async {
       // TODO

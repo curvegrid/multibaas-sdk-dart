@@ -11,7 +11,7 @@ part 'base_contract.g.dart';
 /// A contract.
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [contractName] - The name of the contract.
 /// * [version] - The contract version.
 /// * [bin] - The smart-contract bytecode.
@@ -22,7 +22,7 @@ part 'base_contract.g.dart';
 /// * [isFavorite] 
 @BuiltValue(instantiable: false)
 abstract class BaseContract  {
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 
@@ -44,11 +44,11 @@ abstract class BaseContract  {
 
   /// The user documentation JSON string.
   @BuiltValueField(wireName: r'userDoc')
-  String get userDoc;
+  String? get userDoc;
 
   /// The developer documentation JSON string.
   @BuiltValueField(wireName: r'developerDoc')
-  String get developerDoc;
+  String? get developerDoc;
 
   /// The contract metadata JSON string.
   @BuiltValueField(wireName: r'metadata')
@@ -100,16 +100,20 @@ class _$BaseContractSerializer implements PrimitiveSerializer<BaseContract> {
       object.rawAbi,
       specifiedType: const FullType(String),
     );
-    yield r'userDoc';
-    yield serializers.serialize(
-      object.userDoc,
-      specifiedType: const FullType(String),
-    );
-    yield r'developerDoc';
-    yield serializers.serialize(
-      object.developerDoc,
-      specifiedType: const FullType(String),
-    );
+    if (object.userDoc != null) {
+      yield r'userDoc';
+      yield serializers.serialize(
+        object.userDoc,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.developerDoc != null) {
+      yield r'developerDoc';
+      yield serializers.serialize(
+        object.developerDoc,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.metadata != null) {
       yield r'metadata';
       yield serializers.serialize(

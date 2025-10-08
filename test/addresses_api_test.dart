@@ -9,9 +9,9 @@ void main() {
   group(AddressesApi, () {
     // Delete address
     //
-    // Deletes an address label.
+    // Deletes an address alias.
     //
-    //Future<BaseResponse> deleteAddress(ChainName chain, String addressOrLabel) async
+    //Future<BaseResponse> deleteAddress(ChainName chain, String addressOrAlias) async
     test('test deleteAddress', () async {
       // TODO
     });
@@ -20,14 +20,14 @@ void main() {
     //
     // Returns details about an address.
     //
-    //Future<SetAddress201Response> getAddress(ChainName chain, String addressOrLabel, { BuiltList<String> include }) async
+    //Future<SetAddress201Response> getAddress(ChainName chain, String addressOrAlias, { BuiltList<String> include }) async
     test('test getAddress', () async {
       // TODO
     });
 
     // List addresses
     //
-    // Returns all the labeled addresses.
+    // Returns all the aliased addresses.
     //
     //Future<ListAddresses200Response> listAddresses(ChainName chain) async
     test('test listAddresses', () async {
@@ -36,9 +36,9 @@ void main() {
 
     // Create or update address
     //
-    // Associates an address with a label.
+    // Associates an address with an alias.
     //
-    //Future<SetAddress201Response> setAddress(ChainName chain, { AddressLabel addressLabel }) async
+    //Future<SetAddress201Response> setAddress(ChainName chain, AddressAlias addressAlias) async
     test('test setAddress', () async {
       // TODO
     });

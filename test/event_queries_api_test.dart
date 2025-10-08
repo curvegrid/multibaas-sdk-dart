@@ -29,7 +29,7 @@ void main() {
     //
     // Executes an arbitrary event query.
     //
-    //Future<ExecuteArbitraryEventQuery200Response> executeArbitraryEventQuery({ int offset, int limit, EventQuery eventQuery }) async
+    //Future<ExecuteArbitraryEventQuery200Response> executeArbitraryEventQuery(EventQuery eventQuery, { int offset, int limit }) async
     test('test executeArbitraryEventQuery', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Creates or updates the given saved event query.
     //
-    //Future<BaseResponse> setEventQuery(String eventQuery, { EventQuery eventQuery2 }) async
+    //Future<BaseResponse> setEventQuery(String eventQuery, EventQuery eventQuery2) async
     test('test setEventQuery', () async {
       // TODO
     });

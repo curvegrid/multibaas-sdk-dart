@@ -16,19 +16,11 @@ class _$ListHsmWallets200Response extends ListHsmWallets200Response {
 
   factory _$ListHsmWallets200Response(
           [void Function(ListHsmWallets200ResponseBuilder)? updates]) =>
-      (new ListHsmWallets200ResponseBuilder()..update(updates))._build();
+      (ListHsmWallets200ResponseBuilder()..update(updates))._build();
 
   _$ListHsmWallets200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListHsmWallets200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListHsmWallets200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListHsmWallets200Response', 'message');
-  }
-
+      : super._();
   @override
   ListHsmWallets200Response rebuild(
           void Function(ListHsmWallets200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListHsmWallets200Response extends ListHsmWallets200Response {
 
   @override
   ListHsmWallets200ResponseBuilder toBuilder() =>
-      new ListHsmWallets200ResponseBuilder()..replace(this);
+      ListHsmWallets200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +67,7 @@ class ListHsmWallets200ResponseBuilder
 
   ListBuilder<StandaloneWallet>? _result;
   ListBuilder<StandaloneWallet> get result =>
-      _$this._result ??= new ListBuilder<StandaloneWallet>();
+      _$this._result ??= ListBuilder<StandaloneWallet>();
   set result(covariant ListBuilder<StandaloneWallet>? result) =>
       _$this._result = result;
 
@@ -104,7 +96,6 @@ class ListHsmWallets200ResponseBuilder
 
   @override
   void replace(covariant ListHsmWallets200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListHsmWallets200Response;
   }
 
@@ -120,19 +111,20 @@ class ListHsmWallets200ResponseBuilder
     _$ListHsmWallets200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListHsmWallets200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListHsmWallets200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListHsmWallets200Response', 'message'));
+          _$ListHsmWallets200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListHsmWallets200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListHsmWallets200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListHsmWallets200Response', _$failedField, e.toString());
       }
       rethrow;

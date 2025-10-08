@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ContractInstance, () {
-    // String label
-    test('to test the property `label`', () async {
+    // String alias
+    test('to test the property `alias`', () async {
       // TODO
     });
 

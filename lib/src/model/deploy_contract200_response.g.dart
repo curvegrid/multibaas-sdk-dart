@@ -16,19 +16,11 @@ class _$DeployContract200Response extends DeployContract200Response {
 
   factory _$DeployContract200Response(
           [void Function(DeployContract200ResponseBuilder)? updates]) =>
-      (new DeployContract200ResponseBuilder()..update(updates))._build();
+      (DeployContract200ResponseBuilder()..update(updates))._build();
 
   _$DeployContract200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'DeployContract200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'DeployContract200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'DeployContract200Response', 'message');
-  }
-
+      : super._();
   @override
   DeployContract200Response rebuild(
           void Function(DeployContract200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$DeployContract200Response extends DeployContract200Response {
 
   @override
   DeployContract200ResponseBuilder toBuilder() =>
-      new DeployContract200ResponseBuilder()..replace(this);
+      DeployContract200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +67,7 @@ class DeployContract200ResponseBuilder
 
   DeployContractTransactionBuilder? _result;
   DeployContractTransactionBuilder get result =>
-      _$this._result ??= new DeployContractTransactionBuilder();
+      _$this._result ??= DeployContractTransactionBuilder();
   set result(covariant DeployContractTransactionBuilder? result) =>
       _$this._result = result;
 
@@ -104,7 +96,6 @@ class DeployContract200ResponseBuilder
 
   @override
   void replace(covariant DeployContract200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeployContract200Response;
   }
 
@@ -120,19 +111,20 @@ class DeployContract200ResponseBuilder
     _$DeployContract200Response _$result;
     try {
       _$result = _$v ??
-          new _$DeployContract200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'DeployContract200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'DeployContract200Response', 'message'));
+          _$DeployContract200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'DeployContract200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'DeployContract200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'DeployContract200Response', _$failedField, e.toString());
       }
       rethrow;

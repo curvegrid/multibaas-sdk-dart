@@ -3,25 +3,30 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'invite.g.dart';
 
-/// An invite with groups.
+/// A user invitation to MultiBaas.
 ///
 /// Properties:
 /// * [email] - The invitee's email address.
-/// * [groupIDs] 
+/// * [createdAt] - The time the invite was created.
+/// * [expiresAt] - The time the invite expires.
 @BuiltValue()
 abstract class Invite implements Built<Invite, InviteBuilder> {
   /// The invitee's email address.
   @BuiltValueField(wireName: r'email')
   String get email;
 
-  @BuiltValueField(wireName: r'groupIDs')
-  BuiltList<int>? get groupIDs;
+  /// The time the invite was created.
+  @BuiltValueField(wireName: r'createdAt')
+  DateTime get createdAt;
+
+  /// The time the invite expires.
+  @BuiltValueField(wireName: r'expiresAt')
+  DateTime get expiresAt;
 
   Invite._();
 
@@ -51,13 +56,16 @@ class _$InviteSerializer implements PrimitiveSerializer<Invite> {
       object.email,
       specifiedType: const FullType(String),
     );
-    if (object.groupIDs != null) {
-      yield r'groupIDs';
-      yield serializers.serialize(
-        object.groupIDs,
-        specifiedType: const FullType(BuiltList, [FullType(int)]),
-      );
-    }
+    yield r'createdAt';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(DateTime),
+    );
+    yield r'expiresAt';
+    yield serializers.serialize(
+      object.expiresAt,
+      specifiedType: const FullType(DateTime),
+    );
   }
 
   @override
@@ -88,12 +96,19 @@ class _$InviteSerializer implements PrimitiveSerializer<Invite> {
           ) as String;
           result.email = valueDes;
           break;
-        case r'groupIDs':
+        case r'createdAt':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(int)]),
-          ) as BuiltList<int>;
-          result.groupIDs.replace(valueDes);
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.createdAt = valueDes;
+          break;
+        case r'expiresAt':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.expiresAt = valueDes;
           break;
         default:
           unhandled.add(key);

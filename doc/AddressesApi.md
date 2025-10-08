@@ -9,18 +9,18 @@ All URIs are relative to *https://your_deployment.multibaas.com/api/v0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteAddress**](AddressesApi.md#deleteaddress) | **DELETE** /chains/{chain}/addresses/{address-or-label} | Delete address
-[**getAddress**](AddressesApi.md#getaddress) | **GET** /chains/{chain}/addresses/{address-or-label} | Get address
+[**deleteAddress**](AddressesApi.md#deleteaddress) | **DELETE** /chains/{chain}/addresses/{address-or-alias} | Delete address
+[**getAddress**](AddressesApi.md#getaddress) | **GET** /chains/{chain}/addresses/{address-or-alias} | Get address
 [**listAddresses**](AddressesApi.md#listaddresses) | **GET** /chains/{chain}/addresses | List addresses
 [**setAddress**](AddressesApi.md#setaddress) | **POST** /chains/{chain}/addresses | Create or update address
 
 
 # **deleteAddress**
-> BaseResponse deleteAddress(chain, addressOrLabel)
+> BaseResponse deleteAddress(chain, addressOrAlias)
 
 Delete address
 
-Deletes an address label.
+Deletes an address alias.
 
 ### Example
 ```dart
@@ -32,10 +32,10 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getAddressesApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String addressOrLabel = addressOrLabel_example; // String | An address or the label of an address.
+final String addressOrAlias = addressOrAlias_example; // String | An address or the alias of an address.
 
 try {
-    final response = api.deleteAddress(chain, addressOrLabel);
+    final response = api.deleteAddress(chain, addressOrAlias);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AddressesApi->deleteAddress: $e\n');
@@ -47,7 +47,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **addressOrLabel** | **String**| An address or the label of an address. | 
+ **addressOrAlias** | **String**| An address or the alias of an address. | 
 
 ### Return type
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAddress**
-> SetAddress201Response getAddress(chain, addressOrLabel, include)
+> SetAddress201Response getAddress(chain, addressOrAlias, include)
 
 Get address
 
@@ -81,11 +81,11 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getAddressesApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String addressOrLabel = addressOrLabel_example; // String | An address or the label of an address.
-final BuiltList<String> include = ; // BuiltList<String> | Optional data to fetch from the blockchain: - `balance` to get the balance of this address. - `code` to get the code at this address. - `nonce` to get the next available transaction nonce for this address. 
+final String addressOrAlias = addressOrAlias_example; // String | An address or the alias of an address.
+final BuiltList<String> include = ; // BuiltList<String> | Optional data to fetch from the blockchain: - `balance` to get the balance of this address. - `code` to get the code at this address. - `nonce` to get the next available transaction nonce for this address. - `contractLookup` to get the contract(s) details for this address. 
 
 try {
-    final response = api.getAddress(chain, addressOrLabel, include);
+    final response = api.getAddress(chain, addressOrAlias, include);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AddressesApi->getAddress: $e\n');
@@ -97,8 +97,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **addressOrLabel** | **String**| An address or the label of an address. | 
- **include** | [**BuiltList&lt;String&gt;**](String.md)| Optional data to fetch from the blockchain: - `balance` to get the balance of this address. - `code` to get the code at this address. - `nonce` to get the next available transaction nonce for this address.  | [optional] 
+ **addressOrAlias** | **String**| An address or the alias of an address. | 
+ **include** | [**BuiltList&lt;String&gt;**](String.md)| Optional data to fetch from the blockchain: - `balance` to get the balance of this address. - `code` to get the code at this address. - `nonce` to get the next available transaction nonce for this address. - `contractLookup` to get the contract(s) details for this address.  | [optional] 
 
 ### Return type
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 List addresses
 
-Returns all the labeled addresses.
+Returns all the aliased addresses.
 
 ### Example
 ```dart
@@ -163,11 +163,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **setAddress**
-> SetAddress201Response setAddress(chain, addressLabel)
+> SetAddress201Response setAddress(chain, addressAlias)
 
 Create or update address
 
-Associates an address with a label.
+Associates an address with an alias.
 
 ### Example
 ```dart
@@ -179,10 +179,10 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getAddressesApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final AddressLabel addressLabel = ; // AddressLabel | 
+final AddressAlias addressAlias = ; // AddressAlias | 
 
 try {
-    final response = api.setAddress(chain, addressLabel);
+    final response = api.setAddress(chain, addressAlias);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AddressesApi->setAddress: $e\n');
@@ -194,7 +194,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **addressLabel** | [**AddressLabel**](AddressLabel.md)|  | [optional] 
+ **addressAlias** | [**AddressAlias**](AddressAlias.md)|  | 
 
 ### Return type
 

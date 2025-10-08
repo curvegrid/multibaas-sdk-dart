@@ -22,7 +22,7 @@ part 'event_query_field.g.dart';
 abstract class EventQueryField implements Built<EventQueryField, EventQueryFieldBuilder> {
   @BuiltValueField(wireName: r'type')
   FieldType get type;
-  // enum typeEnum {  input,  contract_label,  contract_name,  contract_address,  contract_address_label,  block_number,  triggered_at,  event_signature,  block_hash,  tx_hash,  tx_from,  };
+  // enum typeEnum {  input,  contract_label,  contract_name,  contract_address,  contract_address_alias,  block_number,  triggered_at,  event_signature,  block_hash,  tx_hash,  tx_from,  };
 
   /// The field name. Either `name` or `inputIndex` is required if `fieldType == \"input\"`.
   @BuiltValueField(wireName: r'name')
@@ -206,9 +206,6 @@ class EventQueryFieldAggregatorEnum extends EnumClass {
   /// The type of aggregation to perform on the field.
   @BuiltValueEnumConst(wireName: r'max')
   static const EventQueryFieldAggregatorEnum max = _$eventQueryFieldAggregatorEnum_max;
-  /// The type of aggregation to perform on the field.
-  @BuiltValueEnumConst(wireName: r'null')
-  static const EventQueryFieldAggregatorEnum null_ = _$eventQueryFieldAggregatorEnum_null_;
 
   static Serializer<EventQueryFieldAggregatorEnum> get serializer => _$eventQueryFieldAggregatorEnumSerializer;
 

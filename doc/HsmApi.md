@@ -51,7 +51,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **baseAzureAccount** | [**BaseAzureAccount**](BaseAzureAccount.md)|  | [optional] 
+ **baseAzureAccount** | [**BaseAzureAccount**](BaseAzureAccount.md)|  | 
 
 ### Return type
 
@@ -98,7 +98,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addKey** | [**AddKey**](AddKey.md)|  | [optional] 
+ **addKey** | [**AddKey**](AddKey.md)|  | 
 
 ### Return type
 
@@ -145,7 +145,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createKey** | [**CreateKey**](CreateKey.md)|  | [optional] 
+ **createKey** | [**CreateKey**](CreateKey.md)|  | 
 
 ### Return type
 
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
  **baseGroupName** | **String**| Filter wallets by a base group name. | [optional] 
  **clientId** | **String**| Filter wallets by a client ID. | [optional] 
  **publicAddress** | **String**| Filter wallets by a public address. | [optional] 
- **limit** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
  **offset** | **int**|  | [optional] 
 
 ### Return type
@@ -329,7 +329,7 @@ import 'package:multibaas/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKeyPrefix = 'Bearer';
 
 final api = Multibaas().getHsmApi();
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 
 try {
     final response = api.removeHsmKey(walletAddress);
@@ -343,7 +343,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletAddress** | **String**| An HSM ethereum address. | 
+ **walletAddress** | **String**| An Ethereum address. | 
 
 ### Return type
 
@@ -377,7 +377,7 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getHsmApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final String walletAddress = walletAddress_example; // String | An HSM ethereum address.
+final String walletAddress = walletAddress_example; // String | An Ethereum address.
 final SetNonceRequest setNonceRequest = ; // SetNonceRequest | 
 
 try {
@@ -393,8 +393,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **walletAddress** | **String**| An HSM ethereum address. | 
- **setNonceRequest** | [**SetNonceRequest**](SetNonceRequest.md)|  | [optional] 
+ **walletAddress** | **String**| An Ethereum address. | 
+ **setNonceRequest** | [**SetNonceRequest**](SetNonceRequest.md)|  | 
 
 ### Return type
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **signAndSubmitTransaction**
-> TransferEth200Response signAndSubmitTransaction(chain, baseTransactionToSign)
+> TransferEth200Response signAndSubmitTransaction(chain, cloudWalletTXToSign)
 
 Sign and submit transaction
 
@@ -428,10 +428,10 @@ import 'package:multibaas/api.dart';
 
 final api = Multibaas().getHsmApi();
 final ChainName chain = ; // ChainName | The blockchain chain label.
-final BaseTransactionToSign baseTransactionToSign = ; // BaseTransactionToSign | 
+final CloudWalletTXToSign cloudWalletTXToSign = ; // CloudWalletTXToSign | 
 
 try {
-    final response = api.signAndSubmitTransaction(chain, baseTransactionToSign);
+    final response = api.signAndSubmitTransaction(chain, cloudWalletTXToSign);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling HsmApi->signAndSubmitTransaction: $e\n');
@@ -443,7 +443,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **baseTransactionToSign** | [**BaseTransactionToSign**](BaseTransactionToSign.md)|  | [optional] 
+ **cloudWalletTXToSign** | [**CloudWalletTXToSign**](CloudWalletTXToSign.md)|  | 
 
 ### Return type
 
@@ -492,7 +492,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | [**ChainName**](.md)| The blockchain chain label. | 
- **hSMSignRequest** | [**HSMSignRequest**](HSMSignRequest.md)|  | [optional] 
+ **hSMSignRequest** | [**HSMSignRequest**](HSMSignRequest.md)|  | 
 
 ### Return type
 

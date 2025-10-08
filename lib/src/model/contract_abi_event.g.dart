@@ -8,6 +8,8 @@ part of 'contract_abi_event.dart';
 
 class _$ContractABIEvent extends ContractABIEvent {
   @override
+  final String id;
+  @override
   final String name;
   @override
   final String signature;
@@ -15,51 +17,55 @@ class _$ContractABIEvent extends ContractABIEvent {
   final bool anonymous;
   @override
   final BuiltList<ContractABIEventArgument> inputs;
+  @override
+  final String notes;
+  @override
+  final String description;
 
   factory _$ContractABIEvent(
           [void Function(ContractABIEventBuilder)? updates]) =>
-      (new ContractABIEventBuilder()..update(updates))._build();
+      (ContractABIEventBuilder()..update(updates))._build();
 
   _$ContractABIEvent._(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.signature,
       required this.anonymous,
-      required this.inputs})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'ContractABIEvent', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        signature, r'ContractABIEvent', 'signature');
-    BuiltValueNullFieldError.checkNotNull(
-        anonymous, r'ContractABIEvent', 'anonymous');
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'ContractABIEvent', 'inputs');
-  }
-
+      required this.inputs,
+      required this.notes,
+      required this.description})
+      : super._();
   @override
   ContractABIEvent rebuild(void Function(ContractABIEventBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ContractABIEventBuilder toBuilder() =>
-      new ContractABIEventBuilder()..replace(this);
+      ContractABIEventBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ContractABIEvent &&
+        id == other.id &&
         name == other.name &&
         signature == other.signature &&
         anonymous == other.anonymous &&
-        inputs == other.inputs;
+        inputs == other.inputs &&
+        notes == other.notes &&
+        description == other.description;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, signature.hashCode);
     _$hash = $jc(_$hash, anonymous.hashCode);
     _$hash = $jc(_$hash, inputs.hashCode);
+    _$hash = $jc(_$hash, notes.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -67,10 +73,13 @@ class _$ContractABIEvent extends ContractABIEvent {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ContractABIEvent')
+          ..add('id', id)
           ..add('name', name)
           ..add('signature', signature)
           ..add('anonymous', anonymous)
-          ..add('inputs', inputs))
+          ..add('inputs', inputs)
+          ..add('notes', notes)
+          ..add('description', description))
         .toString();
   }
 }
@@ -78,6 +87,10 @@ class _$ContractABIEvent extends ContractABIEvent {
 class ContractABIEventBuilder
     implements Builder<ContractABIEvent, ContractABIEventBuilder> {
   _$ContractABIEvent? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
@@ -93,9 +106,17 @@ class ContractABIEventBuilder
 
   ListBuilder<ContractABIEventArgument>? _inputs;
   ListBuilder<ContractABIEventArgument> get inputs =>
-      _$this._inputs ??= new ListBuilder<ContractABIEventArgument>();
+      _$this._inputs ??= ListBuilder<ContractABIEventArgument>();
   set inputs(ListBuilder<ContractABIEventArgument>? inputs) =>
       _$this._inputs = inputs;
+
+  String? _notes;
+  String? get notes => _$this._notes;
+  set notes(String? notes) => _$this._notes = notes;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
   ContractABIEventBuilder() {
     ContractABIEvent._defaults(this);
@@ -104,10 +125,13 @@ class ContractABIEventBuilder
   ContractABIEventBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _name = $v.name;
       _signature = $v.signature;
       _anonymous = $v.anonymous;
       _inputs = $v.inputs.toBuilder();
+      _notes = $v.notes;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -115,7 +139,6 @@ class ContractABIEventBuilder
 
   @override
   void replace(ContractABIEvent other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractABIEvent;
   }
 
@@ -131,21 +154,28 @@ class ContractABIEventBuilder
     _$ContractABIEvent _$result;
     try {
       _$result = _$v ??
-          new _$ContractABIEvent._(
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'ContractABIEvent', 'name'),
-              signature: BuiltValueNullFieldError.checkNotNull(
-                  signature, r'ContractABIEvent', 'signature'),
-              anonymous: BuiltValueNullFieldError.checkNotNull(
-                  anonymous, r'ContractABIEvent', 'anonymous'),
-              inputs: inputs.build());
+          _$ContractABIEvent._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'ContractABIEvent', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'ContractABIEvent', 'name'),
+            signature: BuiltValueNullFieldError.checkNotNull(
+                signature, r'ContractABIEvent', 'signature'),
+            anonymous: BuiltValueNullFieldError.checkNotNull(
+                anonymous, r'ContractABIEvent', 'anonymous'),
+            inputs: inputs.build(),
+            notes: BuiltValueNullFieldError.checkNotNull(
+                notes, r'ContractABIEvent', 'notes'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'ContractABIEvent', 'description'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'inputs';
         inputs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractABIEvent', _$failedField, e.toString());
       }
       rethrow;

@@ -17,26 +17,20 @@ class _$AddKey extends AddKey {
   final String vaultName;
 
   factory _$AddKey([void Function(AddKeyBuilder)? updates]) =>
-      (new AddKeyBuilder()..update(updates))._build();
+      (AddKeyBuilder()..update(updates))._build();
 
   _$AddKey._(
       {required this.clientID,
       required this.keyName,
       required this.keyVersion,
       required this.vaultName})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(clientID, r'AddKey', 'clientID');
-    BuiltValueNullFieldError.checkNotNull(keyName, r'AddKey', 'keyName');
-    BuiltValueNullFieldError.checkNotNull(keyVersion, r'AddKey', 'keyVersion');
-    BuiltValueNullFieldError.checkNotNull(vaultName, r'AddKey', 'vaultName');
-  }
-
+      : super._();
   @override
   AddKey rebuild(void Function(AddKeyBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AddKeyBuilder toBuilder() => new AddKeyBuilder()..replace(this);
+  AddKeyBuilder toBuilder() => AddKeyBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,7 +101,6 @@ class AddKeyBuilder implements Builder<AddKey, AddKeyBuilder> {
 
   @override
   void replace(AddKey other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AddKey;
   }
 
@@ -121,15 +114,16 @@ class AddKeyBuilder implements Builder<AddKey, AddKeyBuilder> {
 
   _$AddKey _build() {
     final _$result = _$v ??
-        new _$AddKey._(
-            clientID: BuiltValueNullFieldError.checkNotNull(
-                clientID, r'AddKey', 'clientID'),
-            keyName: BuiltValueNullFieldError.checkNotNull(
-                keyName, r'AddKey', 'keyName'),
-            keyVersion: BuiltValueNullFieldError.checkNotNull(
-                keyVersion, r'AddKey', 'keyVersion'),
-            vaultName: BuiltValueNullFieldError.checkNotNull(
-                vaultName, r'AddKey', 'vaultName'));
+        _$AddKey._(
+          clientID: BuiltValueNullFieldError.checkNotNull(
+              clientID, r'AddKey', 'clientID'),
+          keyName: BuiltValueNullFieldError.checkNotNull(
+              keyName, r'AddKey', 'keyName'),
+          keyVersion: BuiltValueNullFieldError.checkNotNull(
+              keyVersion, r'AddKey', 'keyVersion'),
+          vaultName: BuiltValueNullFieldError.checkNotNull(
+              vaultName, r'AddKey', 'vaultName'),
+        );
     replace(_$result);
     return _$result;
   }

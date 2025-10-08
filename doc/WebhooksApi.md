@@ -139,7 +139,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **baseWebhookEndpoint** | [**BaseWebhookEndpoint**](BaseWebhookEndpoint.md)|  | [optional] 
+ **baseWebhookEndpoint** | [**BaseWebhookEndpoint**](BaseWebhookEndpoint.md)|  | 
 
 ### Return type
 
@@ -283,7 +283,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhookID** | **int**|  | 
- **limit** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
  **offset** | **int**|  | [optional] 
 
 ### Return type
@@ -332,7 +332,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
  **offset** | **int**|  | [optional] 
 
 ### Return type
@@ -382,7 +382,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhookID** | **int**|  | 
- **baseWebhookEndpoint** | [**BaseWebhookEndpoint**](BaseWebhookEndpoint.md)|  | [optional] 
+ **baseWebhookEndpoint** | [**BaseWebhookEndpoint**](BaseWebhookEndpoint.md)|  | 
 
 ### Return type
 

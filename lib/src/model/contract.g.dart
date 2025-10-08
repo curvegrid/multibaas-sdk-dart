@@ -22,16 +22,16 @@ class _$Contract extends Contract {
   @override
   final String rawAbi;
   @override
-  final String userDoc;
+  final String? userDoc;
   @override
-  final String developerDoc;
+  final String? developerDoc;
   @override
   final String? metadata;
   @override
   final bool? isFavorite;
 
   factory _$Contract([void Function(ContractBuilder)? updates]) =>
-      (new ContractBuilder()..update(updates))._build();
+      (ContractBuilder()..update(updates))._build();
 
   _$Contract._(
       {this.instances,
@@ -41,28 +41,17 @@ class _$Contract extends Contract {
       required this.version,
       this.bin,
       required this.rawAbi,
-      required this.userDoc,
-      required this.developerDoc,
+      this.userDoc,
+      this.developerDoc,
       this.metadata,
       this.isFavorite})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(abi, r'Contract', 'abi');
-    BuiltValueNullFieldError.checkNotNull(label, r'Contract', 'label');
-    BuiltValueNullFieldError.checkNotNull(
-        contractName, r'Contract', 'contractName');
-    BuiltValueNullFieldError.checkNotNull(version, r'Contract', 'version');
-    BuiltValueNullFieldError.checkNotNull(rawAbi, r'Contract', 'rawAbi');
-    BuiltValueNullFieldError.checkNotNull(userDoc, r'Contract', 'userDoc');
-    BuiltValueNullFieldError.checkNotNull(
-        developerDoc, r'Contract', 'developerDoc');
-  }
-
+      : super._();
   @override
   Contract rebuild(void Function(ContractBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ContractBuilder toBuilder() => new ContractBuilder()..replace(this);
+  ContractBuilder toBuilder() => ContractBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -123,12 +112,12 @@ class ContractBuilder
 
   ListBuilder<ContractInstance>? _instances;
   ListBuilder<ContractInstance> get instances =>
-      _$this._instances ??= new ListBuilder<ContractInstance>();
+      _$this._instances ??= ListBuilder<ContractInstance>();
   set instances(covariant ListBuilder<ContractInstance>? instances) =>
       _$this._instances = instances;
 
   ContractABIBuilder? _abi;
-  ContractABIBuilder get abi => _$this._abi ??= new ContractABIBuilder();
+  ContractABIBuilder get abi => _$this._abi ??= ContractABIBuilder();
   set abi(covariant ContractABIBuilder? abi) => _$this._abi = abi;
 
   String? _label;
@@ -194,7 +183,6 @@ class ContractBuilder
 
   @override
   void replace(covariant Contract other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Contract;
   }
 
@@ -210,24 +198,23 @@ class ContractBuilder
     _$Contract _$result;
     try {
       _$result = _$v ??
-          new _$Contract._(
-              instances: _instances?.build(),
-              abi: abi.build(),
-              label: BuiltValueNullFieldError.checkNotNull(
-                  label, r'Contract', 'label'),
-              contractName: BuiltValueNullFieldError.checkNotNull(
-                  contractName, r'Contract', 'contractName'),
-              version: BuiltValueNullFieldError.checkNotNull(
-                  version, r'Contract', 'version'),
-              bin: bin,
-              rawAbi: BuiltValueNullFieldError.checkNotNull(
-                  rawAbi, r'Contract', 'rawAbi'),
-              userDoc: BuiltValueNullFieldError.checkNotNull(
-                  userDoc, r'Contract', 'userDoc'),
-              developerDoc: BuiltValueNullFieldError.checkNotNull(
-                  developerDoc, r'Contract', 'developerDoc'),
-              metadata: metadata,
-              isFavorite: isFavorite);
+          _$Contract._(
+            instances: _instances?.build(),
+            abi: abi.build(),
+            label: BuiltValueNullFieldError.checkNotNull(
+                label, r'Contract', 'label'),
+            contractName: BuiltValueNullFieldError.checkNotNull(
+                contractName, r'Contract', 'contractName'),
+            version: BuiltValueNullFieldError.checkNotNull(
+                version, r'Contract', 'version'),
+            bin: bin,
+            rawAbi: BuiltValueNullFieldError.checkNotNull(
+                rawAbi, r'Contract', 'rawAbi'),
+            userDoc: userDoc,
+            developerDoc: developerDoc,
+            metadata: metadata,
+            isFavorite: isFavorite,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -236,7 +223,7 @@ class ContractBuilder
         _$failedField = 'abi';
         abi.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Contract', _$failedField, e.toString());
       }
       rethrow;

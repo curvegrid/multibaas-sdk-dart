@@ -16,19 +16,11 @@ class _$ListCorsOrigins200Response extends ListCorsOrigins200Response {
 
   factory _$ListCorsOrigins200Response(
           [void Function(ListCorsOrigins200ResponseBuilder)? updates]) =>
-      (new ListCorsOrigins200ResponseBuilder()..update(updates))._build();
+      (ListCorsOrigins200ResponseBuilder()..update(updates))._build();
 
   _$ListCorsOrigins200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListCorsOrigins200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListCorsOrigins200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListCorsOrigins200Response', 'message');
-  }
-
+      : super._();
   @override
   ListCorsOrigins200Response rebuild(
           void Function(ListCorsOrigins200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListCorsOrigins200Response extends ListCorsOrigins200Response {
 
   @override
   ListCorsOrigins200ResponseBuilder toBuilder() =>
-      new ListCorsOrigins200ResponseBuilder()..replace(this);
+      ListCorsOrigins200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +67,7 @@ class ListCorsOrigins200ResponseBuilder
 
   ListBuilder<CORSOrigin>? _result;
   ListBuilder<CORSOrigin> get result =>
-      _$this._result ??= new ListBuilder<CORSOrigin>();
+      _$this._result ??= ListBuilder<CORSOrigin>();
   set result(covariant ListBuilder<CORSOrigin>? result) =>
       _$this._result = result;
 
@@ -104,7 +96,6 @@ class ListCorsOrigins200ResponseBuilder
 
   @override
   void replace(covariant ListCorsOrigins200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListCorsOrigins200Response;
   }
 
@@ -120,19 +111,20 @@ class ListCorsOrigins200ResponseBuilder
     _$ListCorsOrigins200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListCorsOrigins200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListCorsOrigins200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListCorsOrigins200Response', 'message'));
+          _$ListCorsOrigins200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListCorsOrigins200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListCorsOrigins200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListCorsOrigins200Response', _$failedField, e.toString());
       }
       rethrow;

@@ -13,14 +13,15 @@ part 'contract_overview.g.dart';
 /// A contract overview.
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [contractName] - The name of the contract.
 /// * [version] - The contract version.
 /// * [isFavorite] 
+/// * [deployable] 
 /// * [instances] - List of contract instances.
 @BuiltValue()
 abstract class ContractOverview implements Built<ContractOverview, ContractOverviewBuilder> {
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 
@@ -34,6 +35,9 @@ abstract class ContractOverview implements Built<ContractOverview, ContractOverv
 
   @BuiltValueField(wireName: r'isFavorite')
   bool? get isFavorite;
+
+  @BuiltValueField(wireName: r'deployable')
+  bool get deployable;
 
   /// List of contract instances.
   @BuiltValueField(wireName: r'instances')
@@ -84,6 +88,11 @@ class _$ContractOverviewSerializer implements PrimitiveSerializer<ContractOvervi
         specifiedType: const FullType(bool),
       );
     }
+    yield r'deployable';
+    yield serializers.serialize(
+      object.deployable,
+      specifiedType: const FullType(bool),
+    );
     yield r'instances';
     yield serializers.serialize(
       object.instances,
@@ -139,6 +148,13 @@ class _$ContractOverviewSerializer implements PrimitiveSerializer<ContractOvervi
             specifiedType: const FullType(bool),
           ) as bool;
           result.isFavorite = valueDes;
+          break;
+        case r'deployable':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.deployable = valueDes;
           break;
         case r'instances':
           final valueDes = serializers.deserialize(

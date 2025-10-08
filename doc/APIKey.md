@@ -8,7 +8,7 @@ import 'package:multibaas/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**label** | **String** | A label. | 
+**label** | **String** | An alias to easily identify and reference the entity in subsequent requests. | 
 **id** | **int** |  | 
 **createdAt** | [**DateTime**](DateTime.md) | The time the API key was created. | 
 **lastUsedAt** | [**DateTime**](DateTime.md) | The time the API key was last used. | [optional] 

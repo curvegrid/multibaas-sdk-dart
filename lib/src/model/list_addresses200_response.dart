@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/address_label.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:multibaas/src/model/address_alias.dart';
 import 'package:multibaas/src/model/base_response.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -20,7 +20,7 @@ part 'list_addresses200_response.g.dart';
 @BuiltValue()
 abstract class ListAddresses200Response implements BaseResponse, Built<ListAddresses200Response, ListAddresses200ResponseBuilder> {
   @BuiltValueField(wireName: r'result')
-  BuiltList<AddressLabel> get result;
+  BuiltList<AddressAlias> get result;
 
   ListAddresses200Response._();
 
@@ -48,7 +48,7 @@ class _$ListAddresses200ResponseSerializer implements PrimitiveSerializer<ListAd
     yield r'result';
     yield serializers.serialize(
       object.result,
-      specifiedType: const FullType(BuiltList, [FullType(AddressLabel)]),
+      specifiedType: const FullType(BuiltList, [FullType(AddressAlias)]),
     );
     yield r'message';
     yield serializers.serialize(
@@ -86,8 +86,8 @@ class _$ListAddresses200ResponseSerializer implements PrimitiveSerializer<ListAd
         case r'result':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(AddressLabel)]),
-          ) as BuiltList<AddressLabel>;
+            specifiedType: const FullType(BuiltList, [FullType(AddressAlias)]),
+          ) as BuiltList<AddressAlias>;
           result.result.replace(valueDes);
           break;
         case r'message':

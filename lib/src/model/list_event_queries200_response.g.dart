@@ -16,19 +16,11 @@ class _$ListEventQueries200Response extends ListEventQueries200Response {
 
   factory _$ListEventQueries200Response(
           [void Function(ListEventQueries200ResponseBuilder)? updates]) =>
-      (new ListEventQueries200ResponseBuilder()..update(updates))._build();
+      (ListEventQueries200ResponseBuilder()..update(updates))._build();
 
   _$ListEventQueries200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'ListEventQueries200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListEventQueries200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ListEventQueries200Response', 'message');
-  }
-
+      : super._();
   @override
   ListEventQueries200Response rebuild(
           void Function(ListEventQueries200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$ListEventQueries200Response extends ListEventQueries200Response {
 
   @override
   ListEventQueries200ResponseBuilder toBuilder() =>
-      new ListEventQueries200ResponseBuilder()..replace(this);
+      ListEventQueries200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +68,7 @@ class ListEventQueries200ResponseBuilder
 
   ListBuilder<SavedEventQuery>? _result;
   ListBuilder<SavedEventQuery> get result =>
-      _$this._result ??= new ListBuilder<SavedEventQuery>();
+      _$this._result ??= ListBuilder<SavedEventQuery>();
   set result(covariant ListBuilder<SavedEventQuery>? result) =>
       _$this._result = result;
 
@@ -105,7 +97,6 @@ class ListEventQueries200ResponseBuilder
 
   @override
   void replace(covariant ListEventQueries200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListEventQueries200Response;
   }
 
@@ -121,19 +112,20 @@ class ListEventQueries200ResponseBuilder
     _$ListEventQueries200Response _$result;
     try {
       _$result = _$v ??
-          new _$ListEventQueries200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'ListEventQueries200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'ListEventQueries200Response', 'message'));
+          _$ListEventQueries200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'ListEventQueries200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'ListEventQueries200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListEventQueries200Response', _$failedField, e.toString());
       }
       rethrow;

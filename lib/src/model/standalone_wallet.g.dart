@@ -22,7 +22,7 @@ class _$StandaloneWallet extends StandaloneWallet {
 
   factory _$StandaloneWallet(
           [void Function(StandaloneWalletBuilder)? updates]) =>
-      (new StandaloneWalletBuilder()..update(updates))._build();
+      (StandaloneWalletBuilder()..update(updates))._build();
 
   _$StandaloneWallet._(
       {this.clientID,
@@ -31,22 +31,14 @@ class _$StandaloneWallet extends StandaloneWallet {
       required this.keyName,
       this.keyVersion,
       required this.publicAddress})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        baseGroupName, r'StandaloneWallet', 'baseGroupName');
-    BuiltValueNullFieldError.checkNotNull(
-        keyName, r'StandaloneWallet', 'keyName');
-    BuiltValueNullFieldError.checkNotNull(
-        publicAddress, r'StandaloneWallet', 'publicAddress');
-  }
-
+      : super._();
   @override
   StandaloneWallet rebuild(void Function(StandaloneWalletBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   StandaloneWalletBuilder toBuilder() =>
-      new StandaloneWalletBuilder()..replace(this);
+      StandaloneWalletBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -136,7 +128,6 @@ class StandaloneWalletBuilder
 
   @override
   void replace(StandaloneWallet other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StandaloneWallet;
   }
 
@@ -150,16 +141,17 @@ class StandaloneWalletBuilder
 
   _$StandaloneWallet _build() {
     final _$result = _$v ??
-        new _$StandaloneWallet._(
-            clientID: clientID,
-            baseGroupName: BuiltValueNullFieldError.checkNotNull(
-                baseGroupName, r'StandaloneWallet', 'baseGroupName'),
-            vaultName: vaultName,
-            keyName: BuiltValueNullFieldError.checkNotNull(
-                keyName, r'StandaloneWallet', 'keyName'),
-            keyVersion: keyVersion,
-            publicAddress: BuiltValueNullFieldError.checkNotNull(
-                publicAddress, r'StandaloneWallet', 'publicAddress'));
+        _$StandaloneWallet._(
+          clientID: clientID,
+          baseGroupName: BuiltValueNullFieldError.checkNotNull(
+              baseGroupName, r'StandaloneWallet', 'baseGroupName'),
+          vaultName: vaultName,
+          keyName: BuiltValueNullFieldError.checkNotNull(
+              keyName, r'StandaloneWallet', 'keyName'),
+          keyVersion: keyVersion,
+          publicAddress: BuiltValueNullFieldError.checkNotNull(
+              publicAddress, r'StandaloneWallet', 'publicAddress'),
+        );
     replace(_$result);
     return _$result;
   }

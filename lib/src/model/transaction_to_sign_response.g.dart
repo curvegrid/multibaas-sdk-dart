@@ -10,25 +10,17 @@ class _$TransactionToSignResponse extends TransactionToSignResponse {
   @override
   final String kind;
   @override
-  final bool submitted;
+  final TransactionToSignTx tx;
   @override
-  final BaseTransactionToSignTx tx;
+  final bool submitted;
 
   factory _$TransactionToSignResponse(
           [void Function(TransactionToSignResponseBuilder)? updates]) =>
-      (new TransactionToSignResponseBuilder()..update(updates))._build();
+      (TransactionToSignResponseBuilder()..update(updates))._build();
 
   _$TransactionToSignResponse._(
-      {required this.kind, required this.submitted, required this.tx})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        kind, r'TransactionToSignResponse', 'kind');
-    BuiltValueNullFieldError.checkNotNull(
-        submitted, r'TransactionToSignResponse', 'submitted');
-    BuiltValueNullFieldError.checkNotNull(
-        tx, r'TransactionToSignResponse', 'tx');
-  }
-
+      {required this.kind, required this.tx, required this.submitted})
+      : super._();
   @override
   TransactionToSignResponse rebuild(
           void Function(TransactionToSignResponseBuilder) updates) =>
@@ -36,23 +28,23 @@ class _$TransactionToSignResponse extends TransactionToSignResponse {
 
   @override
   TransactionToSignResponseBuilder toBuilder() =>
-      new TransactionToSignResponseBuilder()..replace(this);
+      TransactionToSignResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is TransactionToSignResponse &&
         kind == other.kind &&
-        submitted == other.submitted &&
-        tx == other.tx;
+        tx == other.tx &&
+        submitted == other.submitted;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, kind.hashCode);
-    _$hash = $jc(_$hash, submitted.hashCode);
     _$hash = $jc(_$hash, tx.hashCode);
+    _$hash = $jc(_$hash, submitted.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -61,8 +53,8 @@ class _$TransactionToSignResponse extends TransactionToSignResponse {
   String toString() {
     return (newBuiltValueToStringHelper(r'TransactionToSignResponse')
           ..add('kind', kind)
-          ..add('submitted', submitted)
-          ..add('tx', tx))
+          ..add('tx', tx)
+          ..add('submitted', submitted))
         .toString();
   }
 }
@@ -78,14 +70,14 @@ class TransactionToSignResponseBuilder
   String? get kind => _$this._kind;
   set kind(covariant String? kind) => _$this._kind = kind;
 
+  TransactionToSignTxBuilder? _tx;
+  TransactionToSignTxBuilder get tx =>
+      _$this._tx ??= TransactionToSignTxBuilder();
+  set tx(covariant TransactionToSignTxBuilder? tx) => _$this._tx = tx;
+
   bool? _submitted;
   bool? get submitted => _$this._submitted;
   set submitted(covariant bool? submitted) => _$this._submitted = submitted;
-
-  BaseTransactionToSignTxBuilder? _tx;
-  BaseTransactionToSignTxBuilder get tx =>
-      _$this._tx ??= new BaseTransactionToSignTxBuilder();
-  set tx(covariant BaseTransactionToSignTxBuilder? tx) => _$this._tx = tx;
 
   TransactionToSignResponseBuilder() {
     TransactionToSignResponse._defaults(this);
@@ -95,8 +87,8 @@ class TransactionToSignResponseBuilder
     final $v = _$v;
     if ($v != null) {
       _kind = $v.kind;
-      _submitted = $v.submitted;
       _tx = $v.tx.toBuilder();
+      _submitted = $v.submitted;
       _$v = null;
     }
     return this;
@@ -105,7 +97,6 @@ class TransactionToSignResponseBuilder
   @override
 // ignore: override_on_non_overriding_method
   void replace(covariant TransactionToSignResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TransactionToSignResponse;
   }
 
@@ -121,19 +112,20 @@ class TransactionToSignResponseBuilder
     _$TransactionToSignResponse _$result;
     try {
       _$result = _$v ??
-          new _$TransactionToSignResponse._(
-              kind: BuiltValueNullFieldError.checkNotNull(
-                  kind, r'TransactionToSignResponse', 'kind'),
-              submitted: BuiltValueNullFieldError.checkNotNull(
-                  submitted, r'TransactionToSignResponse', 'submitted'),
-              tx: tx.build());
+          _$TransactionToSignResponse._(
+            kind: BuiltValueNullFieldError.checkNotNull(
+                kind, r'TransactionToSignResponse', 'kind'),
+            tx: tx.build(),
+            submitted: BuiltValueNullFieldError.checkNotNull(
+                submitted, r'TransactionToSignResponse', 'submitted'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'tx';
         tx.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TransactionToSignResponse', _$failedField, e.toString());
       }
       rethrow;

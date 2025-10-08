@@ -14,13 +14,9 @@ class _$CreateApiKeyRequest extends CreateApiKeyRequest {
 
   factory _$CreateApiKeyRequest(
           [void Function(CreateApiKeyRequestBuilder)? updates]) =>
-      (new CreateApiKeyRequestBuilder()..update(updates))._build();
+      (CreateApiKeyRequestBuilder()..update(updates))._build();
 
-  _$CreateApiKeyRequest._({this.groupIDs, required this.label}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        label, r'CreateApiKeyRequest', 'label');
-  }
-
+  _$CreateApiKeyRequest._({this.groupIDs, required this.label}) : super._();
   @override
   CreateApiKeyRequest rebuild(
           void Function(CreateApiKeyRequestBuilder) updates) =>
@@ -28,7 +24,7 @@ class _$CreateApiKeyRequest extends CreateApiKeyRequest {
 
   @override
   CreateApiKeyRequestBuilder toBuilder() =>
-      new CreateApiKeyRequestBuilder()..replace(this);
+      CreateApiKeyRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -63,7 +59,7 @@ class CreateApiKeyRequestBuilder
   _$CreateApiKeyRequest? _$v;
 
   ListBuilder<int>? _groupIDs;
-  ListBuilder<int> get groupIDs => _$this._groupIDs ??= new ListBuilder<int>();
+  ListBuilder<int> get groupIDs => _$this._groupIDs ??= ListBuilder<int>();
   set groupIDs(covariant ListBuilder<int>? groupIDs) =>
       _$this._groupIDs = groupIDs;
 
@@ -87,7 +83,6 @@ class CreateApiKeyRequestBuilder
 
   @override
   void replace(covariant CreateApiKeyRequest other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateApiKeyRequest;
   }
 
@@ -103,17 +98,18 @@ class CreateApiKeyRequestBuilder
     _$CreateApiKeyRequest _$result;
     try {
       _$result = _$v ??
-          new _$CreateApiKeyRequest._(
-              groupIDs: _groupIDs?.build(),
-              label: BuiltValueNullFieldError.checkNotNull(
-                  label, r'CreateApiKeyRequest', 'label'));
+          _$CreateApiKeyRequest._(
+            groupIDs: _groupIDs?.build(),
+            label: BuiltValueNullFieldError.checkNotNull(
+                label, r'CreateApiKeyRequest', 'label'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'groupIDs';
         _groupIDs?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateApiKeyRequest', _$failedField, e.toString());
       }
       rethrow;

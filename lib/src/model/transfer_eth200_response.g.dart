@@ -16,19 +16,11 @@ class _$TransferEth200Response extends TransferEth200Response {
 
   factory _$TransferEth200Response(
           [void Function(TransferEth200ResponseBuilder)? updates]) =>
-      (new TransferEth200ResponseBuilder()..update(updates))._build();
+      (TransferEth200ResponseBuilder()..update(updates))._build();
 
   _$TransferEth200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'TransferEth200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'TransferEth200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'TransferEth200Response', 'message');
-  }
-
+      : super._();
   @override
   TransferEth200Response rebuild(
           void Function(TransferEth200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$TransferEth200Response extends TransferEth200Response {
 
   @override
   TransferEth200ResponseBuilder toBuilder() =>
-      new TransferEth200ResponseBuilder()..replace(this);
+      TransferEth200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -102,7 +94,6 @@ class TransferEth200ResponseBuilder
 
   @override
   void replace(covariant TransferEth200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TransferEth200Response;
   }
 
@@ -116,13 +107,14 @@ class TransferEth200ResponseBuilder
 
   _$TransferEth200Response _build() {
     final _$result = _$v ??
-        new _$TransferEth200Response._(
-            result: BuiltValueNullFieldError.checkNotNull(
-                result, r'TransferEth200Response', 'result'),
-            status: BuiltValueNullFieldError.checkNotNull(
-                status, r'TransferEth200Response', 'status'),
-            message: BuiltValueNullFieldError.checkNotNull(
-                message, r'TransferEth200Response', 'message'));
+        _$TransferEth200Response._(
+          result: BuiltValueNullFieldError.checkNotNull(
+              result, r'TransferEth200Response', 'result'),
+          status: BuiltValueNullFieldError.checkNotNull(
+              status, r'TransferEth200Response', 'status'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'TransferEth200Response', 'message'),
+        );
     replace(_$result);
     return _$result;
   }

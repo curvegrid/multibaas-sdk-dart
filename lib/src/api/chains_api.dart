@@ -8,7 +8,6 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:multibaas/src/api_util.dart';
-import 'package:multibaas/src/model/base_response.dart';
 import 'package:multibaas/src/model/chain_name.dart';
 import 'package:multibaas/src/model/get_block200_response.dart';
 import 'package:multibaas/src/model/get_chain_status200_response.dart';
@@ -16,6 +15,7 @@ import 'package:multibaas/src/model/get_transaction200_response.dart';
 import 'package:multibaas/src/model/get_transaction_receipt200_response.dart';
 import 'package:multibaas/src/model/post_method_args.dart';
 import 'package:multibaas/src/model/signed_transaction_submission.dart';
+import 'package:multibaas/src/model/submit_signed_transaction200_response.dart';
 import 'package:multibaas/src/model/transfer_eth200_response.dart';
 
 class ChainsApi {
@@ -205,7 +205,7 @@ class ChainsApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [hash] - Transaction hash.
+  /// * [hash] - A transaction hash.
   /// * [include] - Include contract and method call details, if available.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -300,7 +300,7 @@ class ChainsApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [hash] - Transaction hash.
+  /// * [hash] - A transaction hash.
   /// * [include] - Include contract and event details, if available.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -403,11 +403,11 @@ class ChainsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
+  /// Returns a [Future] containing a [Response] with a [SubmitSignedTransaction200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BaseResponse>> submitSignedTransaction({ 
+  Future<Response<SubmitSignedTransaction200Response>> submitSignedTransaction({ 
     required ChainName chain,
-    SignedTransactionSubmission? signedTransactionSubmission,
+    required SignedTransactionSubmission signedTransactionSubmission,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -444,7 +444,7 @@ class ChainsApi {
 
     try {
       const _type = FullType(SignedTransactionSubmission);
-      _bodyData = signedTransactionSubmission == null ? null : _serializers.serialize(signedTransactionSubmission, specifiedType: _type);
+      _bodyData = _serializers.serialize(signedTransactionSubmission, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -467,14 +467,14 @@ class ChainsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BaseResponse? _responseData;
+    SubmitSignedTransaction200Response? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BaseResponse),
-      ) as BaseResponse;
+        specifiedType: const FullType(SubmitSignedTransaction200Response),
+      ) as SubmitSignedTransaction200Response;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -486,7 +486,7 @@ class ChainsApi {
       );
     }
 
-    return Response<BaseResponse>(
+    return Response<SubmitSignedTransaction200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -515,7 +515,7 @@ class ChainsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<TransferEth200Response>> transferEth({ 
     required ChainName chain,
-    PostMethodArgs? postMethodArgs,
+    required PostMethodArgs postMethodArgs,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -552,7 +552,7 @@ class ChainsApi {
 
     try {
       const _type = FullType(PostMethodArgs);
-      _bodyData = postMethodArgs == null ? null : _serializers.serialize(postMethodArgs, specifiedType: _type);
+      _bodyData = _serializers.serialize(postMethodArgs, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

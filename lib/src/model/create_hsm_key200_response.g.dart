@@ -16,19 +16,11 @@ class _$CreateHsmKey200Response extends CreateHsmKey200Response {
 
   factory _$CreateHsmKey200Response(
           [void Function(CreateHsmKey200ResponseBuilder)? updates]) =>
-      (new CreateHsmKey200ResponseBuilder()..update(updates))._build();
+      (CreateHsmKey200ResponseBuilder()..update(updates))._build();
 
   _$CreateHsmKey200Response._(
       {required this.result, required this.status, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'CreateHsmKey200Response', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'CreateHsmKey200Response', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CreateHsmKey200Response', 'message');
-  }
-
+      : super._();
   @override
   CreateHsmKey200Response rebuild(
           void Function(CreateHsmKey200ResponseBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$CreateHsmKey200Response extends CreateHsmKey200Response {
 
   @override
   CreateHsmKey200ResponseBuilder toBuilder() =>
-      new CreateHsmKey200ResponseBuilder()..replace(this);
+      CreateHsmKey200ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +66,7 @@ class CreateHsmKey200ResponseBuilder
   _$CreateHsmKey200Response? _$v;
 
   AzureWalletBuilder? _result;
-  AzureWalletBuilder get result => _$this._result ??= new AzureWalletBuilder();
+  AzureWalletBuilder get result => _$this._result ??= AzureWalletBuilder();
   set result(covariant AzureWalletBuilder? result) => _$this._result = result;
 
   int? _status;
@@ -102,7 +94,6 @@ class CreateHsmKey200ResponseBuilder
 
   @override
   void replace(covariant CreateHsmKey200Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateHsmKey200Response;
   }
 
@@ -118,19 +109,20 @@ class CreateHsmKey200ResponseBuilder
     _$CreateHsmKey200Response _$result;
     try {
       _$result = _$v ??
-          new _$CreateHsmKey200Response._(
-              result: result.build(),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'CreateHsmKey200Response', 'status'),
-              message: BuiltValueNullFieldError.checkNotNull(
-                  message, r'CreateHsmKey200Response', 'message'));
+          _$CreateHsmKey200Response._(
+            result: result.build(),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'CreateHsmKey200Response', 'status'),
+            message: BuiltValueNullFieldError.checkNotNull(
+                message, r'CreateHsmKey200Response', 'message'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'result';
         result.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateHsmKey200Response', _$failedField, e.toString());
       }
       rethrow;

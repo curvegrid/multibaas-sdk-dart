@@ -11,7 +11,7 @@ part 'base_azure_account.g.dart';
 /// An Azure account.
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [label] - An alias to easily identify and reference the entity in subsequent requests.
 /// * [clientID] - The Application ID that will be accessing the Key Vault.
 /// * [clientSecret] - The application’s secret key that you generate when you first register the application in Azure.
 /// * [tenantID] - Also known as Directory ID.
@@ -19,7 +19,7 @@ part 'base_azure_account.g.dart';
 /// * [baseGroupName] - The Resource Group Name for the resource being accessed.
 @BuiltValue(instantiable: false)
 abstract class BaseAzureAccount  {
-  /// A label.
+  /// An alias to easily identify and reference the entity in subsequent requests.
   @BuiltValueField(wireName: r'label')
   String get label;
 

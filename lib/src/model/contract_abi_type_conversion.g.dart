@@ -16,15 +16,11 @@ class _$ContractABITypeConversion extends ContractABITypeConversion {
 
   factory _$ContractABITypeConversion(
           [void Function(ContractABITypeConversionBuilder)? updates]) =>
-      (new ContractABITypeConversionBuilder()..update(updates))._build();
+      (ContractABITypeConversionBuilder()..update(updates))._build();
 
   _$ContractABITypeConversion._(
       {required this.mode, this.decimalsAbsolute, this.decimalsFunction})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        mode, r'ContractABITypeConversion', 'mode');
-  }
-
+      : super._();
   @override
   ContractABITypeConversion rebuild(
           void Function(ContractABITypeConversionBuilder) updates) =>
@@ -32,7 +28,7 @@ class _$ContractABITypeConversion extends ContractABITypeConversion {
 
   @override
   ContractABITypeConversionBuilder toBuilder() =>
-      new ContractABITypeConversionBuilder()..replace(this);
+      ContractABITypeConversionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -99,7 +95,6 @@ class ContractABITypeConversionBuilder
 
   @override
   void replace(ContractABITypeConversion other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractABITypeConversion;
   }
 
@@ -113,11 +108,12 @@ class ContractABITypeConversionBuilder
 
   _$ContractABITypeConversion _build() {
     final _$result = _$v ??
-        new _$ContractABITypeConversion._(
-            mode: BuiltValueNullFieldError.checkNotNull(
-                mode, r'ContractABITypeConversion', 'mode'),
-            decimalsAbsolute: decimalsAbsolute,
-            decimalsFunction: decimalsFunction);
+        _$ContractABITypeConversion._(
+          mode: BuiltValueNullFieldError.checkNotNull(
+              mode, r'ContractABITypeConversion', 'mode'),
+          decimalsAbsolute: decimalsAbsolute,
+          decimalsFunction: decimalsFunction,
+        );
     replace(_$result);
     return _$result;
   }

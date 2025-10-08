@@ -15,12 +15,15 @@ import 'package:multibaas/src/date_serializer.dart';
 import 'package:multibaas/src/model/date.dart';
 
 import 'package:multibaas/src/model/api_key.dart';
+import 'package:multibaas/src/model/api_key_with_secret.dart';
 import 'package:multibaas/src/model/accept_invite200_response.dart';
 import 'package:multibaas/src/model/accept_invite_request.dart';
+import 'package:multibaas/src/model/access_tuple.dart';
 import 'package:multibaas/src/model/add_key.dart';
 import 'package:multibaas/src/model/address.dart';
-import 'package:multibaas/src/model/address_label.dart';
+import 'package:multibaas/src/model/address_alias.dart';
 import 'package:multibaas/src/model/audit_log.dart';
+import 'package:multibaas/src/model/authorization_extra_info.dart';
 import 'package:multibaas/src/model/azure_account.dart';
 import 'package:multibaas/src/model/azure_hardware_wallet.dart';
 import 'package:multibaas/src/model/azure_wallet.dart';
@@ -28,8 +31,6 @@ import 'package:multibaas/src/model/base_api_key.dart';
 import 'package:multibaas/src/model/base_azure_account.dart';
 import 'package:multibaas/src/model/base_contract.dart';
 import 'package:multibaas/src/model/base_response.dart';
-import 'package:multibaas/src/model/base_transaction_to_sign.dart';
-import 'package:multibaas/src/model/base_transaction_to_sign_tx.dart';
 import 'package:multibaas/src/model/base_user.dart';
 import 'package:multibaas/src/model/base_webhook_endpoint.dart';
 import 'package:multibaas/src/model/block.dart';
@@ -38,18 +39,22 @@ import 'package:multibaas/src/model/call_contract_function200_response.dart';
 import 'package:multibaas/src/model/call_contract_function200_response_all_of_result.dart';
 import 'package:multibaas/src/model/chain_name.dart';
 import 'package:multibaas/src/model/chain_status.dart';
+import 'package:multibaas/src/model/cloud_wallet_txto_sign.dart';
+import 'package:multibaas/src/model/cloud_wallet_txto_sign_tx.dart';
 import 'package:multibaas/src/model/contract.dart';
 import 'package:multibaas/src/model/contract_abi.dart';
+import 'package:multibaas/src/model/contract_abi_error.dart';
+import 'package:multibaas/src/model/contract_abi_error_argument.dart';
 import 'package:multibaas/src/model/contract_abi_event.dart';
 import 'package:multibaas/src/model/contract_abi_event_argument.dart';
 import 'package:multibaas/src/model/contract_abi_method.dart';
-import 'package:multibaas/src/model/contract_abi_method1.dart';
 import 'package:multibaas/src/model/contract_abi_method_argument.dart';
 import 'package:multibaas/src/model/contract_abi_type.dart';
 import 'package:multibaas/src/model/contract_abi_type_conversion.dart';
 import 'package:multibaas/src/model/contract_event_options.dart';
 import 'package:multibaas/src/model/contract_information.dart';
 import 'package:multibaas/src/model/contract_instance.dart';
+import 'package:multibaas/src/model/contract_lookup.dart';
 import 'package:multibaas/src/model/contract_metadata.dart';
 import 'package:multibaas/src/model/contract_method_information.dart';
 import 'package:multibaas/src/model/contract_method_options.dart';
@@ -66,6 +71,11 @@ import 'package:multibaas/src/model/create_key.dart';
 import 'package:multibaas/src/model/create_webhook200_response.dart';
 import 'package:multibaas/src/model/deploy_contract200_response.dart';
 import 'package:multibaas/src/model/deploy_contract_transaction.dart';
+import 'package:multibaas/src/model/eip712_domain.dart';
+import 'package:multibaas/src/model/eip712_domain_chain_id.dart';
+import 'package:multibaas/src/model/eip712_type_entry.dart';
+import 'package:multibaas/src/model/eip712_typed_data.dart';
+import 'package:multibaas/src/model/eip712_types.dart';
 import 'package:multibaas/src/model/error.dart';
 import 'package:multibaas/src/model/event.dart';
 import 'package:multibaas/src/model/event_field.dart';
@@ -80,6 +90,7 @@ import 'package:multibaas/src/model/event_type_conversion_options.dart';
 import 'package:multibaas/src/model/execute_arbitrary_event_query200_response.dart';
 import 'package:multibaas/src/model/field_type.dart';
 import 'package:multibaas/src/model/gas_params.dart';
+import 'package:multibaas/src/model/get_api_key200_response.dart';
 import 'package:multibaas/src/model/get_block200_response.dart';
 import 'package:multibaas/src/model/get_chain_status200_response.dart';
 import 'package:multibaas/src/model/get_contract200_response.dart';
@@ -89,14 +100,18 @@ import 'package:multibaas/src/model/get_event_monitor_status200_response.dart';
 import 'package:multibaas/src/model/get_event_query200_response.dart';
 import 'package:multibaas/src/model/get_event_type_conversions200_response.dart';
 import 'package:multibaas/src/model/get_function_type_conversions200_response.dart';
+import 'package:multibaas/src/model/get_plan200_response.dart';
 import 'package:multibaas/src/model/get_transaction200_response.dart';
 import 'package:multibaas/src/model/get_transaction_receipt200_response.dart';
 import 'package:multibaas/src/model/group.dart';
 import 'package:multibaas/src/model/hsm_data.dart';
 import 'package:multibaas/src/model/hsm_sign_request.dart';
-import 'package:multibaas/src/model/hsm_sign_request_chain_id.dart';
+import 'package:multibaas/src/model/hsm_sign_request_personal_sign.dart';
+import 'package:multibaas/src/model/hsm_sign_request_personal_sign_chain_id.dart';
+import 'package:multibaas/src/model/hsm_sign_request_typed_data.dart';
 import 'package:multibaas/src/model/hsm_sign_response.dart';
 import 'package:multibaas/src/model/invite.dart';
+import 'package:multibaas/src/model/invite_request.dart';
 import 'package:multibaas/src/model/link_address_contract_request.dart';
 import 'package:multibaas/src/model/list_addresses200_response.dart';
 import 'package:multibaas/src/model/list_api_keys200_response.dart';
@@ -110,6 +125,7 @@ import 'package:multibaas/src/model/list_events200_response.dart';
 import 'package:multibaas/src/model/list_groups200_response.dart';
 import 'package:multibaas/src/model/list_hsm200_response.dart';
 import 'package:multibaas/src/model/list_hsm_wallets200_response.dart';
+import 'package:multibaas/src/model/list_invites200_response.dart';
 import 'package:multibaas/src/model/list_user_signers200_response.dart';
 import 'package:multibaas/src/model/list_users200_response.dart';
 import 'package:multibaas/src/model/list_wallet_transactions200_response.dart';
@@ -117,21 +133,25 @@ import 'package:multibaas/src/model/list_webhook_events200_response.dart';
 import 'package:multibaas/src/model/list_webhooks200_response.dart';
 import 'package:multibaas/src/model/log.dart';
 import 'package:multibaas/src/model/method_arg.dart';
-import 'package:multibaas/src/model/method_call_preview_response.dart';
 import 'package:multibaas/src/model/method_call_response.dart';
 import 'package:multibaas/src/model/method_type_conversion_options.dart';
+import 'package:multibaas/src/model/plan.dart';
+import 'package:multibaas/src/model/plan_feature.dart';
+import 'package:multibaas/src/model/plan_limit.dart';
 import 'package:multibaas/src/model/post_method_args.dart';
 import 'package:multibaas/src/model/post_method_response.dart';
-import 'package:multibaas/src/model/preview_args.dart';
 import 'package:multibaas/src/model/role.dart';
 import 'package:multibaas/src/model/saved_event_query.dart';
 import 'package:multibaas/src/model/set_address201_response.dart';
+import 'package:multibaas/src/model/set_code_authorization.dart';
 import 'package:multibaas/src/model/set_nonce_request.dart';
 import 'package:multibaas/src/model/sign_data200_response.dart';
+import 'package:multibaas/src/model/signed_transaction_response.dart';
 import 'package:multibaas/src/model/signed_transaction_submission.dart';
 import 'package:multibaas/src/model/signer_label.dart';
 import 'package:multibaas/src/model/signer_wallet.dart';
 import 'package:multibaas/src/model/standalone_wallet.dart';
+import 'package:multibaas/src/model/submit_signed_transaction200_response.dart';
 import 'package:multibaas/src/model/transaction.dart';
 import 'package:multibaas/src/model/transaction_data.dart';
 import 'package:multibaas/src/model/transaction_information.dart';
@@ -140,6 +160,7 @@ import 'package:multibaas/src/model/transaction_receipt_data.dart';
 import 'package:multibaas/src/model/transaction_status.dart';
 import 'package:multibaas/src/model/transaction_to_sign.dart';
 import 'package:multibaas/src/model/transaction_to_sign_response.dart';
+import 'package:multibaas/src/model/transaction_to_sign_tx.dart';
 import 'package:multibaas/src/model/transfer_eth200_response.dart';
 import 'package:multibaas/src/model/type_conversion_options.dart';
 import 'package:multibaas/src/model/user.dart';
@@ -151,13 +172,16 @@ import 'package:multibaas/src/model/webhook_events_type.dart';
 part 'serializers.g.dart';
 
 @SerializersFor([
-  APIKey,
+  APIKey,$APIKey,
+  APIKeyWithSecret,
   AcceptInvite200Response,
   AcceptInviteRequest,
+  AccessTuple,
   AddKey,
   Address,
-  AddressLabel,$AddressLabel,
+  AddressAlias,$AddressAlias,
   AuditLog,
+  AuthorizationExtraInfo,
   AzureAccount,
   AzureHardwareWallet,
   AzureWallet,
@@ -165,8 +189,6 @@ part 'serializers.g.dart';
   BaseAzureAccount,$BaseAzureAccount,
   BaseContract,$BaseContract,
   BaseResponse,$BaseResponse,
-  BaseTransactionToSign,$BaseTransactionToSign,
-  BaseTransactionToSignTx,
   BaseUser,$BaseUser,
   BaseWebhookEndpoint,$BaseWebhookEndpoint,
   Block,
@@ -175,18 +197,22 @@ part 'serializers.g.dart';
   CallContractFunction200ResponseAllOfResult,
   ChainName,
   ChainStatus,
+  CloudWalletTXToSign,
+  CloudWalletTXToSignTx,
   Contract,
   ContractABI,
+  ContractABIError,
+  ContractABIErrorArgument,
   ContractABIEvent,
   ContractABIEventArgument,
   ContractABIMethod,
-  ContractABIMethod1,
   ContractABIMethodArgument,
   ContractABIType,
   ContractABITypeConversion,
   ContractEventOptions,
   ContractInformation,
   ContractInstance,
+  ContractLookup,
   ContractMetadata,
   ContractMethodInformation,
   ContractMethodOptions,
@@ -203,6 +229,11 @@ part 'serializers.g.dart';
   CreateWebhook200Response,
   DeployContract200Response,
   DeployContractTransaction,
+  EIP712Domain,
+  EIP712DomainChainId,
+  EIP712TypeEntry,
+  EIP712TypedData,
+  EIP712Types,
   Error,
   Event,
   EventField,
@@ -217,6 +248,7 @@ part 'serializers.g.dart';
   ExecuteArbitraryEventQuery200Response,
   FieldType,
   GasParams,
+  GetApiKey200Response,
   GetBlock200Response,
   GetChainStatus200Response,
   GetContract200Response,
@@ -226,14 +258,18 @@ part 'serializers.g.dart';
   GetEventQuery200Response,
   GetEventTypeConversions200Response,
   GetFunctionTypeConversions200Response,
+  GetPlan200Response,
   GetTransaction200Response,
   GetTransactionReceipt200Response,
   Group,
   HSMData,
   HSMSignRequest,
-  HSMSignRequestChainId,
+  HSMSignRequestPersonalSign,
+  HSMSignRequestPersonalSignChainId,
+  HSMSignRequestTypedData,
   HSMSignResponse,
   Invite,
+  InviteRequest,
   LinkAddressContractRequest,
   ListAddresses200Response,
   ListApiKeys200Response,
@@ -247,6 +283,7 @@ part 'serializers.g.dart';
   ListGroups200Response,
   ListHsm200Response,
   ListHsmWallets200Response,
+  ListInvites200Response,
   ListUserSigners200Response,
   ListUsers200Response,
   ListWalletTransactions200Response,
@@ -254,21 +291,25 @@ part 'serializers.g.dart';
   ListWebhooks200Response,
   Log,
   MethodArg,
-  MethodCallPreviewResponse,
   MethodCallResponse,
   MethodTypeConversionOptions,
+  Plan,
+  PlanFeature,
+  PlanLimit,
   PostMethodArgs,
   PostMethodResponse,$PostMethodResponse,
-  PreviewArgs,
   Role,
   SavedEventQuery,
   SetAddress201Response,
+  SetCodeAuthorization,
   SetNonceRequest,
   SignData200Response,
+  SignedTransactionResponse,
   SignedTransactionSubmission,
   SignerLabel,
   SignerWallet,
   StandaloneWallet,
+  SubmitSignedTransaction200Response,
   Transaction,
   TransactionData,
   TransactionInformation,
@@ -277,6 +318,7 @@ part 'serializers.g.dart';
   TransactionStatus,
   TransactionToSign,$TransactionToSign,
   TransactionToSignResponse,
+  TransactionToSignTx,
   TransferEth200Response,
   TypeConversionOptions,
   User,
@@ -298,12 +340,12 @@ Serializers serializers = (_$serializers.toBuilder()
         const FullType(BuiltList, [FullType(String)]),
         () => ListBuilder<String>(),
       )
-      ..add(AddressLabel.serializer)
+      ..add(APIKey.serializer)
+      ..add(AddressAlias.serializer)
       ..add(BaseAPIKey.serializer)
       ..add(BaseAzureAccount.serializer)
       ..add(BaseContract.serializer)
       ..add(BaseResponse.serializer)
-      ..add(BaseTransactionToSign.serializer)
       ..add(BaseUser.serializer)
       ..add(BaseWebhookEndpoint.serializer)
       ..add(PostMethodResponse.serializer)
@@ -311,8 +353,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer()))
-    .build();
+      ..add(Iso8601DateTimeSerializer())
+    ).build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

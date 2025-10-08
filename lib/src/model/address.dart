@@ -3,9 +3,10 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:multibaas/src/model/address_label.dart';
+import 'package:multibaas/src/model/contract_lookup.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:multibaas/src/model/contract_metadata.dart';
+import 'package:multibaas/src/model/address_alias.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,17 +15,17 @@ part 'address.g.dart';
 /// An address details.
 ///
 /// Properties:
-/// * [label] - A label.
+/// * [alias] - An alias to easily identify and reference addresses.
 /// * [address] - An ethereum address.
 /// * [balance] 
 /// * [chain] 
-/// * [modules] 
 /// * [nonce] - The next transaction nonce for this address (obtained from the blockchain node).
 /// * [localNonce] - The next transaction nonce for this address when using the nonce management feature.
 /// * [codeAt] 
 /// * [contracts] 
+/// * [contractLookup] 
 @BuiltValue()
-abstract class Address implements AddressLabel, Built<Address, AddressBuilder> {
+abstract class Address implements AddressAlias, Built<Address, AddressBuilder> {
   @BuiltValueField(wireName: r'chain')
   String get chain;
 
@@ -35,6 +36,9 @@ abstract class Address implements AddressLabel, Built<Address, AddressBuilder> {
   @BuiltValueField(wireName: r'localNonce')
   int? get localNonce;
 
+  @BuiltValueField(wireName: r'contractLookup')
+  BuiltList<ContractLookup>? get contractLookup;
+
   @BuiltValueField(wireName: r'codeAt')
   String? get codeAt;
 
@@ -44,9 +48,6 @@ abstract class Address implements AddressLabel, Built<Address, AddressBuilder> {
   /// The next transaction nonce for this address (obtained from the blockchain node).
   @BuiltValueField(wireName: r'nonce')
   int? get nonce;
-
-  @BuiltValueField(wireName: r'modules')
-  BuiltList<String> get modules;
 
   Address._();
 
@@ -95,6 +96,18 @@ class _$AddressSerializer implements PrimitiveSerializer<Address> {
         specifiedType: const FullType(int),
       );
     }
+    if (object.contractLookup != null) {
+      yield r'contractLookup';
+      yield serializers.serialize(
+        object.contractLookup,
+        specifiedType: const FullType(BuiltList, [FullType(ContractLookup)]),
+      );
+    }
+    yield r'alias';
+    yield serializers.serialize(
+      object.alias,
+      specifiedType: const FullType(String),
+    );
     if (object.codeAt != null) {
       yield r'codeAt';
       yield serializers.serialize(
@@ -102,11 +115,6 @@ class _$AddressSerializer implements PrimitiveSerializer<Address> {
         specifiedType: const FullType(String),
       );
     }
-    yield r'label';
-    yield serializers.serialize(
-      object.label,
-      specifiedType: const FullType(String),
-    );
     yield r'contracts';
     yield serializers.serialize(
       object.contracts,
@@ -119,11 +127,6 @@ class _$AddressSerializer implements PrimitiveSerializer<Address> {
         specifiedType: const FullType(int),
       );
     }
-    yield r'modules';
-    yield serializers.serialize(
-      object.modules,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
   }
 
   @override
@@ -175,19 +178,26 @@ class _$AddressSerializer implements PrimitiveSerializer<Address> {
           ) as int;
           result.localNonce = valueDes;
           break;
+        case r'contractLookup':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(ContractLookup)]),
+          ) as BuiltList<ContractLookup>;
+          result.contractLookup.replace(valueDes);
+          break;
+        case r'alias':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.alias = valueDes;
+          break;
         case r'codeAt':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.codeAt = valueDes;
-          break;
-        case r'label':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.label = valueDes;
           break;
         case r'contracts':
           final valueDes = serializers.deserialize(
@@ -202,13 +212,6 @@ class _$AddressSerializer implements PrimitiveSerializer<Address> {
             specifiedType: const FullType(int),
           ) as int;
           result.nonce = valueDes;
-          break;
-        case r'modules':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
-          result.modules.replace(valueDes);
           break;
         default:
           unhandled.add(key);

@@ -7,25 +7,24 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(HSMSignRequest, () {
+    // The signing method to use.
+    // String method
+    test('to test the property `method`', () async {
+      // TODO
+    });
+
     // An ethereum address.
     // String address
     test('to test the property `address`', () async {
       // TODO
     });
 
-    // Is the data field an encapsulated EIP-712 typed message?
-    // bool isTyped
-    test('to test the property `isTyped`', () async {
-      // TODO
-    });
-
-    // Data to sign
-    // String data
+    // EIP712TypedData data
     test('to test the property `data`', () async {
       // TODO
     });
 
-    // HSMSignRequestChainId chainId
+    // HSMSignRequestPersonalSignChainId chainId
     test('to test the property `chainId`', () async {
       // TODO
     });

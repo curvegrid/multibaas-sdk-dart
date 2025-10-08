@@ -46,5 +46,10 @@ void main() {
       // TODO
     });
 
+    // BuiltList<AuthorizationExtraInfo> authorizationExtraInfo
+    test('to test the property `authorizationExtraInfo`', () async {
+      // TODO
+    });
+
   });
 }

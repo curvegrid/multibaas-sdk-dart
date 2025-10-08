@@ -13,8 +13,15 @@ void main() {
       // TODO
     });
 
-    // BuiltList<int> groupIDs
-    test('to test the property `groupIDs`', () async {
+    // The time the invite was created.
+    // DateTime createdAt
+    test('to test the property `createdAt`', () async {
+      // TODO
+    });
+
+    // The time the invite expires.
+    // DateTime expiresAt
+    test('to test the property `expiresAt`', () async {
       // TODO
     });
 

@@ -9,7 +9,8 @@ import 'package:multibaas/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **String** | The invitee's email address. | 
-**groupIDs** | **BuiltList&lt;int&gt;** |  | [optional] 
+**createdAt** | [**DateTime**](DateTime.md) | The time the invite was created. | 
+**expiresAt** | [**DateTime**](DateTime.md) | The time the invite expires. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

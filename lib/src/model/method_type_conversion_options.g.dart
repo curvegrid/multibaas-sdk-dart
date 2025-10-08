@@ -14,16 +14,10 @@ class _$MethodTypeConversionOptions extends MethodTypeConversionOptions {
 
   factory _$MethodTypeConversionOptions(
           [void Function(MethodTypeConversionOptionsBuilder)? updates]) =>
-      (new MethodTypeConversionOptionsBuilder()..update(updates))._build();
+      (MethodTypeConversionOptionsBuilder()..update(updates))._build();
 
   _$MethodTypeConversionOptions._({required this.inputs, required this.outputs})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        inputs, r'MethodTypeConversionOptions', 'inputs');
-    BuiltValueNullFieldError.checkNotNull(
-        outputs, r'MethodTypeConversionOptions', 'outputs');
-  }
-
+      : super._();
   @override
   MethodTypeConversionOptions rebuild(
           void Function(MethodTypeConversionOptionsBuilder) updates) =>
@@ -31,7 +25,7 @@ class _$MethodTypeConversionOptions extends MethodTypeConversionOptions {
 
   @override
   MethodTypeConversionOptionsBuilder toBuilder() =>
-      new MethodTypeConversionOptionsBuilder()..replace(this);
+      MethodTypeConversionOptionsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,13 +61,13 @@ class MethodTypeConversionOptionsBuilder
 
   ListBuilder<TypeConversionOptions>? _inputs;
   ListBuilder<TypeConversionOptions> get inputs =>
-      _$this._inputs ??= new ListBuilder<TypeConversionOptions>();
+      _$this._inputs ??= ListBuilder<TypeConversionOptions>();
   set inputs(ListBuilder<TypeConversionOptions>? inputs) =>
       _$this._inputs = inputs;
 
   ListBuilder<TypeConversionOptions>? _outputs;
   ListBuilder<TypeConversionOptions> get outputs =>
-      _$this._outputs ??= new ListBuilder<TypeConversionOptions>();
+      _$this._outputs ??= ListBuilder<TypeConversionOptions>();
   set outputs(ListBuilder<TypeConversionOptions>? outputs) =>
       _$this._outputs = outputs;
 
@@ -93,7 +87,6 @@ class MethodTypeConversionOptionsBuilder
 
   @override
   void replace(MethodTypeConversionOptions other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MethodTypeConversionOptions;
   }
 
@@ -109,8 +102,10 @@ class MethodTypeConversionOptionsBuilder
     _$MethodTypeConversionOptions _$result;
     try {
       _$result = _$v ??
-          new _$MethodTypeConversionOptions._(
-              inputs: inputs.build(), outputs: outputs.build());
+          _$MethodTypeConversionOptions._(
+            inputs: inputs.build(),
+            outputs: outputs.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -119,7 +114,7 @@ class MethodTypeConversionOptionsBuilder
         _$failedField = 'outputs';
         outputs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'MethodTypeConversionOptions', _$failedField, e.toString());
       }
       rethrow;

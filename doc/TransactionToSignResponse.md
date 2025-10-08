@@ -9,7 +9,7 @@ import 'package:multibaas/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **kind** | **String** | The response object type (discriminator). | 
-**tx** | [**BaseTransactionToSignTx**](BaseTransactionToSignTx.md) |  | 
+**tx** | [**TransactionToSignTx**](TransactionToSignTx.md) |  | 
 **submitted** | **bool** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

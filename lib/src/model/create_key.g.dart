@@ -17,27 +17,20 @@ class _$CreateKey extends CreateKey {
   final bool useHardwareModule;
 
   factory _$CreateKey([void Function(CreateKeyBuilder)? updates]) =>
-      (new CreateKeyBuilder()..update(updates))._build();
+      (CreateKeyBuilder()..update(updates))._build();
 
   _$CreateKey._(
       {required this.clientID,
       required this.keyName,
       required this.vaultName,
       required this.useHardwareModule})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(clientID, r'CreateKey', 'clientID');
-    BuiltValueNullFieldError.checkNotNull(keyName, r'CreateKey', 'keyName');
-    BuiltValueNullFieldError.checkNotNull(vaultName, r'CreateKey', 'vaultName');
-    BuiltValueNullFieldError.checkNotNull(
-        useHardwareModule, r'CreateKey', 'useHardwareModule');
-  }
-
+      : super._();
   @override
   CreateKey rebuild(void Function(CreateKeyBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CreateKeyBuilder toBuilder() => new CreateKeyBuilder()..replace(this);
+  CreateKeyBuilder toBuilder() => CreateKeyBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -109,7 +102,6 @@ class CreateKeyBuilder implements Builder<CreateKey, CreateKeyBuilder> {
 
   @override
   void replace(CreateKey other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateKey;
   }
 
@@ -123,15 +115,16 @@ class CreateKeyBuilder implements Builder<CreateKey, CreateKeyBuilder> {
 
   _$CreateKey _build() {
     final _$result = _$v ??
-        new _$CreateKey._(
-            clientID: BuiltValueNullFieldError.checkNotNull(
-                clientID, r'CreateKey', 'clientID'),
-            keyName: BuiltValueNullFieldError.checkNotNull(
-                keyName, r'CreateKey', 'keyName'),
-            vaultName: BuiltValueNullFieldError.checkNotNull(
-                vaultName, r'CreateKey', 'vaultName'),
-            useHardwareModule: BuiltValueNullFieldError.checkNotNull(
-                useHardwareModule, r'CreateKey', 'useHardwareModule'));
+        _$CreateKey._(
+          clientID: BuiltValueNullFieldError.checkNotNull(
+              clientID, r'CreateKey', 'clientID'),
+          keyName: BuiltValueNullFieldError.checkNotNull(
+              keyName, r'CreateKey', 'keyName'),
+          vaultName: BuiltValueNullFieldError.checkNotNull(
+              vaultName, r'CreateKey', 'vaultName'),
+          useHardwareModule: BuiltValueNullFieldError.checkNotNull(
+              useHardwareModule, r'CreateKey', 'useHardwareModule'),
+        );
     replace(_$result);
     return _$result;
   }

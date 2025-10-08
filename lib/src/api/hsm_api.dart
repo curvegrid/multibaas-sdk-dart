@@ -11,8 +11,8 @@ import 'package:multibaas/src/api_util.dart';
 import 'package:multibaas/src/model/add_key.dart';
 import 'package:multibaas/src/model/base_azure_account.dart';
 import 'package:multibaas/src/model/base_response.dart';
-import 'package:multibaas/src/model/base_transaction_to_sign.dart';
 import 'package:multibaas/src/model/chain_name.dart';
+import 'package:multibaas/src/model/cloud_wallet_txto_sign.dart';
 import 'package:multibaas/src/model/create_hsm_key200_response.dart';
 import 'package:multibaas/src/model/create_key.dart';
 import 'package:multibaas/src/model/hsm_sign_request.dart';
@@ -45,7 +45,7 @@ class HsmApi {
   /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> addHsmConfig({ 
-    BaseAzureAccount? baseAzureAccount,
+    required BaseAzureAccount baseAzureAccount,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -82,7 +82,7 @@ class HsmApi {
 
     try {
       const _type = FullType(BaseAzureAccount);
-      _bodyData = baseAzureAccount == null ? null : _serializers.serialize(baseAzureAccount, specifiedType: _type);
+      _bodyData = _serializers.serialize(baseAzureAccount, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -151,7 +151,7 @@ class HsmApi {
   /// Returns a [Future] containing a [Response] with a [BaseResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<BaseResponse>> addHsmKey({ 
-    AddKey? addKey,
+    required AddKey addKey,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -188,7 +188,7 @@ class HsmApi {
 
     try {
       const _type = FullType(AddKey);
-      _bodyData = addKey == null ? null : _serializers.serialize(addKey, specifiedType: _type);
+      _bodyData = _serializers.serialize(addKey, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -257,7 +257,7 @@ class HsmApi {
   /// Returns a [Future] containing a [Response] with a [CreateHsmKey200Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateHsmKey200Response>> createHsmKey({ 
-    CreateKey? createKey,
+    required CreateKey createKey,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -294,7 +294,7 @@ class HsmApi {
 
     try {
       const _type = FullType(CreateKey);
-      _bodyData = createKey == null ? null : _serializers.serialize(createKey, specifiedType: _type);
+      _bodyData = _serializers.serialize(createKey, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -460,7 +460,7 @@ class HsmApi {
     String? baseGroupName,
     String? clientId,
     String? publicAddress,
-    int? limit,
+    int? limit = 10,
     int? offset,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -634,7 +634,7 @@ class HsmApi {
   /// Removes the specified key configuration.
   ///
   /// Parameters:
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -721,7 +721,7 @@ class HsmApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [walletAddress] - An HSM ethereum address.
+  /// * [walletAddress] - An Ethereum address.
   /// * [setNonceRequest] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -735,7 +735,7 @@ class HsmApi {
   Future<Response<BaseResponse>> setLocalNonce({ 
     required ChainName chain,
     required String walletAddress,
-    SetNonceRequest? setNonceRequest,
+    required SetNonceRequest setNonceRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -772,7 +772,7 @@ class HsmApi {
 
     try {
       const _type = FullType(SetNonceRequest);
-      _bodyData = setNonceRequest == null ? null : _serializers.serialize(setNonceRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(setNonceRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -831,7 +831,7 @@ class HsmApi {
   ///
   /// Parameters:
   /// * [chain] - The blockchain chain label.
-  /// * [baseTransactionToSign] 
+  /// * [cloudWalletTXToSign] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -843,7 +843,7 @@ class HsmApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<TransferEth200Response>> signAndSubmitTransaction({ 
     required ChainName chain,
-    BaseTransactionToSign? baseTransactionToSign,
+    required CloudWalletTXToSign cloudWalletTXToSign,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -879,8 +879,8 @@ class HsmApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BaseTransactionToSign);
-      _bodyData = baseTransactionToSign == null ? null : _serializers.serialize(baseTransactionToSign, specifiedType: _type);
+      const _type = FullType(CloudWalletTXToSign);
+      _bodyData = _serializers.serialize(cloudWalletTXToSign, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -951,7 +951,7 @@ class HsmApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<SignData200Response>> signData({ 
     required ChainName chain,
-    HSMSignRequest? hSMSignRequest,
+    required HSMSignRequest hSMSignRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -988,7 +988,7 @@ class HsmApi {
 
     try {
       const _type = FullType(HSMSignRequest);
-      _bodyData = hSMSignRequest == null ? null : _serializers.serialize(hSMSignRequest, specifiedType: _type);
+      _bodyData = _serializers.serialize(hSMSignRequest, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(

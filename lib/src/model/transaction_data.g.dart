@@ -21,9 +21,11 @@ class _$TransactionData extends TransactionData {
   final ContractInformation? contract;
   @override
   final ContractMethodInformation? method;
+  @override
+  final BuiltList<AuthorizationExtraInfo>? authorizationExtraInfo;
 
   factory _$TransactionData([void Function(TransactionDataBuilder)? updates]) =>
-      (new TransactionDataBuilder()..update(updates))._build();
+      (TransactionDataBuilder()..update(updates))._build();
 
   _$TransactionData._(
       {required this.data,
@@ -32,21 +34,15 @@ class _$TransactionData extends TransactionData {
       this.blockHash,
       this.blockNumber,
       this.contract,
-      this.method})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(data, r'TransactionData', 'data');
-    BuiltValueNullFieldError.checkNotNull(
-        isPending, r'TransactionData', 'isPending');
-    BuiltValueNullFieldError.checkNotNull(from, r'TransactionData', 'from');
-  }
-
+      this.method,
+      this.authorizationExtraInfo})
+      : super._();
   @override
   TransactionData rebuild(void Function(TransactionDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TransactionDataBuilder toBuilder() =>
-      new TransactionDataBuilder()..replace(this);
+  TransactionDataBuilder toBuilder() => TransactionDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -58,7 +54,8 @@ class _$TransactionData extends TransactionData {
         blockHash == other.blockHash &&
         blockNumber == other.blockNumber &&
         contract == other.contract &&
-        method == other.method;
+        method == other.method &&
+        authorizationExtraInfo == other.authorizationExtraInfo;
   }
 
   @override
@@ -71,6 +68,7 @@ class _$TransactionData extends TransactionData {
     _$hash = $jc(_$hash, blockNumber.hashCode);
     _$hash = $jc(_$hash, contract.hashCode);
     _$hash = $jc(_$hash, method.hashCode);
+    _$hash = $jc(_$hash, authorizationExtraInfo.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -84,7 +82,8 @@ class _$TransactionData extends TransactionData {
           ..add('blockHash', blockHash)
           ..add('blockNumber', blockNumber)
           ..add('contract', contract)
-          ..add('method', method))
+          ..add('method', method)
+          ..add('authorizationExtraInfo', authorizationExtraInfo))
         .toString();
   }
 }
@@ -94,7 +93,7 @@ class TransactionDataBuilder
   _$TransactionData? _$v;
 
   TransactionBuilder? _data;
-  TransactionBuilder get data => _$this._data ??= new TransactionBuilder();
+  TransactionBuilder get data => _$this._data ??= TransactionBuilder();
   set data(TransactionBuilder? data) => _$this._data = data;
 
   bool? _isPending;
@@ -115,15 +114,22 @@ class TransactionDataBuilder
 
   ContractInformationBuilder? _contract;
   ContractInformationBuilder get contract =>
-      _$this._contract ??= new ContractInformationBuilder();
+      _$this._contract ??= ContractInformationBuilder();
   set contract(ContractInformationBuilder? contract) =>
       _$this._contract = contract;
 
   ContractMethodInformationBuilder? _method;
   ContractMethodInformationBuilder get method =>
-      _$this._method ??= new ContractMethodInformationBuilder();
+      _$this._method ??= ContractMethodInformationBuilder();
   set method(ContractMethodInformationBuilder? method) =>
       _$this._method = method;
+
+  ListBuilder<AuthorizationExtraInfo>? _authorizationExtraInfo;
+  ListBuilder<AuthorizationExtraInfo> get authorizationExtraInfo =>
+      _$this._authorizationExtraInfo ??= ListBuilder<AuthorizationExtraInfo>();
+  set authorizationExtraInfo(
+          ListBuilder<AuthorizationExtraInfo>? authorizationExtraInfo) =>
+      _$this._authorizationExtraInfo = authorizationExtraInfo;
 
   TransactionDataBuilder() {
     TransactionData._defaults(this);
@@ -139,6 +145,7 @@ class TransactionDataBuilder
       _blockNumber = $v.blockNumber;
       _contract = $v.contract?.toBuilder();
       _method = $v.method?.toBuilder();
+      _authorizationExtraInfo = $v.authorizationExtraInfo?.toBuilder();
       _$v = null;
     }
     return this;
@@ -146,7 +153,6 @@ class TransactionDataBuilder
 
   @override
   void replace(TransactionData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TransactionData;
   }
 
@@ -162,16 +168,18 @@ class TransactionDataBuilder
     _$TransactionData _$result;
     try {
       _$result = _$v ??
-          new _$TransactionData._(
-              data: data.build(),
-              isPending: BuiltValueNullFieldError.checkNotNull(
-                  isPending, r'TransactionData', 'isPending'),
-              from: BuiltValueNullFieldError.checkNotNull(
-                  from, r'TransactionData', 'from'),
-              blockHash: blockHash,
-              blockNumber: blockNumber,
-              contract: _contract?.build(),
-              method: _method?.build());
+          _$TransactionData._(
+            data: data.build(),
+            isPending: BuiltValueNullFieldError.checkNotNull(
+                isPending, r'TransactionData', 'isPending'),
+            from: BuiltValueNullFieldError.checkNotNull(
+                from, r'TransactionData', 'from'),
+            blockHash: blockHash,
+            blockNumber: blockNumber,
+            contract: _contract?.build(),
+            method: _method?.build(),
+            authorizationExtraInfo: _authorizationExtraInfo?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -182,8 +190,10 @@ class TransactionDataBuilder
         _contract?.build();
         _$failedField = 'method';
         _method?.build();
+        _$failedField = 'authorizationExtraInfo';
+        _authorizationExtraInfo?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TransactionData', _$failedField, e.toString());
       }
       rethrow;

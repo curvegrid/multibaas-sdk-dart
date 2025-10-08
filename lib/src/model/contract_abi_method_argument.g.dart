@@ -8,22 +8,27 @@ part of 'contract_abi_method_argument.dart';
 
 class _$ContractABIMethodArgument extends ContractABIMethodArgument {
   @override
-  final String? name;
+  final String name;
   @override
-  final ContractABIType? type;
+  final ContractABIType type;
+  @override
+  final String typeName;
   @override
   final ContractABITypeConversion? typeConversion;
   @override
-  final String? notes;
+  final String notes;
 
   factory _$ContractABIMethodArgument(
           [void Function(ContractABIMethodArgumentBuilder)? updates]) =>
-      (new ContractABIMethodArgumentBuilder()..update(updates))._build();
+      (ContractABIMethodArgumentBuilder()..update(updates))._build();
 
   _$ContractABIMethodArgument._(
-      {this.name, this.type, this.typeConversion, this.notes})
+      {required this.name,
+      required this.type,
+      required this.typeName,
+      this.typeConversion,
+      required this.notes})
       : super._();
-
   @override
   ContractABIMethodArgument rebuild(
           void Function(ContractABIMethodArgumentBuilder) updates) =>
@@ -31,7 +36,7 @@ class _$ContractABIMethodArgument extends ContractABIMethodArgument {
 
   @override
   ContractABIMethodArgumentBuilder toBuilder() =>
-      new ContractABIMethodArgumentBuilder()..replace(this);
+      ContractABIMethodArgumentBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -39,6 +44,7 @@ class _$ContractABIMethodArgument extends ContractABIMethodArgument {
     return other is ContractABIMethodArgument &&
         name == other.name &&
         type == other.type &&
+        typeName == other.typeName &&
         typeConversion == other.typeConversion &&
         notes == other.notes;
   }
@@ -48,6 +54,7 @@ class _$ContractABIMethodArgument extends ContractABIMethodArgument {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, typeName.hashCode);
     _$hash = $jc(_$hash, typeConversion.hashCode);
     _$hash = $jc(_$hash, notes.hashCode);
     _$hash = $jf(_$hash);
@@ -59,6 +66,7 @@ class _$ContractABIMethodArgument extends ContractABIMethodArgument {
     return (newBuiltValueToStringHelper(r'ContractABIMethodArgument')
           ..add('name', name)
           ..add('type', type)
+          ..add('typeName', typeName)
           ..add('typeConversion', typeConversion)
           ..add('notes', notes))
         .toString();
@@ -75,13 +83,16 @@ class ContractABIMethodArgumentBuilder
   set name(String? name) => _$this._name = name;
 
   ContractABITypeBuilder? _type;
-  ContractABITypeBuilder get type =>
-      _$this._type ??= new ContractABITypeBuilder();
+  ContractABITypeBuilder get type => _$this._type ??= ContractABITypeBuilder();
   set type(ContractABITypeBuilder? type) => _$this._type = type;
+
+  String? _typeName;
+  String? get typeName => _$this._typeName;
+  set typeName(String? typeName) => _$this._typeName = typeName;
 
   ContractABITypeConversionBuilder? _typeConversion;
   ContractABITypeConversionBuilder get typeConversion =>
-      _$this._typeConversion ??= new ContractABITypeConversionBuilder();
+      _$this._typeConversion ??= ContractABITypeConversionBuilder();
   set typeConversion(ContractABITypeConversionBuilder? typeConversion) =>
       _$this._typeConversion = typeConversion;
 
@@ -97,7 +108,8 @@ class ContractABIMethodArgumentBuilder
     final $v = _$v;
     if ($v != null) {
       _name = $v.name;
-      _type = $v.type?.toBuilder();
+      _type = $v.type.toBuilder();
+      _typeName = $v.typeName;
       _typeConversion = $v.typeConversion?.toBuilder();
       _notes = $v.notes;
       _$v = null;
@@ -107,7 +119,6 @@ class ContractABIMethodArgumentBuilder
 
   @override
   void replace(ContractABIMethodArgument other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ContractABIMethodArgument;
   }
 
@@ -123,20 +134,26 @@ class ContractABIMethodArgumentBuilder
     _$ContractABIMethodArgument _$result;
     try {
       _$result = _$v ??
-          new _$ContractABIMethodArgument._(
-              name: name,
-              type: _type?.build(),
-              typeConversion: _typeConversion?.build(),
-              notes: notes);
+          _$ContractABIMethodArgument._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'ContractABIMethodArgument', 'name'),
+            type: type.build(),
+            typeName: BuiltValueNullFieldError.checkNotNull(
+                typeName, r'ContractABIMethodArgument', 'typeName'),
+            typeConversion: _typeConversion?.build(),
+            notes: BuiltValueNullFieldError.checkNotNull(
+                notes, r'ContractABIMethodArgument', 'notes'),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'type';
-        _type?.build();
+        type.build();
+
         _$failedField = 'typeConversion';
         _typeConversion?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ContractABIMethodArgument', _$failedField, e.toString());
       }
       rethrow;

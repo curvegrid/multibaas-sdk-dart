@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **executeArbitraryEventQuery**
-> ExecuteArbitraryEventQuery200Response executeArbitraryEventQuery(offset, limit, eventQuery)
+> ExecuteArbitraryEventQuery200Response executeArbitraryEventQuery(eventQuery, offset, limit)
 
 Execute arbitrary event query
 
@@ -128,12 +128,12 @@ import 'package:multibaas/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookie').apiKeyPrefix = 'Bearer';
 
 final api = Multibaas().getEventQueriesApi();
+final EventQuery eventQuery = ; // EventQuery | 
 final int offset = 789; // int | 
 final int limit = 789; // int | 
-final EventQuery eventQuery = ; // EventQuery | 
 
 try {
-    final response = api.executeArbitraryEventQuery(offset, limit, eventQuery);
+    final response = api.executeArbitraryEventQuery(eventQuery, offset, limit);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling EventQueriesApi->executeArbitraryEventQuery: $e\n');
@@ -144,9 +144,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **eventQuery** | [**EventQuery**](EventQuery.md)|  | 
  **offset** | **int**|  | [optional] 
- **limit** | **int**|  | [optional] 
- **eventQuery** | [**EventQuery**](EventQuery.md)|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
 
 ### Return type
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **eventQuery** | **String**| An event query label. | 
  **offset** | **int**|  | [optional] 
- **limit** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] [default to 10]
 
 ### Return type
 
@@ -336,7 +336,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **eventQuery** | **String**| An event query label. | 
- **eventQuery2** | [**EventQuery**](EventQuery.md)|  | [optional] 
+ **eventQuery2** | [**EventQuery**](EventQuery.md)|  | 
 
 ### Return type
 

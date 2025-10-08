@@ -13,7 +13,6 @@ part 'block.g.dart';
 /// A block in the Ethereum blockchain.
 ///
 /// Properties:
-/// * [blockchain] 
 /// * [hash] - The keccak256 hash as a hex string of 256 bits.
 /// * [difficulty] 
 /// * [gasLimit] 
@@ -34,9 +33,6 @@ part 'block.g.dart';
 /// * [baseFeePerGas] 
 @BuiltValue()
 abstract class Block implements Built<Block, BlockBuilder> {
-  @BuiltValueField(wireName: r'blockchain')
-  String get blockchain;
-
   /// The keccak256 hash as a hex string of 256 bits.
   @BuiltValueField(wireName: r'hash')
   String get hash;
@@ -99,7 +95,7 @@ abstract class Block implements Built<Block, BlockBuilder> {
   String get extraData;
 
   @BuiltValueField(wireName: r'baseFeePerGas')
-  String get baseFeePerGas;
+  String? get baseFeePerGas;
 
   Block._();
 
@@ -124,11 +120,6 @@ class _$BlockSerializer implements PrimitiveSerializer<Block> {
     Block object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'blockchain';
-    yield serializers.serialize(
-      object.blockchain,
-      specifiedType: const FullType(String),
-    );
     yield r'hash';
     yield serializers.serialize(
       object.hash,
@@ -214,11 +205,13 @@ class _$BlockSerializer implements PrimitiveSerializer<Block> {
       object.extraData,
       specifiedType: const FullType(String),
     );
-    yield r'baseFeePerGas';
-    yield serializers.serialize(
-      object.baseFeePerGas,
-      specifiedType: const FullType(String),
-    );
+    if (object.baseFeePerGas != null) {
+      yield r'baseFeePerGas';
+      yield serializers.serialize(
+        object.baseFeePerGas,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -242,13 +235,6 @@ class _$BlockSerializer implements PrimitiveSerializer<Block> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'blockchain':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.blockchain = valueDes;
-          break;
         case r'hash':
           final valueDes = serializers.deserialize(
             value,

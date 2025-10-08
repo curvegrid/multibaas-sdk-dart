@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ContractABIMethod, () {
+    // A hex string.
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
     // Name of the function.
     // String name
     test('to test the property `name`', () async {
@@ -48,11 +54,6 @@ void main() {
 
     // String notes
     test('to test the property `notes`', () async {
-      // TODO
-    });
-
-    // String returns
-    test('to test the property `returns`', () async {
       // TODO
     });
 
